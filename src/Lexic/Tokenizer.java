@@ -1,5 +1,8 @@
 package Lexic;
 
+import Lexic.AccionSemantica.*;
+import Lexic.ConversorSimbolos.ConversorSimbolos;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -44,45 +47,29 @@ public class Tokenizer {
 
 
     private boolean eof(int index){
-        return index != values.size()-1;
+        return index == values.size();
     }
 
     public boolean tokenize(){
         int index = 0;
-        Character simb_actual = values.get(0);
+        Character simb_actual;
         AccionSemantica accionSemantica;
-        String tipoToken;
+        String tipoToken = "";
         String token_actual = "";
 
         while(!eof(index)){
-            while(!eof(index) && simb_actual != ' '){
-                // Avanzo mientras haya blancos
-                simb_actual = values.get(index);
-                index++;
-            }
-            if(!eof(index)){
-                // Quedan simbolos
-                if(simboloValido(simb_actual)){
-                    estado_actual = matrizDeTransicionEstados[estado_actual][simb_actual];
-                    accionSemantica = matrizDeTransicionAS[estado_actual][simb_actual];
-                    accionSemantica.ejecutar();
-                }
-                else{
-                    // Preciso el numero de linea y el numero de caracter de la linea
-                    //arrojarWarning();
-                }
-                if(estado_actual == 1){
-                    tokens.put(tipoToken,token_actual);
-                }
-            }
+
+            //Hay que indicar la representacion
+            // l= 1  | L = 2   |  d = 3
+            simb_actual = values.get(index);
+            int indexSimbolo = ConversorSimbolos.convertirSimbolo(simb_actual);
+            accionSemantica = matrizDeTransicionAS[estado_actual][indexSimbolo];
+            accionSemantica.ejecutar(simb_actual,token_actual,tokens);
+            index++;
         }
         for (Character value:values) {
             System.out.println(value);
         }
-        return true;
-    }
-
-    private boolean simboloValido(Character simb_actual) {
         return true;
     }
 
