@@ -4,23 +4,30 @@ import Lexic.AccionSemantica.*;
 import Lexic.ConversorSimbolos.ConversorSimbolos;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 import java.io.IOException;
-import java.util.List;
 import java.io.FileReader;
-import java.util.Map;
 
 public class Tokenizer {
 
     final static String FILE_PATH = "src/input.txt";
     private static List<Character> values = new ArrayList<>();
     final int ESTADO_INICIAL = 0;
-    private int[][] matrizDeTransicionEstados = new int[10][];
-    private AccionSemantica[][] matrizDeTransicionAS = new AccionSemantica[10][];
-    private Map<String,Integer> tokens = new Map<String,Integer>;
 
+    // matrizDeTransicionEstados[estado_actual][simbolo]
+    // F=-1  | Y = -2  |  Z = -3
+    // l= 1  | L = 2   |  d = 3
+    private final int[][] matrizDeTransicionEstados = {
+           // 0  1  2   3  4   5
+            {-1, 1, 1, -2, 1, -3},
+            {-1, 1, 1,  1, 1, -1}
+    };
+
+    private final AccionSemantica[][] matrizDeTransicionAS = {
+            {new AS1(), new AS2(), new AS2(), new ASY(), new AS2(), new ASZ()},
+            {new AS4(), new AS3(), new AS3(), new AS3(), new AS3(), new AS4()}
+    };
+    private final Map<String,Integer> tokens = new HashMap<>();
 
     int estado_actual = 0;
     // TODO: Tiene que pasarse por parametro
@@ -45,18 +52,19 @@ public class Tokenizer {
 
     }
 
-
     private boolean eof(int index){
         return index == values.size();
     }
 
     public boolean tokenize(){
+
         int index = 0;
         Character simb_actual;
         AccionSemantica accionSemantica;
         String tipoToken = "";
         String token_actual = "";
 
+        // Quedan letras en el archivo generico
         while(!eof(index)){
 
             //Hay que indicar la representacion
@@ -67,12 +75,9 @@ public class Tokenizer {
             accionSemantica.ejecutar(simb_actual,token_actual,tokens);
             index++;
         }
-        for (Character value:values) {
-            System.out.println(value);
-        }
+
         return true;
     }
-
 
 /*
     while simb not $:  # Pesos significa que termino el archivo
