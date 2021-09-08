@@ -1,10 +1,14 @@
 package Lexic.AccionSemantica;
 
 import java.util.Map;
+import Lexic.Tokenizer;
 
 public class ASY extends AccionSemantica {
 
     public void ejecutar(Character simb_actual, String token_actual, Map<String, Integer> tokens) {
-        System.out.print("Se ejecuta la accion semantica Y" + simb_actual);
+        System.out.println("Se ejecuta la accion semantica Y, recibio: " + simb_actual);
+        Tokenizer.estado_actual = Tokenizer.ESTADO_INICIAL;
+        System.out.println("Estado trancisionado: " + Tokenizer.estado_actual);
+
     }
 }

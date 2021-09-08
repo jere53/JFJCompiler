@@ -1,9 +1,8 @@
 import Lexic.Tokenizer;
+
 public class Main {
 
-    public static void main(String [] args){
-        System.out.println(Character.isLowerCase(' '));
-        System.out.println("Compilado");
+    public static void main(String[] args) {
         Tokenizer tk = new Tokenizer();
     }
 }
