@@ -27,7 +27,10 @@ public class Tokenizer {
     private final Map<String, Integer> tokens = new HashMap<>();
 
     public static int estado_actual = ESTADO_INICIAL;
-    // TODO: Tiene que pasarse por parametro
+
+    public static String token_actual = "";
+
+    // TODO: Tiene que pasarse por parametro el archivo
     // TODO: Implementar concatenador
     // TODO: Debatir clase contexto
 
@@ -59,8 +62,6 @@ public class Tokenizer {
         int index = 0;
         Character simb_actual;
         AccionSemantica accionSemantica;
-        String tipoToken = "";
-        String token_actual = "";
 
         // Quedan letras en el archivo generico
         while (!eof(index)) {
@@ -74,7 +75,8 @@ public class Tokenizer {
             accionSemantica = matrizDeTransicionAS[estado_actual][indexSimbolo];
             System.out.println("Estado actual: " + estado_actual);
             estado_actual = matrizDeTransicionEstados[estado_actual][indexSimbolo]; // Estado actual
-            accionSemantica.ejecutar(simb_actual, token_actual, tokens);
+            accionSemantica.ejecutar(simb_actual, tokens);
+            System.out.println("token_actual: " + token_actual);
             System.out.println("Estado trancisionado: " + estado_actual);
 
             index++;
@@ -103,4 +105,5 @@ public class Tokenizer {
      * 
      * # Ejemplo --> "SIMBOLO"
      */
+
 }

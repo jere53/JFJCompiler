@@ -6,5 +6,5 @@ import java.util.Map;
  * Clase abstracta ejecutar acciones semanticas
  */
 public abstract class AccionSemantica {
-    public abstract void ejecutar(Character simb_actual, String token_actual, Map<String, Integer> tokens);
+    public abstract void ejecutar(Character simb_actual, Map<String, Integer> tokens);
 }

@@ -2,19 +2,27 @@ package Lexic.AccionSemantica;
 
 import java.util.Map;
 import Lexic.Tokenizer;
+import Lexic.TablaPalabrasReservadas.TablaPalabrasReservadas;
+import Lexic.TablaSimbolos.TablaSimbolos;
 
 public class AS4 extends AccionSemantica {
 
-    public void ejecutar(Character simb_actual, String token_actual, Map<String, Integer> tokens) {
+    public void ejecutar(Character simb_actual, Map<String, Integer> tokens) {
         System.out.println("Se ejecuta la accion semantica 4, recibio: " + simb_actual);
         // TODO : Implementar la tabla de palabras reservadas
 
-        System.out.println("token_actual " + token_actual);
-        if (token_actual.equals("IF")) {
+        if (Tokenizer.token_actual.equals("IF")) {
             System.out.println("Se encontro un IF");
         }
 
+        Tokenizer.token_actual = "";
         Tokenizer.estado_actual = Tokenizer.ESTADO_INICIAL;
 
+        String token = TablaPalabrasReservadas.get();
+        if (token) {
+            
+        } else {
+            TablaSimbolos.get();
+        }
     }
 }
