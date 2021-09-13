@@ -1,7 +1,7 @@
-package Lexic.AccionSemantica;
+package Deprecated.Lexic.AccionSemantica;
 
 import java.util.Map;
-import Lexic.Tokenizer;
+import Deprecated.Lexic.Tokenizer;
 
 public class ASZ extends AccionSemantica {
 

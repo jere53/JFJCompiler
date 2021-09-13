@@ -1,4 +1,4 @@
-package Lexic.Detector;
+package Deprecated.Lexic.Detector;
 
 public abstract class Detector {
 }

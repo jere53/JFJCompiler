@@ -1,8 +1,9 @@
-import Lexic.Tokenizer;
+package Dev;
 
 public class Main {
 
     public static void main(String[] args) {
-        Tokenizer tk = new Tokenizer();
+
     }
+
 }

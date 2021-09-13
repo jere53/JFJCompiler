@@ -1,4 +1,4 @@
-package Lexic.ConversorSimbolos;
+package Deprecated.Lexic.ConversorSimbolos;
 
 public class ConversorSimbolos {
     public static int convertirSimbolo(Character simbolo) {

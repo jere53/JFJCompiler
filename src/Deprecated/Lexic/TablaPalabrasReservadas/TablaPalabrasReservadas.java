@@ -1,4 +1,4 @@
-package Lexic.TablaPalabrasReservadas;
+package Deprecated.Lexic.TablaPalabrasReservadas;
 
 import java.util.Map;
 

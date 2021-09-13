@@ -1,4 +1,4 @@
-package Lexic.AccionSemantica;
+package Deprecated.Lexic.AccionSemantica;
 
 import java.util.Map;
 

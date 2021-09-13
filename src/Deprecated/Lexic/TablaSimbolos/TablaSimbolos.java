@@ -1,8 +1,9 @@
-package Lexic.TablaSimbolos;
+package Deprecated.Lexic.TablaSimbolos;
 
+import java.util.HashMap;
 import java.util.Map;
 
-import Lexic.Tokenizer;
+import Deprecated.Lexic.Tokenizer;
 
 public class TablaSimbolos {
 

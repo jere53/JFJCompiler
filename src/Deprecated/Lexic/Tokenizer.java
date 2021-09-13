@@ -1,7 +1,7 @@
-package Lexic;
+package Deprecated.Lexic;
 
-import Lexic.AccionSemantica.*;
-import Lexic.ConversorSimbolos.ConversorSimbolos;
+import Deprecated.Lexic.AccionSemantica.*;
+import Deprecated.Lexic.ConversorSimbolos.ConversorSimbolos;
 
 import java.io.File;
 import java.util.*;

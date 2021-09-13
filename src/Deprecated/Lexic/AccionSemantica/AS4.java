@@ -1,9 +1,7 @@
-package Lexic.AccionSemantica;
+package Deprecated.Lexic.AccionSemantica;
 
 import java.util.Map;
-import Lexic.Tokenizer;
-import Lexic.TablaPalabrasReservadas.TablaPalabrasReservadas;
-import Lexic.TablaSimbolos.TablaSimbolos;
+import Deprecated.Lexic.Tokenizer;
 
 public class AS4 extends AccionSemantica {
 
