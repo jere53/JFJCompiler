@@ -15,12 +15,14 @@ public class AS4 extends AccionSemantica {
 
         Tokenizer.token_actual = "";
         Tokenizer.estado_actual = Tokenizer.ESTADO_INICIAL;
-
+        /*
         String token = TablaPalabrasReservadas.get();
         if (token) {
             
         } else {
             TablaSimbolos.get();
         }
+
+         */
     }
 }

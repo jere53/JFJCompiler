@@ -17,6 +17,7 @@ public class Tokenizer {
     // matrizDeTransicionEstados[estado_actual][simbolo]
     // F=-1 | Y = -2 | Z = -3
     // l= 1 | L = 2 | d = 3
+
     private final int[][] matrizDeTransicionEstados = {
             // 0 1 2 3 4 5
             { -1, 1, 1, -2, 1, -3 }, { -1, 1, 1, 1, 1, -1 } };
@@ -24,6 +25,7 @@ public class Tokenizer {
     private final AccionSemantica[][] matrizDeTransicionAS = {
             { new AS1(), new AS2(), new AS2(), new ASY(), new AS2(), new ASZ() },
             { new AS4(), new AS3(), new AS3(), new AS3(), new AS3(), new AS4() } };
+
     private final Map<String, Integer> tokens = new HashMap<>();
 
     public static int estado_actual = ESTADO_INICIAL;
