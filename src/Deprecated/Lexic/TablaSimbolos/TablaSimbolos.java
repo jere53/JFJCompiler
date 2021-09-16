@@ -7,10 +7,10 @@ import Deprecated.Lexic.Tokenizer;
 
 public class TablaSimbolos {
 
-    private Map<String, Integer> ts = new HashMap<String, Integer>();
+    private static Map<String, Integer> ts = new HashMap<String, Integer>();
 
     // TODO : PREGUNTAR POR QUE DEVOLVEMOS ID + PUNT TS
-    public Integer getData() {
+    public static Integer getData() {
         String token_actual = Tokenizer.token_actual;
         Integer ID = ts.get(token_actual);
         if (token_actual == null) {
