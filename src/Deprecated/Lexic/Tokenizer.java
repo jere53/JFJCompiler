@@ -26,7 +26,7 @@ public class Tokenizer {
             { new AS1(), new AS2(), new AS2(), new ASY(), new AS2(), new ASZ() },
             { new AS4(), new AS3(), new AS3(), new AS3(), new AS3(), new AS4() } };
 
-    private final Map<String, Integer>mer tokens = new HashMap<>();
+    private final Map<String, Integer> tokens = new HashMap<>();
 
     public static int estado_actual = ESTADO_INICIAL;
 

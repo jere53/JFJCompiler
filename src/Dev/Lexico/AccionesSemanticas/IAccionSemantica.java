@@ -1,5 +1,6 @@
 package Dev.Lexico.AccionesSemanticas;
 
+import Dev.*;
 import Dev.Lexico.Dupla;
 
 public interface IAccionSemantica {
@@ -9,7 +10,8 @@ public interface IAccionSemantica {
 
     // TODO : Revisar tema default, podria ser una abstracta
     // TODO : Revisar tema puntero
-    default Dupla<Integer, Integer> ejecutar(int estadoActual, Character c) {
+
+    default Dupla<Integer, RegistroTS> ejecutar(int estadoActual, Character c) {
         return null;
     }
 

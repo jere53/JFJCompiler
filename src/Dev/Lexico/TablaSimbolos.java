@@ -3,33 +3,33 @@ package Dev.Lexico;
 import java.util.HashMap;
 import java.util.Map;
 
-public static class TablaSimbolos {
+import Dev.*;
 
-    private static Map<String, Integer> ts = new HashMap<String, Integer>();
+public class TablaSimbolos {
 
-    public static Integer getID() {
-        // Obtengo el ID de la tabla de simbolos que corresponde con el token
-        String token_actual = Tokenizer.token_actual;
-        Integer ID = ts.get(token_actual);
-        if (token_actual == null) {
-            ID = ts.size() + 1;
-            ts.put(token_actual, ID);
-        }
-        return ID;
+    private static Map<String, Integer> tpr = new HashMap<String, Integer>();
 
+    private static Map<String, RegistroTS> ts = new HashMap<String, RegistroTS>();
+
+    public static boolean perteneceTPR(String lexema) {
+        return tpr.containsKey(lexema);
     }
 
-    public static boolean estaTS() {
-        return true;
+    public static boolean perteneceTS(String lexema) {
+        return ts.containsKey(lexema);
     }
 
-    public static void altaToken() {
-        // Alta de un token en la tabla de simbolos
-
+    public static Integer tokenTPR(String lexema) {
+        return tpr.get(lexema);
     }
 
-    public static boolean perteneceTpr() {
-        // Verifica si el token pertenece a la tabla de palabras
-        return true;
+    public static void altaTS(String lexema) {
+        RegistroTS atributos = new RegistroTS(lexema);
+        ts.put(lexema, atributos);
     }
+
+    public static RegistroTS punteroTS(String lexema) {
+        return ts.get(lexema);
+    }
+
 }

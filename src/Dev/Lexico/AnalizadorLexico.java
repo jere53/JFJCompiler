@@ -1,10 +1,12 @@
 package Dev.Lexico;
 
-import Deprecated.Lexic.AccionSemantica.*;
+import Dev.*;
 
 import java.util.List;
 
 public class AnalizadorLexico {
+
+    public static Map<String, Integer> numeroToken = new HashMap<String, Integer>();
 
     private static AnalizadorLexico instance;
 
@@ -16,7 +18,7 @@ public class AnalizadorLexico {
     }
 
     private AnalizadorLexico() {
-
+        numeroToken.put("Identificador", 300); // el numero de token que corresponde a un ID es 300
     }
 
     private static final int estadoFinal = 16;
