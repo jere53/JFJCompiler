@@ -1,6 +1,6 @@
 package Dev.Lexico.AccionesSemanticas;
 
-import Deprecated.Lexic.TablaSimbolos.RegistroTS;
+import Dev.*;
 import Dev.Lexico.AnalizadorLexico;
 import Dev.Lexico.Dupla;
 

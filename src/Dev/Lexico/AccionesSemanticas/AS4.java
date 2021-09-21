@@ -1,6 +1,9 @@
 package Dev.Lexico.AccionesSemanticas;
 
 import Dev.*;
+import Dev.Lexico.AnalizadorLexico;
+import Dev.Lexico.Dupla;
+import Dev.Lexico.TablaSimbolos;
 
 public class AS4 implements IAccionSemantica {
 
@@ -8,8 +11,7 @@ public class AS4 implements IAccionSemantica {
     public Dupla<Integer, RegistroTS> ejecutar(int estadoActual, Character c) {
 
         // El numero de token que corresponde a un ID es lo que este guardado en el
-        // hashmap del
-        // AL
+        // hashmap del AL
         Integer tokenID = AnalizadorLexico.numeroToken.get("Identificador");
 
         /*
@@ -23,7 +25,7 @@ public class AS4 implements IAccionSemantica {
         // devolvemos el token que corresponde
         if (TablaSimbolos.perteneceTPR(lexema)) {
             var token = TablaSimbolos.tokenTPR(lexema);
-            return new Dupla<Integer, RegistroTS>(token, null);
+            return new Dupla<>(token, null);
         }
 
         // si no es PR, revisamos si esta en la TS. Si no esta, damos de alta el lexema
@@ -33,7 +35,7 @@ public class AS4 implements IAccionSemantica {
             TablaSimbolos.altaTS(lexema);
         }
 
-        return new Dupla<Integer, RegistroTS>(tokenID, TablaSimbolos.punteroTS(lexema));
+        return new Dupla<>(tokenID, TablaSimbolos.punteroTS(lexema));
     }
 
     @Override

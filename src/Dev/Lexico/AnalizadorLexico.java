@@ -1,19 +1,19 @@
 package Dev.Lexico;
 
-import Dev.*;
+import Dev.Lexico.AccionesSemanticas.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AnalizadorLexico {
 
-    public static Map<String, Integer> numeroToken = new HashMap<String, Integer>();
+    public static Map<String, Integer> numeroToken = new HashMap<>();
 
     private static AnalizadorLexico instance;
 
     public static AnalizadorLexico Instance() {
-        if (instance == null) {
-            instance = new AnalizadorLexico();
-        }
+        if (instance == null) instance = new AnalizadorLexico();
         return instance;
     }
 
@@ -27,7 +27,7 @@ public class AnalizadorLexico {
 
     };
 
-    private static final AccionSemantica[][] matrizDeTransicionAS = {
+    private static final IAccionSemantica[][] matrizDeTransicionAS = {
 
     };
 

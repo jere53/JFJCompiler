@@ -27,12 +27,4 @@ public class Dupla<F, S> {
     public int hashCode() {
         return (first == null ? 0 : first.hashCode()) ^ (second == null ? 0 : second.hashCode());
     }
-
-    /*
-    public static <A, B> Dupla<A, B> create(A a, B b) {
-        return new Dupla<A, B>(a, b);
-    }
-    */
-
-
 }
