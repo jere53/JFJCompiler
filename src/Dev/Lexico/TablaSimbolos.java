@@ -7,9 +7,24 @@ import Dev.*;
 
 public class TablaSimbolos {
 
+    private static TablaSimbolos instance;
+
     private static Map<String, Integer> tpr = new HashMap<String, Integer>();
 
     private static Map<String, RegistroTS> ts = new HashMap<String, RegistroTS>();
+
+    public static TablaSimbolos Instance() {
+        if (instance == null) {
+            instance = new TablaSimbolos();
+        }
+        return instance;
+    }
+
+    private TablaSimbolos() {
+        instance = new TablaSimbolos();
+        tpr.putAll(Map.of("IF", 1, "THEN", 2, "ELSE", 3, "ENDIF", 4, "PRINT", 5, "FUNC", 6, "RETURN", 7, "BEGIN", 8,
+                "END", 9, "BREAK", 10));
+    }
 
     public static boolean perteneceTPR(String lexema) {
         return tpr.containsKey(lexema);

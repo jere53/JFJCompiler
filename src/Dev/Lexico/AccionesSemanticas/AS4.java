@@ -5,6 +5,12 @@ import Dev.Lexico.AnalizadorLexico;
 import Dev.Lexico.Dupla;
 import Dev.Lexico.TablaSimbolos;
 
+/*
+Da de alta un token y su valor en la tabla de simbolos, busca TPR, devuelve el ultimo char, etc.
+*/
+
+
+
 public class AS4 implements IAccionSemantica {
 
     @Override

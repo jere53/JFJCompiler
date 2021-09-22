@@ -3,8 +3,8 @@ package Deprecated.Lexic;
 import Deprecated.Lexic.AccionSemantica.*;
 import Deprecated.Lexic.ConversorSimbolos.ConversorSimbolos;
 
-import java.io.File;
 import java.util.*;
+import java.io.File;
 import java.io.IOException;
 import java.io.FileReader;
 
