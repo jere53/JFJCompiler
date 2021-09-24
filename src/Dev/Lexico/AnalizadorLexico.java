@@ -30,6 +30,7 @@ public class AnalizadorLexico {
 
     private static final int estadoFinal = 16;
 
+    //region Matrices
     private static final int[][] matrizDeTransicionEstados = {
         {1,1,1,2,estadoFinal,estadoFinal,estadoFinal,0,0,0,6,15,3,9,10,11,12,13,14,estadoFinal},
         {1,estadoFinal,1,1,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal},
@@ -97,15 +98,15 @@ public class AnalizadorLexico {
 */
     };
 
+    //endregion
+
     private static List<Character> codigoFuente = new ArrayList<>();
 
     private static int indiceUltimoLeido = 0;
 
     public static String lexema;
 
-    /*
-     * FILE READ
-     */
+    //region FileRead
 
     final static String FILE_PATH = "src/input.txt";
 
@@ -116,11 +117,13 @@ public class AnalizadorLexico {
             while ((content = fr.read()) != -1) {
                 codigoFuente.add((char) content);
             }
-            codigoFuente.add('$');//agregamos el simbolo EOF
+            codigoFuente.add('$'); //agregamos el simbolo EOF
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+    //endregion
 
     public static void InicNuevoLexema() {
         lexema = null;
@@ -179,6 +182,10 @@ public class AnalizadorLexico {
 
     public Dupla<Integer, RegistroTS> analizar() throws Exception {
 
+        //Analizar se llama una vez por lexema. Si hay un error lexico, se lanza una excepcion que indica cual
+        //fue el error, para mostrarlo. El A.S. luego ejecuta el analizar de nuevo, ahora sobre la proxima letra,
+        //partiendo desde el estado inicial. el String lexema se vacia, y se incrementa el indiceUltimoLeido.
+
         int tokenDetectado = 0;
         int nroLinea = 1;
         int estadoActual = 0;
@@ -191,7 +198,7 @@ public class AnalizadorLexico {
 
             cIndex = traducirCaracter(c); // traducir c a un indice en la matriz
             if (cIndex == -1){
-                throw new Exception("Indice de caracter invalido");
+                //caracter invalido, se ignora y se pasa al siguiente
             }
             
             estadoAnterior = estadoActual;
@@ -202,6 +209,48 @@ public class AnalizadorLexico {
 
             if (c.equals('\n')) {
                 nroLinea++;
+            }
+
+            //me fui a cenar -J
+
+            if (estadoActual == -1){
+                //error lexico
+                switch(estadoAnterior){
+                    case 0:
+                        throw new Exception("");
+                    case 1:
+                        throw new Exception("");
+                    case 2:
+                        throw new Exception("");
+                    case 3:
+                        throw new Exception("");
+                    case 4:
+                        throw new Exception("");
+                    case 5:
+                        throw new Exception("");
+                    case 6:
+                        throw new Exception("");
+                    case 7:
+                        throw new Exception("");
+                    case 8:
+                        throw new Exception("");
+                    case 9:
+                        throw new Exception("");
+                    case 10:
+                        throw new Exception("");
+                    case 11:
+                        throw new Exception("");
+                    case 12:
+                        throw new Exception("");
+                    case 13:
+                        throw new Exception("");
+                    case 14:
+                        throw new Exception("");
+                    case 15:
+                        throw new Exception("");
+                    default:
+                        throw new Exception("");
+                }
             }
 
             IAccionSemantica AS = matrizDeTransicionAS[estadoAnterior][cIndex];

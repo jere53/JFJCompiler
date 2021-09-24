@@ -22,8 +22,8 @@ public class TablaSimbolos {
 
     private TablaSimbolos() {
         instance = new TablaSimbolos();
-        tpr.putAll(Map.of("IF", 1, "THEN", 2, "ELSE", 3, "ENDIF", 4, "PRINT", 5, "FUNC", 6, "RETURN", 7, "BEGIN", 8,
-                "END", 9, "BREAK", 10));
+        tpr.putAll(Map.of("IF", 1, "THEN", 2, "ELSE", 3, "ENDIF", 4, "PRINT", 5, "FUNC", 6, "RETURN", 7, "BEGIN", 8, "END", 9, "BREAK", 10));
+        tpr.putAll(Map.of("UINT", 11, "DOUBLE", 12, "REPEAT", 13, "UNTIL", 14));
     }
 
     public static boolean perteneceTPR(String lexema) {
