@@ -252,7 +252,7 @@ public class AnalizadorLexico {
                         throw new Exception("");
                 }
             }
-
+            
             IAccionSemantica AS = matrizDeTransicionAS[estadoAnterior][cIndex];
 
             if (AS == null) //si no tenemos que hacer una AS, avanzamos
