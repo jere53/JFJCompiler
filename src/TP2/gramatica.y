@@ -7,6 +7,10 @@
 
 %start
 
+// TODO : Revisar tema (;)
+// TODO : Se debe incorporar al Análisis Léxico el reconocimiento de la palabra reservada POST, y el símbolo ":".}
+// TODO : Preguntar tema BREAK
+
 %%
 
 programa	: bloque_sentencias
@@ -20,9 +24,12 @@ bloque_sentencias	: sentencia_decl ',' sentencia_de_ejecucion ';'
 					| sentencia_de_ejecucion ';'
 					;
 
-sentencia_de_ejecucion :  BEGIN sentencia_ejec RETURN retorno END
+sentencia_de_ejecucion  :  BEGIN sentencia_ejec RETURN retorno END
+                        |  BEGIN sentencia_ejec RETURN retorno post_condicion END
 
-retorno : expresion ';'
+post_condicion          : POST ':' condicion ',' cadena
+
+retorno             : expresion ';'
 
 sentencia_decl	: tipo_id nombre_func params_func cuerpo_func {helper.eliminarUltimoAmbito();}
 				| tipo_id lista_variables
@@ -63,7 +70,7 @@ miembro_sentencia_ejec : invocacion
                        | asignacion
                        | loop
                        | if
-                       | print
+                       |    
 
 invocacion	: ID '(' ')' {helper.invocacionProc($1.sval);}
 			| ID '(' lista_params_inv ')' {helper.invocacionProc($1.sval);}
@@ -108,26 +115,12 @@ factor 	: ID {helper.lecturaFactor($1.sval);}
 		| CTE_UINT {helper.agregarPasosRepr($1.sval);helper.setTipoUltimoFactor("UINT");}
 		| CTE_DOUBLE {helper.agregarPasosRepr($1.sval);helper.setTipoUltimoFactor("DOUBLE");}
 		| '-' factor    {helper.cambioSignoFactor(yylval.sval);}
+		| invocacion    {helper.cambioSignoFactor(yylval.sval);}
 		;
 
-print	: OUT '(' imprimible ')'
-        | OUT '(' imprimible
-        | OUT '(' error ')'
+print	: PRINT '(' '%' CADENA '%' ')'
+        | PRINT '(' error ')'
 		;
-
-imprimible	: CADENA {helper.agregarPasosRepr($1.sval, "OUT_CAD");}
-			| factor {helper.impresionFactor();}
-			;
-		
-loop	: encab_loop cuerpo_loop cuerpo_until
-		;
-
-encab_loop  : LOOP {helper.puntoControlLoop();}
-            ;
-		
-cuerpo_loop	: bloque_estruct_ctrl
-            | {yyerror("Falta el bloque de sentencias ejecutables del LOOP.");}
-			;
 		
 bloque_estruct_ctrl	: sentencia_ejec fin_sentencia
 					| '{' bloque_sentencias_ejec '}'
@@ -135,14 +128,20 @@ bloque_estruct_ctrl	: sentencia_ejec fin_sentencia
 					| sentencia_decl fin_sentencia {yyerror("No se permiten sentencias declarativas dentro de un bloque de estructura de control.");}
 					;
 
-bloque_sentencias_ejec	: sentencia_ejec fin_sentencia
-						| sentencia_ejec fin_sentencia bloque_sentencias_ejec
-					    | sentencia_decl fin_sentencia
-					        {yyerror("No se permiten sentencias declarativas dentro de un bloque de estructura de control.");}
-					    | sentencia_decl fin_sentencia bloque_sentencias_ejec
-					        {yyerror("No se permiten sentencias declarativas dentro de un bloque de estructura de control.");}
+bloque_sentencias_ejec	: sentencia_ejec 
+						| sentencia_de_ejecucion 
 						;
 
+loop	: encab_loop cuerpo_loop cuerpo_until
+		;
+
+encab_loop  : REPEAT {helper.puntoControlLoop();}
+            ;
+		
+cuerpo_loop	: bloque_estruct_ctrl
+            | {yyerror("Falta el bloque de sentencias ejecutables del LOOP.");}
+			;
+		
 cuerpo_until	: UNTIL condicion {helper.puntoControlUntil();}
                 | UNTIL {yyerror("Falta la condicion de corte del LOOP.");}
                 ;
@@ -151,7 +150,8 @@ condicion	: '(' expresion comparador expresion ')' {helper.agregarPasosRepr($3.s
             | '(' expresion comparador expresion {yyerror("Falta parentesis de cierre de la condicion.");}
             | '(' comparador expresion ')' {yyerror("Falta expresion en el lado izquierdo de la condicion.");}
             | '(' expresion comparador ')' {yyerror("Falta expresion en el lado derecho de la condicion.");}
-            | '(' error ')' {yyerror("Error en la condicion.");}
+            | '(' expresion operador_logico expresion ')'
+            | '(' error ')' {yyerror("Error en la condicion.");}  // verificar el error
 			;
 			
 comparador 	: COMP_MAYOR_IGUAL
@@ -162,8 +162,11 @@ comparador 	: COMP_MAYOR_IGUAL
 			| COMP_DISTINTO
 			;
 
-if	: encabezado_if rama_then rama_else END_IF
-	| encabezado_if rama_then_prima END_IF
+operador_logico : &&
+                | ||
+ 
+if	: encabezado_if rama_then rama_else ENDIF ';'
+	| encabezado_if rama_then_prima ENDIF ';'
 	;
 
 encabezado_if	: IF condicion {helper.puntoControlThen();}
@@ -181,7 +184,6 @@ rama_then_prima : THEN bloque_estruct_ctrl {helper.puntoControlFinCondicional();
 rama_else	: ELSE bloque_estruct_ctrl {helper.puntoControlFinCondicional();}
             | ELSE {yyerror("Falta el bloque de sentencias ejecutables de la rama ELSE.");}
 			;
-
 
 %%
 
