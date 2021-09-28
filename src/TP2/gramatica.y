@@ -1,11 +1,10 @@
-
-{%
+%{
 
 %}
 
 %token UINT, DOUBLE, BEGIN, RETURN, END, POST, ID, FUNC, CTE_UINT, CTE_DOUBLE, CADENA, PRINT, REPEAT , UNTIL, THEN, IF , ELSE, ASIG, AND, OR, COMP_MAYOR_IGUAL, COMP_MENOR_IGUAL, COMP_IGUAL, COMP_DISTINTO, ENDIF, BREAK
 
-%start
+%start program
 
 // TODO : Revisar tema (;)
 // TODO : Se debe incorporar al Análisis Léxico el reconocimiento de la palabra reservada POST, y el símbolo ":".}
@@ -16,7 +15,6 @@ program 						: declaracion ',' bloque_sentencias
 
 bloque_sentencias 				: BEGIN sentencia_ejec END
 				  				| miembro_sentencia_ejec
-
 			
 tipo_id							: UINT {}
 								| DOUBLE {}
@@ -36,8 +34,7 @@ declaracion 					: tipo_id nombre_func params_func definicion_func {}
 
 lista_variables					: ID {}
 								| ID ',' lista_variables {}
-								;
-			
+								;	
 
 nombre_func						: FUNC ID {}
 								| FUNC {yyerror("Falta el identificador del procedimiento.");}
@@ -104,7 +101,6 @@ factor 							: ID {}
 impresion						: PRINT '(' '%' CADENA '%' ')'
         						| PRINT '(' error ')'
 								;
-
 
 iteracion						: REPEAT bloque_sentencias UNTIL condicion
 								;
