@@ -7,7 +7,7 @@
 %start program
 
 // TODO : Revisar tema (;)
-// TODO : Se debe incorporar al Análisis Léxico el reconocimiento de la palabra reservada POST, y el símbolo ":".}
+// TODO : Se debe incorporar al Análisis Léxico el reconocimiento de la palabra reservada POST, y el símbolo ':'.}
 
 %%
 program 						: declaracion ',' bloque_sentencias

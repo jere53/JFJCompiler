@@ -1,4 +1,4 @@
-int a = 6
+int a := 6
 if ( a == 6) {
     return true
 }

@@ -6,7 +6,7 @@ import Dev.Lexico.Dupla;
 import Dev.Lexico.TablaSimbolos;
 
 /*
-Da de alta un token y su valor en la tabla de simbolos, busca TPR, devuelve el ultimo char, etc.
+Da de alta un identificador y su valor en la tabla de simbolos, busca TPR, devuelve el ultimo char, etc.
 */
 
 

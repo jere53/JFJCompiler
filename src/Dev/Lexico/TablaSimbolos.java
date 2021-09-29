@@ -7,21 +7,11 @@ import Dev.*;
 
 public class TablaSimbolos {
 
-    private static TablaSimbolos instance;
+    private static final Map<String, Integer> tpr = new HashMap<>();
 
-    private static Map<String, Integer> tpr = new HashMap<String, Integer>();
+    private static final Map<String, RegistroTS> ts = new HashMap<>();
 
-    private static Map<String, RegistroTS> ts = new HashMap<String, RegistroTS>();
-
-    public static TablaSimbolos Instance() {
-        if (instance == null) {
-            instance = new TablaSimbolos();
-        }
-        return instance;
-    }
-
-    private TablaSimbolos() {
-        instance = new TablaSimbolos();
+    public static void CargarTablaSimbolos() {
         tpr.putAll(Map.of("IF", 1, "THEN", 2, "ELSE", 3, "ENDIF", 4, "PRINT", 5, "FUNC", 6, "RETURN", 7, "BEGIN", 8, "END", 9, "BREAK", 10));
         tpr.putAll(Map.of("UINT", 11, "DOUBLE", 12, "REPEAT", 13, "UNTIL", 14));
     }
