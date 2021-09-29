@@ -79,6 +79,6 @@ public class AS5 implements IAccionSemantica {
 
     @Override
     public boolean devuelveUltimoALaEntrada() {
-        return false;
+        return true;
     }
 }

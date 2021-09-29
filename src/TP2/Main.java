@@ -6,17 +6,8 @@ import Dev.Lexico.TablaSimbolos;
 import Dev.RegistroTS;
 
 public class Main {
-
     public static void main(String[] args) {
-        Dupla<Integer, RegistroTS> token = new Dupla<>(0, null);
-        do {
-            try {
-                token = AnalizadorLexico.Instance().analizar();
-                System.out.println(token.first + " : " + token.second.getLexema());
-            } catch (Exception e) {
-                System.out.println("F");
-            }
-        } while (token.first != 69);
+
     }
 
     private static int yylex(){
@@ -26,7 +17,7 @@ public class Main {
         // Pedimos un token al analizador lexico el cual es entregado en forma de dupla
         do{
             try {
-                token = AnalizadorLexico.Instance().analizar();
+                token = AnalizadorLexico.Instance().producirToken();
             } catch (Exception e) {
                 e.printStackTrace();
                 token = null;
@@ -34,4 +25,23 @@ public class Main {
         } while (token == null);
         return token.first; // Retorno el numero de token
     }
+
+    public static void prueba(){
+        TablaSimbolos.CargarTablaSimbolos();
+
+        Dupla<Integer, RegistroTS> token;
+        do {
+            try {
+                token = AnalizadorLexico.Instance().producirToken();
+                if (token.second != null)
+                    System.out.println(token.first + " : " + token.second.getLexema());
+                else
+                    System.out.println(token.first);
+            } catch (Exception e) {
+                System.out.println("F");
+                break;
+            }
+        } while (token.first != 69);
+    }
+
 }

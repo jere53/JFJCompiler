@@ -1,5 +1,9 @@
 %{
-
+	package TP2.BYACC;
+	import Dev.Lexico.AnalizadorLexico;
+	import Dev.Lexico.Dupla;
+	import Dev.Lexico.TablaSimbolos;
+	import Dev.RegistroTS;
 %}
 
 %token UINT, DOUBLE, BEGIN, RETURN, END, POST, ID, FUNC, CTE_UINT, CTE_DOUBLE, CADENA, PRINT, REPEAT , UNTIL, THEN, IF , ELSE, ASIG, AND, OR, COMP_MAYOR_IGUAL, COMP_MENOR_IGUAL, COMP_IGUAL, COMP_DISTINTO, ENDIF, BREAK
@@ -12,9 +16,11 @@
 %%
 program 						: declaracion ',' bloque_sentencias
 								| bloque_sentencias
+								;
 
 bloque_sentencias 				: BEGIN sentencia_ejec END
 				  				| miembro_sentencia_ejec
+								;
 			
 tipo_id							: UINT {}
 								| DOUBLE {}
@@ -23,16 +29,19 @@ tipo_id							: UINT {}
 								
 cuerpo_func  					: BEGIN sentencia_ejec RETURN retorno END
                         		| BEGIN sentencia_ejec RETURN retorno post_condicion END
+								;
 
-post_condicion          		: POST ':' condicion ',' CADENA
+post_condicion          		: POST ':' condicion ',' CADENA ';'
+								;
 
 retorno             			: '(' expresion ')' ';'
+								;
 
 declaracion 					: tipo_id nombre_func params_func definicion_func {}
 								| tipo_id lista_variables
 								;
 
-lista_variables					: ID {}
+lista_variables					: ID ';' {}
 								| ID ',' lista_variables {}
 								;	
 
@@ -42,17 +51,10 @@ nombre_func						: FUNC ID {}
 			
 params_func						: '(' param ')'
 								| '(' ')'
-								| '(' param {yyerror("Falta el parentesis de cierre para los parametros.");}
-								| '(' {yyerror("Falta el parentesis de cierre para los parametros.");}
 								;
 
-param 							: tipo_id ID {;}
-		    					| tipo_id {yyerror("Falta el identificador de un parametro.");}
+param 							: tipo_id ID
 		    					;
-
-separador_variables				: {yyerror("Falta una ',' para separar dos parametros.");}
-								| ','
-								;
 		
 definicion_func					: declaracion ',' cuerpo_func
 								| cuerpo_func
@@ -127,7 +129,28 @@ operador_logico 				: AND
 
 seleccion						: IF condicion THEN bloque_sentencias ENDIF ';'
 								| IF condicion THEN bloque_sentencias ELSE bloque_sentencias ENDIF ';'
-								| IF condicion THEN ELSE bloque_sentencias ENDIF {yyerror("Falta el bloque de sentencias ejecutables de la rama THEN.")} ';'
-								| IF condicion THEN ENDIF {yyerror("Falta el bloque de sentencias ejecutables de la rama THEN.")} ';'
+								| IF condicion THEN ELSE bloque_sentencias ENDIF {yyerror("Falta el bloque de sentencias ejecutables de la rama THEN.");} ';'
+								| IF condicion THEN ENDIF {yyerror("Falta el bloque de sentencias ejecutables de la rama THEN.");} ';'
 								;
 %%
+
+private int yylex() {
+	TablaSimbolos.CargarTablaSimbolos();
+
+	Dupla<Integer, RegistroTS> token = null;
+	do {
+		try {
+			token = AnalizadorLexico.Instance().producirToken();
+		} catch (Exception e) {
+			System.out.println("hubo un error");
+		}
+	} while (token == null);
+	
+	yylval = new ParserVal(token.second.getLexema());
+	
+	return token.first;
+}
+
+private void yyerror(String mensajeError) {
+	System.out.println(mensajeError);
+}
