@@ -37,12 +37,12 @@ public class AnalizadorLexico {
 
     //region Matrices
     private static final int[][] matrizDeTransicionEstados = {
-        {1,1,1,2,estadoFinal,estadoFinal,estadoFinal,0,0,0,6,15,3,9,10,11,12,13,14,estadoFinal},
+        {1,1,1,2,estadoFinal,estadoFinal,estadoFinal,0,0,0,6,15,3,9,10,11,12,13,14,estadoFinal}, //0
         {1,estadoFinal,1,1,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal},
-        {-1,-1,-1,2,estadoFinal,-1,-1,estadoFinal,estadoFinal,-1,-1,-1,3,-1,-1,-1,-1,-1,-1,estadoFinal},
-        {-1,4,-1,3,estadoFinal,-1,-1,estadoFinal,estadoFinal,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,estadoFinal},
-        {-1,-1,-1,4,estadoFinal,-1,5,estadoFinal,estadoFinal,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,estadoFinal},
-        {-1,-1,-1,5,estadoFinal,-1,-1,estadoFinal,estadoFinal,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,estadoFinal},
+        {estadoFinal,estadoFinal,estadoFinal,2,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,3,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal},
+        {estadoFinal,4,estadoFinal,3,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal},
+        {estadoFinal,estadoFinal,estadoFinal,4,estadoFinal,estadoFinal,5,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal},
+        {estadoFinal,estadoFinal,estadoFinal,5,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal},
         {estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,7,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal},
         {7,7,7,7,7,7,7,7,7,7,8,7,7,7,7,7,7,7,7,-1},
         {7,7,7,7,7,7,7,7,7,7,0,7,7,7,7,7,7,7,7,-1},
@@ -66,10 +66,10 @@ public class AnalizadorLexico {
     private static final IAccionSemantica[][] matrizDeTransicionAS = {
         {AS2, AS2, AS2, AS2, AS1, AS1, AS1, null, null, null, null, AS2, AS2, null, null, null, null, null, null, null}, //0
         {AS3, AS3, AS3, AS3, AS4, AS4, AS4, AS4, AS4, AS4, AS4, AS4, AS4, AS4, AS4, AS4, AS4, AS4, AS4, AS4}, //1
-        {null, null, null, AS3, AS5, null, null, AS5, AS5, null, null, null, AS3, null, null, null, null, null, null, null}, //2
-        {null, AS3, null, AS3, AS5, null, null, AS5, AS5, null, null, null, null, null, null, null, null, null, null, null},//3
-        {null, null, null, AS3, AS5, null, AS3, AS5, AS5, null, null, null, null, null, null, null, null, null, null, null},//4
-        {null, null, null, AS3, AS5, null, null, AS5, AS5, null, null, null, null, null, null, null, null, null, null, null},//5
+        {AS5, AS5, AS5, AS3, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS3, AS5, AS5, AS5, AS5, AS5, AS5, AS5}, //2
+        {AS5, AS3, AS5, AS3, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5},//3
+        {AS5, AS5, AS5, AS3, AS5, AS5, AS3, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5},//4
+        {AS5, AS5, AS5, AS3, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5},//5
         {AS6, AS6, AS6, AS6, AS6, AS6, AS6, AS6, AS6, AS6, null, AS6, AS6, AS6, AS6, AS6, AS6, AS6, AS6, AS6},//6
         {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},//7
         {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},//8
@@ -120,6 +120,7 @@ public class AnalizadorLexico {
         try (FileReader fr = new FileReader(file)) {
             int content;
             while ((content = fr.read()) != -1) {
+                if ((char) content == '\r') continue;
                 codigoFuente.add((char) content);
             }
             codigoFuente.add('$'); //agregamos el simbolo EOF
@@ -131,7 +132,7 @@ public class AnalizadorLexico {
     //endregion
 
     public static void InicNuevoLexema() {
-        lexema = null;
+        lexema = "";
     }
 
     public static void agregarCharALexema(Character c) {
@@ -195,21 +196,22 @@ public class AnalizadorLexico {
         int nroLinea = 1;
         int estadoActual = 0;
         int leidos = 0;
-        int estadoAnterior = 0;
+        int estadoAnterior;
 
-        int cIndex = 0;
+        int cIndex;
 
         for (Character c : codigoFuente.subList(indiceUltimoLeido, codigoFuente.size() - 1)) {
 
             cIndex = traducirCaracter(c); // traducir c a un indice en la matriz
             if (cIndex == -1){
                 //caracter invalido, se ignora y se pasa al siguiente
+                System.out.println("caracter Invalido");
                 continue;
             }
             
             estadoAnterior = estadoActual;
             
-            estadoActual = matrizDeTransicionEstados[estadoActual][cIndex]; // obtener el estado siguiente
+            estadoActual = matrizDeTransicionEstados[estadoAnterior][cIndex]; // obtener el estado siguiente
 
             leidos++;
 
@@ -219,6 +221,7 @@ public class AnalizadorLexico {
 
 
             if (estadoActual == -1){
+                System.out.println("Estado Anterior: " + estadoAnterior + " caracter: " + c);
                 //error lexico
                 switch(estadoAnterior){
                     case 0:

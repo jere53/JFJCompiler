@@ -8,13 +8,20 @@ import Dev.RegistroTS;
 public class Main {
 
     public static void main(String[] args) {
-        Dupla<Integer, RegistroTS> token = new Dupla<>(0, null);
+        TablaSimbolos.CargarTablaSimbolos();
+
+        Dupla<Integer, RegistroTS> token;
+        int attempts = 0;
         do {
             try {
                 token = AnalizadorLexico.Instance().analizar();
-                System.out.println(token.first + " : " + token.second.getLexema());
+                if (token.second != null)
+                    System.out.println(token.first + " : " + token.second.getLexema());
+                else
+                    System.out.println(token.first);
             } catch (Exception e) {
                 System.out.println("F");
+                break;
             }
         } while (token.first != 69);
     }

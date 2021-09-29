@@ -1,4 +1,6 @@
-int a := 6
-if ( a == 6) {
-    return true
-}
+UINT a := 6;
+IF (a == 6) THEN
+    RETURN true;
+ELSE
+    RETURN tuvieja;
+ENDIF
