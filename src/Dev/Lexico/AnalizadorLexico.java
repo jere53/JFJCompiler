@@ -25,12 +25,7 @@ public class AnalizadorLexico {
 
     private AnalizadorLexico() {
         loadValues();
-        numeroToken.put("Identificador", 300); // el numero de token que corresponde a un ID es 300
-        numeroToken.put("/", 400);
-        numeroToken.putAll(Map.of(":=", 501, ">=", 502, ">", 503, "<=", 504, "<>", 505, "<", 506, "==", 507, "&&", 508, "||", 509));
-        numeroToken.putAll(Map.of(";", 510, "+", 511, "-", 512, "*", 513, "(", 514, ")", 515, ",", 516));
         numeroToken.putAll(Map.of("ERR_CTE_FUERA_RANGO", 600, "CTE_UINT", 601, "ERR_FORMATO_CTE", 602, "CTE_DOUBLE", 603));
-        numeroToken.put("CADENA", 700);
     }
 
     private static final int estadoFinal = 16;
@@ -184,6 +179,8 @@ public class AnalizadorLexico {
         return -1;
     }
 
+    public static int nroLinea = 1;
+
     // en realidad devuelve Token+Puntero a TS
 
     public Dupla<Integer, RegistroTS> producirToken() throws Exception {
@@ -192,8 +189,6 @@ public class AnalizadorLexico {
         //fue el error, para mostrarlo. El A.S. luego ejecuta el producirToken de nuevo, ahora sobre la proxima letra,
         //partiendo desde el estado inicial. el String lexema se vacia, y se incrementa el indiceUltimoLeido.
 
-        int tokenDetectado = 0;
-        int nroLinea = 1;
         int estadoActual = 0;
         int leidos = 0;
         int estadoAnterior;
@@ -293,6 +288,5 @@ public class AnalizadorLexico {
 
         //aca llegamos al EOF
         return new Dupla<>(69, null);
-        // TODO : Hacer Handling de lexema sin final
     }
 }

@@ -1,0 +1,316 @@
+Index: src/TP2/gramatica.y
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\r\n{%\r\n\r\n%}\r\n\r\n%token\r\n\r\n%start\r\n\r\n// TODO : Revisar tema (;)\r\n// TODO : Se debe incorporar al Análisis Léxico el reconocimiento de la palabra reservada POST, y el símbolo \":\".}\r\n// TODO : Preguntar tema BREAK\r\n\r\n%%\r\n\r\nprograma\t: bloque_sentencias\r\n\t\t\t;\r\n\t\t\t\r\ntipo_id\t: UINT {helper.setUltimoTipoLeido(\"UINT\");}\r\n\t\t| DOUBLE {helper.setUltimoTipoLeido(\"DOUBLE\");}\r\n\t\t;\r\n\r\nbloque_sentencias\t: sentencia_decl ',' sentencia_de_ejecucion ';'\r\n\t\t\t\t\t| sentencia_de_ejecucion ';'\r\n\t\t\t\t\t;\r\n\r\nsentencia_de_ejecucion  :  BEGIN sentencia_ejec RETURN retorno END\r\n                        |  BEGIN sentencia_ejec RETURN retorno post_condicion END\r\n\r\npost_condicion          : POST ':' condicion ',' cadena\r\n\r\nretorno             : expresion ';'\r\n\r\nsentencia_decl\t: tipo_id nombre_func params_func cuerpo_func {helper.eliminarUltimoAmbito();}\r\n\t\t\t\t| tipo_id lista_variables\r\n\t\t\t\t;\r\n\r\nlista_variables\t: ID {helper.declaracionVar($1.sval);}\r\n\t\t\t\t| ID ',' lista_variables {helper.declaracionVar($1.sval);}\r\n\t\t\t\t;\r\n\r\n\r\nnombre_func\t: FUNC ID {helper.lecturaIdProc($2.sval);}\r\n\t\t\t| FUNC {yyerror(\"Falta el identificador del procedimiento.\");}\r\n\t\t\t;\r\n\t\t\t\r\nparams_func\t: '(' param ')'\r\n\t\t\t| '(' ')'\r\n\t\t\t| '(' param {yyerror(\"Falta el parentesis de cierre para los parametros.\");}\r\n\t\t\t| '(' {yyerror(\"Falta el parentesis de cierre para los parametros.\");}\r\n\t\t\t;\r\n\r\nparam : tipo_id ID {helper.lecturaParamFormal($2.sval, Celda.USO_PARAM_CV);}\r\n\t\t    | tipo_id {yyerror(\"Falta el identificador de un parametro.\");}\r\n\t\t    ;\r\n\r\nseparador_variables\t:       {yyerror(\"Falta una ',' para separar dos parametros.\");}\r\n\t\t\t\t\t| ','\r\n\t\t\t\t\t;\r\n\t\t\r\ncuerpo_func\t: bloque_sentencias\r\n\t\t\t| '{' '}' {yyerror(\"Cuerpo del procedimiento vacio.\");}\r\n\t\t\t;\r\n\r\nsentencia_ejec\t: miembro_sentencia_ejec sentencia_ejec\r\n\t\t\t\t| miembro_sentencia_ejec             \r\n\t\t\t\t;\r\n\r\nmiembro_sentencia_ejec : invocacion\r\n                       | asignacion\r\n                       | loop\r\n                       | if\r\n                       |    \r\n\r\ninvocacion\t: ID '(' ')' {helper.invocacionProc($1.sval);}\r\n\t\t\t| ID '(' lista_params_inv ')' {helper.invocacionProc($1.sval);}\r\n\t\t\t;\r\n\r\nparam_inv   : ID {helper.guardaParamsInvoc($1.sval);}\r\n            | CTE_UINT {helper.guardaParamsInvoc($1.sval);}\r\n            | CTE_DOUBLE {helper.guardaParamsInvoc($1.sval);}\r\n            ;\r\n\t\t\t\r\nlista_params_inv\t: param_inv\r\n\t\t\t\t\t| param_inv separador_variables param_inv\r\n\t\t\t\t\t| param_inv separador_variables param_inv separador_variables param_inv\r\n\t\t\t\t\t| param_inv separador_variables param_inv separador_variables param_inv separador_variables lista_params_inv\r\n                                                    {yyerror(\"Un procedimiento no puede tener mas de 3 parametros.\");}\r\n                    ;\r\n\r\nasignacion\t: ID '=' expresion {helper.lecturaDestAsign($1.sval);}\r\n            | ID '=' error {\r\n                            helper.lecturaDestAsign($1.sval);\r\n                            yyerror(\"El lado derecho de la asignacio no es valido.\");\r\n                            }\r\n            | ID {\r\n                    helper.lecturaDestAsign($1.sval);\r\n                    yyerror(\"Un identificador en solitario no es una sentencia valida.\");\r\n                    }\r\n            | error '=' expresion {yyerror(\"El lado izquierdo de la asignacion no es valido\");}\r\n\r\n            ;\r\n\t\t\t\r\nexpresion\t: expresion '+' termino {helper.agregarPasosRepr(\"+\");}\r\n\t\t\t| expresion '-' termino {helper.agregarPasosRepr(\"-\");}\r\n\t        | termino\r\n\t\t\t;\r\n    \t\t\r\ntermino\t: termino '*' factor {helper.agregarPasosRepr(\"*\");}\r\n\t\t| termino '/' factor {helper.agregarPasosRepr(\"/\");}\r\n\t\t| factor\r\n     \t;\t\r\n\t\t\r\nfactor \t: ID {helper.lecturaFactor($1.sval);}\r\n\t\t| CTE_UINT {helper.agregarPasosRepr($1.sval);helper.setTipoUltimoFactor(\"UINT\");}\r\n\t\t| CTE_DOUBLE {helper.agregarPasosRepr($1.sval);helper.setTipoUltimoFactor(\"DOUBLE\");}\r\n\t\t| '-' factor    {helper.cambioSignoFactor(yylval.sval);}\r\n\t\t| invocacion    {helper.cambioSignoFactor(yylval.sval);}\r\n\t\t;\r\n\r\nprint\t: PRINT '(' '%' CADENA '%' ')'\r\n        | PRINT '(' error ')'\r\n\t\t;\r\n\t\t\r\nbloque_estruct_ctrl\t: sentencia_ejec fin_sentencia\r\n\t\t\t\t\t| '{' bloque_sentencias_ejec '}'\r\n\t\t\t\t\t| '{' '}' {yyerror(\"Bloque de sentencias vacio.\");}\r\n\t\t\t\t\t| sentencia_decl fin_sentencia {yyerror(\"No se permiten sentencias declarativas dentro de un bloque de estructura de control.\");}\r\n\t\t\t\t\t;\r\n\r\nbloque_sentencias_ejec\t: sentencia_ejec \r\n\t\t\t\t\t\t| sentencia_de_ejecucion \r\n\t\t\t\t\t\t;\r\n\r\nloop\t: encab_loop cuerpo_loop cuerpo_until\r\n\t\t;\r\n\r\nencab_loop  : REPEAT {helper.puntoControlLoop();}\r\n            ;\r\n\t\t\r\ncuerpo_loop\t: bloque_estruct_ctrl\r\n            | {yyerror(\"Falta el bloque de sentencias ejecutables del LOOP.\");}\r\n\t\t\t;\r\n\t\t\r\ncuerpo_until\t: UNTIL condicion {helper.puntoControlUntil();}\r\n                | UNTIL {yyerror(\"Falta la condicion de corte del LOOP.\");}\r\n                ;\r\n\r\ncondicion\t: '(' expresion comparador expresion ')' {helper.agregarPasosRepr($3.sval);}\r\n            | '(' expresion comparador expresion {yyerror(\"Falta parentesis de cierre de la condicion.\");}\r\n            | '(' comparador expresion ')' {yyerror(\"Falta expresion en el lado izquierdo de la condicion.\");}\r\n            | '(' expresion comparador ')' {yyerror(\"Falta expresion en el lado derecho de la condicion.\");}\r\n            | '(' expresion operador_logico expresion ')'\r\n            | '(' error ')' {yyerror(\"Error en la condicion.\");}  // verificar el error\r\n\t\t\t;\r\n\t\t\t\r\ncomparador \t: COMP_MAYOR_IGUAL\r\n\t\t\t| COMP_MENOR_IGUAL\r\n\t\t\t| '<'\r\n\t\t\t| '>'\r\n\t\t\t| COMP_IGUAL\r\n\t\t\t| COMP_DISTINTO\r\n\t\t\t;\r\n\r\noperador_logico : &&\r\n                | ||\r\n \r\nif\t: encabezado_if rama_then rama_else ENDIF ';'\r\n\t| encabezado_if rama_then_prima ENDIF ';'\r\n\t;\r\n\r\nencabezado_if\t: IF condicion {helper.puntoControlThen();}\r\n                | IF {yyerror(\"Falta la condicion del IF.\");}\r\n\t\t\t\t;\r\n\t\t\t\t\r\nrama_then\t: THEN bloque_estruct_ctrl {helper.puntoControlElse();}\r\n            | THEN {yyerror(\"Falta el bloque de sentencias ejecutables de la rama THEN.\");}\r\n\t\t\t;\r\n\r\nrama_then_prima : THEN bloque_estruct_ctrl {helper.puntoControlFinCondicional();}\r\n                | THEN {yyerror(\"Falta el bloque de sentencias ejecutables de la rama THEN.\");}\r\n                ;\r\n\t\t\t\r\nrama_else\t: ELSE bloque_estruct_ctrl {helper.puntoControlFinCondicional();}\r\n            | ELSE {yyerror(\"Falta el bloque de sentencias ejecutables de la rama ELSE.\");}\r\n\t\t\t;\r\n\r\n%%\r\n\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/TP2/gramatica.y b/src/TP2/gramatica.y
+--- a/src/TP2/gramatica.y	(revision f5050742fd0debe37e51b23cabc703a07f890d69)
++++ b/src/TP2/gramatica.y	(date 1632857715411)
+@@ -13,169 +13,168 @@
+ 
+ %%
+ 
+-programa	: bloque_sentencias
+-			;
+-			
+-tipo_id	: UINT {helper.setUltimoTipoLeido("UINT");}
+-		| DOUBLE {helper.setUltimoTipoLeido("DOUBLE");}
+-		;
++programa					: bloque_sentencias
++						;
++
++tipo_id						: UINT {helper.setUltimoTipoLeido("UINT");}
++						| DOUBLE {helper.setUltimoTipoLeido("DOUBLE");}
++						;
+ 
+-bloque_sentencias	: sentencia_decl ',' sentencia_de_ejecucion ';'
+-					| sentencia_de_ejecucion ';'
+-					;
++bloque_sentencias				: sentencia_decl ',' sentencia_de_ejecucion ';'
++						| sentencia_de_ejecucion ';'
++						;
+ 
+-sentencia_de_ejecucion  :  BEGIN sentencia_ejec RETURN retorno END
+-                        |  BEGIN sentencia_ejec RETURN retorno post_condicion END
++sentencia_de_ejecucion  			:  BEGIN sentencia_ejec RETURN retorno END
++                        			|  BEGIN sentencia_ejec RETURN retorno post_condicion END
+ 
+-post_condicion          : POST ':' condicion ',' cadena
++post_condicion          			: POST ':' condicion ',' cadena
+ 
+-retorno             : expresion ';'
++retorno             				: expresion ';'
+ 
+-sentencia_decl	: tipo_id nombre_func params_func cuerpo_func {helper.eliminarUltimoAmbito();}
+-				| tipo_id lista_variables
+-				;
++sentencia_decl					: tipo_id nombre_func params_func cuerpo_func {helper.eliminarUltimoAmbito();}
++						| tipo_id lista_variables
++						;
+ 
+ lista_variables	: ID {helper.declaracionVar($1.sval);}
+ 				| ID ',' lista_variables {helper.declaracionVar($1.sval);}
+ 				;
+ 
+ 
+-nombre_func	: FUNC ID {helper.lecturaIdProc($2.sval);}
+-			| FUNC {yyerror("Falta el identificador del procedimiento.");}
+-			;
+-			
+-params_func	: '(' param ')'
+-			| '(' ')'
+-			| '(' param {yyerror("Falta el parentesis de cierre para los parametros.");}
+-			| '(' {yyerror("Falta el parentesis de cierre para los parametros.");}
+-			;
++nombre_func					: FUNC ID {helper.lecturaIdProc ($2.sval);}
++						| FUNC {yyerror("Falta el identificador del procedimiento.");}
++						;
++
++params_func					: '(' param ')'
++			 			')'
++						| '(' param { yyerror("Falta el parentesis de cierre para los parametros.");}
++						| '(' {yyerror(" Falta el parentesis de cierre para los parametros.");}
++						;
+ 
+-param : tipo_id ID {helper.lecturaParamFormal($2.sval, Celda.USO_PARAM_CV);}
+-		    | tipo_id {yyerror("Falta el identificador de un parametro.");}
+-		    ;
++param 						: tipo_id ID RAM_CV);}
++		    				| tipo_id {yyerror("Falta el identificador de un parametro.");}
++		    				;
+ 
+-separador_variables	:       {yyerror("Falta una ',' para separar dos parametros.");}
+-					| ','
+-					;
+-		
+-cuerpo_func	: bloque_sentencias
+-			| '{' '}' {yyerror("Cuerpo del procedimiento vacio.");}
+-			;
++separador_variables				: {yyerror("Falta una ',' para separar dos parametros.");}
++						| ','
++						;
++
++cuerpo_func					: bloque_sentencias
++						| '{' '}' {yyerror("Cuerpo del procedimiento vacio.");}
++						;
+ 
+-sentencia_ejec	: miembro_sentencia_ejec sentencia_ejec
+-				| miembro_sentencia_ejec             
+-				;
++sentencia_ejec					: miembro_sentencia_ejec sentencia_ejec
++						| miembro_sentencia_ejec
++						;
+ 
+-miembro_sentencia_ejec : invocacion
+-                       | asignacion
+-                       | loop
+-                       | if
+-                       |    
++miembro_sentencia_ejec 				: invocacion
++                       				| asignacion
++                       				| loop
++                       				| if
++                       				|
+ 
+-invocacion	: ID '(' ')' {helper.invocacionProc($1.sval);}
+-			| ID '(' lista_params_inv ')' {helper.invocacionProc($1.sval);}
+-			;
++invocacion					: ID '(' ')' {helper.invocacionProc($1.sval);}
++						| ID '(' lista_params_inv ')' {helper.invocacionProc($1.sval);}
++						;
+ 
+-param_inv   : ID {helper.guardaParamsInvoc($1.sval);}
+-            | CTE_UINT {helper.guardaParamsInvoc($1.sval);}
+-            | CTE_DOUBLE {helper.guardaParamsInvoc($1.sval);}
+-            ;
+-			
+-lista_params_inv	: param_inv
+-					| param_inv separador_variables param_inv
+-					| param_inv separador_variables param_inv separador_variables param_inv
+-					| param_inv separador_variables param_inv separador_variables param_inv separador_variables lista_params_inv
+-                                                    {yyerror("Un procedimiento no puede tener mas de 3 parametros.");}
+-                    ;
++param_inv   					: ID {helper.guardaParamsInvoc($1.sval);}
++            					| CTE_UINT {helper.guardaParamsInvoc($1.sval);}
++            					| CTE_DOUBLE {helper.guardaParamsInvoc($1.sval);}
++            					;
++
++lista_params_inv				: param_inv
++						| param_inv separador_variables param_inv
++						| param_inv separador_variables param_inv separador_variables param_inv
++						| param_inv separador_variables param_inv separador_variables param_inv separador_variables lista_params_inv                                                     {yyerror("Un procedimiento no puede tener mas de 3 parametros.");}
++                    				;
+ 
+-asignacion	: ID '=' expresion {helper.lecturaDestAsign($1.sval);}
+-            | ID '=' error {
+-                            helper.lecturaDestAsign($1.sval);
+-                            yyerror("El lado derecho de la asignacio no es valido.");
+-                            }
+-            | ID {
+-                    helper.lecturaDestAsign($1.sval);
+-                    yyerror("Un identificador en solitario no es una sentencia valida.");
+-                    }
+-            | error '=' expresion {yyerror("El lado izquierdo de la asignacion no es valido");}
++asignacion					: ID '=' expresion {helper.lecturaDestAsign($1.sval);}
++						| ID '=' error {
++								helper.lecturaDestAsign($1.sval);
++								yyerror("El lado derecho de la asignacio no es valido.");
++								}
++            					| ID {
++							    helper.lecturaDestAsign($1.sval);
++							    yyerror("Un identificador en solitario no es una sentencia valida.");
++							    }
++            				| error '=' expresion {yyerror("El lado izquierdo de la asignacion no es valido");}
+ 
+-            ;
+-			
+-expresion	: expresion '+' termino {helper.agregarPasosRepr("+");}
+-			| expresion '-' termino {helper.agregarPasosRepr("-");}
+-	        | termino
+-			;
+-    		
+-termino	: termino '*' factor {helper.agregarPasosRepr("*");}
+-		| termino '/' factor {helper.agregarPasosRepr("/");}
+-		| factor
+-     	;	
+-		
+-factor 	: ID {helper.lecturaFactor($1.sval);}
+-		| CTE_UINT {helper.agregarPasosRepr($1.sval);helper.setTipoUltimoFactor("UINT");}
+-		| CTE_DOUBLE {helper.agregarPasosRepr($1.sval);helper.setTipoUltimoFactor("DOUBLE");}
+-		| '-' factor    {helper.cambioSignoFactor(yylval.sval);}
+-		| invocacion    {helper.cambioSignoFactor(yylval.sval);}
+-		;
++            				;
++
++expresion					: expresion '+' termino {helper.agregarPasosRepr("+");}
++							| expresion '-' termino {helper.agregarPasosRepr("-");}
++							| termino
++							;
++
++termino						: termino '*' factor {helper.agregarPasosRepr("*");}
++							| termino '/' factor {helper.agregarPasosRepr("/");}
++							| factor
++							;
++
++factor 						: ID {helper.lecturaFactor($1.sval);}
++							| CTE_UINT {helper.agregarPasosRepr($1.sval);helper.setTipoUltimoFactor("UINT");}
++							| CTE_DOUBLE {helper.agregarPasosRepr($1.sval);helper.setTipoUltimoFactor("DOUBLE");}
++							| '-' factor    {helper.cambioSignoFactor(yylval.sval);}
++							| invocacion    {helper.cambioSignoFactor(yylval.sval);}
++							;
+ 
+-print	: PRINT '(' '%' CADENA '%' ')'
+-        | PRINT '(' error ')'
+-		;
+-		
+-bloque_estruct_ctrl	: sentencia_ejec fin_sentencia
+-					| '{' bloque_sentencias_ejec '}'
+-					| '{' '}' {yyerror("Bloque de sentencias vacio.");}
+-					| sentencia_decl fin_sentencia {yyerror("No se permiten sentencias declarativas dentro de un bloque de estructura de control.");}
+-					;
++print							: PRINT '(' '%' CADENA '%' ')'
++							| PRINT '(' error ')'
++							;
++
++bloque_estruct_ctrl			: sentencia_ejec fin_sentencia
++							| '{' bloque_sentencias_ejec '}'
++							| '{' '}' {yyerror("Bloque de sentencias vacio.");}
++							| sentencia_decl fin_sentencia {yyerror("No se permiten sentencias declarativas dentro de un bloque de estructura de control.");}
++							;
+ 
+-bloque_sentencias_ejec	: sentencia_ejec 
+-						| sentencia_de_ejecucion 
+-						;
++bloque_sentencias_ejec		: sentencia_ejec
++							| sentencia_de_ejecucion
++							;
+ 
+-loop	: encab_loop cuerpo_loop cuerpo_until
+-		;
++loop						: encab_loop cuerpo_loop cuerpo_until
++							;
+ 
+-encab_loop  : REPEAT {helper.puntoControlLoop();}
+-            ;
+-		
+-cuerpo_loop	: bloque_estruct_ctrl
+-            | {yyerror("Falta el bloque de sentencias ejecutables del LOOP.");}
+-			;
+-		
+-cuerpo_until	: UNTIL condicion {helper.puntoControlUntil();}
+-                | UNTIL {yyerror("Falta la condicion de corte del LOOP.");}
+-                ;
++encab_loop  				: REPEAT {helper.puntoControlLoop();}
++            				;
++
++cuerpo_loop					: bloque_estruct_ctrl
++					    	| {yyerror("Falta el bloque de sentencias ejecutables del LOOP.");}
++							;
++
++cuerpo_until				: UNTIL condicion {helper.puntoControlUntil();}
++							| UNTIL {yyerror("Falta la condicion de corte del LOOP.");}
++							;
+ 
+-condicion	: '(' expresion comparador expresion ')' {helper.agregarPasosRepr($3.sval);}
+-            | '(' expresion comparador expresion {yyerror("Falta parentesis de cierre de la condicion.");}
+-            | '(' comparador expresion ')' {yyerror("Falta expresion en el lado izquierdo de la condicion.");}
+-            | '(' expresion comparador ')' {yyerror("Falta expresion en el lado derecho de la condicion.");}
+-            | '(' expresion operador_logico expresion ')'
+-            | '(' error ')' {yyerror("Error en la condicion.");}  // verificar el error
+-			;
+-			
+-comparador 	: COMP_MAYOR_IGUAL
+-			| COMP_MENOR_IGUAL
+-			| '<'
+-			| '>'
+-			| COMP_IGUAL
+-			| COMP_DISTINTO
+-			;
++condicion					: '(' expresion comparador expresion ')' {helper.agregarPasosRepr($3.sval);}
++						    | '(' expresion comparador expresion {yyerror("Falta parentesis de cierre de la condicion.");}
++						    | '(' comparador expresion ')' {yyerror("Falta expresion en el lado izquierdo de la condicion.");}
++						    | '(' expresion comparador ')' {yyerror("Falta expresion en el lado derecho de la condicion.");}
++						    | '(' expresion operador_logico expresion ')'
++						    | '(' error ')' {yyerror("Error en la condicion.");}  // verificar el error
++							;
++
++comparador 					: COMP_MAYOR_IGUAL
++							| COMP_MENOR_IGUAL
++							| '<'
++							| '>'
++							| COMP_IGUAL
++							| COMP_DISTINTO
++							;
+ 
+-operador_logico : &&
+-                | ||
+- 
+-if	: encabezado_if rama_then rama_else ENDIF ';'
+-	| encabezado_if rama_then_prima ENDIF ';'
+-	;
++operador_logico 			: AND
++                			| OR
++
++if							: encabezado_if rama_then rama_else ENDIF ';'
++							| encabezado_if rama_then_prima ENDIF ';'
++							;
+ 
+-encabezado_if	: IF condicion {helper.puntoControlThen();}
+-                | IF {yyerror("Falta la condicion del IF.");}
+-				;
+-				
+-rama_then	: THEN bloque_estruct_ctrl {helper.puntoControlElse();}
+-            | THEN {yyerror("Falta el bloque de sentencias ejecutables de la rama THEN.");}
+-			;
++encabezado_if				: IF condicion {helper.puntoControlThen();}
++							| IF {yyerror("Falta la condicion del IF.");}
++							;
++
++rama_then					: THEN bloque_estruct_ctrl {helper.puntoControlElse();}
++						    | THEN {yyerror("Falta el bloque de sentencias ejecutables de la rama THEN.");}
++							;
+ 
+ rama_then_prima : THEN bloque_estruct_ctrl {helper.puntoControlFinCondicional();}
+                 | THEN {yyerror("Falta el bloque de sentencias ejecutables de la rama THEN.");}

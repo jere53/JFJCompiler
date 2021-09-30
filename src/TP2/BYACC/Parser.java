@@ -448,7 +448,7 @@ final static String yyrule[] = {
 //#line 136 "..\gramatica.y"
 
 private int yylex() {
-	TablaSimbolos.CargarTablaSimbolos();
+	TablaSimbolos.CargarTablaPalabrasReservadas();
 
 	Dupla<Integer, RegistroTS> token = null;
 	do {

@@ -2,8 +2,8 @@ package Dev.Lexico;
 
 import java.util.HashMap;
 import java.util.Map;
-
 import Dev.*;
+import TP2.BYACC.Parser;
 
 public class TablaSimbolos {
 
@@ -11,9 +11,14 @@ public class TablaSimbolos {
 
     private static final Map<String, RegistroTS> ts = new HashMap<>();
 
-    public static void CargarTablaSimbolos() {
-        tpr.putAll(Map.of("IF", 1, "THEN", 2, "ELSE", 3, "ENDIF", 4, "PRINT", 5, "FUNC", 6, "RETURN", 7, "BEGIN", 8, "END", 9, "BREAK", 10));
-        tpr.putAll(Map.of("UINT", 11, "DOUBLE", 12, "REPEAT", 13, "UNTIL", 14));
+    public static void CargarTablaPalabrasReservadas() {
+
+        tpr.putAll(Map.of("IF", (int) Parser.IF, "THEN", (int) Parser.THEN, "ELSE", (int) Parser.ELSE, "ENDIF", (int) Parser.ENDIF,
+                "PRINT", (int) Parser.PRINT, "FUNC", (int) Parser.FUNC, "RETURN", (int) Parser.RETURN, "BEGIN", (int) Parser.BEGIN,
+                "END", (int) Parser.END, "BREAK", (int) Parser.BREAK));
+
+        tpr.putAll(Map.of("UINT", (int) Parser.UINT, "DOUBLE", (int) Parser.DOUBLE, "REPEAT", (int) Parser.REPEAT, "UNTIL", (int) Parser.UNTIL));
+
     }
 
     public static boolean perteneceTPR(String lexema) {
