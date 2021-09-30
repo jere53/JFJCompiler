@@ -14,12 +14,12 @@
 // TODO : Se debe incorporar al Análisis Léxico el reconocimiento de la palabra reservada POST, y el símbolo ':'.}
 
 %%
-program 						: declaracion ',' bloque_sentencias
+program 						: declaracion ',' bloque_sentencias //CAMBIAR , POR ;
 								| bloque_sentencias
 								;
 
 bloque_sentencias 				: BEGIN sentencia_ejec END
-				  				| miembro_sentencia_ejec
+				  				| miembro_sentencia_ejec //FALTA ;
 								;
 			
 tipo_id							: UINT {}

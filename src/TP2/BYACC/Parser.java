@@ -30,7 +30,7 @@
 public class Parser
 {
 
-boolean yydebug;        //do I want debug output?
+boolean yydebug = true;        //do I want debug output?
 int yynerrs;            //number of errors so far
 int yyerrflag;          //was there an error?
 int yychar;             //the current working character
@@ -448,19 +448,23 @@ final static String yyrule[] = {
 //#line 136 "..\gramatica.y"
 
 private int yylex() {
-	TablaSimbolos.CargarTablaPalabrasReservadas();
 
 	Dupla<Integer, RegistroTS> token = null;
 	do {
 		try {
 			token = AnalizadorLexico.Instance().producirToken();
+
+			if(token.second != null)
+			  yylval = new ParserVal(token.second.getLexema());
+			else yylval = new ParserVal();
+
 		} catch (Exception e) {
-			System.out.println("hubo un error");
-		}
+		    AnalizadorLexico.indiceUltimoLeido++;
+		    e.printStackTrace();
+			System.out.println("hubo un error lexico");
+        }
 	} while (token == null);
-	
-	yylval = new ParserVal(token.second.getLexema());
-	
+
 	return token.first;
 }
 

@@ -1,6 +1,6 @@
-UINT a := 6;
+UINT a;,
 IF (a == 6) THEN
-    RETURN true;
+    a := 6
 ELSE
-    RETURN tuvieja;
-ENDIF
+    a := 7
+ENDIF;

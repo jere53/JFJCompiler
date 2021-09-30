@@ -102,7 +102,7 @@ public class AnalizadorLexico {
 
     private static List<Character> codigoFuente = new ArrayList<>();
 
-    private static int indiceUltimoLeido = 0;
+    public static int indiceUltimoLeido = 0;
 
     public static String lexema;
 
@@ -287,6 +287,6 @@ public class AnalizadorLexico {
         }
 
         //aca llegamos al EOF
-        return new Dupla<>(69, null);
+        return new Dupla<>(0, null);
     }
 }
