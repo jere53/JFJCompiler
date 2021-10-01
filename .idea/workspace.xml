@@ -1,36 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3a08d5a9-0de6-450d-a23c-2cfd8001a572" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JFJCompiler.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+    <list default="true" id="3a08d5a9-0de6-450d-a23c-2cfd8001a572" name="Default Changelist" comment="Completa integracion del lexico y el sintactico, anota algunas correcciones que se deben realizar a la gramatica">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_9_2021_12_55_[Changes_by_felix]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_9_2021_12_55_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_9_2021_12_55__Changes_by_felix_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_9_2021_12_55__Default_Changelist_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_9_2021_15_18_[Changes_by_felix]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_9_2021_15_18_[Changes_by_juand]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_9_2021_15_18_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_9_2021_15_18__Changes_by_felix_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_9_2021_15_18__Changes_by_juand_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_9_2021_15_18__Default_Changelist_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_9_2021_20_57_[Changes_by_felix]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_9_2021_20_57__Changes_by_felix_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Compiladores.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dev/Lexico/AccionesSemanticas/AS1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dev/Lexico/AccionesSemanticas/AS1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dev/Lexico/AccionesSemanticas/AS4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dev/Lexico/AccionesSemanticas/AS4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dev/Lexico/AccionesSemanticas/AS5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dev/Lexico/AccionesSemanticas/AS5.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dev/Lexico/AnalizadorLexico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dev/Lexico/AnalizadorLexico.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TP2/BYACC/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/BYACC/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dev/Lexico/TablaSimbolos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dev/Lexico/TablaSimbolos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TP2/BYACC/ParserVal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TP2/BYACC/y.output" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TP2/BYACC/y.tab.c" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TP2/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TP2/MainDEP.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TP2/gramatica.y" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/gramatica.y" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/input.txt" afterDir="false" />
     </list>
     <list id="697f8440-4d12-4320-82f3-d38f4ec120a5" name="Changes by felix" comment="">
-      <change beforePath="$PROJECT_DIR$/src/TP2/BYACC/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/BYACC/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dev/Lexico/AccionesSemanticas/AS1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dev/Lexico/AccionesSemanticas/AS1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dev/Lexico/AnalizadorLexico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dev/Lexico/AnalizadorLexico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TP2/BYACC/Parser.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TP2/gramatica.y" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/gramatica.y" afterDir="false" />
+    </list>
+    <list id="f396b4cf-5785-48b4-af3a-f48f932aac4c" name="Changes by juand" comment="">
+      <change beforePath="$PROJECT_DIR$/src/Dev/Lexico/AnalizadorLexico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dev/Lexico/AnalizadorLexico.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,21 +35,65 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/TP2/BYACC/Parser.java">
+    <file path="$PROJECT_DIR$/src/Dev/Lexico/AnalizadorLexico.java">
       <ranges>
-        <range start1="32" end1="33" start2="32" end2="33" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="450" end1="451" start2="450" end2="450" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="456" end1="456" start2="455" end2="460" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="457" end1="459" start2="461" end2="465" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="460" end1="463" start2="466" end2="467" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="464" end1="464" start2="468" end2="469" changelist="697f8440-4d12-4320-82f3-d38f4ec120a5" />
+        <range start1="15" end1="17" start2="15" end2="15" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="27" end1="28" start2="25" end2="25" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="37" end1="38" start2="34" end2="35" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="41" end1="44" start2="38" end2="41" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="46" end1="50" start2="43" end2="47" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="64" end1="65" start2="61" end2="62" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="70" end1="71" start2="67" end2="68" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="84" end1="85" start2="81" end2="82" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="107" end1="107" start2="104" end2="106" changelist="697f8440-4d12-4320-82f3-d38f4ec120a5" />
+        <range start1="138" end1="139" start2="137" end2="138" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="183" end1="183" start2="182" end2="198" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="185" end1="186" start2="200" end2="201" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="202" end1="203" start2="217" end2="219" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="213" end1="213" start2="229" end2="234" changelist="f396b4cf-5785-48b4-af3a-f48f932aac4c" />
+        <range start1="216" end1="217" start2="237" end2="237" changelist="697f8440-4d12-4320-82f3-d38f4ec120a5" />
+        <range start1="218" end1="219" start2="238" end2="238" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="221" end1="237" start2="240" end2="243" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="238" end1="245" start2="244" end2="246" changelist="697f8440-4d12-4320-82f3-d38f4ec120a5" />
+        <range start1="246" end1="247" start2="247" end2="248" changelist="697f8440-4d12-4320-82f3-d38f4ec120a5" />
+        <range start1="248" end1="249" start2="249" end2="250" changelist="697f8440-4d12-4320-82f3-d38f4ec120a5" />
+        <range start1="250" end1="251" start2="251" end2="252" changelist="697f8440-4d12-4320-82f3-d38f4ec120a5" />
+        <range start1="252" end1="253" start2="253" end2="254" changelist="697f8440-4d12-4320-82f3-d38f4ec120a5" />
+        <range start1="254" end1="255" start2="255" end2="256" changelist="697f8440-4d12-4320-82f3-d38f4ec120a5" />
+        <range start1="256" end1="256" start2="257" end2="258" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/Dev/Lexico/AccionesSemanticas/AS1.java">
+      <ranges>
+        <range start1="14" end1="15" start2="14" end2="14" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="19" end1="23" start2="18" end2="26" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="25" end1="26" start2="28" end2="28" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="28" end1="29" start2="30" end2="31" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="32" end1="33" start2="34" end2="34" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="36" end1="37" start2="37" end2="37" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="39" end1="40" start2="39" end2="40" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="42" end1="43" start2="42" end2="42" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="45" end1="46" start2="44" end2="44" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="48" end1="49" start2="46" end2="46" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="51" end1="52" start2="48" end2="48" changelist="697f8440-4d12-4320-82f3-d38f4ec120a5" />
+        <range start1="59" end1="63" start2="55" end2="55" changelist="697f8440-4d12-4320-82f3-d38f4ec120a5" />
       </ranges>
     </file>
     <file path="$PROJECT_DIR$/src/TP2/gramatica.y">
       <ranges>
+        <range start1="8" end1="9" start2="8" end2="9" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
         <range start1="16" end1="17" start2="16" end2="17" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="21" end1="22" start2="21" end2="22" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="89" end1="90" start2="89" end2="90" changelist="697f8440-4d12-4320-82f3-d38f4ec120a5" />
+        <range start1="20" end1="22" start2="20" end2="22" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="39" end1="41" start2="39" end2="43" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="43" end1="44" start2="45" end2="46" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="58" end1="59" start2="60" end2="61" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="63" end1="65" start2="65" end2="67" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="67" end1="73" start2="69" end2="75" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="89" end1="90" start2="91" end2="92" changelist="697f8440-4d12-4320-82f3-d38f4ec120a5" />
+        <range start1="102" end1="103" start2="104" end2="105" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="129" end1="133" start2="131" end2="135" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="137" end1="138" start2="139" end2="139" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="139" end1="151" start2="140" end2="158" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
       </ranges>
     </file>
   </component>
@@ -70,6 +108,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -85,13 +124,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -110,8 +151,17 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1632969876600</updated>
-      <workItem from="1632969878370" duration="4025000" />
+      <workItem from="1632969878370" duration="4192000" />
+      <workItem from="1633026952907" duration="19539000" />
     </task>
+    <task id="LOCAL-00001" summary="Completa integracion del lexico y el sintactico, anota algunas correcciones que se deben realizar a la gramatica">
+      <created>1632974085994</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1632974085994</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -127,51 +177,19 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Completa integracion del lexico y el sintactico, anota algunas correcciones que se deben realizar a la gramatica" />
+    <option name="LAST_COMMIT_MESSAGE" value="Completa integracion del lexico y el sintactico, anota algunas correcciones que se deben realizar a la gramatica" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/TP2/BYACC/Parser.java</url>
-          <line>449</line>
-          <properties class="TP2.BYACC.Parser" method="yylex">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/Dev/Lexico/AnalizadorLexico.java</url>
-          <line>185</line>
-          <properties class="Dev.Lexico.AnalizadorLexico" method="producirToken">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Dev/Lexico/AnalizadorLexico.java</url>
-          <line>284</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Dev/Lexico/AnalizadorLexico.java</url>
-          <line>263</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Dev/Lexico/AnalizadorLexico.java</url>
-          <line>258</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Dev/Lexico/AnalizadorLexico.java</url>
-          <line>208</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Dev/Lexico/AnalizadorLexico.java</url>
-          <line>197</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ArrayIndexOutOfBoundsException" package="java.lang" />
+          <option name="timeStamp" value="13" />
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>

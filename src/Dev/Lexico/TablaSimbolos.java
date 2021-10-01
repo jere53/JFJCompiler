@@ -13,11 +13,26 @@ public class TablaSimbolos {
 
     public static void CargarTablaPalabrasReservadas() {
 
-        tpr.putAll(Map.of("IF", (int) Parser.IF, "THEN", (int) Parser.THEN, "ELSE", (int) Parser.ELSE, "ENDIF", (int) Parser.ENDIF,
-                "PRINT", (int) Parser.PRINT, "FUNC", (int) Parser.FUNC, "RETURN", (int) Parser.RETURN, "BEGIN", (int) Parser.BEGIN,
-                "END", (int) Parser.END, "BREAK", (int) Parser.BREAK));
+        tpr.putAll(Map.of(
+                "IF", (int) Parser.IF,
+                "THEN", (int) Parser.THEN,
+                "ELSE", (int) Parser.ELSE,
+                "ENDIF", (int) Parser.ENDIF,
+                "PRINT", (int) Parser.PRINT,
+                "FUNC", (int) Parser.FUNC,
+                "RETURN", (int) Parser.RETURN,
+                "BEGIN", (int) Parser.BEGIN,
+                "END", (int) Parser.END,
+                "BREAK", (int) Parser.BREAK)
+        );
 
-        tpr.putAll(Map.of("UINT", (int) Parser.UINT, "DOUBLE", (int) Parser.DOUBLE, "REPEAT", (int) Parser.REPEAT, "UNTIL", (int) Parser.UNTIL));
+        tpr.putAll(Map.of(
+                "UINT", (int) Parser.UINT,
+                "DOUBLE", (int) Parser.DOUBLE,
+                "REPEAT", (int) Parser.REPEAT,
+                "UNTIL", (int) Parser.UNTIL,
+                "POST", (int) Parser.POST)
+        );
 
     }
 

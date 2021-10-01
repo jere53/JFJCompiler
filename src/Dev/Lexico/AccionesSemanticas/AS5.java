@@ -23,7 +23,7 @@ public class AS5 implements IAccionSemantica {
 
                 if (uint > (65536 - 1) || uint < 0) //si esta fuera de rango devolvemos token de error
                     //return new Dupla<>((int) Parser.ERR_CTE_FUERA_RANGO, null);
-                    return new Dupla<>(AnalizadorLexico.numeroToken.get("ERR_CTE_FUERA_RANGO"), null);
+                    return new Dupla<>((int) Parser.ERR_CTE_FUERA_RANGO, null);
 
 
                 //damos de alta la CTE en la TS y devolvemos el puntero y token CTE_UINT
@@ -35,7 +35,7 @@ public class AS5 implements IAccionSemantica {
             } catch (NumberFormatException e) {
                 //si por alguna razon no se pudo parsear el lexema, no interrumpimos la ejecucion
                 //return new Dupla<>(Parser.ERR_FORMATO_CTE, null);
-                return new Dupla<>(AnalizadorLexico.numeroToken.get("ERR_FORMATO_CTE"), null);
+                return new Dupla<>((int) Parser.ERR_FORMATO_CTE, null);
 
                 //nunca deberia pasar, la maquina de estados ya deberia haber encontrado el error al hacer la
                 //transicion, pero por las dudas.
@@ -60,14 +60,14 @@ public class AS5 implements IAccionSemantica {
                     //numero demasiado grande (si es pos) o demasiado chico (si es neg)
                     //TODO: Agregar los errores al parser
                     //return new Dupla<>((int) Parser.ERR_CTE_FUERA_RANGO, null);
-                    return new Dupla<>(AnalizadorLexico.numeroToken.get("ERR_CTE_FUERA_RANGO"), null);
+                    return new Dupla<>((int) Parser.ERR_CTE_FUERA_RANGO, null);
 
                 }
 
                 if (dou < 2.2250738585072014E-308) {
                     //numero demasiado chico (si es pos) o demasiado grande (si es neg)
                     //return new Dupla<>((int) Parser.ERR_CTE_FUERA_RANGO, null);
-                    return new Dupla<>(AnalizadorLexico.numeroToken.get("ERR_CTE_FUERA_RANGO"), null);
+                    return new Dupla<>((int) Parser.ERR_CTE_FUERA_RANGO, null);
                 }
 
                 //esta dentro del rango
@@ -79,7 +79,7 @@ public class AS5 implements IAccionSemantica {
 
             } catch (NumberFormatException e) {
                 //return new Dupla<>(Parser.ERR_FORMATO_CTE, null);
-                return new Dupla<>(AnalizadorLexico.numeroToken.get("ERR_FORMATO_CTE"), null);
+                return new Dupla<>((int) Parser.ERR_FORMATO_CTE, null);
             }
         }
         // algo salio mal, no deberiamos haber ejecutado esta AS desde otro estado

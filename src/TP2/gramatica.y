@@ -6,7 +6,7 @@
 	import Dev.RegistroTS;
 %}
 
-%token UINT, DOUBLE, BEGIN, RETURN, END, POST, ID, FUNC, CTE_UINT, CTE_DOUBLE, CADENA, PRINT, REPEAT , UNTIL, THEN, IF , ELSE, ASIG, AND, OR, COMP_MAYOR_IGUAL, COMP_MENOR_IGUAL, COMP_IGUAL, COMP_DISTINTO, ENDIF, BREAK
+%token UINT, DOUBLE, BEGIN, RETURN, END, POST, ID, FUNC, CTE_UINT, CTE_DOUBLE, CADENA, PRINT, REPEAT , UNTIL, THEN, IF , ELSE, ASIG, AND, OR, COMP_MAYOR_IGUAL, COMP_MENOR_IGUAL, COMP_IGUAL, COMP_DISTINTO, ENDIF, BREAK, ERR_CTE_FUERA_RANGO, ERR_FORMATO_CTE
 
 %start program
 
@@ -14,12 +14,12 @@
 // TODO : Se debe incorporar al Análisis Léxico el reconocimiento de la palabra reservada POST, y el símbolo ':'.}
 
 %%
-program 						: declaracion ',' bloque_sentencias //CAMBIAR , POR ;
+program 						: declaracion bloque_sentencias
 								| bloque_sentencias
 								;
 
-bloque_sentencias 				: BEGIN sentencia_ejec END
-				  				| miembro_sentencia_ejec //FALTA ;
+bloque_sentencias 				: BEGIN sentencia_ejec END ';'
+				  				| miembro_sentencia_ejec
 								;
 			
 tipo_id							: UINT {}
@@ -37,11 +37,13 @@ post_condicion          		: POST ':' condicion ',' CADENA ';'
 retorno             			: '(' expresion ')' ';'
 								;
 
-declaracion 					: tipo_id nombre_func params_func definicion_func {}
-								| tipo_id lista_variables
+declaracion 					: tipo_id nombre_func params_func definicion_func ';' {}
+								| tipo_id lista_variables ';'
+								| tipo_id lista_variables ';' declaracion
+								| tipo_id nombre_func params_func definicion_func ';' declaracion
 								;
 
-lista_variables					: ID ';' {}
+lista_variables					: ID {}
 								| ID ',' lista_variables {}
 								;	
 
@@ -56,21 +58,21 @@ params_func						: '(' param ')'
 param 							: tipo_id ID
 		    					;
 		
-definicion_func					: declaracion ',' cuerpo_func
+definicion_func					: declaracion cuerpo_func
 								| cuerpo_func
 								| {yyerror("Cuerpo del procedimiento vacio.");}
 								;
 
-sentencia_ejec					: miembro_sentencia_ejec ';' sentencia_ejec
-								| miembro_sentencia_ejec ';'             
+sentencia_ejec					: miembro_sentencia_ejec sentencia_ejec
+								| miembro_sentencia_ejec
 								;
 
-miembro_sentencia_ejec 			: invocacion
-                       			| asignacion
-                       			| iteracion
-                       			| seleccion
-                       			| impresion
-								| BREAK
+miembro_sentencia_ejec 			: invocacion ';'
+                       			| asignacion ';'
+                       			| iteracion ';'
+                       			| seleccion ';'
+                       			| impresion ';'
+								| BREAK ';'
                        			;
 
 invocacion						: ID '(' ')' {}
@@ -100,7 +102,7 @@ factor 							: ID {}
 								| invocacion    {}
 								;
 
-impresion						: PRINT '(' '%' CADENA '%' ')'
+impresion						: PRINT '(' CADENA ')'
         						| PRINT '(' error ')'
 								;
 
@@ -127,28 +129,33 @@ operador_logico 				: AND
                 				| OR
 								;
 
-seleccion						: IF condicion THEN bloque_sentencias ENDIF ';'
-								| IF condicion THEN bloque_sentencias ELSE bloque_sentencias ENDIF ';'
-								| IF condicion THEN ELSE bloque_sentencias ENDIF {yyerror("Falta el bloque de sentencias ejecutables de la rama THEN.");} ';'
-								| IF condicion THEN ENDIF {yyerror("Falta el bloque de sentencias ejecutables de la rama THEN.");} ';'
+seleccion						: IF condicion THEN bloque_sentencias ENDIF
+								| IF condicion THEN bloque_sentencias ELSE bloque_sentencias ENDIF
+								| IF condicion THEN ELSE bloque_sentencias ENDIF {yyerror("Falta el bloque de sentencias ejecutables de la rama THEN.");}
+								| IF condicion THEN ENDIF {yyerror("Falta el bloque de sentencias ejecutables de la rama THEN.");}
 								;
 %%
 
 private int yylex() {
-	TablaSimbolos.CargarTablaSimbolos();
 
-	Dupla<Integer, RegistroTS> token = null;
-	do {
-		try {
-			token = AnalizadorLexico.Instance().producirToken();
-		} catch (Exception e) {
-			System.out.println("hubo un error");
-		}
-	} while (token == null);
-	
-	yylval = new ParserVal(token.second.getLexema());
-	
-	return token.first;
+  Dupla<Integer, RegistroTS> token = null;
+  do {
+    try {
+      token = AnalizadorLexico.Instance().producirToken();
+
+      if(token.second != null)
+        yylval = new ParserVal(token.second.getLexema());
+      else yylval = new ParserVal();
+
+    } catch (Exception e) {
+      AnalizadorLexico.indiceUltimoLeido++;
+      e.printStackTrace();
+      System.out.println("hubo un error lexico");
+    }
+  } while (token == null);
+
+  return token.first;
+
 }
 
 private void yyerror(String mensajeError) {

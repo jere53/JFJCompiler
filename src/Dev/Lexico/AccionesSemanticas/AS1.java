@@ -12,41 +12,38 @@ Ej: si venimos del 11 y viene un =, es <=. Si viene un >, es <>, si viene otro e
 */
 
 public class AS1 implements IAccionSemantica {
-    private boolean devuelveUltimo = false;
 
     @Override
     public Dupla<Integer, RegistroTS> ejecutar(int estadoActual, Character c) {
         switch (estadoActual){
-            case 9: //leimos un :, vino un = (porque sino venia =, hubiera habido error lexico)
-                devuelveUltimo = false;
-
-                return new Dupla<>((int) Parser.ASIG, null);
+            case 9: //leimos un :
+                if (c == '=') {
+                    //Vino un =, token ASIG
+                    return new Dupla<>((int) Parser.ASIG, null);
+                }
+                //vino otra cosa, devolvemos el literal : y el ultimo char vuelve a la entrada
+                AnalizadorLexico.indiceUltimoLeido--;
+                return new Dupla<>((int) ':', null);
             case 10: //leimos un >, vino un = u otro caracter
                 if (c == '=') {
-                    devuelveUltimo = false;
                     return new Dupla<>((int) Parser.COMP_MAYOR_IGUAL, null);
                 }
-                devuelveUltimo = true;
+                AnalizadorLexico.indiceUltimoLeido--;
                 return new Dupla<>((int) '>', null); //al castear a int conseguimos el valor ASCII del char
             case 11: //leimos un <, vino =, > u otro caracter
                 if (c == '='){
-                    devuelveUltimo = false;
                     return new Dupla<>((int) Parser.COMP_MENOR_IGUAL, null);
                 }
                 if (c == '>'){
-                    devuelveUltimo = false;
                     return new Dupla<>((int) Parser.COMP_DISTINTO, null);
                 }
-                devuelveUltimo = true;
+                AnalizadorLexico.indiceUltimoLeido--;
                 return new Dupla<>((int) '<', null);
             case 12: //leimos un =, vino otro =
-                devuelveUltimo = false;
                 return new Dupla<>((int) Parser.COMP_IGUAL, null);
             case 13: //leimos  &, vino otro &
-                devuelveUltimo = false;
                 return new Dupla<>((int) Parser.AND, null);
             case 14: //leimos |, vino otro |
-                devuelveUltimo = false;
                 return new Dupla<>((int) Parser.OR, null);
             case 0: //puede haber venido +, -, *, (, ), ",", ;
                 devuelveUltimo = false;

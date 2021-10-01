@@ -13,8 +13,6 @@ import java.util.ArrayList;
 
 public class AnalizadorLexico {
 
-    public static Map<String, Integer> numeroToken = new HashMap<>();
-
     private static AnalizadorLexico instance;
 
     public static AnalizadorLexico Instance() {
@@ -25,7 +23,6 @@ public class AnalizadorLexico {
 
     private AnalizadorLexico() {
         loadValues();
-        numeroToken.putAll(Map.of("ERR_CTE_FUERA_RANGO", 600, "CTE_UINT", 601, "ERR_FORMATO_CTE", 602, "CTE_DOUBLE", 603));
     }
 
     private static final int estadoFinal = 16;
@@ -35,19 +32,19 @@ public class AnalizadorLexico {
         {1,1,1,2,estadoFinal,estadoFinal,estadoFinal,0,0,0,6,15,3,9,10,11,12,13,14,estadoFinal}, //0
         {1,estadoFinal,1,1,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal},
         {estadoFinal,estadoFinal,estadoFinal,2,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,3,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal},
-        {estadoFinal,4,estadoFinal,3,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal},
+        {4,4,estadoFinal,3,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal},
         {estadoFinal,estadoFinal,estadoFinal,4,estadoFinal,estadoFinal,5,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal},
         {estadoFinal,estadoFinal,estadoFinal,5,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal},
         {estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,7,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal},
-        {7,7,7,7,7,7,7,7,7,7,8,7,7,7,7,7,7,7,7,-1},
-        {7,7,7,7,7,7,7,7,7,7,0,7,7,7,7,7,7,7,7,-1},
-        {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,estadoFinal,-1,-1,-1},
+        {7,7,7,7,7,7,7,7,7,7,8,7,7,7,7,7,7,7,7,-1}, //7
+        {7,7,7,7,7,7,7,7,7,7,0,7,7,7,7,7,7,7,7,-1}, // 8
         {estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal},
         {estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal},
-        {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,estadoFinal,-1,-1,-1},
-        {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,estadoFinal,-1,-1},
-        {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,estadoFinal,-1},
-        {15,15,15,15,15,15,15,15,-1,15,15,estadoFinal,15,15,15,15,15,15,15,-1}
+        {estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal,estadoFinal},
+        {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,estadoFinal,-1,-1,-1}, //12
+        {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,estadoFinal,-1,-1}, //13
+        {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,estadoFinal,-1}, //14
+        {15,15,15,15,15,15,15,15,-1,15,15,estadoFinal,15,15,15,15,15,15,15,-1} //15
     };
     
     static IAccionSemantica AS1 = new AS1();
@@ -62,13 +59,13 @@ public class AnalizadorLexico {
         {AS2, AS2, AS2, AS2, AS1, AS1, AS1, null, null, null, null, AS2, AS2, null, null, null, null, null, null, null}, //0
         {AS3, AS3, AS3, AS3, AS4, AS4, AS4, AS4, AS4, AS4, AS4, AS4, AS4, AS4, AS4, AS4, AS4, AS4, AS4, AS4}, //1
         {AS5, AS5, AS5, AS3, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS3, AS5, AS5, AS5, AS5, AS5, AS5, AS5}, //2
-        {AS5, AS3, AS5, AS3, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5},//3
+        {AS3, AS3, AS5, AS3, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5},//3
         {AS5, AS5, AS5, AS3, AS5, AS5, AS3, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5},//4
         {AS5, AS5, AS5, AS3, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5, AS5},//5
         {AS6, AS6, AS6, AS6, AS6, AS6, AS6, AS6, AS6, AS6, null, AS6, AS6, AS6, AS6, AS6, AS6, AS6, AS6, AS6},//6
         {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},//7
         {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},//8
-        {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, AS1, null, null, null},//9
+        {AS1, AS1, AS1, AS1, AS1, AS1, AS1, AS1, AS1, AS1, AS1, AS1, AS1, AS1, AS1, AS1, AS1, AS1, AS1, AS1},//9
         {AS1, AS1, AS1, AS1, AS1, AS1, AS1, AS1, AS1, AS1, AS1, AS1, AS1, AS1, AS1, AS1, AS1, AS1, AS1, AS1}, //10
         {AS1, AS1, AS1, AS1, AS1, AS1, AS1, AS1, AS1, AS1, AS1, AS1, AS1, AS1, AS1, AS1, AS1, AS1, AS1, AS1}, //11 
         {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, AS1, null, null, null},//12
@@ -82,7 +79,7 @@ public class AnalizadorLexico {
 0         AS2	AS2	AS2	AS2	AS1	AS1	AS1					AS2	AS2							
 1         AS3	AS3	AS3	AS3	AS4	AS4	AS4	AS4	AS4	AS4	AS4	AS4	AS4	AS4	AS4	AS4	AS4	AS4	AS4	AS4
 2                       AS3	AS5			AS5	AS5				AS3							
-3               AS3	    AS3	AS5			AS5	AS5											
+3         AS3   AS3	    AS3	AS5			AS5	AS5
 4                       AS3	AS5		AS3	AS5	AS5											
 5                       AS3	AS5			AS5	AS5											
 6         AS6	AS6	AS6	AS6	AS6	AS6	AS6	AS6	AS6	AS6		AS6	AS6	AS6	AS6	AS6	AS6	AS6	AS6	AS6
@@ -136,7 +133,7 @@ public class AnalizadorLexico {
 
     public int traducirCaracter(Character c) {
         //  L    "E" "_"  d  ";" (),* +- " " \n  tab  /   %  "." ":"  >   <   =   &   |   $
-        if (Character.isAlphabetic(c)) 
+        if (Character.isAlphabetic(c))
             return 0;
         if (c == 'E')
             return 1;
@@ -181,9 +178,25 @@ public class AnalizadorLexico {
 
     public static int nroLinea = 1;
 
+    /**
+     * Encontrar en la sublist y encontrar el respectivo subindice.
+     */
+    public static void avanzarASincronizador() {
+        //TODO: DEBUGGEAR ESTO
+
+        // Agarrar la sublist y encontrar el indic
+        int indiceSinc = codigoFuente.subList(indiceUltimoLeido, codigoFuente.size() -1).indexOf(';');
+        if (indiceSinc == -1){
+            //no hay un ; al cual ir, avanzamos al proximo caracter
+            indiceUltimoLeido++;
+        }
+        indiceUltimoLeido = indiceSinc;
+    }
+
+
     // en realidad devuelve Token+Puntero a TS
 
-    public Dupla<Integer, RegistroTS> producirToken() throws Exception {
+    public Dupla<Integer, RegistroTS> producirToken() {
 
         //producirToken se llama una vez por lexema. Si hay un error lexico, se lanza una excepcion que indica cual
         //fue el error, para mostrarlo. El A.S. luego ejecuta el producirToken de nuevo, ahora sobre la proxima letra,
@@ -200,7 +213,8 @@ public class AnalizadorLexico {
             cIndex = traducirCaracter(c); // traducir c a un indice en la matriz
             if (cIndex == -1){
                 //caracter invalido, se ignora y se pasa al siguiente
-                System.out.println("caracter Invalido");
+                System.out.println("caracter invalido en la linea " + nroLinea);
+                leidos++;
                 continue;
             }
             
@@ -216,25 +230,11 @@ public class AnalizadorLexico {
 
 
             if (estadoActual == -1){
-                System.out.println("Estado Anterior: " + estadoAnterior + " caracter: " + c);
                 //error lexico
                 switch(estadoAnterior){
-                    case 0:
-                        throw new Exception("");
-                    case 1:
-                        throw new Exception("");
-                    case 2:
-                        throw new Exception("");
-                    case 3:
-                        throw new Exception("");
-                    case 4:
-                        throw new Exception("");
-                    case 5:
-                        throw new Exception("");
-                    case 6:
-                        throw new Exception("");
-                    case 7:
-                        throw new Exception("");
+                    //estados 0-6 no pueden transicionar al -1
+                    case 7: // 7 y 8 solo van al -1 ante $
+                        errores.add("Lexic error on line " + nroLinea + ": " + "unexpected EoF");
                     case 8:
                         throw new Exception("");
                     case 9:
@@ -254,6 +254,7 @@ public class AnalizadorLexico {
                     default:
                         throw new Exception("");
                 }
+                return null;
             }
             
             IAccionSemantica AS = matrizDeTransicionAS[estadoAnterior][cIndex];

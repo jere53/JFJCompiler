@@ -5,13 +5,18 @@ import Dev.Lexico.Dupla;
 import Dev.Lexico.TablaSimbolos;
 import Dev.RegistroTS;
 import TP2.BYACC.Parser;
+import TP2.BYACC.ParserVal;
 
 public class Main {
     public static void main(String[] args) {
         TablaSimbolos.CargarTablaPalabrasReservadas();
         new Parser().run();
+        for (String s : AnalizadorLexico.errores){
+            System.out.println(s);
+        }
     }
 
+    /*
     private static int lexDeprecated(){
         TablaSimbolos.CargarTablaPalabrasReservadas(); //invocamos el constructor para que cargue los primeros valores a los mapas
         // Variable para saber si debemos seguir pidiendo tokens al analizador Lexico
@@ -45,5 +50,26 @@ public class Main {
             }
         } while (token.first != 69);
     }
+
+    private int yylex() {
+
+        Dupla<Integer, RegistroTS> token;
+        do {
+            token = AnalizadorLexico.Instance().producirToken();
+            if (token == null) {
+                // hubo un error lexico, avanzamos al proximo caracter de sincronizacion (;)
+                AnalizadorLexico.avanzarASincronizador();
+                continue;
+            }
+
+            if(token.second != null)
+                yylval = new ParserVal(token.second.getLexema());
+            else yylval = new ParserVal();
+
+        } while (token == null);
+
+        return token.first;
+    }
+    */
 
 }
