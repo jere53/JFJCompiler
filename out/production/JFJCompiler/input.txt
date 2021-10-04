@@ -1,0 +1,35 @@
+UINT FUNC f(UINT x)
+UINT y, z, x;
+BEGIN
+    y := 3 * x;
+    RETURN (y);
+    POST: (y < 3), %Error en la postcondicion%;
+END;
+
+UINT FUNC f(UINT x)
+    UINT FUNC f(UINT x)
+    UINT y, z, x;
+    BEGIN
+        y := 3 * x;
+        RETURN (y);
+        POST: (y < 3), %Error en la postcondicion%;
+    END;
+
+  UINT y, z, x;
+BEGIN
+    y := 3 * x;
+    RETURN (y);
+    POST: (y < 3), %Error en la postcondicion%;
+END;
+
+UINT C, A, a, b;
+BEGIN
+    REPEAT
+            //
+                23=09ujh 348ytvn1984y5 9q834yr n1-928h4 1u43rh-13 ]]]
+            //
+        C := A + 3.5E-20;
+    UNTIL (C < 0);
+    a := b;
+    PRINT(%XD%);
+END;

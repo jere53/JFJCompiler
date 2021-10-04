@@ -138,23 +138,23 @@ seleccion						: IF condicion THEN bloque_sentencias ENDIF
 
 private int yylex() {
 
-  Dupla<Integer, RegistroTS> token = null;
-  do {
-    try {
-      token = AnalizadorLexico.Instance().producirToken();
+	Dupla<Integer, RegistroTS> token = null;
+	do {
+		try {
+			token = AnalizadorLexico.Instance().producirToken();
 
-      if(token.second != null)
-        yylval = new ParserVal(token.second.getLexema());
-      else yylval = new ParserVal();
+			if(token.second != null)
+			  yylval = new ParserVal(token.second.getLexema());
+			else yylval = new ParserVal();
 
-    } catch (Exception e) {
-      AnalizadorLexico.indiceUltimoLeido++;
-      e.printStackTrace();
-      System.out.println("hubo un error lexico");
-    }
-  } while (token == null);
+		} catch (Exception e) {
+		    AnalizadorLexico.indiceUltimoLeido++;
+		    e.printStackTrace();
+			System.out.println("hubo un error lexico");
+        }
+	} while (token == null);
 
-  return token.first;
+	return token.first;
 
 }
 

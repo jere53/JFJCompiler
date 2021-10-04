@@ -103,6 +103,8 @@ public class AnalizadorLexico {
 
     public static String lexema;
 
+    public static List<String> errores = new ArrayList<>();
+
     //region FileRead
 
     final static String FILE_PATH = "src/input.txt";
@@ -228,7 +230,6 @@ public class AnalizadorLexico {
                 nroLinea++;
             }
 
-
             if (estadoActual == -1){
                 //error lexico
                 switch(estadoAnterior){
@@ -236,23 +237,18 @@ public class AnalizadorLexico {
                     case 7: // 7 y 8 solo van al -1 ante $
                         errores.add("Lexic error on line " + nroLinea + ": " + "unexpected EoF");
                     case 8:
-                        throw new Exception("");
-                    case 9:
-                        throw new Exception("");
-                    case 10:
-                        throw new Exception("");
-                    case 11:
-                        throw new Exception("");
+                        errores.add("Lexic error on line " + nroLinea + ": " + "unexpected EoF");
+                    //estados 9-11 no pueden transicionar al -1
                     case 12:
-                        throw new Exception("");
+                        errores.add("Lexic error on line " + nroLinea + ": " + "'=' expected but got " + c + " instead");
                     case 13:
-                        throw new Exception("");
+                        errores.add("Lexic error on line " + nroLinea + ": " + "'&' expected but got " + c + " instead");
                     case 14:
-                        throw new Exception("");
+                        errores.add("Lexic error on line " + nroLinea + ": " + "'|' expected but got " + c + " instead");
                     case 15:
-                        throw new Exception("");
+                        errores.add("Lexic error on line " + nroLinea + ": " + "String cant contain new line char or EoF found");
                     default:
-                        throw new Exception("");
+                        errores.add("");
                 }
                 return null;
             }

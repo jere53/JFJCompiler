@@ -46,7 +46,6 @@ public class AS1 implements IAccionSemantica {
             case 14: //leimos |, vino otro |
                 return new Dupla<>((int) Parser.OR, null);
             case 0: //puede haber venido +, -, *, (, ), ",", ;
-                devuelveUltimo = false;
                 return new Dupla<>((int) c, null);
         }
         //algo salio mal, no deberiamos haber ejecutado esta AS desde otro estado
@@ -54,8 +53,4 @@ public class AS1 implements IAccionSemantica {
         return null;
     }
 
-    @Override
-    public boolean devuelveUltimoALaEntrada() {
-        return devuelveUltimo;
-    }
 }
