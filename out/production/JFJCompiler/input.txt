@@ -31,5 +31,5 @@ BEGIN
         C := A + 3.5E-20;
     UNTIL (C < 0);
     a := b;
-    PRINT(%XD%);
+    PRINT(%hola mundo%);
 END;

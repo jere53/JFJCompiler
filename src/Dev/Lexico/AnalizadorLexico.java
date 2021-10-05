@@ -107,7 +107,7 @@ public class AnalizadorLexico {
 
     //region FileRead
 
-    final static String FILE_PATH = "src/input.txt";
+    public static String FILE_PATH = "";
 
     private void loadValues() {
         File file = new File(FILE_PATH);
@@ -119,6 +119,8 @@ public class AnalizadorLexico {
             }
             codigoFuente.add('$'); //agregamos el simbolo EOF
         } catch (IOException e) {
+            System.out.println("Archivo invalido (IOException)");
+            System.exit(1);
             e.printStackTrace();
         }
     }

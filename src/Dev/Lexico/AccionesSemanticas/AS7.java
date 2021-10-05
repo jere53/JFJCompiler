@@ -14,7 +14,7 @@ public class AS7 implements IAccionSemantica {
     @Override
     public Dupla<Integer, RegistroTS> ejecutar(int estadoActual, Character c) {
 
-        var lexema = AnalizadorLexico.lexema;
+        String  lexema = AnalizadorLexico.lexema;
 
         if (!TablaSimbolos.perteneceTS(lexema)) {
             TablaSimbolos.altaTS(lexema);

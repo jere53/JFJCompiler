@@ -9,6 +9,7 @@ import TP2.BYACC.ParserVal;
 
 public class Main {
     public static void main(String[] args) {
+        AnalizadorLexico.FILE_PATH = args[0];
         TablaSimbolos.CargarTablaPalabrasReservadas();
         new Parser().run();
         for (String s : AnalizadorLexico.errores){

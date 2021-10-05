@@ -21,7 +21,7 @@ public class AS4 implements IAccionSemantica {
          * esta, Devolver ID + Punt TS Si no esta Alta en TS Devolver ID + Punt TS
          */
 
-        var lexema = AnalizadorLexico.lexema;
+        String lexema = AnalizadorLexico.lexema;
 
         if (lexema.length() > 22){
             AnalizadorLexico.errores.add("line " + AnalizadorLexico.nroLinea + "warning: " +

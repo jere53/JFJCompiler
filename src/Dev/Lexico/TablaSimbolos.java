@@ -13,26 +13,21 @@ public class TablaSimbolos {
 
     public static void CargarTablaPalabrasReservadas() {
 
-        tpr.putAll(Map.of(
-                "IF", (int) Parser.IF,
-                "THEN", (int) Parser.THEN,
-                "ELSE", (int) Parser.ELSE,
-                "ENDIF", (int) Parser.ENDIF,
-                "PRINT", (int) Parser.PRINT,
-                "FUNC", (int) Parser.FUNC,
-                "RETURN", (int) Parser.RETURN,
-                "BEGIN", (int) Parser.BEGIN,
-                "END", (int) Parser.END,
-                "BREAK", (int) Parser.BREAK)
-        );
-
-        tpr.putAll(Map.of(
-                "UINT", (int) Parser.UINT,
-                "DOUBLE", (int) Parser.DOUBLE,
-                "REPEAT", (int) Parser.REPEAT,
-                "UNTIL", (int) Parser.UNTIL,
-                "POST", (int) Parser.POST)
-        );
+        tpr.put("IF", (int) Parser.IF);
+        tpr.put("THEN", (int) Parser.THEN);
+        tpr.put("ELSE", (int) Parser.ELSE);
+        tpr.put("ENDIF", (int) Parser.ENDIF);
+        tpr.put("PRINT", (int) Parser.PRINT);
+        tpr.put("UINT", (int) Parser.UINT);
+        tpr.put("DOUBLE", (int) Parser.DOUBLE);
+        tpr.put("FUNC", (int) Parser.FUNC);
+        tpr.put("REPEAT", (int) Parser.REPEAT);
+        tpr.put("RETURN", (int) Parser.RETURN);
+        tpr.put("POST", (int) Parser.POST);
+        tpr.put("UNTIL", (int) Parser.UNTIL);
+        tpr.put("BEGIN", (int) Parser.BEGIN);
+        tpr.put("END", (int) Parser.END);
+        tpr.put("BREAK", (int) Parser.BREAK);
 
     }
 

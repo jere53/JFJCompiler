@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="JFJCompiler:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/JFJCompiler_jar</output-path>
+    <root id="archive" name="JFJCompiler.jar">
+      <element id="module-output" name="JFJCompiler" />
+    </root>
+  </artifact>
+</component>
