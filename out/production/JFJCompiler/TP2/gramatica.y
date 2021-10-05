@@ -76,7 +76,7 @@ miembro_sentencia_ejec 			: invocacion ';'
                        			;
 
 invocacion						: ID '(' ')' {}
-								| ID '(' param ')' {}
+								| ID '(' ID ')' {}
 								;
 
 asignacion						: ID ASIG expresion {}

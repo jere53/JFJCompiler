@@ -64,7 +64,7 @@ public class AS5 implements IAccionSemantica {
 
                 }
 
-                if (dou < 2.2250738585072014E-308) {
+                if (dou > 0 && dou < 2.2250738585072014E-308) {
                     //numero demasiado chico (si es pos) o demasiado grande (si es neg)
                     //return new Dupla<>((int) Parser.ERR_CTE_FUERA_RANGO, null);
                     return new Dupla<>((int) Parser.ERR_CTE_FUERA_RANGO, null);

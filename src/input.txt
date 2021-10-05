@@ -15,8 +15,19 @@ UINT FUNC f(UINT x)
         POST: (y < 3), %Error en la postcondicion%;
     END;
 
-  UINT y, z, x;
+UINT y, z, x, este_identificador_tiene_mas_de_22_caracteres;
+DOUBLE j;
 BEGIN
+    IF (1 >= 1.) THEN
+        BEGIN
+            IF (f(x) > -.24E+203) THEN
+                PRINT(%Esto es una prueba%);
+            ENDIF;
+        END;
+    ELSE BEGIN
+            _mi_variable := 21;
+        END;
+    ENDIF;
     y := 3 * x;
     RETURN (y);
     POST: (y < 3), %Error en la postcondicion%;
