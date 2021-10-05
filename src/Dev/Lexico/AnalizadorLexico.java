@@ -233,6 +233,7 @@ public class AnalizadorLexico {
                 // despues de actualizar el numero de linea cambiamos el \n por un \t para que no lo vuelva a contar.
                 // el \t es equivalente al \n excepto en el caso de la Cadena de caracteres, pero como en el estado
                 // que corresponde a la Cadena se usa la AS3, que no devuelve el char a la entrada, no hay problema.
+                //
                 codigoFuente.set(indiceUltimoLeido + leidos - 1, '\t');
                 nroLinea++;
             }

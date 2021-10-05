@@ -7,40 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a08d5a9-0de6-450d-a23c-2cfd8001a572" name="Default Changelist" comment="Agrega los archivos generados por YACC">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/JFJCompiler_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/JFJCompiler_jar/JFJCompiler.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JFJCompiler.iml" beforeDir="false" afterPath="$PROJECT_DIR$/JFJCompiler.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/AccionesSemanticas/AS1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/AccionesSemanticas/AS1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/AccionesSemanticas/AS2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/AccionesSemanticas/AS2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/AccionesSemanticas/AS3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/AccionesSemanticas/AS3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/AccionesSemanticas/AS4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/AccionesSemanticas/AS4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/AccionesSemanticas/AS5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/AccionesSemanticas/AS5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/AccionesSemanticas/AS6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/AccionesSemanticas/AS6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/AccionesSemanticas/AS7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/AccionesSemanticas/AS7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/AccionesSemanticas/IAccionSemantica.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/AccionesSemanticas/IAccionSemantica.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/AnalizadorLexico.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/AnalizadorLexico.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/Dupla.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/Dupla.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/TablaSimbolos.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/TablaSimbolos.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/RegistroTS.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/RegistroTS.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/Parser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/ParserVal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/ParserVal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/gramatica.y" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/gramatica.y" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/input.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dev/Lexico/AccionesSemanticas/AS4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dev/Lexico/AccionesSemanticas/AS4.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dev/Lexico/AccionesSemanticas/AS7.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dev/Lexico/AccionesSemanticas/AS7.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dev/Lexico/AnalizadorLexico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dev/Lexico/AnalizadorLexico.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dev/Lexico/TablaSimbolos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dev/Lexico/TablaSimbolos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TP2/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/input.txt" afterDir="false" />
     </list>
     <list id="697f8440-4d12-4320-82f3-d38f4ec120a5" name="Changes by felix" comment="" />
-    <list id="f396b4cf-5785-48b4-af3a-f48f932aac4c" name="Changes by juand" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Dev/Lexico/AnalizadorLexico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dev/Lexico/AnalizadorLexico.java" afterDir="false" />
-    </list>
+    <list id="f396b4cf-5785-48b4-af3a-f48f932aac4c" name="Changes by juand" comment="" />
     <list id="361afa70-437c-4a2b-93bd-0b3bf65b1206" name="Changes by juandurefaccini" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,15 +20,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/Dev/Lexico/AnalizadorLexico.java">
-      <ranges>
-        <range start1="109" end1="110" start2="109" end2="110" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="121" end1="121" start2="121" end2="123" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="229" end1="229" start2="231" end2="236" changelist="f396b4cf-5785-48b4-af3a-f48f932aac4c" />
-      </ranges>
-    </file>
   </component>
   <component name="ProjectId" id="1yqCkmdNRxSxYh8grmSVmdacFrz" />
   <component name="ProjectViewState">
@@ -119,7 +81,7 @@
       <workItem from="1632969878370" duration="4192000" />
       <workItem from="1633026952907" duration="20346000" />
       <workItem from="1633141057112" duration="117000" />
-      <workItem from="1633379228869" duration="7109000" />
+      <workItem from="1633379228869" duration="7174000" />
     </task>
     <task id="LOCAL-00001" summary="Completa integracion del lexico y el sintactico, anota algunas correcciones que se deben realizar a la gramatica">
       <created>1632974085994</created>
@@ -149,7 +111,21 @@
       <option name="project" value="LOCAL" />
       <updated>1633379285677</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="andando">
+      <created>1633392798543</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1633392798543</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Lo de juan">
+      <created>1633392831027</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1633392831027</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -173,7 +149,9 @@
     <MESSAGE value="Agrega los archivos generados por YACC" />
     <MESSAGE value="probemos de nuevo" />
     <MESSAGE value="lo de felix" />
-    <option name="LAST_COMMIT_MESSAGE" value="lo de felix" />
+    <MESSAGE value="andando" />
+    <MESSAGE value="Lo de juan" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lo de juan" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
