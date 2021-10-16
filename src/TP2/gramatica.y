@@ -4,14 +4,13 @@
 	import Dev.Lexico.Dupla;
 	import Dev.Lexico.TablaSimbolos;
 	import Dev.RegistroTS;
+	import TP3.Polaca;
+	import TP3.Utils;
 %}
 
 %token UINT, DOUBLE, BEGIN, RETURN, END, POST, ID, FUNC, CTE_UINT, CTE_DOUBLE, CADENA, PRINT, REPEAT , UNTIL, THEN, IF , ELSE, ASIG, AND, OR, COMP_MAYOR_IGUAL, COMP_MENOR_IGUAL, COMP_IGUAL, COMP_DISTINTO, ENDIF, BREAK, ERR_CTE_FUERA_RANGO, ERR_FORMATO_CTE
 
 %start program
-
-// TODO : Revisar tema (;)
-// TODO : Se debe incorporar al Análisis Léxico el reconocimiento de la palabra reservada POST, y el símbolo ':'.}
 
 %%
 program 						: declaracion bloque_sentencias
@@ -22,8 +21,8 @@ bloque_sentencias 				: BEGIN sentencia_ejec END ';'
 				  				| miembro_sentencia_ejec
 								;
 			
-tipo_id							: UINT {}
-								| DOUBLE {}
+tipo_id							: UINT
+								| DOUBLE
 								| FUNC
 								;
 								
@@ -79,14 +78,14 @@ invocacion						: ID '(' ')' {}
 								| ID '(' ID ')' {}
 								;
 
-asignacion						: ID ASIG expresion {}
+asignacion						: ID ASIG expresion {Polaca.insert(":=");}
             					| ID ASIG error {yyerror("El lado derecho de la asignacio no es valido.");}
             					| ID {yyerror("Un identificador en solitario no es una sentencia valida.");}
             					| error ASIG expresion {yyerror("El lado izquierdo de la asignacion no es valido");}
             					;
 			
-expresion						: expresion '+' termino {}
-								| expresion '-' termino {}
+expresion						: expresion '+' termino {Polaca.insert("+");}
+								| expresion '-' termino {Polaca.insert("-");}
 	        					| termino
 								;
 
@@ -95,38 +94,43 @@ termino							: termino '*' factor {Polaca.insert("*");}
 								| factor
      							;	
 		
-factor 							: ID {}
-								| CTE_UINT {}
-								| CTE_DOUBLE {}
-								| '-' factor    {}
-								| invocacion    {}
+factor 							: ID {Polaca.insert(TablaSimbolos.punteroTS($1.sval));}
+								| CTE_UINT {Polaca.insert(TablaSimbolos.punteroTS($1.sval));}
+								| CTE_DOUBLE {Polaca.insert(TablaSimbolos.punteroTS($1.sval));}
+								| '-' factor {  //Sacamos lo ultimo que agregamos a la polaca, porque ya no es valido.
+								                //Determinamos que signo va a tener la cte.
+								                //Si es negativa, agregamos "-sval" a la TS.
+								                //Agregamos el string correcto (devuelto por utils.sig....) a la polaca.
+								                 Polaca.insert(Utils.signoNegativo($2.sval));
+								                }
+								| invocacion {Polaca.insert(TablaSimbolos.punteroTS($1.sval));}
 								;
 
-impresion						: PRINT '(' CADENA ')'
+impresion						: PRINT '(' CADENA ')' {Polaca.insert("PRINT(" + $3.sval + ")");}
         						| PRINT '(' error ')'
 								;
 
 iteracion						: REPEAT bloque_sentencias UNTIL condicion
 								;
 
-condicion						: '(' expresion comparador expresion ')' {}
+condicion						: '(' expresion comparador expresion ')' {Polaca.insert($3);}
             					| '(' expresion comparador expresion {yyerror("Falta parentesis de cierre de la condicion.");}
             					| '(' comparador expresion ')' {yyerror("Falta expresion en el lado izquierdo de la condicion.");}
             					| '(' expresion comparador ')' {yyerror("Falta expresion en el lado derecho de la condicion.");}
-            					| '(' expresion operador_logico expresion ')'
+            					| '(' expresion operador_logico expresion ')' {Polaca.insert($3);}
             					| '(' error ')' {yyerror("Error en la condicion.");}  // verificar el error
 								;
 			
-comparador 						: COMP_MAYOR_IGUAL
-								| COMP_MENOR_IGUAL
-								| '<'
-								| '>'
-								| COMP_IGUAL
-								| COMP_DISTINTO
+comparador 						: COMP_MAYOR_IGUAL {$$ = ">=";}
+								| COMP_MENOR_IGUAL {$$ = "<=";}
+								| '<' {$$ = "<";}
+								| '>' {$$ = ">";}
+								| COMP_IGUAL {$$ = "==";}
+								| COMP_DISTINTO {$$ = "<>";}
 								;
 
-operador_logico 				: AND
-                				| OR
+operador_logico 				: AND {$$ = "AND";}
+                				| OR {$$ = "OR";}
 								;
 
 seleccion						: IF condicion THEN bloque_sentencias ENDIF

@@ -7,17 +7,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a08d5a9-0de6-450d-a23c-2cfd8001a572" name="Default Changelist" comment="Agrega los archivos generados por YACC">
-      <change afterPath="$PROJECT_DIR$/src/TP3/Polaca.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TP3/Utils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TP2/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TP2/gramatica.y" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/gramatica.y" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TP3/Polaca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP3/Polaca.java" afterDir="false" />
     </list>
-    <list id="697f8440-4d12-4320-82f3-d38f4ec120a5" name="Changes by felix" comment="">
-      <change beforePath="$PROJECT_DIR$/src/TP2/BYACC/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/BYACC/Parser.java" afterDir="false" />
+    <list id="697f8440-4d12-4320-82f3-d38f4ec120a5" name="Changes by felix" comment="" />
+    <list id="f396b4cf-5785-48b4-af3a-f48f932aac4c" name="Changes by juand" comment="">
+      <change beforePath="$PROJECT_DIR$/src/TP2/gramatica.y" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/gramatica.y" afterDir="false" />
     </list>
-    <list id="f396b4cf-5785-48b4-af3a-f48f932aac4c" name="Changes by juand" comment="" />
-    <list id="361afa70-437c-4a2b-93bd-0b3bf65b1206" name="Changes by juandurefaccini" comment="">
-      <change beforePath="$PROJECT_DIR$/src/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/input.txt" afterDir="false" />
-    </list>
+    <list id="361afa70-437c-4a2b-93bd-0b3bf65b1206" name="Changes by juandurefaccini" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,7 +30,31 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/TP2/gramatica.y">
+      <ranges>
+        <range start1="6" end1="6" start2="6" end2="8" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="11" end1="14" start2="13" end2="13" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="24" end1="26" start2="23" end2="25" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="81" end1="82" start2="80" end2="81" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="87" end1="89" start2="86" end2="88" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="92" end1="94" start2="91" end2="93" changelist="f396b4cf-5785-48b4-af3a-f48f932aac4c" />
+        <range start1="97" end1="102" start2="96" end2="106" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="104" end1="105" start2="108" end2="109" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="111" end1="112" start2="115" end2="116" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="115" end1="116" start2="119" end2="120" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="119" end1="125" start2="123" end2="129" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="127" end1="129" start2="131" end2="133" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="136" end1="136" start2="140" end2="141" changelist="f396b4cf-5785-48b4-af3a-f48f932aac4c" />
+      </ranges>
+    </file>
   </component>
   <component name="ProjectId" id="1yqCkmdNRxSxYh8grmSVmdacFrz" />
   <component name="ProjectLevelVcsManager">
@@ -68,6 +91,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
@@ -88,7 +124,7 @@
       <workItem from="1633379228869" duration="11819000" />
       <workItem from="1633400182526" duration="187000" />
       <workItem from="1634390683344" duration="2102000" />
-      <workItem from="1634393271557" duration="398000" />
+      <workItem from="1634393271557" duration="8064000" />
     </task>
     <task id="LOCAL-00001" summary="Completa integracion del lexico y el sintactico, anota algunas correcciones que se deben realizar a la gramatica">
       <created>1632974085994</created>
@@ -146,7 +182,28 @@
       <option name="project" value="LOCAL" />
       <updated>1633397634131</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="comienza la polaca">
+      <created>1634393754183</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1634393754183</updated>
+    </task>
+    <task id="LOCAL-00010" summary="agrega cambios de juan y felix">
+      <created>1634393867936</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1634393867936</updated>
+    </task>
+    <task id="LOCAL-00011" summary="agrega cambios de juan y felix">
+      <created>1634393921387</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1634393921387</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,7 +232,9 @@
     <MESSAGE value="Lo de juan" />
     <MESSAGE value="Finito" />
     <MESSAGE value="Terminadirijillo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Terminadirijillo" />
+    <MESSAGE value="comienza la polaca" />
+    <MESSAGE value="agrega cambios de juan y felix" />
+    <option name="LAST_COMMIT_MESSAGE" value="agrega cambios de juan y felix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

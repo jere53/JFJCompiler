@@ -19,4 +19,9 @@ public class Polaca {
         representacionIntermedia.add(punteroATS);
     }
 
+    public static void removerUltimo(){
+        int index = representacionIntermedia.size() - 1;
+        representacionIntermedia.remove(index);
+    }
+
 }
