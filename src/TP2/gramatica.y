@@ -90,8 +90,8 @@ expresion						: expresion '+' termino {}
 	        					| termino
 								;
 
-termino							: termino '*' factor {}
-								| termino '/' factor {}
+termino							: termino '*' factor {Polaca.insert("*");}
+								| termino '/' factor {Polaca.insert("/");}
 								| factor
      							;	
 		
@@ -134,6 +134,7 @@ seleccion						: IF condicion THEN bloque_sentencias ENDIF
 								| IF condicion THEN ELSE bloque_sentencias ENDIF {yyerror("Falta el bloque de sentencias ejecutables de la rama THEN.");}
 								| IF condicion THEN ENDIF {yyerror("Falta el bloque de sentencias ejecutables de la rama THEN.");}
 								;
+
 %%
 
 private int yylex() {
