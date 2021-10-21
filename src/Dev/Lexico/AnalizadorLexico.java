@@ -123,7 +123,7 @@ public class AnalizadorLexico {
 
     public static String FILE_PATH = "";
 
-    private void loadValues() {
+    private static void loadValues() {
         File file = new File(FILE_PATH);
         try (FileReader fr = new FileReader(file)) {
             int content;
