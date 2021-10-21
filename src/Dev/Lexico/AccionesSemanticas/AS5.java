@@ -21,20 +21,23 @@ public class AS5 implements IAccionSemantica {
 
                 int uint = Integer.parseInt(lexema);
 
-                if (uint > (65536 - 1) || uint < 0) //si esta fuera de rango devolvemos token de error
+                if (uint > (65536 - 1) || uint < 0) {//si esta fuera de rango devolvemos token de error
                     //return new Dupla<>((int) Parser.ERR_CTE_FUERA_RANGO, null);
+                    AnalizadorLexico.tokensReconocidos.add("ERR_CTE_FUERA_RANGO");
                     return new Dupla<>((int) Parser.ERR_CTE_FUERA_RANGO, null);
-
+                }
 
                 //damos de alta la CTE en la TS y devolvemos el puntero y token CTE_UINT
                 if (!TablaSimbolos.perteneceTS(lexema))
                     TablaSimbolos.altaTS(lexema);
 
+                AnalizadorLexico.tokensReconocidos.add("CTE_UINT");
                 return new Dupla<>((int) Parser.CTE_UINT, TablaSimbolos.punteroTS(lexema));
 
             } catch (NumberFormatException e) {
                 //si por alguna razon no se pudo parsear el lexema, no interrumpimos la ejecucion
                 //return new Dupla<>(Parser.ERR_FORMATO_CTE, null);
+                AnalizadorLexico.tokensReconocidos.add("ERR_FORMATO_CTE");
                 return new Dupla<>((int) Parser.ERR_FORMATO_CTE, null);
 
                 //nunca deberia pasar, la maquina de estados ya deberia haber encontrado el error al hacer la
@@ -60,6 +63,7 @@ public class AS5 implements IAccionSemantica {
                     //numero demasiado grande (si es pos) o demasiado chico (si es neg)
                     //TODO: Agregar los errores al parser
                     //return new Dupla<>((int) Parser.ERR_CTE_FUERA_RANGO, null);
+                    AnalizadorLexico.tokensReconocidos.add("ERR_CTE_FUERA_RANGO");
                     return new Dupla<>((int) Parser.ERR_CTE_FUERA_RANGO, null);
 
                 }
@@ -67,6 +71,7 @@ public class AS5 implements IAccionSemantica {
                 if (dou > 0 && dou < 2.2250738585072014E-308) {
                     //numero demasiado chico (si es pos) o demasiado grande (si es neg)
                     //return new Dupla<>((int) Parser.ERR_CTE_FUERA_RANGO, null);
+                    AnalizadorLexico.tokensReconocidos.add("ERR_CTE_FUERA_RANGO");
                     return new Dupla<>((int) Parser.ERR_CTE_FUERA_RANGO, null);
                 }
 
@@ -75,10 +80,12 @@ public class AS5 implements IAccionSemantica {
                 if (!TablaSimbolos.perteneceTS(lexema))
                     TablaSimbolos.altaTS(lexema);
 
+                AnalizadorLexico.tokensReconocidos.add("CTE_DOUBLE");
                 return new Dupla<>((int) Parser.CTE_DOUBLE, TablaSimbolos.punteroTS(lexema));
 
             } catch (NumberFormatException e) {
                 //return new Dupla<>(Parser.ERR_FORMATO_CTE, null);
+                AnalizadorLexico.tokensReconocidos.add("ERR_FORMATO_CTE");
                 return new Dupla<>((int) Parser.ERR_FORMATO_CTE, null);
             }
         }

@@ -14,4 +14,11 @@ public class RegistroTS {
     public void setLexema(String lexema) {
         this.lexema = lexema;
     }
+
+    @Override
+    public String toString() {
+        return "RegistroTS{" +
+                "lexema='" + lexema + '\'' +
+                '}';
+    }
 }

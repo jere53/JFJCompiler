@@ -7,16 +7,49 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a08d5a9-0de6-450d-a23c-2cfd8001a572" name="Default Changelist" comment="Agrega los archivos generados por YACC">
-      <change afterPath="$PROJECT_DIR$/src/TP3/Utils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/salida.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TP2/BYACC/yacc.oa21080" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/inputCorrecta.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/AccionesSemanticas/AS1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/AccionesSemanticas/AS1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/AccionesSemanticas/AS4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/AccionesSemanticas/AS4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/AccionesSemanticas/AS5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/AccionesSemanticas/AS5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/AccionesSemanticas/AS6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/AccionesSemanticas/AS6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/AccionesSemanticas/AS7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/AccionesSemanticas/AS7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/AnalizadorLexico.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/AnalizadorLexico.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/TablaSimbolos.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/TablaSimbolos.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/RegistroTS.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/RegistroTS.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/Parser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/y.output" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/y.output" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/y.tab.c" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/y.tab.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/gramatica.y" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/gramatica.y" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/input.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dev/Lexico/AccionesSemanticas/AS1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dev/Lexico/AccionesSemanticas/AS1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dev/Lexico/AccionesSemanticas/AS4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dev/Lexico/AccionesSemanticas/AS4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dev/Lexico/AccionesSemanticas/AS5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dev/Lexico/AccionesSemanticas/AS5.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dev/Lexico/AccionesSemanticas/AS6.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dev/Lexico/AccionesSemanticas/AS6.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dev/Lexico/AccionesSemanticas/AS7.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dev/Lexico/AccionesSemanticas/AS7.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dev/Lexico/AnalizadorLexico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dev/Lexico/AnalizadorLexico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dev/RegistroTS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dev/RegistroTS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TP2/BYACC/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/BYACC/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TP2/BYACC/ParserVal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/BYACC/ParserVal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TP2/BYACC/y.output" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/BYACC/y.output" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TP2/BYACC/y.tab.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/BYACC/y.tab.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TP2/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TP2/gramatica.y" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/gramatica.y" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TP3/Polaca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP3/Polaca.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/input.txt" afterDir="false" />
     </list>
-    <list id="697f8440-4d12-4320-82f3-d38f4ec120a5" name="Changes by felix" comment="" />
-    <list id="f396b4cf-5785-48b4-af3a-f48f932aac4c" name="Changes by juand" comment="">
+    <list id="697f8440-4d12-4320-82f3-d38f4ec120a5" name="Changes by felix" comment="">
+      <change beforePath="$PROJECT_DIR$/src/Dev/Lexico/AnalizadorLexico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dev/Lexico/AnalizadorLexico.java" afterDir="false" />
+    </list>
+    <list id="f396b4cf-5785-48b4-af3a-f48f932aac4c" name="Changes by juand" comment="" />
+    <list id="361afa70-437c-4a2b-93bd-0b3bf65b1206" name="Changes by juandurefaccini" comment="">
+      <change beforePath="$PROJECT_DIR$/src/Dev/Lexico/AnalizadorLexico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dev/Lexico/AnalizadorLexico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dev/Lexico/TablaSimbolos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dev/Lexico/TablaSimbolos.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TP2/gramatica.y" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/gramatica.y" afterDir="false" />
     </list>
-    <list id="361afa70-437c-4a2b-93bd-0b3bf65b1206" name="Changes by juandurefaccini" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,22 +70,64 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/Dev/Lexico/AnalizadorLexico.java">
+      <ranges>
+        <range start1="5" end1="8" start2="5" end2="7" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="11" end1="12" start2="10" end2="10" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="17" end1="21" start2="15" end2="31" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="24" end1="25" start2="34" end2="35" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="105" end1="105" start2="115" end2="119" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="111" end1="112" start2="125" end2="126" changelist="697f8440-4d12-4320-82f3-d38f4ec120a5" />
+        <range start1="137" end1="138" start2="151" end2="152" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="199" end1="200" start2="213" end2="213" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="202" end1="203" start2="215" end2="216" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="219" end1="220" start2="232" end2="233" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="245" end1="246" start2="258" end2="259" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="247" end1="248" start2="260" end2="261" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="250" end1="251" start2="263" end2="264" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="252" end1="253" start2="265" end2="266" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="254" end1="255" start2="267" end2="268" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="256" end1="257" start2="269" end2="270" changelist="361afa70-437c-4a2b-93bd-0b3bf65b1206" />
+        <range start1="258" end1="259" start2="271" end2="272" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="293" end1="294" start2="306" end2="307" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+      </ranges>
+    </file>
     <file path="$PROJECT_DIR$/src/TP2/gramatica.y">
       <ranges>
-        <range start1="6" end1="6" start2="6" end2="8" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="11" end1="14" start2="13" end2="13" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="24" end1="26" start2="23" end2="25" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="81" end1="82" start2="80" end2="81" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="87" end1="89" start2="86" end2="88" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="92" end1="94" start2="91" end2="93" changelist="f396b4cf-5785-48b4-af3a-f48f932aac4c" />
-        <range start1="97" end1="102" start2="96" end2="106" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="104" end1="105" start2="108" end2="109" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="111" end1="112" start2="115" end2="116" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="115" end1="116" start2="119" end2="120" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="119" end1="125" start2="123" end2="129" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="127" end1="129" start2="131" end2="133" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="136" end1="136" start2="140" end2="141" changelist="f396b4cf-5785-48b4-af3a-f48f932aac4c" />
+        <range start1="15" end1="16" start2="15" end2="16" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="22" end1="23" start2="22" end2="23" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="27" end1="28" start2="27" end2="28" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="46" end1="47" start2="46" end2="47" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="49" end1="50" start2="49" end2="50" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="51" end1="52" start2="51" end2="52" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="58" end1="59" start2="58" end2="59" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="61" end1="62" start2="61" end2="62" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="68" end1="73" start2="68" end2="73" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="74" end1="74" start2="74" end2="80" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="78" end1="78" start2="84" end2="85" changelist="361afa70-437c-4a2b-93bd-0b3bf65b1206" />
+        <range start1="80" end1="84" start2="87" end2="91" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="85" end1="88" start2="92" end2="95" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="91" end1="93" start2="98" end2="100" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="94" end1="100" start2="101" end2="107" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="103" end1="106" start2="110" end2="115" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="108" end1="110" start2="117" end2="120" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="113" end1="113" start2="123" end2="124" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="115" end1="121" start2="126" end2="132" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="122" end1="129" start2="133" end2="140" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="131" end1="133" start2="142" end2="144" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="137" end1="139" start2="148" end2="153" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="142" end1="142" start2="156" end2="157" changelist="361afa70-437c-4a2b-93bd-0b3bf65b1206" />
+        <range start1="148" end1="149" start2="163" end2="164" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="166" end1="167" start2="181" end2="182" changelist="361afa70-437c-4a2b-93bd-0b3bf65b1206" />
       </ranges>
     </file>
   </component>
@@ -124,7 +199,9 @@
       <workItem from="1633379228869" duration="11819000" />
       <workItem from="1633400182526" duration="187000" />
       <workItem from="1634390683344" duration="2102000" />
-      <workItem from="1634393271557" duration="8064000" />
+      <workItem from="1634393271557" duration="8267000" />
+      <workItem from="1634677585338" duration="12510000" />
+      <workItem from="1634845487064" duration="9795000" />
     </task>
     <task id="LOCAL-00001" summary="Completa integracion del lexico y el sintactico, anota algunas correcciones que se deben realizar a la gramatica">
       <created>1632974085994</created>
@@ -203,7 +280,21 @@
       <option name="project" value="LOCAL" />
       <updated>1634393921387</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="agrega cambios de juan">
+      <created>1634401454532</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1634401454532</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Implementa traduccion de sentencias ejecutables a codigo intermedio">
+      <created>1634401575871</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1634401575871</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,7 +325,9 @@
     <MESSAGE value="Terminadirijillo" />
     <MESSAGE value="comienza la polaca" />
     <MESSAGE value="agrega cambios de juan y felix" />
-    <option name="LAST_COMMIT_MESSAGE" value="agrega cambios de juan y felix" />
+    <MESSAGE value="agrega cambios de juan" />
+    <MESSAGE value="Implementa traduccion de sentencias ejecutables a codigo intermedio" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementa traduccion de sentencias ejecutables a codigo intermedio" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

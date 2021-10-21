@@ -24,14 +24,15 @@ public class AS4 implements IAccionSemantica {
         String lexema = AnalizadorLexico.lexema;
 
         if (lexema.length() > 22){
-            AnalizadorLexico.errores.add("line " + AnalizadorLexico.nroLinea + "warning: " +
-                    "max identifier length is 22, will be truncated");
+            AnalizadorLexico.errores.add("Line " + AnalizadorLexico.nroLinea + ": WARNING: " +
+                    "max identifier length is 22 characters; identifier will be truncated\n");
             lexema = lexema.substring(0, 22);
         }
 
         // Revisamos si el lexema esta en la tabla de palabras reservadas, si lo esta
         // devolvemos el token que corresponde
         if (TablaSimbolos.perteneceTPR(lexema)) {
+            AnalizadorLexico.tokensReconocidos.add(lexema);
             return new Dupla<>(TablaSimbolos.tokenTPR(lexema), null);
         }
 
@@ -41,7 +42,7 @@ public class AS4 implements IAccionSemantica {
         if (!TablaSimbolos.perteneceTS(lexema)) {
             TablaSimbolos.altaTS(lexema);
         }
-
+        AnalizadorLexico.tokensReconocidos.add("ID");
         return new Dupla<>((int) Parser.ID, TablaSimbolos.punteroTS(lexema));
     }
 

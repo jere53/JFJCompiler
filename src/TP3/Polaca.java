@@ -15,7 +15,7 @@ public class Polaca {
 
     }
 
-    public static void insertar(RegistroTS punteroATS){
+    public static void insert(RegistroTS punteroATS){
         representacionIntermedia.add(punteroATS);
     }
 

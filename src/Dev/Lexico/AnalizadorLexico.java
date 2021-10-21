@@ -3,26 +3,36 @@ package Dev.Lexico;
 import Dev.RegistroTS;
 import Dev.Lexico.AccionesSemanticas.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.FileWriter;
+import java.util.*;
 import java.io.File;
 import java.io.IOException;
 import java.io.FileReader;
-import java.util.ArrayList;
 
 public class AnalizadorLexico {
 
     private static AnalizadorLexico instance;
 
-    public static AnalizadorLexico Instance() {
-        if (instance == null)
-            instance = new AnalizadorLexico();
-        return instance;
+    private static final String outputFilePath = "salida.txt";
+
+    public static FileWriter outputWriter;
+
+    public static void inic(){
+        loadValues();
+        try {
+            File file = new File(outputFilePath);
+            if (file.exists()){
+                file.delete();
+            }
+            file.createNewFile();
+            outputWriter = new FileWriter(file);
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     private AnalizadorLexico() {
-        loadValues();
+
     }
 
     private static final int estadoFinal = 16;
@@ -103,6 +113,10 @@ public class AnalizadorLexico {
 
     public static String lexema;
 
+    public static Set<String> tokensReconocidos = new HashSet<>();
+
+    public static List<String> estructurasReconocidas = new ArrayList<>();
+
     public static List<String> errores = new ArrayList<>();
 
     //region FileRead
@@ -135,7 +149,7 @@ public class AnalizadorLexico {
         lexema += c;
     }
 
-    public int traducirCaracter(Character c) {
+    public static int traducirCaracter(Character c) {
         //  L    "E" "_"  d  ";" (),* +- " " \n  tab  /   %  "." ":"  >   <   =   &   |   $
         if (Character.isAlphabetic(c))
             return 0;
@@ -197,10 +211,9 @@ public class AnalizadorLexico {
         indiceUltimoLeido = indiceSinc;
     }
 
-
     // en realidad devuelve Token+Puntero a TS
 
-    public Dupla<Integer, RegistroTS> producirToken() {
+    public static Dupla<Integer, RegistroTS> producirToken() {
 
         //producirToken se llama una vez por lexema. Si hay un error lexico, se lanza una excepcion que indica cual
         //fue el error, para mostrarlo. El A.S. luego ejecuta el producirToken de nuevo, ahora sobre la proxima letra,
@@ -217,7 +230,7 @@ public class AnalizadorLexico {
             cIndex = traducirCaracter(c); // traducir c a un indice en la matriz
             if (cIndex == -1){
                 //caracter invalido, se ignora y se pasa al siguiente
-                System.out.println("caracter invalido en la linea " + nroLinea);
+                errores.add("caracter invalido en la linea " + nroLinea + "\n");
                 leidos++;
                 continue;
             }
@@ -243,20 +256,20 @@ public class AnalizadorLexico {
                 switch(estadoAnterior){
                     //estados 0-6 no pueden transicionar al -1
                     case 7: // 7 y 8 solo van al -1 ante $
-                        errores.add("Lexic error on line " + nroLinea + ": " + "unexpected EoF");
+                        errores.add("Lexic error on line " + nroLinea + ": " + "unexpected EoF\n");
                     case 8:
-                        errores.add("Lexic error on line " + nroLinea + ": " + "unexpected EoF");
+                        errores.add("Lexic error on line " + nroLinea + ": " + "unexpected EoF\n");
                     //estados 9-11 no pueden transicionar al -1
                     case 12:
-                        errores.add("Lexic error on line " + nroLinea + ": " + "'=' expected but got " + c + " instead");
+                        errores.add("Lexic error on line " + nroLinea + ": " + "'=' expected but got " + c + " instead\n");
                     case 13:
-                        errores.add("Lexic error on line " + nroLinea + ": " + "'&' expected but got " + c + " instead");
+                        errores.add("Lexic error on line " + nroLinea + ": " + "'&' expected but got " + c + " instead\n");
                     case 14:
-                        errores.add("Lexic error on line " + nroLinea + ": " + "'|' expected but got " + c + " instead");
+                        errores.add("Lexic error on line " + nroLinea + ": " + "'|' expected but got " + c + " instead\n");
                     case 15:
                         errores.add("Lexic error on line " + nroLinea + ": " + "String cant contain new line char or EoF found");
                     default:
-                        errores.add("");
+                        errores.add("\n");
                 }
                 return null;
             }
@@ -291,7 +304,7 @@ public class AnalizadorLexico {
             }
         }
 
-        //aca llegamos al EOF
+        //aca llegamos al EOF.
         return new Dupla<>(0, null);
     }
 }

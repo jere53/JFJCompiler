@@ -1,73 +1,81 @@
-UINT FUNC f(UINT x)
-UINT y, z, x;
-BEGIN
-    y := 3 * x;
-    RETURN (y);
-    POST: (y < 3), %Error en la postcondicion%;
-END;
-
-UINT FUNC f(UINT x)
-    UINT FUNC f(UINT x)
-    UINT y, z, x;
-    BEGIN
-        y := 3 * x;
-        RETURN (y);
-        POST: (y < 3), %Error en la postcondicion%;
-    END;
-
-UINT y, z, x, este_identificador_tiene_mas_de_22_caracteres;
-DOUBLE j;
-BEGIN
-    IF (1 >= 1.) THEN
-        BEGIN
-            IF (f(x) > -.24E+203) THEN
-                PRINT(%Esto es una prueba%);
-            ENDIF;
-        END;
-    ELSE BEGIN
-            _mi_variable := 21;
-        END;
-    ENDIF;
-    y := 3 * x;
-    RETURN (y);
-    POST: (y < 3), %Error en la postcondicion%;
-END;
-
-UINT FUNC f(UINT x)
-UINT y, z, x;
-BEGIN
-    y := 3 * x;
-    RETURN (y);
-    POST: (y < 3), %Error en la postcondicion%;
-END;
-
-UINT FUNC f(UINT x)
-    UINT FUNC f(UINT x)
-    UINT y, z, x;
-    BEGIN
-        y := 3 * x;
-        RETURN (y);
-        POST: (y < 3), %Error en la postcondicion%;
-    END;
-
-  UINT y, z, x;
-BEGIN
-    y := 3 * x;
-    RETURN (y);
-    POST: (y < 3), %Error en la postcondicion%;
-END;
-
-FUNC x,y,z;
 UINT C, A, a, b;
+
+//
+deberia dar error de sintaxis
+uint c;
+//
+
+
 BEGIN
+//
+
+    uint_fuera_de_rango := 65536;
+
+
+
+    double_fuera_de_rango := -2.7976931348623157E+308;
+
+
+
+    double_fuera_de_rango := -1.2250738585072014E-308;
+
+
+
+    double_fuera_de_rango := 1.2250738585072014E-308;
+
+
+
+    double_fuera_de_rango := 2.7976931348623157E+308;
+
+    este_ID_TIENE_Mas_de_22_caracteres := 2;
+
+    _id := 29;
+    d := 1.;
+    d := .1;
+    d := 0.2E+21;
+    d := 2.E-22;
+//
+//
     REPEAT
     BEGIN
-            //
+
+                Deberia tirar caracter invalido por los corchetes
                 23=09ujh 348ytvn1984y5 9q834yr n1-928h4 1u43rh-13 ]]]
-            //
+
+
+
+        deberia funcionar bien
+
+        PRINT(%hola mundo%);
         C := A + 3.5E-20;
     END;
     UNTIL (C < 0);
-    a := b;
-    PRINT(%hola mundo%);
+//
+    IF (a < b THEN
+        BEGIN
+            A := b;
+        END;
+    ELSE
+        a := c ;
+
+    IF (A > B) THEN
+        A := B ;
+    ENDIF;
+
+
+    a := 69
+
+    REPEAT
+        A := A + B;
+
+    A := J;
+    b := a;
+    //
+    deberia decir que una cadena no puede tener salto de linea
+
+    PRINT(%hola
+    mundo%);
+    //
+
+
 END;
