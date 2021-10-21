@@ -52,4 +52,7 @@ public class TablaSimbolos {
         return ts.get(lexema);
     }
 
+    public static String mostrarTS() {
+        return "TablaSimbolos{ " + "ts: " + ts.toString() + " }";
+    }
 }

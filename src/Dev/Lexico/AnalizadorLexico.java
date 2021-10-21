@@ -267,7 +267,7 @@ public class AnalizadorLexico {
                     case 14:
                         errores.add("Lexic error on line " + nroLinea + ": " + "'|' expected but got " + c + " instead\n");
                     case 15:
-                        errores.add("Lexic error on line " + nroLinea + ": " + "String cant contain new line char or EoF found");
+                        errores.add("Lexic error on line " + nroLinea + ": " + "String cant contain new line char or EoF found\n");
                     default:
                         errores.add("\n");
                 }
