@@ -638,9 +638,13 @@ case 58:
 #line 114 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
 {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Error de formato en constante en la linea " + AnalizadorLexico.nroLinea);}
 break;
+case 60:
+#line 118 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " invalid argument for PRINT");}
+break;
 case 62:
 #line 122 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + "UNTIL expected");}
+{yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " UNTIL expected");}
 break;
 case 64:
 #line 126 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
@@ -678,7 +682,7 @@ case 83:
 #line 151 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
 {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " ENDIF expected");}
 break;
-#line 682 "y.tab.c"
+#line 686 "y.tab.c"
     }
     yyssp -= yym;
     yystate = *yyssp;

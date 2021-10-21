@@ -69,7 +69,7 @@ sentencia_ejec					: miembro_sentencia_ejec sentencia_ejec
 miembro_sentencia_ejec 			: invocacion ';' {AnalizadorLexico.estructurasReconocidas.add("Invocacion en la linea " + AnalizadorLexico.nroLinea);}
                        			| asignacion ';' {AnalizadorLexico.estructurasReconocidas.add("Asignacion en la linea " + AnalizadorLexico.nroLinea);}
                        			| iteracion ';' {AnalizadorLexico.estructurasReconocidas.add("Iteracion en la linea " + AnalizadorLexico.nroLinea);}
-                       			| seleccionseleccion ';' {AnalizadorLexico.estructurasReconocidas.add("Seleccion (IF) en la linea " + AnalizadorLexico.nroLinea);}
+                       			| seleccion ';' {AnalizadorLexico.estructurasReconocidas.add("Seleccion (IF) en la linea " + AnalizadorLexico.nroLinea);}
                        			| impresion ';' {AnalizadorLexico.estructurasReconocidas.add("Impresion en la linea " + AnalizadorLexico.nroLinea);}
 								| BREAK ';'
 								| seleccion miembro_sentencia_ejec {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " ; expected but got: miembro_sentencia_ejec instead");}
@@ -117,7 +117,6 @@ factor 							: ID //{Polaca.insert(TablaSimbolos.punteroTS($1.sval));}
 
 impresion						: PRINT '(' CADENA ')' //{Polaca.insert(new RegistroTS("PRINT(" + $3.sval + ")"));}
         						| PRINT '(' error ')' {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " invalid argument for PRINT");}
-							    | PRINT '(' {yyeror("ERROR: LINE " + AnalizadorLexico.nroLinea + " );}
 								;
 
 iteracion						: REPEAT bloque_sentencias UNTIL condicion
@@ -154,7 +153,6 @@ seleccion						: IF condicion THEN bloque_sentencias ENDIF
 								;
 
 %%
-
 
 private int yylex() {
 

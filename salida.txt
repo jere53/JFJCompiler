@@ -3,7 +3,7 @@
 -----Estructuras Sintacticas-----
 [Asignacion en la linea 56, Asignacion en la linea 59, Asignacion en la linea 62, Seleccion (IF) en la linea 63, Asignacion en la linea 69, Asignacion en la linea 71, Asignacion en la linea 72]
 -----Tabla Simbolos-----
-TablaSimbolos{ ts: {A=RegistroTS{lexema='A'}, a=RegistroTS{lexema='a'}, b=RegistroTS{lexema='b'}, B=RegistroTS{lexema='B'}, C=RegistroTS{lexema='C'}, c=RegistroTS{lexema='c'}, 69=RegistroTS{lexema='69'}, J=RegistroTS{lexema='J'}} }
+TablaSimbolos{ ts: {A=RegistroTS{lexema='A'}, a=RegistroTS{lexema='a'}, b=RegistroTS{lexema='b'}, B=RegistroTS{lexema='B'}, C=RegistroTS{lexema='C'}, c=RegistroTS{lexema='c'}, 69=RegistroTS{lexema='69'}, J=RegistroTS{lexema='J'}, ASDASD=RegistroTS{lexema='ASDASD'}} }
 -------Errores-------
 [caracter invalido en la linea 43
 , caracter invalido en la linea 43
@@ -11,7 +11,8 @@ TablaSimbolos{ ts: {A=RegistroTS{lexema='A'}, a=RegistroTS{lexema='a'}, b=Regist
 , ERROR: LINE 55 Falta parentesis de cierre de la condicion.
 , ERROR: LINE 61 ENDIF expected
 , ERROR: LINE 63 ; expected but got: miembro_sentencia_ejec instead
-, ERROR: LINE 71UNTIL expected
+, ERROR: LINE 71 UNTIL expected
 , ERROR: LINE 71 ; expected but got: miembro_sentencia_ejec instead
 , ERROR: LINE 71 ; expected but got: miembro_sentencia_ejec instead
+, syntax error on line 81
 ]

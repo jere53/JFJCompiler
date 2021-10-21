@@ -20,12 +20,12 @@ program 						: declaracion bloque_sentencias //como en Pascal "program mi_prog;
 bloque_sentencias 				: BEGIN sentencia_ejec END ';'
 				  				| miembro_sentencia_ejec
 								;
-			
+
 tipo_id							: UINT
 								| DOUBLE
 								| FUNC
 								;
-								
+
 cuerpo_func  					: BEGIN sentencia_ejec RETURN retorno END
                         		| BEGIN sentencia_ejec RETURN retorno post_condicion END
 								;
@@ -44,19 +44,19 @@ declaracion 					: tipo_id nombre_func params_func definicion_func ';' {}
 
 lista_variables					: ID {}
 								| ID ',' lista_variables {}
-								;	
+								;
 
 nombre_func						: FUNC ID {}
 								| FUNC {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Falta el identificador del procedimiento.");}
 								;
-			
+
 params_func						: '(' param ')'
 								| '(' ')'
 								;
 
 param 							: tipo_id ID
 		    					;
-		
+
 definicion_func					: declaracion cuerpo_func
 								| cuerpo_func
 								| {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Cuerpo del procedimiento vacio.");}
@@ -89,7 +89,7 @@ asignacion						: ID ASIG expresion //{Polaca.insert(new RegistroTS(":="));} usa
             					| ID {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Un identificador en solitario no es una sentencia valida.");}
             					| error ASIG expresion {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " El lado izquierdo de la asignacion no es valido");}
             					;
-			
+
 expresion						: expresion '+' termino //{Polaca.insert(new RegistroTS("+"));}
 								| expresion '-' termino //{Polaca.insert(new RegistroTS("-"));}
 	        					| termino
@@ -98,8 +98,8 @@ expresion						: expresion '+' termino //{Polaca.insert(new RegistroTS("+"));}
 termino							: termino '*' factor //{Polaca.insert(new RegistroTS("*"));}
 								| termino '/' factor //{Polaca.insert(new RegistroTS("/"));}
 								| factor
-     							;	
-		
+     							;
+
 factor 							: ID //{Polaca.insert(TablaSimbolos.punteroTS($1.sval));}
 								| CTE_UINT //{Polaca.insert(TablaSimbolos.punteroTS($1.sval));}
 								| CTE_DOUBLE //{Polaca.insert(TablaSimbolos.punteroTS($1.sval));}
@@ -115,11 +115,11 @@ factor 							: ID //{Polaca.insert(TablaSimbolos.punteroTS($1.sval));}
 								;
 
 impresion						: PRINT '(' CADENA ')' //{Polaca.insert(new RegistroTS("PRINT(" + $3.sval + ")"));}
-        						| PRINT '(' error ')'
+        						| PRINT '(' error ')' {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " invalid argument for PRINT");}
 								;
 
 iteracion						: REPEAT bloque_sentencias UNTIL condicion
-                                | REPEAT bloque_sentencias {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + "UNTIL expected");}
+                                | REPEAT bloque_sentencias {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " UNTIL expected");}
 								;
 
 condicion						: '(' expresion comparador expresion ')' //{Polaca.insert(new RegistroTS($3.sval));}
@@ -129,7 +129,7 @@ condicion						: '(' expresion comparador expresion ')' //{Polaca.insert(new Reg
             					| '(' expresion operador_logico expresion ')'// {Polaca.insert(new RegistroTS($3.sval));}
             					| '(' error ')' {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Error en la condicion.");}  // verificar el error
 								;
-			
+
 comparador 						: COMP_MAYOR_IGUAL //{$$ = new ParserVal(">=");}
 								| COMP_MENOR_IGUAL //{$$ = new ParserVal("<=");}
 								| '<' //{$$ = new ParserVal("<");}

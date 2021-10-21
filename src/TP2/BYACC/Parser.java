@@ -628,7 +628,7 @@ boolean doaction;
       {
       if (yyerrflag==0)
         {
-        yyerror("syntax error");
+        yyerror("syntax error on line " + AnalizadorLexico.nroLinea);
         yynerrs++;
         }
       if (yyerrflag < 3) //low error count?
