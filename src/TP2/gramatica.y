@@ -63,7 +63,7 @@ definicion_func					: declaracion cuerpo_func
 								;
 
 sentencia_ejec					: miembro_sentencia_ejec sentencia_ejec
-								| miembro_sentencia_ejec
+                                        | miembro_sentencia_ejec
 								;
 
 miembro_sentencia_ejec 			: invocacion ';' {AnalizadorLexico.estructurasReconocidas.add("Invocacion en la linea " + AnalizadorLexico.nroLinea);}
@@ -91,8 +91,8 @@ asignacion						: ID ASIG expresion //{Polaca.insert(new RegistroTS(":="));} usa
             					| error ASIG expresion {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " El lado izquierdo de la asignacion no es valido");}
             					;
 
-expresion						: expresion '+' termino //{Polaca.insert(new RegistroTS("+"));}
-								| expresion '-' termino //{Polaca.insert(new RegistroTS("-"));}
+expresion						: expresion '+' termino {Polaca.insert(new Integer('+'));}
+								| expresion '-' termino {Polaca.insert(new Integer('-'));}
 	        					| termino
 								;
 

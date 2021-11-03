@@ -11,8 +11,6 @@ import java.io.FileReader;
 
 public class AnalizadorLexico {
 
-    private static AnalizadorLexico instance;
-
     private static final String outputFilePath = "salida.txt";
 
     public static FileWriter outputWriter;
