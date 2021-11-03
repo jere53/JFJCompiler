@@ -82,7 +82,6 @@ miembro_sentencia_ejec 			: invocacion ';' {AnalizadorLexico.estructurasReconoci
 
 invocacion						: ID '(' ')' {}
 								| ID '(' ID ')' {}
-								| ID '(' ID {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " ; expected but got: miembro_sentencia_ejec instead");}
 								;
 
 asignacion						: ID ASIG expresion //{Polaca.insert(new RegistroTS(":="));} usamos un RegistroTS para que tenga el mismo tipo, en realidad puede ser el lexema solo.
