@@ -8,16 +8,35 @@
   <component name="ChangeListManager">
     <list default="true" id="3a08d5a9-0de6-450d-a23c-2cfd8001a572" name="Default Changelist" comment="Agrega los archivos generados por YACC">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/Parser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/JFJCompiler_jar/JFJCompiler.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/JFJCompiler_jar/JFJCompiler.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/AccionesSemanticas/AS1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/AccionesSemanticas/AS1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/AccionesSemanticas/AS4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/AccionesSemanticas/AS4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/AccionesSemanticas/AS5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/AccionesSemanticas/AS5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/AccionesSemanticas/AS7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/AccionesSemanticas/AS7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/AnalizadorLexico.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/AnalizadorLexico.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/TablaSimbolos.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/TablaSimbolos.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/Parser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/y.output" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/y.output" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/y.tab.c" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/y.tab.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/gramatica.y" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/gramatica.y" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/input.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/salida.txt" beforeDir="false" afterPath="$PROJECT_DIR$/salida.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dev/Lexico/TablaSimbolos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dev/Lexico/TablaSimbolos.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TP2/BYACC/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/BYACC/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TP2/BYACC/ParserVal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/BYACC/ParserVal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TP2/BYACC/y.output" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/BYACC/y.output" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TP2/BYACC/y.tab.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/BYACC/y.tab.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TP2/BYACC/yacc.oa21080" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TP2/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TP2/gramatica.y" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/gramatica.y" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TP3/Polaca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP3/Polaca.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/input.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inputCorrecta.txt" beforeDir="false" />
     </list>
-    <list id="697f8440-4d12-4320-82f3-d38f4ec120a5" name="Changes by felix" comment="" />
+    <list id="697f8440-4d12-4320-82f3-d38f4ec120a5" name="Changes by felix" comment="">
+      <change beforePath="$PROJECT_DIR$/src/Dev/Lexico/AnalizadorLexico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dev/Lexico/AnalizadorLexico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TP2/gramatica.y" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/gramatica.y" afterDir="false" />
+    </list>
     <list id="f396b4cf-5785-48b4-af3a-f48f932aac4c" name="Changes by juand" comment="" />
     <list id="361afa70-437c-4a2b-93bd-0b3bf65b1206" name="Changes by juandurefaccini" comment="">
       <change beforePath="$PROJECT_DIR$/src/TP2/gramatica.y" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/gramatica.y" afterDir="false" />
@@ -53,11 +72,26 @@
   <component name="LineStatusTrackerManager">
     <file path="$PROJECT_DIR$/src/TP2/gramatica.y">
       <ranges>
-        <range start1="71" end1="72" start2="71" end2="72" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="84" end1="85" start2="84" end2="84" changelist="361afa70-437c-4a2b-93bd-0b3bf65b1206" />
-        <range start1="119" end1="120" start2="118" end2="118" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="156" end1="156" start2="154" end2="155" changelist="361afa70-437c-4a2b-93bd-0b3bf65b1206" />
-        <range start1="157" end1="158" start2="156" end2="156" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="10" end1="11" start2="10" end2="11" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="15" end1="18" start2="15" end2="25" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="30" end1="30" start2="37" end2="41" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="33" end1="33" start2="44" end2="45" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="35" end1="36" start2="47" end2="48" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="38" end1="39" start2="50" end2="51" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="42" end1="42" start2="54" end2="56" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="65" end1="66" start2="79" end2="80" changelist="697f8440-4d12-4320-82f3-d38f4ec120a5" />
+        <range start1="84" end1="85" start2="98" end2="98" changelist="361afa70-437c-4a2b-93bd-0b3bf65b1206" />
+        <range start1="87" end1="88" start2="100" end2="101" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="93" end1="95" start2="106" end2="108" changelist="697f8440-4d12-4320-82f3-d38f4ec120a5" />
+        <range start1="98" end1="100" start2="111" end2="113" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="103" end1="113" start2="116" end2="126" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="117" end1="118" start2="130" end2="131" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="125" end1="126" start2="138" end2="139" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="129" end1="130" start2="142" end2="143" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="133" end1="139" start2="146" end2="152" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="141" end1="143" start2="154" end2="156" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="166" end1="167" start2="179" end2="180" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="169" end1="171" start2="182" end2="184" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
       </ranges>
     </file>
   </component>
@@ -76,6 +110,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
@@ -131,7 +166,10 @@
       <workItem from="1634390683344" duration="2102000" />
       <workItem from="1634393271557" duration="8267000" />
       <workItem from="1634677585338" duration="12510000" />
-      <workItem from="1634845487064" duration="10209000" />
+      <workItem from="1634845487064" duration="10377000" />
+      <workItem from="1635386517160" duration="698000" />
+      <workItem from="1635449036087" duration="9236000" />
+      <workItem from="1635971085172" duration="4960000" />
     </task>
     <task id="LOCAL-00001" summary="Completa integracion del lexico y el sintactico, anota algunas correcciones que se deben realizar a la gramatica">
       <created>1632974085994</created>
@@ -245,7 +283,14 @@
       <option name="project" value="LOCAL" />
       <updated>1634856216749</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Reconocimiento de errores">
+      <created>1634856736558</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1634856736558</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

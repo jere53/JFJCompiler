@@ -6,6 +6,7 @@ import Dev.Lexico.TablaSimbolos;
 import Dev.RegistroTS;
 import TP2.BYACC.Parser;
 import TP2.BYACC.ParserVal;
+import TP3.Polaca;
 
 import java.io.IOException;
 
@@ -24,7 +25,9 @@ public class Main {
             AnalizadorLexico.outputWriter.append("-----Tabla Simbolos-----" + '\n');
             AnalizadorLexico.outputWriter.append(TablaSimbolos.mostrarTS() + '\n');
             AnalizadorLexico.outputWriter.append("-------Errores-------" + '\n');
-            AnalizadorLexico.outputWriter.append(AnalizadorLexico.errores.toString());
+            AnalizadorLexico.outputWriter.append(AnalizadorLexico.errores.toString() +  '\n');
+            AnalizadorLexico.outputWriter.append("--------CodigoIntermedio--------" + '\n');
+            AnalizadorLexico.outputWriter.append(Polaca.imprimirPolaca());
             AnalizadorLexico.outputWriter.close();
         } catch (IOException e) {
             e.printStackTrace();

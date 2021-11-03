@@ -1,18 +1,21 @@
 -----Tokens Reconocidos-----
-[REPEAT, (, ENDIF, ), BEGIN, +, ,, ASIG, ELSE, THEN, END, ID, ;, <, UINT, IF, >, CTE_UINT]
+[PRINT, REPEAT, POST, BEGIN, ASIG, RETURN, ELSE, CADENA, ID, DOUBLE, IF, CTE_UINT, CTE_DOUBLE, FUNC, (, ENDIF, ), *, +, ,, UNTIL, -, COMP_MAYOR_IGUAL, :, END, THEN, ;, <, UINT, PROGRAM, >]
 -----Estructuras Sintacticas-----
-[Asignacion en la linea 56, Asignacion en la linea 59, Asignacion en la linea 62, Seleccion (IF) en la linea 63, Asignacion en la linea 69, Asignacion en la linea 71, Asignacion en la linea 72]
+[Asignacion en la linea 11, Asignacion en la linea 20, Impresion en la linea 31, Seleccion (IF) en la linea 32, Asignacion en la linea 35, Asignacion en la linea 42, Asignacion en la linea 53, Asignacion en la linea 65, Asignacion en la linea 72, Asignacion en la linea 86, Iteracion en la linea 88, Impresion en la linea 93]
 -----Tabla Simbolos-----
-TablaSimbolos{ ts: {A=RegistroTS{lexema='A'}, a=RegistroTS{lexema='a'}, b=RegistroTS{lexema='b'}, B=RegistroTS{lexema='B'}, C=RegistroTS{lexema='C'}, c=RegistroTS{lexema='c'}, 69=RegistroTS{lexema='69'}, J=RegistroTS{lexema='J'}, ASDASD=RegistroTS{lexema='ASDASD'}} }
+TablaSimbolos{ ts: {A=RegistroTS{lexema='A'}, a=RegistroTS{lexema='a'}, b=RegistroTS{lexema='b'}, hola mundo=RegistroTS{lexema='hola mundo'}, este_identificador_tie=RegistroTS{lexema='este_identificador_tie'}, C=RegistroTS{lexema='C'}, f=RegistroTS{lexema='f'}, 3.5E-20=RegistroTS{lexema='3.5E-20'}, Error en la postcondicion=RegistroTS{lexema='Error en la postcondicion'}, j=RegistroTS{lexema='j'}, programa_prueba=RegistroTS{lexema='programa_prueba'}, 0=RegistroTS{lexema='0'}, 1=RegistroTS{lexema='1'}, 3=RegistroTS{lexema='3'}, .24E+203=RegistroTS{lexema='.24E+203'}, _mi_variable=RegistroTS{lexema='_mi_variable'}, x=RegistroTS{lexema='x'}, y=RegistroTS{lexema='y'}, z=RegistroTS{lexema='z'}, Esto es una prueba=RegistroTS{lexema='Esto es una prueba'}, 1.=RegistroTS{lexema='1.'}, -.24E+203=RegistroTS{lexema='-.24E+203'}, 21=RegistroTS{lexema='21'}} }
 -------Errores-------
-[caracter invalido en la linea 43
-, caracter invalido en la linea 43
-, caracter invalido en la linea 43
-, ERROR: LINE 55 Falta parentesis de cierre de la condicion.
-, ERROR: LINE 61 ENDIF expected
-, ERROR: LINE 63 ; expected but got: miembro_sentencia_ejec instead
-, ERROR: LINE 71 UNTIL expected
-, ERROR: LINE 71 ; expected but got: miembro_sentencia_ejec instead
-, ERROR: LINE 71 ; expected but got: miembro_sentencia_ejec instead
-, syntax error on line 81
+[Line 3: WARNING: max identifier length is 22 characters; identifier will be truncated
+, Line 25: WARNING: max identifier length is 22 characters; identifier will be truncated
+, ERROR: LINE 42 ENDIF expected
+, ERROR: LINE 42 ; expected but got: miembro_sentencia_ejec instead
+, ERROR: LINE 48 return cannot be empty
+, ERROR: LINE 55 CADENA expected but got ; instead
+, ERROR: LINE 80 missing variable type
+, caracter invalido en la linea 84
+, caracter invalido en la linea 84
+, caracter invalido en la linea 84
+, ERROR: LINE 93 ; expected but got: miembro_sentencia_ejec instead
 ]
+--------CodigoIntermedio--------
+Polaca{[RegistroTS{lexema='3'}, RegistroTS{lexema='x'}, 42, RegistroTS{lexema='y'}, 275, RegistroTS{lexema='y'}, Retorno, RegistroTS{lexema='y'}, RegistroTS{lexema='3'}, 60, RegistroTS{lexema='3'}, RegistroTS{lexema='x'}, 42, RegistroTS{lexema='y'}, 275, RegistroTS{lexema='y'}, Retorno, RegistroTS{lexema='y'}, RegistroTS{lexema='3'}, 60, RegistroTS{lexema='1'}, RegistroTS{lexema='1.'}, 278, RegistroTS{lexema='f'}, RegistroTS{lexema='-.24E+203'}, 62, RegistroTS{lexema='Esto es una prueba'}, 269, RegistroTS{lexema='21'}, RegistroTS{lexema='_mi_variable'}, 275, RegistroTS{lexema='3'}, RegistroTS{lexema='x'}, 42, RegistroTS{lexema='y'}, 275, RegistroTS{lexema='y'}, RegistroTS{lexema='3'}, 60, RegistroTS{lexema='3'}, RegistroTS{lexema='x'}, 42, RegistroTS{lexema='y'}, 275, RegistroTS{lexema='y'}, Retorno, RegistroTS{lexema='y'}, RegistroTS{lexema='3'}, 60, RegistroTS{lexema='3'}, RegistroTS{lexema='x'}, 42, RegistroTS{lexema='y'}, 275, RegistroTS{lexema='y'}, Retorno, RegistroTS{lexema='y'}, RegistroTS{lexema='3'}, 60, RegistroTS{lexema='3'}, RegistroTS{lexema='x'}, 42, RegistroTS{lexema='y'}, 275, RegistroTS{lexema='y'}, Retorno, RegistroTS{lexema='y'}, RegistroTS{lexema='3'}, 60, RegistroTS{lexema='A'}, RegistroTS{lexema='3.5E-20'}, 43, RegistroTS{lexema='C'}, 275, RegistroTS{lexema='C'}, RegistroTS{lexema='0'}, 60, RegistroTS{lexema='b'}, RegistroTS{lexema='a'}, 275, RegistroTS{lexema='hola mundo'}, 269]}

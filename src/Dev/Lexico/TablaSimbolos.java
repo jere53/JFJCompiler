@@ -28,6 +28,7 @@ public class TablaSimbolos {
         tpr.put("BEGIN", (int) Parser.BEGIN);
         tpr.put("END", (int) Parser.END);
         tpr.put("BREAK", (int) Parser.BREAK);
+        tpr.put("PROGRAM", (int) Parser.PROGRAM);
 
     }
 

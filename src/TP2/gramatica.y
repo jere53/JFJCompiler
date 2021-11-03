@@ -8,14 +8,21 @@
 	import TP3.Utils;
 %}
 
-%token UINT, DOUBLE, BEGIN, RETURN, END, POST, ID, FUNC, CTE_UINT, CTE_DOUBLE, CADENA, PRINT, REPEAT , UNTIL, THEN, IF , ELSE, ASIG, AND, OR, COMP_MAYOR_IGUAL, COMP_MENOR_IGUAL, COMP_IGUAL, COMP_DISTINTO, ENDIF, BREAK, ERR_CTE_FUERA_RANGO, ERR_FORMATO_CTE
+%token PROGRAM, UINT, DOUBLE, BEGIN, RETURN, END, POST, ID, FUNC, CTE_UINT, CTE_DOUBLE, CADENA, PRINT, REPEAT , UNTIL, THEN, IF , ELSE, ASIG, AND, OR, COMP_MAYOR_IGUAL, COMP_MENOR_IGUAL, COMP_IGUAL, COMP_DISTINTO, ENDIF, BREAK, ERR_CTE_FUERA_RANGO, ERR_FORMATO_CTE
 
 %start program
 
 %%
-program 						: declaracion bloque_sentencias //como en Pascal "program mi_prog;"'
-								| bloque_sentencias
+program 						: PROGRAM ID ';' declaracion cuerpo_programa
+								| PROGRAM ID ';' cuerpo_programa
+								| PROGRAM ';' declaracion cuerpo_programa {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " program has no name");}
+								| PROGRAM ';' cuerpo_programa {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " program has no name");}
+								| declaracion cuerpo_programa {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " PROGRAM expected but got declaracion instead");}
+								| cuerpo_programa {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " PROGRAM expected but got cuerpo_programa instead");}
 								;
+
+cuerpo_programa                 : BEGIN sentencia_ejec END ';'
+                                ;
 
 bloque_sentencias 				: BEGIN sentencia_ejec END ';'
 				  				| miembro_sentencia_ejec
@@ -28,18 +35,25 @@ tipo_id							: UINT
 
 cuerpo_func  					: BEGIN sentencia_ejec RETURN retorno END
                         		| BEGIN sentencia_ejec RETURN retorno post_condicion END
+                        		| BEGIN sentencia_ejec RETURN END {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " return cannot be empty");}
+                        		| BEGIN sentencia_ejec RETURN post_condicion END {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " return cannot be empty");}
+								| BEGIN sentencia_ejec RETURN ';' END {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " return cannot be empty");}
+								| BEGIN sentencia_ejec RETURN ';' post_condicion END {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " return cannot be empty");}
 								;
 
 post_condicion          		: POST ':' condicion ',' CADENA ';'
+                                | POST ':' condicion ',' ';' {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " CADENA expected but got ; instead");}
 								;
 
-retorno             			: '(' expresion ')' ';'
+retorno             			: '(' expresion ')' ';' {Polaca.insert("Retorno");} //PLACEHOLDER
 								;
 
-declaracion 					: tipo_id nombre_func params_func definicion_func ';' {}
+declaracion 					: tipo_id nombre_func params_func definicion_func ';'
 								| tipo_id lista_variables ';'
 								| tipo_id lista_variables ';' declaracion
 								| tipo_id nombre_func params_func definicion_func ';' declaracion
+								| lista_variables ';' {yyerror("ERROR: LINE " + (AnalizadorLexico.nroLinea - 1) + " missing variable type");} //la linea es la primer sentencia ejecutable del programa principal, restamos 1 para que devuelva la linea donde empieza el programa
+								| lista_variables ';' declaracion {yyerror("ERROR: LINE " + (AnalizadorLexico.nroLinea - 1) + " missing variable type");}
 								;
 
 lista_variables					: ID {}
@@ -84,7 +98,7 @@ invocacion						: ID '(' ')' {}
 								| ID '(' ID ')' {}
 								;
 
-asignacion						: ID ASIG expresion //{Polaca.insert(new RegistroTS(":="));} usamos un RegistroTS para que tenga el mismo tipo, en realidad puede ser el lexema solo.
+asignacion						: ID ASIG expresion {Polaca.insert(TablaSimbolos.punteroTS($1.sval)); Polaca.insert(new Integer(ASIG));} //Usamos Integer para que se pueda meter en la lista.
             					| ID ASIG error {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " El lado derecho de la asignacio no es valido.");}
             					| ID {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Un identificador en solitario no es una sentencia valida.");}
             					| error ASIG expresion {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " El lado izquierdo de la asignacion no es valido");}
@@ -95,26 +109,26 @@ expresion						: expresion '+' termino {Polaca.insert(new Integer('+'));}
 	        					| termino
 								;
 
-termino							: termino '*' factor //{Polaca.insert(new RegistroTS("*"));}
-								| termino '/' factor //{Polaca.insert(new RegistroTS("/"));}
+termino							: termino '*' factor {Polaca.insert(new Integer('*'));}
+								| termino '/' factor {Polaca.insert(new Integer('/'));}
 								| factor
      							;
 
-factor 							: ID //{Polaca.insert(TablaSimbolos.punteroTS($1.sval));}
-								| CTE_UINT //{Polaca.insert(TablaSimbolos.punteroTS($1.sval));}
-								| CTE_DOUBLE //{Polaca.insert(TablaSimbolos.punteroTS($1.sval));}
-								| '-' factor //{  Sacamos lo ultimo que agregamos a la polaca, porque ya no es valido.
-								                //Determinamos que signo va a tener la cte.
-								                //Si es negativa, agregamos "-sval" a la TS.
-								                //Agregamos el string correcto (devuelto por utils.sig....) a la polaca.
-                                                //  Polaca.insert(new RegistroTS(Utils.signoNegativo($2.sval)));
-                                                // }
-								| invocacion //{Polaca.insert(TablaSimbolos.punteroTS($1.sval));}
+factor 							: ID {Polaca.insert(TablaSimbolos.punteroTS($1.sval));}
+								| CTE_UINT {Polaca.insert(TablaSimbolos.punteroTS($1.sval));}
+								| CTE_DOUBLE {Polaca.insert(TablaSimbolos.punteroTS($1.sval));}
+								| '-' factor {  /*Sacamos lo ultimo que agregamos a la polaca, porque ya no es valido.
+								                Determinamos que signo va a tener la cte.
+								                Si es negativa, agregamos "-sval" a la TS.
+								                Agregamos el string correcto (devuelto por utils.sig....) a la polaca.*/
+                                                Polaca.insert(TablaSimbolos.punteroTS(Utils.signoNegativo($2.sval)));
+                                                }
+								| invocacion {Polaca.insert(TablaSimbolos.punteroTS($1.sval));} //REVISAR. QUE SE INVOQUE LA FUNCION.
 								| ERR_CTE_FUERA_RANGO {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Constante fuera de rango en la linea " + AnalizadorLexico.nroLinea);}
 								| ERR_FORMATO_CTE {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Error de formato en constante en la linea " + AnalizadorLexico.nroLinea);}
 								;
 
-impresion						: PRINT '(' CADENA ')' //{Polaca.insert(new RegistroTS("PRINT(" + $3.sval + ")"));}
+impresion						: PRINT '(' CADENA ')' {Polaca.insert(TablaSimbolos.punteroTS($3.sval)); Polaca.insert(new Integer(PRINT));}
         						| PRINT '(' error ')' {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " invalid argument for PRINT");}
 								;
 
@@ -122,24 +136,24 @@ iteracion						: REPEAT bloque_sentencias UNTIL condicion
                                 | REPEAT bloque_sentencias {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " UNTIL expected");}
 								;
 
-condicion						: '(' expresion comparador expresion ')' //{Polaca.insert(new RegistroTS($3.sval));}
+condicion						: '(' expresion comparador expresion ')' {Polaca.insert(new Integer($3.ival));}
             					| '(' expresion comparador expresion {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Falta parentesis de cierre de la condicion.");}
             					| '(' comparador expresion ')' {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Falta expresion en el lado izquierdo de la condicion.");}
             					| '(' expresion comparador ')' {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Falta expresion en el lado derecho de la condicion.");}
-            					| '(' expresion operador_logico expresion ')'// {Polaca.insert(new RegistroTS($3.sval));}
+            					| '(' expresion operador_logico expresion ')' {Polaca.insert(new Integer($3.sval));}
             					| '(' error ')' {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Error en la condicion.");}  // verificar el error
 								;
 
-comparador 						: COMP_MAYOR_IGUAL //{$$ = new ParserVal(">=");}
-								| COMP_MENOR_IGUAL //{$$ = new ParserVal("<=");}
-								| '<' //{$$ = new ParserVal("<");}
-								| '>' //{$$ = new ParserVal(">");}
-								| COMP_IGUAL // {$$ = new ParserVal("==");}
-								| COMP_DISTINTO //{$$ = new ParserVal("<>");}
+comparador 						: COMP_MAYOR_IGUAL
+								| COMP_MENOR_IGUAL
+								| '<'
+								| '>'
+								| COMP_IGUAL
+								| COMP_DISTINTO
 								;
 
-operador_logico 				: AND //{$$ = new ParserVal("AND");}
-                				| OR //{$$ = new ParserVal("OR");}
+operador_logico 				: AND
+                				| OR
 								;
 
 seleccion						: IF condicion THEN bloque_sentencias ENDIF
@@ -163,11 +177,11 @@ private int yylex() {
       if(token.second != null)
         yylval = new ParserVal(token.second.getLexema());
       else yylval = new ParserVal();
-
+      yylval.ival = token.first; //Para conseguir el numero de token de un comparador u operador logico en la generacion de codigo
     } catch (Exception e) {
       AnalizadorLexico.indiceUltimoLeido++;
-      e.printStackTrace();
-      System.out.println("hubo un error lexico");
+
+      System.out.println("hubo un error lexico en la linea " + AnalizadorLexico.nroLinea);
     }
   } while (token == null);
 
