@@ -157,14 +157,26 @@ operador_logico 				: AND
 								;
 
 seleccion						: IF condicion THEN bloque_sentencias ENDIF
-								| IF condicion THEN bloque_sentencias ELSE bloque_sentencias ENDIF
-								| IF condicion THEN ELSE bloque_sentencias ENDIF {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Falta el bloque de sentencias ejecutables de la rama THEN.");}
-								| IF condicion THEN ELSE bloque_sentencias {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " ENDIF expected");}
-								| IF condicion THEN ENDIF {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Falta el bloque de sentencias ejecutables de la rama THEN.");}
-								| IF condicion THEN bloque_sentencias ELSE bloque_sentencias {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " ENDIF expected");}
-								| IF condicion THEN bloque_sentencias {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " ENDIF expected");}
-								;
+				| IF condicion THEN bloque_sentencias ELSE bloque_sentencias ENDIF
+				| IF condicion THEN ELSE bloque_sentencias ENDIF {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Falta el bloque de sentencias ejecutables de la rama THEN.");}
+				| IF condicion THEN ELSE bloque_sentencias {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " ENDIF expected");}
+				| IF condicion THEN ENDIF {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Falta el bloque de sentencias ejecutables de la rama THEN.");}
+				| IF condicion THEN bloque_sentencias ELSE bloque_sentencias {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " ENDIF expected");}
+				| IF condicion THEN bloque_sentencias {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " ENDIF expected");}
+				;
+*/
 
+encabezado_if                   : IF condicion {Polaca.insert_sentencia_control_cond();}
+                                | IF {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Error en el encabezado de la condicion, falta la condicion del IF");}
+
+rama_then                       : THEN bloque_sentencias {Polaca.insert_sentencia_control_then();}
+                                | THEN {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Error en cuerpo de sentencia THEN, falta el bloque de sentencias");}
+
+rama_then_sin_else              : THEN bloque_sentencias {Polaca.insert_sentencia_control_then_sin_else();}
+                                | THEN {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Error en cuerpo de sentencia THEN, falta el bloque de sentencias");}
+
+rama_else                       : ELSE bloque_sentencias {Polaca.insert_sentencia_control_else();}
+                                | ELSE {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Error en cuerpo de sentencia ELSE, falta el bloque de sentencias");}
 %%
 
 private int yylex() {
