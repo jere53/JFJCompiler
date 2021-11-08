@@ -5,27 +5,19 @@
       <artifact name="JFJCompiler:jar" />
     </artifacts-to-build>
   </component>
-  <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="3a08d5a9-0de6-450d-a23c-2cfd8001a572" name="Default Changelist" comment="Agrega los archivos generados por YACC">
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TP2/BYACC/yacc.oa04132" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/Parser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/gramatica.y" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/gramatica.y" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP3/Polaca.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP3/Polaca.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/salida.txt" beforeDir="false" afterPath="$PROJECT_DIR$/salida.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TP2/BYACC/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/BYACC/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TP2/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TP2/BYACC/y.output" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/BYACC/y.output" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TP2/BYACC/y.tab.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/BYACC/y.tab.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TP2/gramatica.y" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/gramatica.y" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TP3/Polaca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP3/Polaca.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/input.txt" afterDir="false" />
     </list>
-    <list id="22aeadc1-47e0-45e5-ad78-66c56d01bb61" name="Changes by felix" comment="">
-      <change beforePath="$PROJECT_DIR$/src/TP2/gramatica.y" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/gramatica.y" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TP3/Polaca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP3/Polaca.java" afterDir="false" />
-    </list>
+    <list id="697f8440-4d12-4320-82f3-d38f4ec120a5" name="Changes by felix" comment="" />
     <list id="f396b4cf-5785-48b4-af3a-f48f932aac4c" name="Changes by juand" comment="" />
     <list id="361afa70-437c-4a2b-93bd-0b3bf65b1206" name="Changes by juandurefaccini" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -56,26 +48,6 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/TP2/gramatica.y">
-      <ranges>
-        <range start1="158" end1="158" start2="158" end2="162" changelist="22aeadc1-47e0-45e5-ad78-66c56d01bb61" />
-        <range start1="159" end1="166" start2="163" end2="174" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="167" end1="167" start2="175" end2="183" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/TP3/Polaca.java">
-      <ranges>
-        <range start1="5" end1="5" start2="5" end2="6" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="12" end1="12" start2="13" end2="14" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="19" end1="19" start2="21" end2="47" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="20" end1="20" start2="48" end2="53" changelist="22aeadc1-47e0-45e5-ad78-66c56d01bb61" />
-      </ranges>
-    </file>
-  </component>
-  <component name="ProblemsViewState">
-    <option name="showPreview" value="true" />
-  </component>
   <component name="ProjectId" id="1yqCkmdNRxSxYh8grmSVmdacFrz" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -99,22 +71,7 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="corretto-1.8" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="TP2.Main" />
       <module name="JFJCompiler" />
       <extension name="coverage">
@@ -123,6 +80,17 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -152,7 +120,8 @@
       <workItem from="1634845487064" duration="10377000" />
       <workItem from="1635386517160" duration="698000" />
       <workItem from="1635449036087" duration="9236000" />
-      <workItem from="1635971085172" duration="4960000" />
+      <workItem from="1635971085172" duration="5948000" />
+      <workItem from="1636333772998" duration="3691000" />
     </task>
     <task id="LOCAL-00001" summary="Completa integracion del lexico y el sintactico, anota algunas correcciones que se deben realizar a la gramatica">
       <created>1632974085994</created>
@@ -273,7 +242,35 @@
       <option name="project" value="LOCAL" />
       <updated>1634856736558</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="con polaca">
+      <created>1635976688543</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1635976688543</updated>
+    </task>
+    <task id="LOCAL-00019" summary="con polaca">
+      <created>1635976697346</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1635976697346</updated>
+    </task>
+    <task id="LOCAL-00020" summary="con polaca">
+      <created>1635976709771</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1635976709771</updated>
+    </task>
+    <task id="LOCAL-00021" summary="con polaca">
+      <created>1635976721463</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1635976721463</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -307,7 +304,8 @@
     <MESSAGE value="agrega cambios de juan" />
     <MESSAGE value="Implementa traduccion de sentencias ejecutables a codigo intermedio" />
     <MESSAGE value="Reconocimiento de errores" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reconocimiento de errores" />
+    <MESSAGE value="con polaca" />
+    <option name="LAST_COMMIT_MESSAGE" value="con polaca" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -316,6 +314,14 @@
           <properties class="java.lang.ArrayIndexOutOfBoundsException" package="java.lang" />
           <option name="timeStamp" value="13" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/TP3/Polaca.java</url>
+          <line>47</line>
+          <properties class="TP3.Polaca" method="insert_sentencia_control_else">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
@@ -328,10 +334,5 @@
         <watch expression="yylval" language="JAVA" />
       </configuration>
     </watches-manager>
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/JFJCompiler$Main.ic" NAME="Main Coverage Results" MODIFIED="1636236533273" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>TP2.*</FILTER>
-    </SUITE>
   </component>
 </project>
