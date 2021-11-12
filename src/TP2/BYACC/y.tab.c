@@ -592,6 +592,10 @@ case 18:
 #line 41 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
 {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " return cannot be empty");}
 break;
+case 19:
+#line 44 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{TablaSimbolos.punteroTS(yyvsp[-1].sval).setTipo("cadena_caracteres"); TablaSimbolos.punteroTS(yyvsp[-1].sval).setUso("msj_postcondicion");}
+break;
 case 20:
 #line 45 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
 {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " CADENA expected but got ; instead");}
@@ -599,6 +603,22 @@ break;
 case 21:
 #line 48 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
 {Polaca.insert("Retorno");}
+break;
+case 22:
+#line 51 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{Utils.setTipoIDFuncionCacheado(Integer.toString(yyvsp[-4].ival));}
+break;
+case 23:
+#line 52 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{Utils.asignarTipoListaDeVariables(Integer.toString(yyvsp[-2].ival));}
+break;
+case 24:
+#line 53 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{Utils.asignarTipoListaDeVariables(Integer.toString(yyvsp[-3].ival));}
+break;
+case 25:
+#line 54 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{Utils.setTipoIDFuncionCacheado(Integer.toString(yyvsp[-5].ival));}
 break;
 case 26:
 #line 55 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
@@ -610,19 +630,23 @@ case 27:
 break;
 case 28:
 #line 59 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{}
+{Utils.agregarAListaDeVariables(yyvsp[0].sval); TablaSimbolos.punteroTS(yyvsp[0].sval).setUso("variable");}
 break;
 case 29:
 #line 60 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{}
+{Utils.agregarAListaDeVariables(yyvsp[-2].sval); TablaSimbolos.punteroTS(yyvsp[-2].sval).setUso("variable");}
 break;
 case 30:
 #line 63 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{}
+{TablaSimbolos.punteroTS(yyvsp[0].sval).setUso("nombre_funcion"); Utils.cachearIDFuncion(yyvsp[0].sval);}
 break;
 case 31:
 #line 64 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
 {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Falta el identificador del procedimiento.");}
+break;
+case 34:
+#line 71 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{TablaSimbolos.punteroTS(yyvsp[0].sval).setTipo(Integer.toString(yyvsp[-1].ival)); TablaSimbolos.punteroTS(yyvsp[0].sval).setUso("parametro");}
 break;
 case 37:
 #line 76 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
@@ -718,11 +742,11 @@ case 64:
 break;
 case 65:
 #line 118 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{Polaca.insert(TablaSimbolos.punteroTS(yyvsp[0].sval));}
+{Polaca.insert(TablaSimbolos.punteroTS(yyvsp[0].sval)); TablaSimbolos.punteroTS(yyvsp[0].sval).setTipo(Integer.toString(Parser.CTE_UINT)); TablaSimbolos.punteroTS(yyvsp[0].sval).setUso("cte");}
 break;
 case 66:
 #line 119 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{Polaca.insert(TablaSimbolos.punteroTS(yyvsp[0].sval));}
+{Polaca.insert(TablaSimbolos.punteroTS(yyvsp[0].sval)); TablaSimbolos.punteroTS(yyvsp[0].sval).setTipo(Integer.toString(Parser.CTE_DOUBLE)); TablaSimbolos.punteroTS(yyvsp[0].sval).setUso("cte");}
 break;
 case 67:
 #line 120 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
@@ -817,7 +841,7 @@ case 97:
 #line 189 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
 {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Error en cuerpo de sentencia ELSE, falta el bloque de sentencias");}
 break;
-#line 821 "y.tab.c"
+#line 845 "y.tab.c"
     }
     yyssp -= yym;
     yystate = *yyssp;

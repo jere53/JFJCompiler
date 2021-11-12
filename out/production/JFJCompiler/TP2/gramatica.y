@@ -41,26 +41,26 @@ cuerpo_func  					: BEGIN sentencia_ejec RETURN retorno END
 								| BEGIN sentencia_ejec RETURN ';' post_condicion END {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " return cannot be empty");}
 								;
 
-post_condicion          		: POST ':' condicion ',' CADENA ';'
+post_condicion          		: POST ':' condicion ',' CADENA ';' {TablaSimbolos.punteroTS($5.sval).setTipo("cadena_caracteres"); TablaSimbolos.punteroTS($5.sval).setUso("msj_postcondicion");}
                                 | POST ':' condicion ',' ';' {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " CADENA expected but got ; instead");}
 								;
 
 retorno             			: '(' expresion ')' ';' {Polaca.insert("Retorno");} //PLACEHOLDER
 								;
 
-declaracion 					: tipo_id nombre_func params_func definicion_func ';'
-								| tipo_id lista_variables ';'
-								| tipo_id lista_variables ';' declaracion
-								| tipo_id nombre_func params_func definicion_func ';' declaracion
+declaracion 					: tipo_id nombre_func params_func definicion_func ';' {Utils.setTipoIDFuncionCacheado(Integer.toString($1.ival));}
+								| tipo_id lista_variables ';' {Utils.asignarTipoListaDeVariables(Integer.toString($1.ival));} // Asigna el tipo a cada variable de la lista
+								| tipo_id lista_variables ';' declaracion {Utils.asignarTipoListaDeVariables(Integer.toString($1.ival));}
+								| tipo_id nombre_func params_func definicion_func ';' declaracion {Utils.setTipoIDFuncionCacheado(Integer.toString($1.ival));}
 								| lista_variables ';' {yyerror("ERROR: LINE " + (AnalizadorLexico.nroLinea - 1) + " missing variable type");} //la linea es la primer sentencia ejecutable del programa principal, restamos 1 para que devuelva la linea donde empieza el programa
 								| lista_variables ';' declaracion {yyerror("ERROR: LINE " + (AnalizadorLexico.nroLinea - 1) + " missing variable type");}
 								;
 
-lista_variables					: ID {}
-								| ID ',' lista_variables {}
+lista_variables					: ID {Utils.agregarAListaDeVariables($1.sval); TablaSimbolos.punteroTS($1.sval).setUso("variable");}
+								| ID ',' lista_variables {Utils.agregarAListaDeVariables($1.sval); TablaSimbolos.punteroTS($1.sval).setUso("variable");}
 								;
 
-nombre_func						: FUNC ID {}
+nombre_func						: FUNC ID {TablaSimbolos.punteroTS($2.sval).setUso("nombre_funcion"); Utils.cachearIDFuncion($2.sval);}
 								| FUNC {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Falta el identificador del procedimiento.");}
 								;
 
@@ -68,7 +68,7 @@ params_func						: '(' param ')'
 								| '(' ')'
 								;
 
-param 							: tipo_id ID
+param 							: tipo_id ID {TablaSimbolos.punteroTS($2.sval).setTipo(Integer.toString($1.ival)); TablaSimbolos.punteroTS($2.sval).setUso("parametro");}
 		    					;
 
 definicion_func					: declaracion cuerpo_func
@@ -115,8 +115,8 @@ termino							: termino '*' factor {Polaca.insert(new Integer('*'));}
      							;
 
 factor 							: ID {Polaca.insert(TablaSimbolos.punteroTS($1.sval));}
-								| CTE_UINT {Polaca.insert(TablaSimbolos.punteroTS($1.sval));}
-								| CTE_DOUBLE {Polaca.insert(TablaSimbolos.punteroTS($1.sval));}
+								| CTE_UINT {Polaca.insert(TablaSimbolos.punteroTS($1.sval)); TablaSimbolos.punteroTS($1.sval).setTipo(Integer.toString(Parser.CTE_UINT)); TablaSimbolos.punteroTS($1.sval).setUso("cte");}
+								| CTE_DOUBLE {Polaca.insert(TablaSimbolos.punteroTS($1.sval)); TablaSimbolos.punteroTS($1.sval).setTipo(Integer.toString(Parser.CTE_DOUBLE)); TablaSimbolos.punteroTS($1.sval).setUso("cte");}
 								| '-' factor {  /*Sacamos lo ultimo que agregamos a la polaca, porque ya no es valido.
 								                Determinamos que signo va a tener la cte.
 								                Si es negativa, agregamos "-sval" a la TS.
