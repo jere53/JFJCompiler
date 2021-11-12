@@ -15,6 +15,7 @@ public class RegistroTS {
         this.lexema = lexema;
     }
 
+
     @Override
     public String toString() {
         return "RegistroTS{" +
