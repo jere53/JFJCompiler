@@ -6,16 +6,14 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3a08d5a9-0de6-450d-a23c-2cfd8001a572" name="Default Changelist" comment="Agrega los archivos generados por YACC">
-      <change afterPath="$PROJECT_DIR$/src/TP2/BYACC/yacc.oa04132" afterDir="false" />
+    <list default="true" id="3a08d5a9-0de6-450d-a23c-2cfd8001a572" name="Default Changelist" comment="Arregla un par de errores de la seleccion, estan comentados en el codigo.&#10;Implementa el control para la iteracion.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/salida.txt" beforeDir="false" afterPath="$PROJECT_DIR$/salida.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TP2/BYACC/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/BYACC/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TP2/BYACC/y.output" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/BYACC/y.output" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TP2/BYACC/y.tab.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/BYACC/y.tab.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TP2/gramatica.y" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/gramatica.y" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TP3/Polaca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP3/Polaca.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/input.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/Parser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/y.output" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/y.output" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/y.tab.c" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/y.tab.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/gramatica.y" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/gramatica.y" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP3/Polaca.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP3/Polaca.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/input.txt" afterDir="false" />
     </list>
     <list id="697f8440-4d12-4320-82f3-d38f4ec120a5" name="Changes by felix" comment="" />
     <list id="f396b4cf-5785-48b4-af3a-f48f932aac4c" name="Changes by juand" comment="" />
@@ -84,17 +82,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
@@ -121,7 +108,8 @@
       <workItem from="1635386517160" duration="698000" />
       <workItem from="1635449036087" duration="9236000" />
       <workItem from="1635971085172" duration="5948000" />
-      <workItem from="1636333772998" duration="3691000" />
+      <workItem from="1636333772998" duration="3762000" />
+      <workItem from="1636337750990" duration="13000" />
     </task>
     <task id="LOCAL-00001" summary="Completa integracion del lexico y el sintactico, anota algunas correcciones que se deben realizar a la gramatica">
       <created>1632974085994</created>
@@ -270,7 +258,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635976721463</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Arregla un par de errores de la seleccion, estan comentados en el codigo.&#10;Implementa el control para la iteracion.">
+      <created>1636337559987</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1636337559987</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -305,7 +300,8 @@
     <MESSAGE value="Implementa traduccion de sentencias ejecutables a codigo intermedio" />
     <MESSAGE value="Reconocimiento de errores" />
     <MESSAGE value="con polaca" />
-    <option name="LAST_COMMIT_MESSAGE" value="con polaca" />
+    <MESSAGE value="Arregla un par de errores de la seleccion, estan comentados en el codigo.&#10;Implementa el control para la iteracion." />
+    <option name="LAST_COMMIT_MESSAGE" value="Arregla un par de errores de la seleccion, estan comentados en el codigo.&#10;Implementa el control para la iteracion." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

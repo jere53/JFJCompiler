@@ -93,33 +93,39 @@
   71  impresion : PRINT '(' CADENA ')'
   72            | PRINT '(' error ')'
 
-  73  iteracion : REPEAT bloque_sentencias UNTIL condicion
-  74            | REPEAT bloque_sentencias
+  73  iteracion : encabezado_iteracion bloque_sentencias UNTIL condicion
+  74            | encabezado_iteracion bloque_sentencias
 
-  75  condicion : '(' expresion comparador expresion ')'
-  76            | '(' expresion comparador expresion
-  77            | '(' comparador expresion ')'
-  78            | '(' expresion comparador ')'
-  79            | '(' expresion operador_logico expresion ')'
-  80            | '(' error ')'
+  75  encabezado_iteracion : REPEAT
 
-  81  comparador : COMP_MAYOR_IGUAL
-  82             | COMP_MENOR_IGUAL
-  83             | '<'
-  84             | '>'
-  85             | COMP_IGUAL
-  86             | COMP_DISTINTO
+  76  condicion : '(' expresion comparador expresion ')'
+  77            | '(' expresion comparador expresion
+  78            | '(' comparador expresion ')'
+  79            | '(' expresion comparador ')'
+  80            | '(' expresion operador_logico expresion ')'
+  81            | '(' error ')'
 
-  87  operador_logico : AND
-  88                  | OR
+  82  comparador : COMP_MAYOR_IGUAL
+  83             | COMP_MENOR_IGUAL
+  84             | '<'
+  85             | '>'
+  86             | COMP_IGUAL
+  87             | COMP_DISTINTO
 
-  89  seleccion : IF condicion THEN bloque_sentencias ENDIF
-  90            | IF condicion THEN bloque_sentencias ELSE bloque_sentencias ENDIF
-  91            | IF condicion THEN ELSE bloque_sentencias ENDIF
-  92            | IF condicion THEN ELSE bloque_sentencias
-  93            | IF condicion THEN ENDIF
-  94            | IF condicion THEN bloque_sentencias ELSE bloque_sentencias
-  95            | IF condicion THEN bloque_sentencias
+  88  operador_logico : AND
+  89                  | OR
+
+  90  seleccion : encabezado_if rama_then ENDIF
+  91            | encabezado_if rama_then rama_else ENDIF
+
+  92  encabezado_if : IF condicion
+  93                | IF
+
+  94  rama_then : THEN bloque_sentencias
+  95            | THEN
+
+  96  rama_else : ELSE bloque_sentencias
+  97            | ELSE
 
 state 0
 	$accept : . program $end  (0)
@@ -180,13 +186,15 @@ state 4
 	iteracion  goto 24
 	seleccion  goto 25
 	impresion  goto 26
+	encabezado_iteracion  goto 27
+	encabezado_if  goto 28
 
 
 state 5
 	lista_variables : ID .  (28)
 	lista_variables : ID . ',' lista_variables  (29)
 
-	','  shift 27
+	','  shift 29
 	';'  reduce 28
 
 
@@ -208,7 +216,7 @@ state 8
 	BEGIN  shift 4
 	.  error
 
-	cuerpo_programa  goto 28
+	cuerpo_programa  goto 30
 
 
 state 9
@@ -224,18 +232,18 @@ state 10
 	declaracion : tipo_id . nombre_func params_func definicion_func ';' declaracion  (25)
 
 	ID  shift 5
-	FUNC  shift 29
+	FUNC  shift 31
 	.  error
 
-	nombre_func  goto 30
-	lista_variables  goto 31
+	nombre_func  goto 32
+	lista_variables  goto 33
 
 
 state 11
 	declaracion : lista_variables . ';'  (26)
 	declaracion : lista_variables . ';' declaracion  (27)
 
-	';'  shift 32
+	';'  shift 34
 	.  error
 
 
@@ -243,7 +251,7 @@ state 12
 	program : PROGRAM ID . ';' declaracion cuerpo_programa  (1)
 	program : PROGRAM ID . ';' cuerpo_programa  (2)
 
-	';'  shift 33
+	';'  shift 35
 	.  error
 
 
@@ -258,8 +266,8 @@ state 13
 	FUNC  shift 6
 	.  error
 
-	declaracion  goto 34
-	cuerpo_programa  goto 35
+	declaracion  goto 36
+	cuerpo_programa  goto 37
 	tipo_id  goto 10
 	lista_variables  goto 11
 
@@ -267,7 +275,7 @@ state 13
 state 14
 	asignacion : error . ASIG expresion  (57)
 
-	ASIG  shift 36
+	ASIG  shift 38
 	.  error
 
 
@@ -278,8 +286,8 @@ state 15
 	asignacion : ID . ASIG error  (55)
 	asignacion : ID .  (56)
 
-	ASIG  shift 37
-	'('  shift 38
+	ASIG  shift 39
+	'('  shift 40
 	error  reduce 56
 	ID  reduce 56
 	PRINT  reduce 56
@@ -293,45 +301,24 @@ state 16
 	impresion : PRINT . '(' CADENA ')'  (71)
 	impresion : PRINT . '(' error ')'  (72)
 
-	'('  shift 39
+	'('  shift 41
 	.  error
 
 
 state 17
-	iteracion : REPEAT . bloque_sentencias UNTIL condicion  (73)
-	iteracion : REPEAT . bloque_sentencias  (74)
+	encabezado_iteracion : REPEAT .  (75)
 
-	error  shift 14
-	BEGIN  shift 40
-	ID  shift 15
-	PRINT  shift 16
-	REPEAT  shift 17
-	IF  shift 18
-	BREAK  shift 19
-	.  error
-
-	bloque_sentencias  goto 41
-	miembro_sentencia_ejec  goto 42
-	invocacion  goto 22
-	asignacion  goto 23
-	iteracion  goto 24
-	seleccion  goto 25
-	impresion  goto 26
+	.  reduce 75
 
 
 state 18
-	seleccion : IF . condicion THEN bloque_sentencias ENDIF  (89)
-	seleccion : IF . condicion THEN bloque_sentencias ELSE bloque_sentencias ENDIF  (90)
-	seleccion : IF . condicion THEN ELSE bloque_sentencias ENDIF  (91)
-	seleccion : IF . condicion THEN ELSE bloque_sentencias  (92)
-	seleccion : IF . condicion THEN ENDIF  (93)
-	seleccion : IF . condicion THEN bloque_sentencias ELSE bloque_sentencias  (94)
-	seleccion : IF . condicion THEN bloque_sentencias  (95)
+	encabezado_if : IF . condicion  (92)
+	encabezado_if : IF .  (93)
 
-	'('  shift 43
-	.  error
+	'('  shift 42
+	THEN  reduce 93
 
-	condicion  goto 44
+	condicion  goto 43
 
 
 state 19
@@ -344,21 +331,23 @@ state 19
 	REPEAT  shift 17
 	IF  shift 18
 	BREAK  shift 19
-	';'  shift 45
+	';'  shift 44
 	.  error
 
-	miembro_sentencia_ejec  goto 46
+	miembro_sentencia_ejec  goto 45
 	invocacion  goto 22
 	asignacion  goto 23
 	iteracion  goto 24
 	seleccion  goto 25
 	impresion  goto 26
+	encabezado_iteracion  goto 27
+	encabezado_if  goto 28
 
 
 state 20
 	cuerpo_programa : BEGIN sentencia_ejec . END ';'  (7)
 
-	END  shift 47
+	END  shift 46
 	.  error
 
 
@@ -375,13 +364,15 @@ state 21
 	RETURN  reduce 39
 	END  reduce 39
 
-	sentencia_ejec  goto 48
+	sentencia_ejec  goto 47
 	miembro_sentencia_ejec  goto 21
 	invocacion  goto 22
 	asignacion  goto 23
 	iteracion  goto 24
 	seleccion  goto 25
 	impresion  goto 26
+	encabezado_iteracion  goto 27
+	encabezado_if  goto 28
 
 
 state 22
@@ -394,15 +385,17 @@ state 22
 	REPEAT  shift 17
 	IF  shift 18
 	BREAK  shift 19
-	';'  shift 49
+	';'  shift 48
 	.  error
 
-	miembro_sentencia_ejec  goto 50
+	miembro_sentencia_ejec  goto 49
 	invocacion  goto 22
 	asignacion  goto 23
 	iteracion  goto 24
 	seleccion  goto 25
 	impresion  goto 26
+	encabezado_iteracion  goto 27
+	encabezado_if  goto 28
 
 
 state 23
@@ -415,15 +408,17 @@ state 23
 	REPEAT  shift 17
 	IF  shift 18
 	BREAK  shift 19
-	';'  shift 51
+	';'  shift 50
 	.  error
 
-	miembro_sentencia_ejec  goto 52
+	miembro_sentencia_ejec  goto 51
 	invocacion  goto 22
 	asignacion  goto 23
 	iteracion  goto 24
 	seleccion  goto 25
 	impresion  goto 26
+	encabezado_iteracion  goto 27
+	encabezado_if  goto 28
 
 
 state 24
@@ -436,15 +431,17 @@ state 24
 	REPEAT  shift 17
 	IF  shift 18
 	BREAK  shift 19
-	';'  shift 53
+	';'  shift 52
 	.  error
 
-	miembro_sentencia_ejec  goto 54
+	miembro_sentencia_ejec  goto 53
 	invocacion  goto 22
 	asignacion  goto 23
 	iteracion  goto 24
 	seleccion  goto 25
 	impresion  goto 26
+	encabezado_iteracion  goto 27
+	encabezado_if  goto 28
 
 
 state 25
@@ -457,15 +454,17 @@ state 25
 	REPEAT  shift 17
 	IF  shift 18
 	BREAK  shift 19
-	';'  shift 55
+	';'  shift 54
 	.  error
 
-	miembro_sentencia_ejec  goto 56
+	miembro_sentencia_ejec  goto 55
 	invocacion  goto 22
 	asignacion  goto 23
 	iteracion  goto 24
 	seleccion  goto 25
 	impresion  goto 26
+	encabezado_iteracion  goto 27
+	encabezado_if  goto 28
 
 
 state 26
@@ -478,59 +477,95 @@ state 26
 	REPEAT  shift 17
 	IF  shift 18
 	BREAK  shift 19
-	';'  shift 57
+	';'  shift 56
 	.  error
 
-	miembro_sentencia_ejec  goto 58
+	miembro_sentencia_ejec  goto 57
 	invocacion  goto 22
 	asignacion  goto 23
 	iteracion  goto 24
 	seleccion  goto 25
 	impresion  goto 26
+	encabezado_iteracion  goto 27
+	encabezado_if  goto 28
 
 
 state 27
+	iteracion : encabezado_iteracion . bloque_sentencias UNTIL condicion  (73)
+	iteracion : encabezado_iteracion . bloque_sentencias  (74)
+
+	error  shift 14
+	BEGIN  shift 58
+	ID  shift 15
+	PRINT  shift 16
+	REPEAT  shift 17
+	IF  shift 18
+	BREAK  shift 19
+	.  error
+
+	bloque_sentencias  goto 59
+	miembro_sentencia_ejec  goto 60
+	invocacion  goto 22
+	asignacion  goto 23
+	iteracion  goto 24
+	seleccion  goto 25
+	impresion  goto 26
+	encabezado_iteracion  goto 27
+	encabezado_if  goto 28
+
+
+state 28
+	seleccion : encabezado_if . rama_then ENDIF  (90)
+	seleccion : encabezado_if . rama_then rama_else ENDIF  (91)
+
+	THEN  shift 61
+	.  error
+
+	rama_then  goto 62
+
+
+state 29
 	lista_variables : ID ',' . lista_variables  (29)
 
 	ID  shift 5
 	.  error
 
-	lista_variables  goto 59
+	lista_variables  goto 63
 
 
-state 28
+state 30
 	program : declaracion cuerpo_programa .  (5)
 
 	.  reduce 5
 
 
-state 29
+state 31
 	nombre_func : FUNC . ID  (30)
 	nombre_func : FUNC .  (31)
 
-	ID  shift 60
+	ID  shift 64
 	'('  reduce 31
 
 
-state 30
+state 32
 	declaracion : tipo_id nombre_func . params_func definicion_func ';'  (22)
 	declaracion : tipo_id nombre_func . params_func definicion_func ';' declaracion  (25)
 
-	'('  shift 61
+	'('  shift 65
 	.  error
 
-	params_func  goto 62
+	params_func  goto 66
 
 
-state 31
+state 33
 	declaracion : tipo_id lista_variables . ';'  (23)
 	declaracion : tipo_id lista_variables . ';' declaracion  (24)
 
-	';'  shift 63
+	';'  shift 67
 	.  error
 
 
-state 32
+state 34
 	declaracion : lista_variables ';' .  (26)
 	declaracion : lista_variables ';' . declaracion  (27)
 
@@ -540,12 +575,12 @@ state 32
 	FUNC  shift 6
 	BEGIN  reduce 26
 
-	declaracion  goto 64
+	declaracion  goto 68
 	tipo_id  goto 10
 	lista_variables  goto 11
 
 
-state 33
+state 35
 	program : PROGRAM ID ';' . declaracion cuerpo_programa  (1)
 	program : PROGRAM ID ';' . cuerpo_programa  (2)
 
@@ -556,82 +591,203 @@ state 33
 	FUNC  shift 6
 	.  error
 
-	declaracion  goto 65
-	cuerpo_programa  goto 66
+	declaracion  goto 69
+	cuerpo_programa  goto 70
 	tipo_id  goto 10
 	lista_variables  goto 11
 
 
-state 34
+state 36
 	program : PROGRAM ';' declaracion . cuerpo_programa  (3)
 
 	BEGIN  shift 4
 	.  error
 
-	cuerpo_programa  goto 67
+	cuerpo_programa  goto 71
 
 
-state 35
+state 37
 	program : PROGRAM ';' cuerpo_programa .  (4)
 
 	.  reduce 4
 
 
-state 36
+state 38
 	asignacion : error ASIG . expresion  (57)
 
-	ID  shift 68
-	CTE_UINT  shift 69
-	CTE_DOUBLE  shift 70
-	ERR_CTE_FUERA_RANGO  shift 71
-	ERR_FORMATO_CTE  shift 72
-	'-'  shift 73
+	ID  shift 72
+	CTE_UINT  shift 73
+	CTE_DOUBLE  shift 74
+	ERR_CTE_FUERA_RANGO  shift 75
+	ERR_FORMATO_CTE  shift 76
+	'-'  shift 77
 	.  error
 
-	expresion  goto 74
-	invocacion  goto 75
-	termino  goto 76
-	factor  goto 77
-
-
-state 37
-	asignacion : ID ASIG . expresion  (54)
-	asignacion : ID ASIG . error  (55)
-
-	error  shift 78
-	ID  shift 68
-	CTE_UINT  shift 69
-	CTE_DOUBLE  shift 70
-	ERR_CTE_FUERA_RANGO  shift 71
-	ERR_FORMATO_CTE  shift 72
-	'-'  shift 73
-	.  error
-
-	expresion  goto 79
-	invocacion  goto 75
-	termino  goto 76
-	factor  goto 77
-
-
-state 38
-	invocacion : ID '(' . ')'  (52)
-	invocacion : ID '(' . ID ')'  (53)
-
-	ID  shift 80
-	')'  shift 81
-	.  error
+	expresion  goto 78
+	invocacion  goto 79
+	termino  goto 80
+	factor  goto 81
 
 
 state 39
-	impresion : PRINT '(' . CADENA ')'  (71)
-	impresion : PRINT '(' . error ')'  (72)
+	asignacion : ID ASIG . expresion  (54)
+	asignacion : ID ASIG . error  (55)
 
 	error  shift 82
-	CADENA  shift 83
+	ID  shift 72
+	CTE_UINT  shift 73
+	CTE_DOUBLE  shift 74
+	ERR_CTE_FUERA_RANGO  shift 75
+	ERR_FORMATO_CTE  shift 76
+	'-'  shift 77
 	.  error
+
+	expresion  goto 83
+	invocacion  goto 79
+	termino  goto 80
+	factor  goto 81
 
 
 state 40
+	invocacion : ID '(' . ')'  (52)
+	invocacion : ID '(' . ID ')'  (53)
+
+	ID  shift 84
+	')'  shift 85
+	.  error
+
+
+state 41
+	impresion : PRINT '(' . CADENA ')'  (71)
+	impresion : PRINT '(' . error ')'  (72)
+
+	error  shift 86
+	CADENA  shift 87
+	.  error
+
+
+state 42
+	condicion : '(' . expresion comparador expresion ')'  (76)
+	condicion : '(' . expresion comparador expresion  (77)
+	condicion : '(' . comparador expresion ')'  (78)
+	condicion : '(' . expresion comparador ')'  (79)
+	condicion : '(' . expresion operador_logico expresion ')'  (80)
+	condicion : '(' . error ')'  (81)
+
+	error  shift 88
+	ID  shift 72
+	CTE_UINT  shift 73
+	CTE_DOUBLE  shift 74
+	COMP_MAYOR_IGUAL  shift 89
+	COMP_MENOR_IGUAL  shift 90
+	COMP_IGUAL  shift 91
+	COMP_DISTINTO  shift 92
+	ERR_CTE_FUERA_RANGO  shift 75
+	ERR_FORMATO_CTE  shift 76
+	'-'  shift 77
+	'<'  shift 93
+	'>'  shift 94
+	.  error
+
+	expresion  goto 95
+	invocacion  goto 79
+	termino  goto 80
+	factor  goto 81
+	comparador  goto 96
+
+
+state 43
+	encabezado_if : IF condicion .  (92)
+
+	.  reduce 92
+
+
+state 44
+	miembro_sentencia_ejec : BREAK ';' .  (45)
+
+	.  reduce 45
+
+
+state 45
+	miembro_sentencia_ejec : BREAK miembro_sentencia_ejec .  (51)
+
+	.  reduce 51
+
+
+state 46
+	cuerpo_programa : BEGIN sentencia_ejec END . ';'  (7)
+
+	';'  shift 97
+	.  error
+
+
+state 47
+	sentencia_ejec : miembro_sentencia_ejec sentencia_ejec .  (38)
+
+	.  reduce 38
+
+
+state 48
+	miembro_sentencia_ejec : invocacion ';' .  (40)
+
+	.  reduce 40
+
+
+state 49
+	miembro_sentencia_ejec : invocacion miembro_sentencia_ejec .  (47)
+
+	.  reduce 47
+
+
+state 50
+	miembro_sentencia_ejec : asignacion ';' .  (41)
+
+	.  reduce 41
+
+
+state 51
+	miembro_sentencia_ejec : asignacion miembro_sentencia_ejec .  (48)
+
+	.  reduce 48
+
+
+state 52
+	miembro_sentencia_ejec : iteracion ';' .  (42)
+
+	.  reduce 42
+
+
+state 53
+	miembro_sentencia_ejec : iteracion miembro_sentencia_ejec .  (49)
+
+	.  reduce 49
+
+
+state 54
+	miembro_sentencia_ejec : seleccion ';' .  (43)
+
+	.  reduce 43
+
+
+state 55
+	miembro_sentencia_ejec : seleccion miembro_sentencia_ejec .  (46)
+
+	.  reduce 46
+
+
+state 56
+	miembro_sentencia_ejec : impresion ';' .  (44)
+
+	.  reduce 44
+
+
+state 57
+	miembro_sentencia_ejec : impresion miembro_sentencia_ejec .  (50)
+
+	.  reduce 50
+
+
+state 58
 	bloque_sentencias : BEGIN . sentencia_ejec END ';'  (8)
 
 	error  shift 14
@@ -642,20 +798,22 @@ state 40
 	BREAK  shift 19
 	.  error
 
-	sentencia_ejec  goto 84
+	sentencia_ejec  goto 98
 	miembro_sentencia_ejec  goto 21
 	invocacion  goto 22
 	asignacion  goto 23
 	iteracion  goto 24
 	seleccion  goto 25
 	impresion  goto 26
+	encabezado_iteracion  goto 27
+	encabezado_if  goto 28
 
 
-state 41
-	iteracion : REPEAT bloque_sentencias . UNTIL condicion  (73)
-	iteracion : REPEAT bloque_sentencias .  (74)
+state 59
+	iteracion : encabezado_iteracion bloque_sentencias . UNTIL condicion  (73)
+	iteracion : encabezado_iteracion bloque_sentencias .  (74)
 
-	UNTIL  shift 85
+	UNTIL  shift 99
 	error  reduce 74
 	ID  reduce 74
 	PRINT  reduce 74
@@ -665,186 +823,94 @@ state 41
 	';'  reduce 74
 
 
-state 42
+state 60
 	bloque_sentencias : miembro_sentencia_ejec .  (9)
 
 	.  reduce 9
 
 
-state 43
-	condicion : '(' . expresion comparador expresion ')'  (75)
-	condicion : '(' . expresion comparador expresion  (76)
-	condicion : '(' . comparador expresion ')'  (77)
-	condicion : '(' . expresion comparador ')'  (78)
-	condicion : '(' . expresion operador_logico expresion ')'  (79)
-	condicion : '(' . error ')'  (80)
+state 61
+	rama_then : THEN . bloque_sentencias  (94)
+	rama_then : THEN .  (95)
 
-	error  shift 86
-	ID  shift 68
-	CTE_UINT  shift 69
-	CTE_DOUBLE  shift 70
-	COMP_MAYOR_IGUAL  shift 87
-	COMP_MENOR_IGUAL  shift 88
-	COMP_IGUAL  shift 89
-	COMP_DISTINTO  shift 90
-	ERR_CTE_FUERA_RANGO  shift 71
-	ERR_FORMATO_CTE  shift 72
-	'-'  shift 73
-	'<'  shift 91
-	'>'  shift 92
+	error  shift 14
+	BEGIN  shift 58
+	ID  shift 15
+	PRINT  shift 16
+	REPEAT  shift 17
+	IF  shift 18
+	BREAK  shift 19
+	ELSE  reduce 95
+	ENDIF  reduce 95
+
+	bloque_sentencias  goto 100
+	miembro_sentencia_ejec  goto 60
+	invocacion  goto 22
+	asignacion  goto 23
+	iteracion  goto 24
+	seleccion  goto 25
+	impresion  goto 26
+	encabezado_iteracion  goto 27
+	encabezado_if  goto 28
+
+
+state 62
+	seleccion : encabezado_if rama_then . ENDIF  (90)
+	seleccion : encabezado_if rama_then . rama_else ENDIF  (91)
+
+	ELSE  shift 101
+	ENDIF  shift 102
 	.  error
 
-	expresion  goto 93
-	invocacion  goto 75
-	termino  goto 76
-	factor  goto 77
-	comparador  goto 94
+	rama_else  goto 103
 
 
-state 44
-	seleccion : IF condicion . THEN bloque_sentencias ENDIF  (89)
-	seleccion : IF condicion . THEN bloque_sentencias ELSE bloque_sentencias ENDIF  (90)
-	seleccion : IF condicion . THEN ELSE bloque_sentencias ENDIF  (91)
-	seleccion : IF condicion . THEN ELSE bloque_sentencias  (92)
-	seleccion : IF condicion . THEN ENDIF  (93)
-	seleccion : IF condicion . THEN bloque_sentencias ELSE bloque_sentencias  (94)
-	seleccion : IF condicion . THEN bloque_sentencias  (95)
-
-	THEN  shift 95
-	.  error
-
-
-state 45
-	miembro_sentencia_ejec : BREAK ';' .  (45)
-
-	.  reduce 45
-
-
-state 46
-	miembro_sentencia_ejec : BREAK miembro_sentencia_ejec .  (51)
-
-	.  reduce 51
-
-
-state 47
-	cuerpo_programa : BEGIN sentencia_ejec END . ';'  (7)
-
-	';'  shift 96
-	.  error
-
-
-state 48
-	sentencia_ejec : miembro_sentencia_ejec sentencia_ejec .  (38)
-
-	.  reduce 38
-
-
-state 49
-	miembro_sentencia_ejec : invocacion ';' .  (40)
-
-	.  reduce 40
-
-
-state 50
-	miembro_sentencia_ejec : invocacion miembro_sentencia_ejec .  (47)
-
-	.  reduce 47
-
-
-state 51
-	miembro_sentencia_ejec : asignacion ';' .  (41)
-
-	.  reduce 41
-
-
-state 52
-	miembro_sentencia_ejec : asignacion miembro_sentencia_ejec .  (48)
-
-	.  reduce 48
-
-
-state 53
-	miembro_sentencia_ejec : iteracion ';' .  (42)
-
-	.  reduce 42
-
-
-state 54
-	miembro_sentencia_ejec : iteracion miembro_sentencia_ejec .  (49)
-
-	.  reduce 49
-
-
-state 55
-	miembro_sentencia_ejec : seleccion ';' .  (43)
-
-	.  reduce 43
-
-
-state 56
-	miembro_sentencia_ejec : seleccion miembro_sentencia_ejec .  (46)
-
-	.  reduce 46
-
-
-state 57
-	miembro_sentencia_ejec : impresion ';' .  (44)
-
-	.  reduce 44
-
-
-state 58
-	miembro_sentencia_ejec : impresion miembro_sentencia_ejec .  (50)
-
-	.  reduce 50
-
-
-state 59
+state 63
 	lista_variables : ID ',' lista_variables .  (29)
 
 	.  reduce 29
 
 
-state 60
+state 64
 	nombre_func : FUNC ID .  (30)
 
 	.  reduce 30
 
 
-state 61
+state 65
 	params_func : '(' . param ')'  (32)
 	params_func : '(' . ')'  (33)
 
 	UINT  shift 2
 	DOUBLE  shift 3
 	FUNC  shift 6
-	')'  shift 97
+	')'  shift 104
 	.  error
 
-	tipo_id  goto 98
-	param  goto 99
+	tipo_id  goto 105
+	param  goto 106
 
 
-state 62
+state 66
 	declaracion : tipo_id nombre_func params_func . definicion_func ';'  (22)
 	declaracion : tipo_id nombre_func params_func . definicion_func ';' declaracion  (25)
 	definicion_func : .  (37)
 
 	UINT  shift 2
 	DOUBLE  shift 3
-	BEGIN  shift 100
+	BEGIN  shift 107
 	ID  shift 5
 	FUNC  shift 6
 	';'  reduce 37
 
-	declaracion  goto 101
+	declaracion  goto 108
 	tipo_id  goto 10
-	cuerpo_func  goto 102
-	definicion_func  goto 103
+	cuerpo_func  goto 109
+	definicion_func  goto 110
 	lista_variables  goto 11
 
 
-state 63
+state 67
 	declaracion : tipo_id lista_variables ';' .  (23)
 	declaracion : tipo_id lista_variables ';' . declaracion  (24)
 
@@ -854,44 +920,44 @@ state 63
 	FUNC  shift 6
 	BEGIN  reduce 23
 
-	declaracion  goto 104
+	declaracion  goto 111
 	tipo_id  goto 10
 	lista_variables  goto 11
 
 
-state 64
+state 68
 	declaracion : lista_variables ';' declaracion .  (27)
 
 	.  reduce 27
 
 
-state 65
+state 69
 	program : PROGRAM ID ';' declaracion . cuerpo_programa  (1)
 
 	BEGIN  shift 4
 	.  error
 
-	cuerpo_programa  goto 105
+	cuerpo_programa  goto 112
 
 
-state 66
+state 70
 	program : PROGRAM ID ';' cuerpo_programa .  (2)
 
 	.  reduce 2
 
 
-state 67
+state 71
 	program : PROGRAM ';' declaracion cuerpo_programa .  (3)
 
 	.  reduce 3
 
 
-state 68
+state 72
 	invocacion : ID . '(' ')'  (52)
 	invocacion : ID . '(' ID ')'  (53)
 	factor : ID .  (64)
 
-	'('  shift 38
+	'('  shift 40
 	error  reduce 64
 	ID  reduce 64
 	PRINT  reduce 64
@@ -916,52 +982,52 @@ state 68
 	'>'  reduce 64
 
 
-state 69
+state 73
 	factor : CTE_UINT .  (65)
 
 	.  reduce 65
 
 
-state 70
+state 74
 	factor : CTE_DOUBLE .  (66)
 
 	.  reduce 66
 
 
-state 71
+state 75
 	factor : ERR_CTE_FUERA_RANGO .  (69)
 
 	.  reduce 69
 
 
-state 72
+state 76
 	factor : ERR_FORMATO_CTE .  (70)
 
 	.  reduce 70
 
 
-state 73
+state 77
 	factor : '-' . factor  (67)
 
-	ID  shift 68
-	CTE_UINT  shift 69
-	CTE_DOUBLE  shift 70
-	ERR_CTE_FUERA_RANGO  shift 71
-	ERR_FORMATO_CTE  shift 72
-	'-'  shift 73
+	ID  shift 72
+	CTE_UINT  shift 73
+	CTE_DOUBLE  shift 74
+	ERR_CTE_FUERA_RANGO  shift 75
+	ERR_FORMATO_CTE  shift 76
+	'-'  shift 77
 	.  error
 
-	invocacion  goto 75
-	factor  goto 106
+	invocacion  goto 79
+	factor  goto 113
 
 
-state 74
+state 78
 	asignacion : error ASIG expresion .  (57)
 	expresion : expresion . '+' termino  (58)
 	expresion : expresion . '-' termino  (59)
 
-	'+'  shift 107
-	'-'  shift 108
+	'+'  shift 114
+	'-'  shift 115
 	error  reduce 57
 	ID  reduce 57
 	PRINT  reduce 57
@@ -971,19 +1037,19 @@ state 74
 	';'  reduce 57
 
 
-state 75
+state 79
 	factor : invocacion .  (68)
 
 	.  reduce 68
 
 
-state 76
+state 80
 	expresion : termino .  (60)
 	termino : termino . '*' factor  (61)
 	termino : termino . '/' factor  (62)
 
-	'*'  shift 109
-	'/'  shift 110
+	'*'  shift 116
+	'/'  shift 117
 	error  reduce 60
 	ID  reduce 60
 	PRINT  reduce 60
@@ -1006,25 +1072,25 @@ state 76
 	'>'  reduce 60
 
 
-state 77
+state 81
 	termino : factor .  (63)
 
 	.  reduce 63
 
 
-state 78
+state 82
 	asignacion : ID ASIG error .  (55)
 
 	.  reduce 55
 
 
-state 79
+state 83
 	asignacion : ID ASIG expresion .  (54)
 	expresion : expresion . '+' termino  (58)
 	expresion : expresion . '-' termino  (59)
 
-	'+'  shift 107
-	'-'  shift 108
+	'+'  shift 114
+	'-'  shift 115
 	error  reduce 54
 	ID  reduce 54
 	PRINT  reduce 54
@@ -1034,189 +1100,203 @@ state 79
 	';'  reduce 54
 
 
-state 80
+state 84
 	invocacion : ID '(' ID . ')'  (53)
 
-	')'  shift 111
+	')'  shift 118
 	.  error
 
 
-state 81
+state 85
 	invocacion : ID '(' ')' .  (52)
 
 	.  reduce 52
 
 
-state 82
+state 86
 	impresion : PRINT '(' error . ')'  (72)
 
-	')'  shift 112
-	.  error
-
-
-state 83
-	impresion : PRINT '(' CADENA . ')'  (71)
-
-	')'  shift 113
-	.  error
-
-
-state 84
-	bloque_sentencias : BEGIN sentencia_ejec . END ';'  (8)
-
-	END  shift 114
-	.  error
-
-
-state 85
-	iteracion : REPEAT bloque_sentencias UNTIL . condicion  (73)
-
-	'('  shift 43
-	.  error
-
-	condicion  goto 115
-
-
-state 86
-	condicion : '(' error . ')'  (80)
-
-	')'  shift 116
+	')'  shift 119
 	.  error
 
 
 state 87
-	comparador : COMP_MAYOR_IGUAL .  (81)
+	impresion : PRINT '(' CADENA . ')'  (71)
 
-	.  reduce 81
+	')'  shift 120
+	.  error
 
 
 state 88
-	comparador : COMP_MENOR_IGUAL .  (82)
+	condicion : '(' error . ')'  (81)
+
+	')'  shift 121
+	.  error
+
+
+state 89
+	comparador : COMP_MAYOR_IGUAL .  (82)
 
 	.  reduce 82
 
 
-state 89
-	comparador : COMP_IGUAL .  (85)
-
-	.  reduce 85
-
-
 state 90
-	comparador : COMP_DISTINTO .  (86)
-
-	.  reduce 86
-
-
-state 91
-	comparador : '<' .  (83)
+	comparador : COMP_MENOR_IGUAL .  (83)
 
 	.  reduce 83
 
 
+state 91
+	comparador : COMP_IGUAL .  (86)
+
+	.  reduce 86
+
+
 state 92
-	comparador : '>' .  (84)
+	comparador : COMP_DISTINTO .  (87)
+
+	.  reduce 87
+
+
+state 93
+	comparador : '<' .  (84)
 
 	.  reduce 84
 
 
-state 93
-	expresion : expresion . '+' termino  (58)
-	expresion : expresion . '-' termino  (59)
-	condicion : '(' expresion . comparador expresion ')'  (75)
-	condicion : '(' expresion . comparador expresion  (76)
-	condicion : '(' expresion . comparador ')'  (78)
-	condicion : '(' expresion . operador_logico expresion ')'  (79)
-
-	AND  shift 117
-	OR  shift 118
-	COMP_MAYOR_IGUAL  shift 87
-	COMP_MENOR_IGUAL  shift 88
-	COMP_IGUAL  shift 89
-	COMP_DISTINTO  shift 90
-	'+'  shift 107
-	'-'  shift 108
-	'<'  shift 91
-	'>'  shift 92
-	.  error
-
-	comparador  goto 119
-	operador_logico  goto 120
-
-
 state 94
-	condicion : '(' comparador . expresion ')'  (77)
+	comparador : '>' .  (85)
 
-	ID  shift 68
-	CTE_UINT  shift 69
-	CTE_DOUBLE  shift 70
-	ERR_CTE_FUERA_RANGO  shift 71
-	ERR_FORMATO_CTE  shift 72
-	'-'  shift 73
-	.  error
-
-	expresion  goto 121
-	invocacion  goto 75
-	termino  goto 76
-	factor  goto 77
+	.  reduce 85
 
 
 state 95
-	seleccion : IF condicion THEN . bloque_sentencias ENDIF  (89)
-	seleccion : IF condicion THEN . bloque_sentencias ELSE bloque_sentencias ENDIF  (90)
-	seleccion : IF condicion THEN . ELSE bloque_sentencias ENDIF  (91)
-	seleccion : IF condicion THEN . ELSE bloque_sentencias  (92)
-	seleccion : IF condicion THEN . ENDIF  (93)
-	seleccion : IF condicion THEN . bloque_sentencias ELSE bloque_sentencias  (94)
-	seleccion : IF condicion THEN . bloque_sentencias  (95)
+	expresion : expresion . '+' termino  (58)
+	expresion : expresion . '-' termino  (59)
+	condicion : '(' expresion . comparador expresion ')'  (76)
+	condicion : '(' expresion . comparador expresion  (77)
+	condicion : '(' expresion . comparador ')'  (79)
+	condicion : '(' expresion . operador_logico expresion ')'  (80)
 
-	error  shift 14
-	BEGIN  shift 40
-	ID  shift 15
-	PRINT  shift 16
-	REPEAT  shift 17
-	IF  shift 18
-	ELSE  shift 122
-	ENDIF  shift 123
-	BREAK  shift 19
+	AND  shift 122
+	OR  shift 123
+	COMP_MAYOR_IGUAL  shift 89
+	COMP_MENOR_IGUAL  shift 90
+	COMP_IGUAL  shift 91
+	COMP_DISTINTO  shift 92
+	'+'  shift 114
+	'-'  shift 115
+	'<'  shift 93
+	'>'  shift 94
 	.  error
 
-	bloque_sentencias  goto 124
-	miembro_sentencia_ejec  goto 42
-	invocacion  goto 22
-	asignacion  goto 23
-	iteracion  goto 24
-	seleccion  goto 25
-	impresion  goto 26
+	comparador  goto 124
+	operador_logico  goto 125
 
 
 state 96
+	condicion : '(' comparador . expresion ')'  (78)
+
+	ID  shift 72
+	CTE_UINT  shift 73
+	CTE_DOUBLE  shift 74
+	ERR_CTE_FUERA_RANGO  shift 75
+	ERR_FORMATO_CTE  shift 76
+	'-'  shift 77
+	.  error
+
+	expresion  goto 126
+	invocacion  goto 79
+	termino  goto 80
+	factor  goto 81
+
+
+state 97
 	cuerpo_programa : BEGIN sentencia_ejec END ';' .  (7)
 
 	.  reduce 7
 
 
-state 97
+state 98
+	bloque_sentencias : BEGIN sentencia_ejec . END ';'  (8)
+
+	END  shift 127
+	.  error
+
+
+state 99
+	iteracion : encabezado_iteracion bloque_sentencias UNTIL . condicion  (73)
+
+	'('  shift 42
+	.  error
+
+	condicion  goto 128
+
+
+state 100
+	rama_then : THEN bloque_sentencias .  (94)
+
+	.  reduce 94
+
+
+state 101
+	rama_else : ELSE . bloque_sentencias  (96)
+	rama_else : ELSE .  (97)
+
+	error  shift 14
+	BEGIN  shift 58
+	ID  shift 15
+	PRINT  shift 16
+	REPEAT  shift 17
+	IF  shift 18
+	BREAK  shift 19
+	ENDIF  reduce 97
+
+	bloque_sentencias  goto 129
+	miembro_sentencia_ejec  goto 60
+	invocacion  goto 22
+	asignacion  goto 23
+	iteracion  goto 24
+	seleccion  goto 25
+	impresion  goto 26
+	encabezado_iteracion  goto 27
+	encabezado_if  goto 28
+
+
+state 102
+	seleccion : encabezado_if rama_then ENDIF .  (90)
+
+	.  reduce 90
+
+
+state 103
+	seleccion : encabezado_if rama_then rama_else . ENDIF  (91)
+
+	ENDIF  shift 130
+	.  error
+
+
+state 104
 	params_func : '(' ')' .  (33)
 
 	.  reduce 33
 
 
-state 98
+state 105
 	param : tipo_id . ID  (34)
 
-	ID  shift 125
+	ID  shift 131
 	.  error
 
 
-state 99
+state 106
 	params_func : '(' param . ')'  (32)
 
-	')'  shift 126
+	')'  shift 132
 	.  error
 
 
-state 100
+state 107
 	cuerpo_func : BEGIN . sentencia_ejec RETURN retorno END  (13)
 	cuerpo_func : BEGIN . sentencia_ejec RETURN retorno post_condicion END  (14)
 	cuerpo_func : BEGIN . sentencia_ejec RETURN END  (15)
@@ -1232,273 +1312,242 @@ state 100
 	BREAK  shift 19
 	.  error
 
-	sentencia_ejec  goto 127
+	sentencia_ejec  goto 133
 	miembro_sentencia_ejec  goto 21
 	invocacion  goto 22
 	asignacion  goto 23
 	iteracion  goto 24
 	seleccion  goto 25
 	impresion  goto 26
+	encabezado_iteracion  goto 27
+	encabezado_if  goto 28
 
 
-state 101
+state 108
 	definicion_func : declaracion . cuerpo_func  (35)
 
-	BEGIN  shift 100
+	BEGIN  shift 107
 	.  error
 
-	cuerpo_func  goto 128
+	cuerpo_func  goto 134
 
 
-state 102
+state 109
 	definicion_func : cuerpo_func .  (36)
 
 	.  reduce 36
 
 
-state 103
+state 110
 	declaracion : tipo_id nombre_func params_func definicion_func . ';'  (22)
 	declaracion : tipo_id nombre_func params_func definicion_func . ';' declaracion  (25)
 
-	';'  shift 129
+	';'  shift 135
 	.  error
 
 
-state 104
+state 111
 	declaracion : tipo_id lista_variables ';' declaracion .  (24)
 
 	.  reduce 24
 
 
-state 105
+state 112
 	program : PROGRAM ID ';' declaracion cuerpo_programa .  (1)
 
 	.  reduce 1
 
 
-state 106
+state 113
 	factor : '-' factor .  (67)
 
 	.  reduce 67
 
 
-state 107
+state 114
 	expresion : expresion '+' . termino  (58)
 
-	ID  shift 68
-	CTE_UINT  shift 69
-	CTE_DOUBLE  shift 70
-	ERR_CTE_FUERA_RANGO  shift 71
-	ERR_FORMATO_CTE  shift 72
-	'-'  shift 73
+	ID  shift 72
+	CTE_UINT  shift 73
+	CTE_DOUBLE  shift 74
+	ERR_CTE_FUERA_RANGO  shift 75
+	ERR_FORMATO_CTE  shift 76
+	'-'  shift 77
 	.  error
 
-	invocacion  goto 75
-	termino  goto 130
-	factor  goto 77
+	invocacion  goto 79
+	termino  goto 136
+	factor  goto 81
 
 
-state 108
+state 115
 	expresion : expresion '-' . termino  (59)
 
-	ID  shift 68
-	CTE_UINT  shift 69
-	CTE_DOUBLE  shift 70
-	ERR_CTE_FUERA_RANGO  shift 71
-	ERR_FORMATO_CTE  shift 72
-	'-'  shift 73
+	ID  shift 72
+	CTE_UINT  shift 73
+	CTE_DOUBLE  shift 74
+	ERR_CTE_FUERA_RANGO  shift 75
+	ERR_FORMATO_CTE  shift 76
+	'-'  shift 77
 	.  error
 
-	invocacion  goto 75
-	termino  goto 131
-	factor  goto 77
+	invocacion  goto 79
+	termino  goto 137
+	factor  goto 81
 
 
-state 109
+state 116
 	termino : termino '*' . factor  (61)
 
-	ID  shift 68
-	CTE_UINT  shift 69
-	CTE_DOUBLE  shift 70
-	ERR_CTE_FUERA_RANGO  shift 71
-	ERR_FORMATO_CTE  shift 72
-	'-'  shift 73
+	ID  shift 72
+	CTE_UINT  shift 73
+	CTE_DOUBLE  shift 74
+	ERR_CTE_FUERA_RANGO  shift 75
+	ERR_FORMATO_CTE  shift 76
+	'-'  shift 77
 	.  error
 
-	invocacion  goto 75
-	factor  goto 132
+	invocacion  goto 79
+	factor  goto 138
 
 
-state 110
+state 117
 	termino : termino '/' . factor  (62)
 
-	ID  shift 68
-	CTE_UINT  shift 69
-	CTE_DOUBLE  shift 70
-	ERR_CTE_FUERA_RANGO  shift 71
-	ERR_FORMATO_CTE  shift 72
-	'-'  shift 73
+	ID  shift 72
+	CTE_UINT  shift 73
+	CTE_DOUBLE  shift 74
+	ERR_CTE_FUERA_RANGO  shift 75
+	ERR_FORMATO_CTE  shift 76
+	'-'  shift 77
 	.  error
 
-	invocacion  goto 75
-	factor  goto 133
+	invocacion  goto 79
+	factor  goto 139
 
 
-state 111
+state 118
 	invocacion : ID '(' ID ')' .  (53)
 
 	.  reduce 53
 
 
-state 112
+state 119
 	impresion : PRINT '(' error ')' .  (72)
 
 	.  reduce 72
 
 
-state 113
+state 120
 	impresion : PRINT '(' CADENA ')' .  (71)
 
 	.  reduce 71
 
 
-state 114
-	bloque_sentencias : BEGIN sentencia_ejec END . ';'  (8)
+state 121
+	condicion : '(' error ')' .  (81)
 
-	';'  shift 134
-	.  error
-
-
-state 115
-	iteracion : REPEAT bloque_sentencias UNTIL condicion .  (73)
-
-	.  reduce 73
+	.  reduce 81
 
 
-state 116
-	condicion : '(' error ')' .  (80)
-
-	.  reduce 80
-
-
-state 117
-	operador_logico : AND .  (87)
-
-	.  reduce 87
-
-
-state 118
-	operador_logico : OR .  (88)
+state 122
+	operador_logico : AND .  (88)
 
 	.  reduce 88
 
 
-state 119
-	condicion : '(' expresion comparador . expresion ')'  (75)
-	condicion : '(' expresion comparador . expresion  (76)
-	condicion : '(' expresion comparador . ')'  (78)
-
-	ID  shift 68
-	CTE_UINT  shift 69
-	CTE_DOUBLE  shift 70
-	ERR_CTE_FUERA_RANGO  shift 71
-	ERR_FORMATO_CTE  shift 72
-	')'  shift 135
-	'-'  shift 73
-	.  error
-
-	expresion  goto 136
-	invocacion  goto 75
-	termino  goto 76
-	factor  goto 77
-
-
-state 120
-	condicion : '(' expresion operador_logico . expresion ')'  (79)
-
-	ID  shift 68
-	CTE_UINT  shift 69
-	CTE_DOUBLE  shift 70
-	ERR_CTE_FUERA_RANGO  shift 71
-	ERR_FORMATO_CTE  shift 72
-	'-'  shift 73
-	.  error
-
-	expresion  goto 137
-	invocacion  goto 75
-	termino  goto 76
-	factor  goto 77
-
-
-state 121
-	expresion : expresion . '+' termino  (58)
-	expresion : expresion . '-' termino  (59)
-	condicion : '(' comparador expresion . ')'  (77)
-
-	')'  shift 138
-	'+'  shift 107
-	'-'  shift 108
-	.  error
-
-
-state 122
-	seleccion : IF condicion THEN ELSE . bloque_sentencias ENDIF  (91)
-	seleccion : IF condicion THEN ELSE . bloque_sentencias  (92)
-
-	error  shift 14
-	BEGIN  shift 40
-	ID  shift 15
-	PRINT  shift 16
-	REPEAT  shift 17
-	IF  shift 18
-	BREAK  shift 19
-	.  error
-
-	bloque_sentencias  goto 139
-	miembro_sentencia_ejec  goto 42
-	invocacion  goto 22
-	asignacion  goto 23
-	iteracion  goto 24
-	seleccion  goto 25
-	impresion  goto 26
-
-
 state 123
-	seleccion : IF condicion THEN ENDIF .  (93)
+	operador_logico : OR .  (89)
 
-	.  reduce 93
+	.  reduce 89
 
 
 state 124
-	seleccion : IF condicion THEN bloque_sentencias . ENDIF  (89)
-	seleccion : IF condicion THEN bloque_sentencias . ELSE bloque_sentencias ENDIF  (90)
-	seleccion : IF condicion THEN bloque_sentencias . ELSE bloque_sentencias  (94)
-	seleccion : IF condicion THEN bloque_sentencias .  (95)
+	condicion : '(' expresion comparador . expresion ')'  (76)
+	condicion : '(' expresion comparador . expresion  (77)
+	condicion : '(' expresion comparador . ')'  (79)
 
-	ELSE  shift 140
-	ENDIF  shift 141
-	error  reduce 95
-	ID  reduce 95
-	PRINT  reduce 95
-	REPEAT  reduce 95
-	IF  reduce 95
-	BREAK  reduce 95
-	';'  reduce 95
+	ID  shift 72
+	CTE_UINT  shift 73
+	CTE_DOUBLE  shift 74
+	ERR_CTE_FUERA_RANGO  shift 75
+	ERR_FORMATO_CTE  shift 76
+	')'  shift 140
+	'-'  shift 77
+	.  error
+
+	expresion  goto 141
+	invocacion  goto 79
+	termino  goto 80
+	factor  goto 81
 
 
 state 125
+	condicion : '(' expresion operador_logico . expresion ')'  (80)
+
+	ID  shift 72
+	CTE_UINT  shift 73
+	CTE_DOUBLE  shift 74
+	ERR_CTE_FUERA_RANGO  shift 75
+	ERR_FORMATO_CTE  shift 76
+	'-'  shift 77
+	.  error
+
+	expresion  goto 142
+	invocacion  goto 79
+	termino  goto 80
+	factor  goto 81
+
+
+state 126
+	expresion : expresion . '+' termino  (58)
+	expresion : expresion . '-' termino  (59)
+	condicion : '(' comparador expresion . ')'  (78)
+
+	')'  shift 143
+	'+'  shift 114
+	'-'  shift 115
+	.  error
+
+
+state 127
+	bloque_sentencias : BEGIN sentencia_ejec END . ';'  (8)
+
+	';'  shift 144
+	.  error
+
+
+state 128
+	iteracion : encabezado_iteracion bloque_sentencias UNTIL condicion .  (73)
+
+	.  reduce 73
+
+
+state 129
+	rama_else : ELSE bloque_sentencias .  (96)
+
+	.  reduce 96
+
+
+state 130
+	seleccion : encabezado_if rama_then rama_else ENDIF .  (91)
+
+	.  reduce 91
+
+
+state 131
 	param : tipo_id ID .  (34)
 
 	.  reduce 34
 
 
-state 126
+state 132
 	params_func : '(' param ')' .  (32)
 
 	.  reduce 32
 
 
-state 127
+state 133
 	cuerpo_func : BEGIN sentencia_ejec . RETURN retorno END  (13)
 	cuerpo_func : BEGIN sentencia_ejec . RETURN retorno post_condicion END  (14)
 	cuerpo_func : BEGIN sentencia_ejec . RETURN END  (15)
@@ -1506,17 +1555,17 @@ state 127
 	cuerpo_func : BEGIN sentencia_ejec . RETURN ';' END  (17)
 	cuerpo_func : BEGIN sentencia_ejec . RETURN ';' post_condicion END  (18)
 
-	RETURN  shift 142
+	RETURN  shift 145
 	.  error
 
 
-state 128
+state 134
 	definicion_func : declaracion cuerpo_func .  (35)
 
 	.  reduce 35
 
 
-state 129
+state 135
 	declaracion : tipo_id nombre_func params_func definicion_func ';' .  (22)
 	declaracion : tipo_id nombre_func params_func definicion_func ';' . declaracion  (25)
 
@@ -1526,18 +1575,18 @@ state 129
 	FUNC  shift 6
 	BEGIN  reduce 22
 
-	declaracion  goto 143
+	declaracion  goto 146
 	tipo_id  goto 10
 	lista_variables  goto 11
 
 
-state 130
+state 136
 	expresion : expresion '+' termino .  (58)
 	termino : termino . '*' factor  (61)
 	termino : termino . '/' factor  (62)
 
-	'*'  shift 109
-	'/'  shift 110
+	'*'  shift 116
+	'/'  shift 117
 	error  reduce 58
 	ID  reduce 58
 	PRINT  reduce 58
@@ -1560,13 +1609,13 @@ state 130
 	'>'  reduce 58
 
 
-state 131
+state 137
 	expresion : expresion '-' termino .  (59)
 	termino : termino . '*' factor  (61)
 	termino : termino . '/' factor  (62)
 
-	'*'  shift 109
-	'/'  shift 110
+	'*'  shift 116
+	'/'  shift 117
 	error  reduce 59
 	ID  reduce 59
 	PRINT  reduce 59
@@ -1589,110 +1638,68 @@ state 131
 	'>'  reduce 59
 
 
-state 132
+state 138
 	termino : termino '*' factor .  (61)
 
 	.  reduce 61
 
 
-state 133
+state 139
 	termino : termino '/' factor .  (62)
 
 	.  reduce 62
 
 
-state 134
+state 140
+	condicion : '(' expresion comparador ')' .  (79)
+
+	.  reduce 79
+
+
+state 141
+	expresion : expresion . '+' termino  (58)
+	expresion : expresion . '-' termino  (59)
+	condicion : '(' expresion comparador expresion . ')'  (76)
+	condicion : '(' expresion comparador expresion .  (77)
+
+	')'  shift 147
+	'+'  shift 114
+	'-'  shift 115
+	error  reduce 77
+	ID  reduce 77
+	PRINT  reduce 77
+	REPEAT  reduce 77
+	THEN  reduce 77
+	IF  reduce 77
+	BREAK  reduce 77
+	';'  reduce 77
+	','  reduce 77
+
+
+state 142
+	expresion : expresion . '+' termino  (58)
+	expresion : expresion . '-' termino  (59)
+	condicion : '(' expresion operador_logico expresion . ')'  (80)
+
+	')'  shift 148
+	'+'  shift 114
+	'-'  shift 115
+	.  error
+
+
+state 143
+	condicion : '(' comparador expresion ')' .  (78)
+
+	.  reduce 78
+
+
+state 144
 	bloque_sentencias : BEGIN sentencia_ejec END ';' .  (8)
 
 	.  reduce 8
 
 
-state 135
-	condicion : '(' expresion comparador ')' .  (78)
-
-	.  reduce 78
-
-
-state 136
-	expresion : expresion . '+' termino  (58)
-	expresion : expresion . '-' termino  (59)
-	condicion : '(' expresion comparador expresion . ')'  (75)
-	condicion : '(' expresion comparador expresion .  (76)
-
-	')'  shift 144
-	'+'  shift 107
-	'-'  shift 108
-	error  reduce 76
-	ID  reduce 76
-	PRINT  reduce 76
-	REPEAT  reduce 76
-	THEN  reduce 76
-	IF  reduce 76
-	BREAK  reduce 76
-	';'  reduce 76
-	','  reduce 76
-
-
-state 137
-	expresion : expresion . '+' termino  (58)
-	expresion : expresion . '-' termino  (59)
-	condicion : '(' expresion operador_logico expresion . ')'  (79)
-
-	')'  shift 145
-	'+'  shift 107
-	'-'  shift 108
-	.  error
-
-
-state 138
-	condicion : '(' comparador expresion ')' .  (77)
-
-	.  reduce 77
-
-
-state 139
-	seleccion : IF condicion THEN ELSE bloque_sentencias . ENDIF  (91)
-	seleccion : IF condicion THEN ELSE bloque_sentencias .  (92)
-
-	ENDIF  shift 146
-	error  reduce 92
-	ID  reduce 92
-	PRINT  reduce 92
-	REPEAT  reduce 92
-	IF  reduce 92
-	BREAK  reduce 92
-	';'  reduce 92
-
-
-state 140
-	seleccion : IF condicion THEN bloque_sentencias ELSE . bloque_sentencias ENDIF  (90)
-	seleccion : IF condicion THEN bloque_sentencias ELSE . bloque_sentencias  (94)
-
-	error  shift 14
-	BEGIN  shift 40
-	ID  shift 15
-	PRINT  shift 16
-	REPEAT  shift 17
-	IF  shift 18
-	BREAK  shift 19
-	.  error
-
-	bloque_sentencias  goto 147
-	miembro_sentencia_ejec  goto 42
-	invocacion  goto 22
-	asignacion  goto 23
-	iteracion  goto 24
-	seleccion  goto 25
-	impresion  goto 26
-
-
-state 141
-	seleccion : IF condicion THEN bloque_sentencias ENDIF .  (89)
-
-	.  reduce 89
-
-
-state 142
+state 145
 	cuerpo_func : BEGIN sentencia_ejec RETURN . retorno END  (13)
 	cuerpo_func : BEGIN sentencia_ejec RETURN . retorno post_condicion END  (14)
 	cuerpo_func : BEGIN sentencia_ejec RETURN . END  (15)
@@ -1700,61 +1707,41 @@ state 142
 	cuerpo_func : BEGIN sentencia_ejec RETURN . ';' END  (17)
 	cuerpo_func : BEGIN sentencia_ejec RETURN . ';' post_condicion END  (18)
 
-	END  shift 148
-	POST  shift 149
-	';'  shift 150
-	'('  shift 151
+	END  shift 149
+	POST  shift 150
+	';'  shift 151
+	'('  shift 152
 	.  error
 
-	retorno  goto 152
-	post_condicion  goto 153
+	retorno  goto 153
+	post_condicion  goto 154
 
 
-state 143
+state 146
 	declaracion : tipo_id nombre_func params_func definicion_func ';' declaracion .  (25)
 
 	.  reduce 25
 
 
-state 144
-	condicion : '(' expresion comparador expresion ')' .  (75)
-
-	.  reduce 75
-
-
-state 145
-	condicion : '(' expresion operador_logico expresion ')' .  (79)
-
-	.  reduce 79
-
-
-state 146
-	seleccion : IF condicion THEN ELSE bloque_sentencias ENDIF .  (91)
-
-	.  reduce 91
-
-
 state 147
-	seleccion : IF condicion THEN bloque_sentencias ELSE bloque_sentencias . ENDIF  (90)
-	seleccion : IF condicion THEN bloque_sentencias ELSE bloque_sentencias .  (94)
+	condicion : '(' expresion comparador expresion ')' .  (76)
 
-	ENDIF  shift 154
-	error  reduce 94
-	ID  reduce 94
-	PRINT  reduce 94
-	REPEAT  reduce 94
-	IF  reduce 94
-	BREAK  reduce 94
-	';'  reduce 94
+	.  reduce 76
 
 
 state 148
+	condicion : '(' expresion operador_logico expresion ')' .  (80)
+
+	.  reduce 80
+
+
+state 149
 	cuerpo_func : BEGIN sentencia_ejec RETURN END .  (15)
 
 	.  reduce 15
 
 
-state 149
+state 150
 	post_condicion : POST . ':' condicion ',' CADENA ';'  (19)
 	post_condicion : POST . ':' condicion ',' ';'  (20)
 
@@ -1762,63 +1749,57 @@ state 149
 	.  error
 
 
-state 150
+state 151
 	cuerpo_func : BEGIN sentencia_ejec RETURN ';' . END  (17)
 	cuerpo_func : BEGIN sentencia_ejec RETURN ';' . post_condicion END  (18)
 
 	END  shift 156
-	POST  shift 149
+	POST  shift 150
 	.  error
 
 	post_condicion  goto 157
 
 
-state 151
+state 152
 	retorno : '(' . expresion ')' ';'  (21)
 
-	ID  shift 68
-	CTE_UINT  shift 69
-	CTE_DOUBLE  shift 70
-	ERR_CTE_FUERA_RANGO  shift 71
-	ERR_FORMATO_CTE  shift 72
-	'-'  shift 73
+	ID  shift 72
+	CTE_UINT  shift 73
+	CTE_DOUBLE  shift 74
+	ERR_CTE_FUERA_RANGO  shift 75
+	ERR_FORMATO_CTE  shift 76
+	'-'  shift 77
 	.  error
 
 	expresion  goto 158
-	invocacion  goto 75
-	termino  goto 76
-	factor  goto 77
+	invocacion  goto 79
+	termino  goto 80
+	factor  goto 81
 
 
-state 152
+state 153
 	cuerpo_func : BEGIN sentencia_ejec RETURN retorno . END  (13)
 	cuerpo_func : BEGIN sentencia_ejec RETURN retorno . post_condicion END  (14)
 
 	END  shift 159
-	POST  shift 149
+	POST  shift 150
 	.  error
 
 	post_condicion  goto 160
 
 
-state 153
+state 154
 	cuerpo_func : BEGIN sentencia_ejec RETURN post_condicion . END  (16)
 
 	END  shift 161
 	.  error
 
 
-state 154
-	seleccion : IF condicion THEN bloque_sentencias ELSE bloque_sentencias ENDIF .  (90)
-
-	.  reduce 90
-
-
 state 155
 	post_condicion : POST ':' . condicion ',' CADENA ';'  (19)
 	post_condicion : POST ':' . condicion ',' ';'  (20)
 
-	'('  shift 43
+	'('  shift 42
 	.  error
 
 	condicion  goto 162
@@ -1843,8 +1824,8 @@ state 158
 	expresion : expresion . '-' termino  (59)
 
 	')'  shift 164
-	'+'  shift 107
-	'-'  shift 108
+	'+'  shift 114
+	'-'  shift 115
 	.  error
 
 
@@ -1928,5 +1909,5 @@ state 170
 	.  reduce 19
 
 
-42 terminals, 27 nonterminals
-96 grammar rules, 171 states
+42 terminals, 31 nonterminals
+98 grammar rules, 171 states
