@@ -56,4 +56,19 @@ public class TablaSimbolos {
     public static String mostrarTS() {
         return "TablaSimbolos{ " + "ts: " + ts.toString() + " }";
     }
+
+    // Cambiar nombre se utiliza para actualizar el ambito de la variable. El ambito esta representado
+    // en el nombre de la misma
+    public static void cambiarNombre(String viejo, String nuevo){
+        if (perteneceTS(nuevo)) {
+            AnalizadorLexico.errores.add("Repeated identifier " + viejo + " on line " + AnalizadorLexico.nroLinea);
+            return;
+        }
+        RegistroTS old = ts.get(viejo);
+        ts.remove(viejo);
+        old.setLexema(nuevo);
+        ts.put(nuevo, old);
+
+    }
+
 }

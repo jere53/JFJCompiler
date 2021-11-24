@@ -57,8 +57,8 @@ declaracion 					: tipo_id nombre_func params_func definicion_func ';' {Utils.se
 								| lista_variables ';' declaracion {yyerror("ERROR: LINE " + (AnalizadorLexico.nroLinea - 1) + " missing variable type");}
 								;
 
-lista_variables					: ID {Utils.agregarAListaDeVariables($1.sval); TablaSimbolos.punteroTS($1.sval).setUso("variable"); Ambito.agregarVariable(TablaSimbolo.punteroTS($1.sval));}
-								| ID ',' lista_variables {Utils.agregarAListaDeVariables($1.sval); TablaSimbolos.punteroTS($1.sval).setUso("variable");}
+lista_variables					: ID {System.out.println("ANDA LPM"); TablaSimbolos.cambiarNombre($1.sval, $1.sval + Ambito.retornarNaming()); Utils.agregarAListaDeVariables($1.sval + Ambito.retornarNaming()); TablaSimbolos.punteroTS($1.sval + Ambito.retornarNaming()).setUso("variable"); }
+								| ID ',' lista_variables { System.out.println("ANDA LPM2");  TablaSimbolos.cambiarNombre($1.sval, $1.sval + Ambito.retornarNaming()); Utils.agregarAListaDeVariables($1.sval + Ambito.retornarNaming()); TablaSimbolos.punteroTS($1.sval + Ambito.retornarNaming()).setUso("variable"); }
 								;
 
 nombre_func						: FUNC ID {TablaSimbolos.punteroTS($2.sval).setUso("nombre_funcion"); Utils.cachearIDFuncion($2.sval); Polaca.agregarAmbito($2.sval)}
@@ -69,7 +69,7 @@ params_func						: '(' param ')'
 								| '(' ')'
 								;
 
-param 							: tipo_id ID {TablaSimbolos.punteroTS($2.sval).setTipo(Integer.toString($1.ival)); TablaSimbolos.punteroTS($2.sval).setUso("parametro");}
+param 							: tipo_id ID {TablaSimbolos.punteroTS($2.sval).setTipo(Integer.toString($1.ival)); TablaSimbolos.punteroTS($2.sval).setUso("parametro"); TablaSimbolos.cambiarNombre($2.sval, $2.sval + Ambito.retornarNaming()); }
 		    					;
 
 definicion_func					: declaracion cuerpo_func
