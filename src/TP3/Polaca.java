@@ -62,25 +62,27 @@ public class Polaca {
     }
     /*
 
-    REPEAT
-        A := B + 1;
-    UNTIL (A < B)
+  REPEAT
+    { a := b + c;
+    c := d – 3; }
+   UNTIL
+    ( a + b <= c - d )
 
-    [L1]  B   1   +   A   :=   A   B   < [14][BF][1][BI][] ------
-    (1)   2   3   4   5   6    7   8   9  10  11 12  13
+       a b + c d - <=  ?  b c + a := d 3 - c := ?
 
-    [L1][sntencias][][]
+     BF = es porque la condicion no se cumple
+     BI  = si es verdadera, saltas al inicio
 
      */
     public static void insert_iteracion_start(){
         //representacionIntermedia.add("L" + representacionIntermedia.size());
+        representacionIntermedia.add("L" + representacionIntermedia.size());
         pila_iteracion.push(representacionIntermedia.size()); //va a tener la primer sentencia del REPEAT
     }
 
     public static void insert_iteracion_end(){
         Polaca.insert(pila_iteracion.pop()); //a donde tenemos que saltar si se cumple la cond
-        Polaca.insert(new String("BI"));
-
+        Polaca.insert("BF");
     }
 
     public static void removerUltimo(){
@@ -90,5 +92,9 @@ public class Polaca {
 
     public static String imprimirPolaca() {
         return "Polaca{" + representacionIntermedia.toString() + "}";
+    }
+
+    public static List<Object> getRepresentacionIntermedia(){
+        return representacionIntermedia;
     }
 }

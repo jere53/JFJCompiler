@@ -1,6 +1,27 @@
 package TP4;
 
-public class RepresentacionIntermedia {
+import Dev.Lexico.Dupla;
+import TP3.Polaca;
+
+import java.security.KeyPair;
+import java.util.*;
+import java.util.HashMap; // import the HashMap class
+
+
+public class GeneradorASM {
+
+    static List<String> operadoresBinarios = new ArrayList<String>(){
+        {
+            add("/");
+            add("-");
+            add("*");
+            add("+");
+            add("AND");
+            add("OR");
+            add(":=");
+            add(">");
+        }
+    };
 
     // recorrer la polaca en una pasada y generar instrucciones para luego traducirlo a ASM
     static Stack<Object> pila_variables = new Stack<>();
