@@ -48,7 +48,7 @@ post_condicion          		: POST ':' condicion ',' CADENA ';' {TablaSimbolos.pun
 retorno             			: '(' expresion ')' ';' {Polaca.insert("Retorno");} //PLACEHOLDER
 								;
 
-declaracion 					: tipo_id nombre_func params_func definicion_func ';' {Utils.setTipoIDFuncionCacheado(Integer.toString($1.ival));}
+declaracion 					: tipo_id nombre_func params_func definicion_func ';' {Utils.setTipoIDFuncionCacheado(Integer.toString($1.ival)); Ambito.setAmbito($2)}
 								| tipo_id lista_variables ';' {Utils.asignarTipoListaDeVariables(Integer.toString($1.ival));} // Asigna el tipo a cada variable de la lista
 								| tipo_id lista_variables ';' declaracion {Utils.asignarTipoListaDeVariables(Integer.toString($1.ival));}
 								| tipo_id nombre_func params_func definicion_func ';' declaracion {Utils.setTipoIDFuncionCacheado(Integer.toString($1.ival));}
@@ -56,7 +56,7 @@ declaracion 					: tipo_id nombre_func params_func definicion_func ';' {Utils.se
 								| lista_variables ';' declaracion {yyerror("ERROR: LINE " + (AnalizadorLexico.nroLinea - 1) + " missing variable type");}
 								;
 
-lista_variables					: ID {Utils.agregarAListaDeVariables($1.sval); TablaSimbolos.punteroTS($1.sval).setUso("variable");}
+lista_variables					: ID {Utils.agregarAListaDeVariables($1.sval); TablaSimbolos.punteroTS($1.sval).setUso("variable"); Ambito.agregarVariable(TablaSimbolo.punteroTS($1.sval));}
 								| ID ',' lista_variables {Utils.agregarAListaDeVariables($1.sval); TablaSimbolos.punteroTS($1.sval).setUso("variable");}
 								;
 
