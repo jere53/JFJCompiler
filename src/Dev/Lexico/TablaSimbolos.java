@@ -71,4 +71,8 @@ public class TablaSimbolos {
 
     }
 
+    public static void removePuntero(String lexema){
+        ts.remove(lexema);
+    }
+
 }
