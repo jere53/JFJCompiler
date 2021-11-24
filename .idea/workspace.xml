@@ -6,16 +6,24 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3a08d5a9-0de6-450d-a23c-2cfd8001a572" name="Default Changelist" comment="TP3 69% COMPLETADO">
+    <list default="true" id="3a08d5a9-0de6-450d-a23c-2cfd8001a572" name="Default Changelist" comment="TP3 Completado">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/RegistroTS.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/RegistroTS.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/Parser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/y.output" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/y.output" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/y.tab.c" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/y.tab.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/gramatica.y" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/gramatica.y" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP3/Polaca.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP3/Polaca.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP3/Utils.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP3/Utils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/input.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/salida.txt" beforeDir="false" afterPath="$PROJECT_DIR$/salida.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dev/RegistroTS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dev/RegistroTS.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TP2/BYACC/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/BYACC/Parser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TP2/BYACC/y.output" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/BYACC/y.output" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TP2/BYACC/y.tab.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/BYACC/y.tab.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TP2/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TP2/gramatica.y" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/gramatica.y" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TP3/Polaca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP3/Polaca.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TP3/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP3/Utils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/input.txt" afterDir="false" />
     </list>
     <list id="697f8440-4d12-4320-82f3-d38f4ec120a5" name="Changes by felix" comment="" />
@@ -65,6 +73,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../JFJIntegration" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
@@ -130,7 +139,7 @@
       <workItem from="1637492442499" duration="723000" />
       <workItem from="1637550453431" duration="418000" />
       <workItem from="1637721274523" duration="11620000" />
-      <workItem from="1637771841934" duration="20062000" />
+      <workItem from="1637771841934" duration="21636000" />
     </task>
     <task id="LOCAL-00001" summary="Completa integracion del lexico y el sintactico, anota algunas correcciones que se deben realizar a la gramatica">
       <created>1632974085994</created>
@@ -349,7 +358,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637733942266</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="TP3 Completado">
+      <created>1637794534254</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1637794534254</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -387,7 +403,8 @@
     <MESSAGE value="Arregla un par de errores de la seleccion, estan comentados en el codigo.&#10;Implementa el control para la iteracion." />
     <MESSAGE value="POR LAS DUDAS" />
     <MESSAGE value="TP3 69% COMPLETADO" />
-    <option name="LAST_COMMIT_MESSAGE" value="TP3 69% COMPLETADO" />
+    <MESSAGE value="TP3 Completado" />
+    <option name="LAST_COMMIT_MESSAGE" value="TP3 Completado" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

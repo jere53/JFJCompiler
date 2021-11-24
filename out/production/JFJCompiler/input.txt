@@ -1,14 +1,7 @@
 PROGRAM programa_prueba;
 
-FUNC UINT f()
-    UINT y, z, x;
-    DOUBLE d;
-    FUNC DOUBLE j()
-        DOUBLE d, h;
-        BEGIN
-            d := h +3.4E-21;
-            RETURN (d);
-        END;
+FUNC UINT f(DOUBLE parametro)
+UINT y,x;
 BEGIN
     y := -3 * x;
     RETURN (y);
@@ -16,13 +9,19 @@ BEGIN
 END;
 
 UINT B, A;
-DOUBLE A, B;
-FUNC f1, f2;
 BEGIN
-    A := B;
-    f1 := f;
-    f1();
-    IF (f1() > 4) THEN
-        B := B + 4;
+    f(B);
+    IF (A > B) THEN
+    BEGIN
+        B := A;
+        A := B;
+    END;
+    ELSE
+    BEGIN
+        A := 10;
+        B := 20;
+    END;
     ENDIF;
+
+    B := 1;
 END;

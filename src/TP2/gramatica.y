@@ -14,7 +14,7 @@
 %start program
 
 %%
-program 						: PROGRAM ID ';' {Ambito.agregarAmbito("main");} declaracion cuerpo_programa
+program 						: PROGRAM ID ';' {Ambito.agregarAmbito("main");} declaracion {Polaca.insert("-----------FinDeclaraciones-----------");} cuerpo_programa
 								| PROGRAM ID ';' {Ambito.agregarAmbito("main");} cuerpo_programa
 								| PROGRAM ';' declaracion cuerpo_programa {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " program has no name");}
 								| PROGRAM ';' cuerpo_programa {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " program has no name");}

@@ -10,6 +10,7 @@ END;
 
 UINT B, A;
 BEGIN
+    f(B);
     IF (A > B) THEN
     BEGIN
         B := A;

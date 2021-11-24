@@ -1,11 +1,55 @@
------Tokens Reconocidos-----
-[POST, BEGIN, ASIG, RETURN, ELSE, CADENA, ID, DOUBLE, IF, CTE_UINT, FUNC, (, ENDIF, ), *, ,, -, :, END, THEN, ;, <, UINT, PROGRAM, >]
------Estructuras Sintacticas-----
-[Invocacion en la linea 6, Asignacion en la linea 7, Asignacion en la linea 16, Asignacion en la linea 17, Asignacion en la linea 21, Asignacion en la linea 22, Seleccion (IF) en la linea 24, Asignacion en la linea 26]
 -----Tabla Simbolos-----
-TablaSimbolos{ ts: {y:main:f=RegistroTS{lexema='y:main:f'tipo='258'uso='variable'comienzoCodigoEjecutable 0'}, -3=RegistroTS{lexema='-3'tipo='284'uso='error'comienzoCodigoEjecutable 0'}, Error en la postcondicion=RegistroTS{lexema='Error en la postcondicion'tipo='cadena_caracteres'uso='msj_postcondicion'comienzoCodigoEjecutable 0'}, j=RegistroTS{lexema='j'tipo='null'uso='null'comienzoCodigoEjecutable 0'}, programa_prueba=RegistroTS{lexema='programa_prueba'tipo='null'uso='null'comienzoCodigoEjecutable 0'}, 1=RegistroTS{lexema='1'tipo='266'uso='cte'comienzoCodigoEjecutable 0'}, 3=RegistroTS{lexema='3'tipo='266'uso='cte'comienzoCodigoEjecutable 0'}, B:main=RegistroTS{lexema='B:main'tipo='258'uso='variable'comienzoCodigoEjecutable 0'}, parametro:main:f=RegistroTS{lexema='parametro:main:f'tipo='259'uso='parametro'comienzoCodigoEjecutable 0'}, x:main:f=RegistroTS{lexema='x:main:f'tipo='258'uso='variable'comienzoCodigoEjecutable 0'}, A:main=RegistroTS{lexema='A:main'tipo='258'uso='variable'comienzoCodigoEjecutable 0'}, 20=RegistroTS{lexema='20'tipo='266'uso='cte'comienzoCodigoEjecutable 0'}, f:main=RegistroTS{lexema='f:main'tipo='258'uso='nombre_funcion'comienzoCodigoEjecutable 0'}, 10=RegistroTS{lexema='10'tipo='266'uso='cte'comienzoCodigoEjecutable 0'}} }
+TablaSimbolos{ ts: {y:main:f=RegistroTS{lexema='y:main:f'tipo='258'uso='variable'comienzoCodigoEjecutable 0'}, -3=RegistroTS{lexema='-3'tipo='284'uso='error'comienzoCodigoEjecutable 0'}, Error en la postcondicion=RegistroTS{lexema='Error en la postcondicion'tipo='cadena_caracteres'uso='msj_postcondicion'comienzoCodigoEjecutable 0'}, programa_prueba=RegistroTS{lexema='programa_prueba'tipo='null'uso='null'comienzoCodigoEjecutable 0'}, 1=RegistroTS{lexema='1'tipo='266'uso='cte'comienzoCodigoEjecutable 0'}, 3=RegistroTS{lexema='3'tipo='266'uso='cte'comienzoCodigoEjecutable 0'}, B:main=RegistroTS{lexema='B:main'tipo='258'uso='variable'comienzoCodigoEjecutable 0'}, parametro:main:f=RegistroTS{lexema='parametro:main:f'tipo='259'uso='parametro'comienzoCodigoEjecutable 0'}, x:main:f=RegistroTS{lexema='x:main:f'tipo='258'uso='variable'comienzoCodigoEjecutable 0'}, A:main=RegistroTS{lexema='A:main'tipo='258'uso='variable'comienzoCodigoEjecutable 0'}, 20=RegistroTS{lexema='20'tipo='266'uso='cte'comienzoCodigoEjecutable 0'}, f:main=RegistroTS{lexema='f:main'tipo='258'uso='nombre_funcion'comienzoCodigoEjecutable 0'}, 10=RegistroTS{lexema='10'tipo='266'uso='cte'comienzoCodigoEjecutable 0'}} }
 -------Errores-------
-[variable j no declarada, linea: 6, ERROR: LINE 6: No se encontro una funcion con esa signatura en el ambito actual
-]
+[]
 --------CodigoIntermedio--------
-Polaca{[RegistroTS{lexema='-3'tipo='284'uso='error'comienzoCodigoEjecutable 0'}, RegistroTS{lexema='x:main:f'tipo='258'uso='variable'comienzoCodigoEjecutable 0'}, 42, RegistroTS{lexema='y:main:f'tipo='258'uso='variable'comienzoCodigoEjecutable 0'}, 275, RegistroTS{lexema='y:main:f'tipo='258'uso='variable'comienzoCodigoEjecutable 0'}, FillReturnReg, RegistroTS{lexema='y:main:f'tipo='258'uso='variable'comienzoCodigoEjecutable 0'}, RegistroTS{lexema='3'tipo='266'uso='cte'comienzoCodigoEjecutable 0'}, 60, 15, BF, Return, 18, BI, PRINT, RegistroTS{lexema='Error en la postcondicion'tipo='cadena_caracteres'uso='msj_postcondicion'comienzoCodigoEjecutable 0'}, Quit, RegistroTS{lexema='A:main'tipo='258'uso='variable'comienzoCodigoEjecutable 0'}, RegistroTS{lexema='B:main'tipo='258'uso='variable'comienzoCodigoEjecutable 0'}, 62, 31, BF, RegistroTS{lexema='A:main'tipo='258'uso='variable'comienzoCodigoEjecutable 0'}, RegistroTS{lexema='B:main'tipo='258'uso='variable'comienzoCodigoEjecutable 0'}, 275, RegistroTS{lexema='B:main'tipo='258'uso='variable'comienzoCodigoEjecutable 0'}, RegistroTS{lexema='A:main'tipo='258'uso='variable'comienzoCodigoEjecutable 0'}, 275, 37, BI, RegistroTS{lexema='10'tipo='266'uso='cte'comienzoCodigoEjecutable 0'}, RegistroTS{lexema='A:main'tipo='258'uso='variable'comienzoCodigoEjecutable 0'}, 275, RegistroTS{lexema='20'tipo='266'uso='cte'comienzoCodigoEjecutable 0'}, RegistroTS{lexema='B:main'tipo='258'uso='variable'comienzoCodigoEjecutable 0'}, 275, RegistroTS{lexema='1'tipo='266'uso='cte'comienzoCodigoEjecutable 0'}, RegistroTS{lexema='B:main'tipo='258'uso='variable'comienzoCodigoEjecutable 0'}, 275]}
+0  RegistroTS{lexema='-3'tipo='284'uso='error'comienzoCodigoEjecutable 0'}
+1  RegistroTS{lexema='x:main:f'tipo='258'uso='variable'comienzoCodigoEjecutable 0'}
+2  42
+3  RegistroTS{lexema='y:main:f'tipo='258'uso='variable'comienzoCodigoEjecutable 0'}
+4  275
+5  RegistroTS{lexema='y:main:f'tipo='258'uso='variable'comienzoCodigoEjecutable 0'}
+6  FillReturnReg
+7  RegistroTS{lexema='y:main:f'tipo='258'uso='variable'comienzoCodigoEjecutable 0'}
+8  RegistroTS{lexema='3'tipo='266'uso='cte'comienzoCodigoEjecutable 0'}
+9  60
+10  15
+11  BF
+12  Return
+13  20
+14  BI
+15  L16
+16  PRINT
+17  RegistroTS{lexema='Error en la postcondicion'tipo='cadena_caracteres'uso='msj_postcondicion'comienzoCodigoEjecutable 0'}
+18  Quit
+19  L19
+20  -----------FinDeclaraciones-----------
+21  RegistroTS{lexema='B:main'tipo='258'uso='variable'comienzoCodigoEjecutable 0'}
+22  RegistroTS{lexema='parametro:main:f'tipo='259'uso='parametro'comienzoCodigoEjecutable 0'}
+23  275
+24  JumpTo: 
+25  0
+26  RegistroTS{lexema='A:main'tipo='258'uso='variable'comienzoCodigoEjecutable 0'}
+27  RegistroTS{lexema='B:main'tipo='258'uso='variable'comienzoCodigoEjecutable 0'}
+28  62
+29  39
+30  BF
+31  RegistroTS{lexema='A:main'tipo='258'uso='variable'comienzoCodigoEjecutable 0'}
+32  RegistroTS{lexema='B:main'tipo='258'uso='variable'comienzoCodigoEjecutable 0'}
+33  275
+34  RegistroTS{lexema='B:main'tipo='258'uso='variable'comienzoCodigoEjecutable 0'}
+35  RegistroTS{lexema='A:main'tipo='258'uso='variable'comienzoCodigoEjecutable 0'}
+36  275
+37  47
+38  BI
+39  L40
+40  RegistroTS{lexema='10'tipo='266'uso='cte'comienzoCodigoEjecutable 0'}
+41  RegistroTS{lexema='A:main'tipo='258'uso='variable'comienzoCodigoEjecutable 0'}
+42  275
+43  RegistroTS{lexema='20'tipo='266'uso='cte'comienzoCodigoEjecutable 0'}
+44  RegistroTS{lexema='B:main'tipo='258'uso='variable'comienzoCodigoEjecutable 0'}
+45  275
+46  L46
+47  RegistroTS{lexema='1'tipo='266'uso='cte'comienzoCodigoEjecutable 0'}
+48  RegistroTS{lexema='B:main'tipo='258'uso='variable'comienzoCodigoEjecutable 0'}
+49  275

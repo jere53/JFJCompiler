@@ -35,17 +35,20 @@ public class Polaca {
 
     public static void insert_sentencia_control_then() {
         int index = (int) pila_seleccion.pop();
+
         //add hace un corrimiento, hay que cambiar el valor del objeto que se dejo vacio, por eso se usa set.
         //representacionIntermedia.add(index,  representacionIntermedia.size() + 1);
         //+2, 1 para el objeto vacio y otro para el BI. en size() va el objeto vacio, y en size()+1 el BI, si la condicion es
         //falsa se empieza a leer desde size()+2
-        representacionIntermedia.add(new Object());
+        representacionIntermedia.set(index,  representacionIntermedia.size() + 2);
+
         pila_seleccion.add(representacionIntermedia.size()); // Agrego el index
 
-        representacionIntermedia.add("BI");
-        representacionIntermedia.add("L" + representacionIntermedia.size() + 1);
 
-        representacionIntermedia.set(index, representacionIntermedia.size());
+        representacionIntermedia.add(new Object());
+
+        representacionIntermedia.add("BI");
+        representacionIntermedia.add("L" + (representacionIntermedia.size() + 1));
 
     }
 
@@ -95,7 +98,15 @@ public class Polaca {
     }
 
     public static String imprimirPolaca() {
-        return "Polaca{" + representacionIntermedia.toString() + "}";
+        String res = "";
+        int i = 0;
+        for(Object o : representacionIntermedia){
+            res += i + "  ";
+            res += o.toString();
+            res += '\n';
+            i++;
+        }
+        return res;
     }
 
     public static List<Object> getRepresentacionIntermedia(){
