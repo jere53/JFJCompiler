@@ -60,7 +60,7 @@ lista_variables					: ID {Utils.agregarAListaDeVariables($1.sval); TablaSimbolos
 								| ID ',' lista_variables {Utils.agregarAListaDeVariables($1.sval); TablaSimbolos.punteroTS($1.sval).setUso("variable");}
 								;
 
-nombre_func						: FUNC ID {TablaSimbolos.punteroTS($2.sval).setUso("nombre_funcion"); Utils.cachearIDFuncion($2.sval);}
+nombre_func						: FUNC ID {TablaSimbolos.punteroTS($2.sval).setUso("nombre_funcion"); Utils.cachearIDFuncion($2.sval); Polaca.agregarAmbito($2.sval)}
 								| FUNC {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Falta el identificador del procedimiento.");}
 								;
 

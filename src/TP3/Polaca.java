@@ -64,6 +64,19 @@ public class Polaca {
 
     }
 
+    // Agregados para manejo de ambito
+    public static void agregar_ambito(String ambito){
+        Ambito.agregar_ambito(ambito);
+    }
+
+    public static void borrar_ambito(){
+        Ambito.borrar_ambito();
+    }
+
+    public static String retornar_naming(){
+        return Ambito.retornar_naming();
+    }
+
     public static void insert_iteracion_start(){
         pila_iteracion.push(representacionIntermedia.size()); //va a tener la primer sentencia del REPEAT
     }
@@ -71,6 +84,11 @@ public class Polaca {
     public static void insert_iteracion_end(){
         Polaca.insert(pila_iteracion.pop()); //a donde tenemos que saltar si se cumple la cond
         Polaca.insert(new String("BI"));
+    }
+
+    public static void insert_sentencia_control_then_sin_else(){
+        int index = (int) pila_seleccion.pop();
+        representacionIntermedia.add(index,  representacionIntermedia.size() + 1);
     }
 
     public static void removerUltimo(){
