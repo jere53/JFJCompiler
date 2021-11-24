@@ -61,7 +61,7 @@ lista_variables					: ID {System.out.println("ANDA LPM"); TablaSimbolos.cambiarN
 								| ID ',' lista_variables { System.out.println("ANDA LPM2");  TablaSimbolos.cambiarNombre($1.sval, $1.sval + Ambito.retornarNaming()); Utils.agregarAListaDeVariables($1.sval + Ambito.retornarNaming()); TablaSimbolos.punteroTS($1.sval + Ambito.retornarNaming()).setUso("variable"); }
 								;
 
-nombre_func						: FUNC ID {TablaSimbolos.punteroTS($2.sval).setUso("nombre_funcion"); Utils.cachearIDFuncion($2.sval); Polaca.agregarAmbito($2.sval)}
+nombre_func						: FUNC ID {TablaSimbolos.cambiarNombre($2.sval, $2.sval + Ambito.retornarNaming()); TablaSimbolos.punteroTS($2.sval + Ambito.retornarNaming()).setUso("nombre_funcion"); Utils.cachearIDFuncion($2.sval + Ambito.retornarNaming()); Ambito.agregarAmbito($2.sval); }
 								| FUNC {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Falta el identificador del procedimiento.");}
 								;
 

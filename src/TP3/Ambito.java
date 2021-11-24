@@ -22,6 +22,7 @@ public class Ambito {
 
     public static String retornarNaming(){
         StringBuilder res = new StringBuilder();
+
         for ( String ambito: ambito_stack) {
             res.append(":").append(ambito);
         }
