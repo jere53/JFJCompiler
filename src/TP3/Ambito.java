@@ -36,9 +36,10 @@ public class Ambito {
     public static String bindAmbito(String lexema){
         Stack<String> copia = (Stack<String>) ambito_stack.clone();
 
-        while(!copia.empty()){
+        while(!ambito_stack.empty()){
             String res = lexema + retornarNaming();
             if (TablaSimbolos.perteneceTS(res)) {
+                TablaSimbolos.removePuntero(lexema);
                 ambito_stack = copia;
                 return res;
             }

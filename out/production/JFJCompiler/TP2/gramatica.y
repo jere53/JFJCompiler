@@ -49,20 +49,19 @@ post_condicion          		: POST ':' condicion ',' CADENA ';' {TablaSimbolos.pun
 retorno             			: '(' expresion ')' ';' {Polaca.insert("Retorno");} //PLACEHOLDER
 								;
 
-declaracion 					: tipo_id nombre_func params_func definicion_func ';' {Utils.setTipoIDFuncionCacheado(Integer.toString($1.ival));}
+declaracion 					: FUNC tipo_id nombre_func params_func definicion_func  ';' { Ambito.borrarAmbito();} {Utils.setTipoIDFuncionCacheado(Integer.toString($1.ival));}
 								| tipo_id lista_variables ';' {Utils.asignarTipoListaDeVariables(Integer.toString($1.ival));} // Asigna el tipo a cada variable de la lista
-								| tipo_id lista_variables ';' { Ambito.borrarAmbito();} declaracion {Utils.asignarTipoListaDeVariables(Integer.toString($1.ival));}
-								| tipo_id nombre_func params_func definicion_func ';' { Ambito.borrarAmbito();} declaracion {Utils.setTipoIDFuncionCacheado(Integer.toString($1.ival));}
+								| tipo_id lista_variables ';' declaracion {Utils.asignarTipoListaDeVariables(Integer.toString($1.ival));}
+								| FUNC tipo_id nombre_func params_func definicion_func ';' { Ambito.borrarAmbito();} declaracion {Utils.setTipoIDFuncionCacheado(Integer.toString($1.ival));}
 								| lista_variables ';' {yyerror("ERROR: LINE " + (AnalizadorLexico.nroLinea - 1) + " missing variable type");} //la linea es la primer sentencia ejecutable del programa principal, restamos 1 para que devuelva la linea donde empieza el programa
 								| lista_variables ';' declaracion {yyerror("ERROR: LINE " + (AnalizadorLexico.nroLinea - 1) + " missing variable type");}
 								;
 
-lista_variables					: ID {System.out.println("ANDA LPM"); TablaSimbolos.cambiarNombre($1.sval, $1.sval + Ambito.retornarNaming()); Utils.agregarAListaDeVariables($1.sval + Ambito.retornarNaming()); TablaSimbolos.punteroTS($1.sval + Ambito.retornarNaming()).setUso("variable"); }
-								| ID ',' lista_variables { System.out.println("ANDA LPM2");  TablaSimbolos.cambiarNombre($1.sval, $1.sval + Ambito.retornarNaming()); Utils.agregarAListaDeVariables($1.sval + Ambito.retornarNaming()); TablaSimbolos.punteroTS($1.sval + Ambito.retornarNaming()).setUso("variable"); }
+lista_variables					: ID {System.out.println("ANDA LPM" + $1.sval); TablaSimbolos.cambiarNombre($1.sval, $1.sval + Ambito.retornarNaming()); Utils.agregarAListaDeVariables($1.sval + Ambito.retornarNaming()); TablaSimbolos.punteroTS($1.sval + Ambito.retornarNaming()).setUso("variable"); }
+								| ID ',' lista_variables { System.out.println("ANDA LPM2" + $1.sval);  TablaSimbolos.cambiarNombre($1.sval, $1.sval + Ambito.retornarNaming()); Utils.agregarAListaDeVariables($1.sval + Ambito.retornarNaming()); TablaSimbolos.punteroTS($1.sval + Ambito.retornarNaming()).setUso("variable"); }
 								;
 
-nombre_func						: FUNC ID {TablaSimbolos.cambiarNombre($2.sval, $2.sval + Ambito.retornarNaming()); TablaSimbolos.punteroTS($2.sval + Ambito.retornarNaming()).setUso("nombre_funcion"); Utils.cachearIDFuncion($2.sval + Ambito.retornarNaming()); Ambito.agregarAmbito($2.sval); }
-								| FUNC {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Falta el identificador del procedimiento.");}
+nombre_func						: ID {TablaSimbolos.cambiarNombre($1.sval, $1.sval + Ambito.retornarNaming()); TablaSimbolos.punteroTS($1.sval + Ambito.retornarNaming()).setUso("nombre_funcion"); Utils.cachearIDFuncion($1.sval + Ambito.retornarNaming()); Ambito.agregarAmbito($1.sval); }
 								;
 
 params_func						: '(' param ')'
@@ -99,7 +98,7 @@ invocacion						: ID '(' ')' {if (Ambito.bindAmbito($1.sval) != null) Polaca.ins
 								| ID '(' ID ')' {if (Ambito.bindAmbito($1.sval) != null) Polaca.insert(TablaSimbolos.punteroTS(Ambito.bindAmbito($1.sval))); if (Ambito.bindAmbito($1.sval) != null) Polaca.insert(TablaSimbolos.punteroTS(Ambito.bindAmbito($2.sval)));}
 								;
 
-asignacion						: ID ASIG expresion {if (Ambito.bindAmbito($1.sval) != null) Polaca.insert(TablaSimbolos.punteroTS(Ambito.bindAmbito($1.sval))); Polaca.insert(new Integer(ASIG));} //Usamos Integer para que se pueda meter en la lista.
+asignacion						: ID ASIG expresion {if (Ambito.bindAmbito($1.sval) != null) {Polaca.insert(TablaSimbolos.punteroTS(Ambito.bindAmbito($1.sval)));} Polaca.insert(new Integer(ASIG));} //Usamos Integer para que se pueda meter en la lista.
             					| ID ASIG error {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " El lado derecho de la asignacio no es valido.");}
             					| ID {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Un identificador en solitario no es una sentencia valida.");}
             					| error ASIG expresion {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " El lado izquierdo de la asignacion no es valido");}

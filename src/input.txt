@@ -1,12 +1,28 @@
 PROGRAM programa_prueba;
 
-UINT FUNC f(UINT p)
-UINT y, z, x;
+FUNC UINT f()
+    UINT y, z, x;
+    DOUBLE d;
+    FUNC DOUBLE j()
+        DOUBLE d, h;
+        BEGIN
+            d := h +3.4E-21;
+            RETURN (d);
+        END;
 BEGIN
     y := -3 * x;
     RETURN (y);
     POST: (y < 3), %Error en la postcondicion%;
 END;
 
+UINT B, A;
+DOUBLE A, B;
+FUNC f1, f2;
 BEGIN
+    A := B;
+    f1 := f;
+    f1();
+    IF (f1() > 4) THEN
+        B := B + 4;
+    ENDIF;
 END;
