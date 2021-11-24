@@ -18,6 +18,10 @@ public class Polaca {
 
     }
 
+    public static int posicionActual(){
+        return representacionIntermedia.size() - 1;
+    }
+
     public static void insert(Object o){
         representacionIntermedia.add(o);
     } // TODO, por que object y no Integer
@@ -51,7 +55,7 @@ public class Polaca {
         //Then pregunta "a donde tengo que saltar si se cumple la cond, para ignorar el else?", Else le dice "si se cumplio, tenes que saltar
         // hasta aca (desde donde Then dijo que salte)"
         int index = (int) pila_seleccion.pop();
-        representacionIntermedia.set(index,  representacionIntermedia.size() + 1); //ya se leyo el codigo del ELSE, aca si es +1
+        representacionIntermedia.set(index,  representacionIntermedia.size()); //ya se leyo el codigo del ELSE
         //este valor hasta donde llega el else. Si se cumple la cond, lo que este entre el final del THEN y este valor se ignora.
         //Si no hay rama ELSE, el codigo es el mismo, porque si la condicion se cumple se empieza a leer desde el final del then.
         //no se necesita una regla para la rama sin else.
@@ -70,12 +74,7 @@ public class Polaca {
 
     public static void insert_iteracion_end(){
         Polaca.insert(pila_iteracion.pop()); //a donde tenemos que saltar si se cumple la cond
-        Polaca.insert(new String("BI"));
-    }
-
-    public static void insert_sentencia_control_then_sin_else(){
-        int index = (int) pila_seleccion.pop();
-        representacionIntermedia.add(index,  representacionIntermedia.size() + 1);
+        Polaca.insert(new String("BF"));
     }
 
     public static void removerUltimo(){

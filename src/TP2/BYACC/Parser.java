@@ -194,191 +194,196 @@ public final static short ERR_CTE_FUERA_RANGO=284;
 public final static short ERR_FORMATO_CTE=285;
 public final static short YYERRCODE=256;
 final static short yylhs[] = {                           -1,
-    2,    0,    4,    0,    0,    0,    0,    0,    3,    6,
-    6,    8,    8,    8,    9,    9,    9,    9,    9,    9,
-   11,   11,   10,   17,    1,    1,    1,   19,    1,    1,
-    1,   18,   18,   14,   15,   15,   20,   16,   16,   16,
-    5,    5,    7,    7,    7,    7,    7,    7,    7,    7,
-    7,    7,    7,    7,   21,   21,   22,   22,   22,   22,
-   13,   13,   13,   26,   26,   26,   27,   27,   27,   27,
-   27,   27,   27,   25,   25,   23,   23,   28,   12,   12,
-   12,   12,   12,   12,   29,   29,   29,   29,   29,   29,
-   30,   30,   24,   24,   31,   31,   32,   32,   33,   33,
+    2,    0,    4,    0,    0,    0,    0,    0,    3,    3,
+    6,    6,    8,    8,    8,    9,    9,    9,    9,    9,
+    9,   13,   14,   15,   11,   11,   10,    1,    1,    1,
+   21,    1,    1,    1,   20,   20,   17,   18,   18,   22,
+   23,   19,   24,   19,   19,    5,    5,    7,    7,    7,
+    7,    7,    7,    7,    7,    7,    7,    7,    7,   25,
+   25,   26,   26,   26,   26,   16,   16,   16,   30,   30,
+   30,   31,   31,   31,   31,   31,   31,   31,   29,   29,
+   27,   27,   32,   12,   12,   12,   12,   12,   12,   33,
+   33,   33,   33,   33,   33,   34,   34,   28,   28,   35,
+   35,   36,   36,   37,   37,
 };
 final static short yylen[] = {                            2,
-    0,    6,    0,    5,    4,    3,    2,    1,    4,    4,
-    1,    1,    1,    1,    5,    6,    4,    5,    5,    6,
-    6,    5,    4,    0,    7,    3,    4,    0,    8,    2,
-    3,    1,    3,    1,    3,    2,    2,    2,    1,    0,
-    2,    1,    2,    2,    2,    2,    2,    2,    2,    2,
-    2,    2,    2,    2,    3,    4,    3,    3,    1,    3,
-    3,    3,    1,    3,    3,    1,    1,    1,    1,    2,
-    1,    1,    1,    4,    4,    4,    2,    1,    5,    4,
-    4,    4,    5,    3,    1,    1,    1,    1,    1,    1,
-    1,    1,    3,    4,    2,    1,    2,    1,    2,    1,
+    0,    6,    0,    5,    4,    3,    2,    1,    4,    3,
+    4,    1,    1,    1,    1,    5,    6,    4,    5,    5,
+    6,    0,    0,    0,    9,    5,    4,    6,    3,    4,
+    0,    8,    2,    3,    1,    3,    1,    3,    2,    2,
+    0,    3,    0,    2,    0,    2,    1,    2,    2,    2,
+    2,    2,    2,    2,    2,    2,    2,    2,    2,    3,
+    4,    3,    3,    1,    3,    3,    3,    1,    3,    3,
+    1,    1,    1,    1,    2,    1,    1,    1,    4,    4,
+    4,    2,    1,    5,    4,    4,    4,    5,    3,    1,
+    1,    1,    1,    1,    1,    1,    1,    3,    4,    2,
+    1,    2,    1,    2,    1,
 };
 final static short yydefred[] = {                         0,
-    0,   12,   13,    0,    0,    0,    0,    0,    8,    0,
-    0,    0,    0,    0,    0,    0,   78,    0,    0,    0,
-    0,    0,    0,    0,    0,    0,    0,    0,    0,   14,
-    0,    7,    0,    0,    0,    0,    6,    0,    0,    0,
-    0,    0,   95,   48,   54,    0,   41,   43,   50,   44,
-   51,   45,   52,   46,   49,   47,   53,    0,    0,   11,
-    0,    0,   33,   34,    0,    0,   31,    0,    0,    5,
-    0,   68,   69,   72,   73,    0,    0,   71,    0,   66,
-   58,    0,    0,   55,    0,    0,    0,   85,   86,   89,
-   90,   87,   88,    0,    0,    9,    0,    0,   97,    0,
-   93,    0,    0,    0,   27,    0,    4,   70,    0,    0,
-    0,    0,   56,   75,   74,   84,   91,   92,    0,    0,
-    0,    0,   76,   99,   94,   36,    0,    0,    0,    0,
-   39,    0,    2,    0,    0,   64,   65,   82,    0,    0,
-   81,   10,   37,   35,    0,   38,    0,   79,   83,    0,
-   25,    0,   17,    0,    0,    0,    0,    0,   29,    0,
-   19,    0,    0,   15,    0,   18,    0,   20,    0,   16,
-    0,   23,    0,   22,   21,
+    0,   13,   14,    0,    0,    0,    0,    0,    8,    0,
+    0,    0,    0,    0,    0,    0,    0,   83,    0,    0,
+    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
+   15,    0,    7,    0,    0,    0,    0,    6,    0,   10,
+    0,    0,    0,    0,  100,   53,   59,    0,   46,   48,
+   55,   49,   56,   50,   57,   51,   54,   52,   58,    0,
+    0,   12,    0,    0,   36,   37,    0,    0,   34,    0,
+    0,    5,    0,   73,   74,   77,   78,    0,    0,   76,
+    0,   71,   63,    0,    0,   60,    0,    0,    0,   90,
+   91,   94,   95,   92,   93,    0,    0,    9,    0,    0,
+  102,    0,   98,    0,    0,    0,   30,    0,    4,   75,
+    0,    0,    0,    0,   61,   80,   79,   89,   96,   97,
+    0,    0,    0,    0,   81,  104,   99,   39,    0,    0,
+   41,    0,    0,    2,    0,    0,   69,   70,   87,    0,
+    0,   86,   11,   40,   38,    0,    0,    0,   44,   84,
+   88,   42,    0,    0,   32,    0,   18,    0,    0,    0,
+    0,    0,    0,   20,    0,    0,   16,    0,   19,    0,
+   21,    0,   17,    0,   27,    0,   26,   22,   23,   24,
+   25,
 };
 final static short yydgoto[] = {                          7,
-    8,   68,    9,   69,   20,   59,   21,   10,  131,  157,
-  158,   43,   77,   65,  104,  132,  151,   11,  152,  128,
-   22,   23,   24,   25,   26,   79,   80,   27,   95,  120,
-   28,   62,  102,
+    8,   70,    9,   71,   21,   61,   22,   10,  149,  161,
+  162,   45,  179,  180,  181,   79,   67,  106,  132,   11,
+  153,  130,  146,  133,   23,   24,   25,   26,   27,   81,
+   82,   28,   97,  122,   29,   64,  104,
 };
-final static short yysindex[] = {                      -137,
-  -43,    0,    0,  -98,  -35, -182,    0, -218,    0, -215,
-   -7,   11, -123, -216,  -39,   56,    0,   60,  -56, -168,
-  -98,  -54,  117,  124,  135,  142,  -96, -167, -215,    0,
- -154,    0,   53, -114,    0, -218,    0,    3,   98,  -26,
- -228,   72,    0,    0,    0,   59,    0,    0,    0,    0,
-    0,    0,    0,    0,    0,    0,    0,  -98, -146,    0,
-  -96, -248,    0,    0,   89, -114,    0, -114, -218,    0,
-   93,    0,    0,    0,    0,    3,   41,    0,  -18,    0,
-    0,   41,   99,    0,  118,  126,  128,    0,    0,    0,
-    0,    0,    0,   64,    3,    0,  -97,   60,    0,  -96,
-    0, -112,  -28,  -69,    0, -218,    0,    0,    3,    3,
-    3,    3,    0,    0,    0,    0,    0,    0,  -41,    3,
-   63,  120,    0,    0,    0,    0,  -83,  151,  -98,  -67,
-    0,  138,    0,  -18,  -18,    0,    0,    0,  137,  143,
-    0,    0,    0,    0,  -63,    0,    0,    0,    0,  -29,
-    0, -114,    0,  146, -196,    3, -183,  -53,    0,   60,
-    0,  -44,  162,    0,  -42,    0,  178,    0,  147,    0,
-  -57,    0,  169,    0,    0,
+final static short yysindex[] = {                        55,
+  -43,    0,    0,  -92,  -20, -157,    0, -216,    0, -205,
+   32,   37, -111, -212,   41,  -39,   71,    0,   75,  -56,
+ -158, -190,  -54,  117,  124,  135,  142,  -85, -145, -205,
+    0, -136,    0,   74, -129,    0, -216,    0,    3,    0,
+   98,  -26, -174,   72,    0,    0,    0,   81,    0,    0,
+    0,    0,    0,    0,    0,    0,    0,    0,    0, -190,
+ -126,    0,  -85, -243,    0,    0,  111, -129,    0, -129,
+ -216,    0,  112,    0,    0,    0,    0,    3,   15,    0,
+   -5,    0,    0,   15,  114,    0,  119,  121,  122,    0,
+    0,    0,    0,    0,    0,   64,    3,    0,  -97,   75,
+    0,  -85,    0, -114,  -28, -129,    0, -216,    0,    0,
+    3,    3,    3,    3,    0,    0,    0,    0,    0,    0,
+  -41,    3,   96,  110,    0,    0,    0,    0,  -91,  133,
+    0,  123,  -80,    0,   -5,   -5,    0,    0,    0,  152,
+  177,    0,    0,    0,    0,  -80,    0, -190,    0,    0,
+    0,    0, -129,  -75,    0,  -29,    0,  129, -254,    3,
+ -185,  -73,   75,    0,  -72,  219,    0,  -70,    0,  155,
+    0,  137,    0,  -57,    0,  144,    0,    0,    0,    0,
+    0,
 };
 final static short yyrindex[] = {                         0,
-    0,    0,    0,    0,  180,  -23,    0,    0,    0,    0,
-    0,    0,    0,    0,  153,    0,    0,  -25,    0,    0,
- -105,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-    0,    0,    0,  -10,   55,    0,    0,    0,    0,    0,
-    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-    0,    0,    0,    0,    0,    0,    0,    0,  165,    0,
- -241,    0,    0,    0,    0,   -9,    0,    0,    0,    0,
-  -24,    0,    0,    0,    0,    0,  176,    0,    2,    0,
-    0,  183,    0,    0,    0,    0,    0,    0,    0,    0,
-    0,    0,    0,    0,    0,    0,    0,    0,    0,  -22,
-    0,    0,    0,  202,    0,    0,    0,    0,    0,    0,
+    0,    0,    0,    0,   32,  -60,    0,    0,    0,    0,
+    0,    0,    0,    0,    0,  153,    0,    0,  -66,    0,
+    0, -143,    0,    0,    0,    0,    0,    0,    0,    0,
+    0,    0,    0,    0,  -51,   31,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-    0,    0,    0,   28,   54,    0,    0,    0,  102,    0,
+  165,    0, -241,    0,    0,    0,    0,  -32,    0,    0,
+    0,    0,  -24,    0,    0,    0,    0,    0,  176,    0,
+    2,    0,    0,  183,    0,    0,    0,    0,    0,    0,
+    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
+    0,  -35,    0,    0,    0,  -53,    0,    0,    0,    0,
+    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
+    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
+    0,    0,    0,    0,   28,   54,    0,    0,    0,  102,
     0,    0,    0,    0,    0,    0,  203,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-    0,    0,    0,    0,    0,
+    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
+    0,
 };
 final static short yygindex[] = {                         0,
-   -3,    0,   24,    0,  -14,  -49,   31,    8,  132,    0,
-  -66,  -92,  -17,    0,    0,    0,    0,   -2,    0,    0,
-   43,    0,    0,    0,    0,   38,  -37,    0,  170,    0,
-    0,    0,    0,
+   -3,    0,   14,    0,  -10,  -34,   29,   20,   93,    0,
+  -49,  -93,    0,    0,    0,  -16,    0,    0,    0,    4,
+    0,    0,    0,    0,   45,    0,    0,    0,    0,    9,
+  -38,    0,  145,    0,    0,    0,    0,
 };
 final static int YYTABLESIZE=468;
 static short yytable[];
 static { yytable();}
 static void yytable(){
-yytable = new short[]{                        138,
-   40,  174,   44,   76,   48,  123,   47,   33,   29,   36,
-  156,   99,  126,   31,   84,   13,   67,   67,   67,   67,
-   67,   82,   67,  111,   94,  100,   63,   85,  112,  155,
-   67,   32,   98,  101,   67,   67,   37,   67,  108,   86,
-   98,    4,   63,   97,   63,   63,   63,   76,    5,   45,
-  124,   34,   49,   51,   53,   55,   57,   60,   38,   70,
-   63,   63,  105,   63,  106,  161,  154,  167,   61,   35,
-   61,   61,   61,  136,  137,    2,    3,  121,  164,  154,
-   78,   78,   30,  109,   78,  110,   61,   61,  162,   61,
-  165,   60,  107,   46,   62,   41,   62,   62,   62,   42,
-  130,  139,  140,  141,   61,  109,  109,  110,  110,   64,
-  127,   66,   62,   62,  145,   62,   76,   96,   78,    1,
-    2,    3,    4,   92,   98,   93,    5,    6,  103,  133,
-   60,   92,   40,   93,    2,    3,    4,   78,  163,  113,
-    5,    6,   76,    2,    3,   80,  134,  135,  159,    5,
-    6,   78,   78,   78,   78,   42,   42,   14,  114,   14,
-   80,   78,   78,   58,  122,   15,  115,   15,  116,  125,
-   16,   17,   16,   17,   18,   50,   18,  148,  142,  109,
-  143,  110,   52,  149,   19,  109,   19,  110,    2,    3,
-  129,  144,  129,   54,    5,    6,  147,  150,   78,   14,
-   56,   14,  169,  160,  109,  172,  110,   15,  166,   15,
-  173,   59,   16,   17,   16,   17,   18,  168,   18,  170,
-   12,  171,   71,   77,   72,   73,   19,  175,   19,    2,
-    3,   67,  153,  154,   60,   39,   30,   83,   32,   67,
-   14,   57,   74,   75,   67,   67,   96,   67,   67,   30,
-   26,   67,   67,   67,   67,   67,   67,   63,   67,  100,
-   40,  146,    0,  119,    0,   63,   71,    0,   72,   73,
-   63,   63,    0,   63,   63,    0,    0,   63,   63,   63,
-   63,   63,   63,   61,   63,    0,   74,   75,    0,    0,
-    0,   61,    0,    0,    0,    0,   61,   61,    0,   61,
-   61,    0,    0,   61,   61,   61,   61,   61,   61,   62,
-   61,    0,    1,    1,    3,    0,    0,   62,    1,    1,
-    0,    0,   62,   62,    0,   62,   62,   87,    0,   62,
-   62,   62,   62,   62,   62,   71,   62,   72,   73,  117,
-  118,   88,   89,   90,   91,    0,    0,    0,    0,   88,
-   89,   90,   91,   81,    0,   74,   75,   80,    0,    0,
-    0,   71,    0,   72,   73,   80,    0,    0,    0,    0,
-   80,   80,   14,   80,   80,    0,    0,    0,    0,   14,
-   15,   74,   75,    0,   80,   16,   17,   15,    0,   18,
-   14,    0,   16,   17,    0,    0,   18,   14,   15,   19,
-    0,    0,    0,   16,   17,   15,   19,   18,   59,    0,
-   16,   17,    0,    0,   18,    0,   59,   19,    0,    0,
-   77,   59,   59,    0,   19,   59,    0,    0,   77,    0,
-    0,   60,    0,   77,   77,   59,    0,   77,   57,   60,
-    0,    0,    0,    0,   60,   60,   57,   77,   60,    0,
-    0,   57,   57,    0,    0,   57,    0,    0,   60,    0,
-   28,   28,   24,    0,    0,   57,   28,   28,
+yytable = new short[]{                        139,
+   42,  177,   46,   78,   50,   45,  125,  164,  158,   37,
+  160,   49,  128,   34,   86,   13,   72,   72,   72,   72,
+   72,   33,   72,   30,   84,   32,   38,   96,  101,  159,
+  102,   69,  103,   65,   72,   72,  113,   72,  103,  110,
+  103,  114,   68,    4,   68,   68,   68,   78,   47,   99,
+   72,   51,   53,   55,   57,   59,   62,  111,    5,  112,
+   68,   68,   39,   68,  107,   14,  108,  126,   66,  170,
+   66,   66,   66,   16,  137,  138,  167,  158,   17,   18,
+  123,   87,   19,   80,  109,   80,   66,   66,   80,   66,
+   35,   62,   20,   88,   67,   36,   67,   67,   67,   40,
+    2,    3,  131,   48,  140,  141,  111,   31,  112,  165,
+   43,  168,   67,   67,   44,   67,   78,   47,   47,  135,
+  136,  134,   80,   94,  129,   95,   63,   66,    2,    3,
+   62,   94,   68,   95,    5,    6,  142,  154,  111,   98,
+  112,   80,   78,  166,  100,   85,    2,    3,    4,  155,
+  105,   42,    5,    6,  115,   80,   80,   80,   80,  116,
+   85,  117,  118,   14,  124,   80,   80,  127,  143,   15,
+   14,   16,  144,  145,   60,   52,   17,   18,   16,  148,
+   19,  147,   54,   17,   18,  156,  163,   19,  169,  171,
+   20,  173,  150,   56,  111,  175,  112,   20,  174,   14,
+   58,   14,  178,   15,   80,  101,   43,   16,   33,   16,
+  176,   64,   17,   18,   17,   18,   19,  151,   19,  111,
+   12,  112,   73,   82,   74,   75,   20,   29,   20,    2,
+    3,   72,  157,  158,   65,   41,   31,   85,  152,   72,
+  121,   62,   76,   77,   72,   72,  105,   72,   72,    0,
+    0,   72,   72,   72,   72,   72,   72,   68,   72,  172,
+    0,  111,    0,  112,    0,   68,   73,    0,   74,   75,
+   68,   68,    0,   68,   68,    0,    0,   68,   68,   68,
+   68,   68,   68,   66,   68,    0,   76,   77,    1,    1,
+    3,   66,    0,    0,    1,    1,   66,   66,    0,   66,
+   66,    0,    0,   66,   66,   66,   66,   66,   66,   67,
+   66,    1,    2,    3,    4,    0,    0,   67,    5,    6,
+    0,    0,   67,   67,    0,   67,   67,   89,    0,   67,
+   67,   67,   67,   67,   67,   73,   67,   74,   75,  119,
+  120,   90,   91,   92,   93,    0,    0,    0,    0,   90,
+   91,   92,   93,   83,    0,   76,   77,   85,    0,    0,
+    0,   73,    0,   74,   75,   85,    0,    0,    0,    0,
+   85,   85,   14,   85,   85,    0,    0,    0,    0,   14,
+   16,   76,   77,    0,   85,   17,   18,   16,    0,   19,
+   14,    0,   17,   18,    0,    0,   19,   14,   16,   20,
+    0,    0,    0,   17,   18,   16,   20,   19,   64,    0,
+   17,   18,    0,    0,   19,    0,   64,   20,    0,    0,
+   82,   64,   64,    0,   20,   64,    0,    0,   82,    0,
+    0,   65,    0,   82,   82,   64,    0,   82,   62,   65,
+    0,    0,    0,    0,   65,   65,   62,   82,   65,    0,
+    0,   62,   62,    0,    0,   62,    0,    0,   65,    0,
+   31,   31,   28,    0,    0,   62,   31,   31,
 };
 }
 static short yycheck[];
 static { yycheck(); }
 static void yycheck() {
 yycheck = new short[] {                         41,
-   40,   59,   59,   45,   59,   98,   21,   10,   44,   13,
-   40,   61,   41,    6,   41,   59,   41,   42,   43,   44,
-   45,   39,   47,   42,   42,  274,   29,  256,   47,   59,
-   34,    8,  274,  282,   59,   60,   13,   62,   76,  268,
-  282,  260,   41,   58,   43,   44,   45,   45,  264,   19,
-  100,   59,   22,   23,   24,   25,   26,   27,  275,   36,
-   59,   60,   66,   62,   68,  262,  263,  160,   41,   59,
-   43,   44,   45,  111,  112,  258,  259,   95,  262,  263,
-   38,   39,  265,   43,   42,   45,   59,   60,  155,   62,
-  157,   61,   69,  262,   41,   40,   43,   44,   45,   40,
-  104,  119,  120,   41,  272,   43,   43,   45,   45,  264,
-  103,   59,   59,   60,  129,   62,   45,   59,   76,  257,
-  258,  259,  260,   60,  271,   62,  264,  265,   40,  106,
-  100,   60,   40,   62,  258,  259,  260,   95,  156,   41,
-  264,  265,   45,  258,  259,   44,  109,  110,  152,  264,
-  265,  109,  110,  111,  112,  261,  262,  256,   41,  256,
-   59,  119,  120,  260,  262,  264,   41,  264,   41,  282,
-  269,  270,  269,  270,  273,   59,  273,   41,   59,   43,
-  264,   45,   59,   41,  283,   43,  283,   45,  258,  259,
-  260,   41,  260,   59,  264,  265,   59,  261,  156,  256,
-   59,  256,   41,   58,   43,   59,   45,  264,  262,  264,
-  268,   59,  269,  270,  269,  270,  273,  262,  273,  262,
-  264,   44,  264,   59,  266,  267,  283,   59,  283,  258,
-  259,  256,  262,  263,   59,  275,  265,  264,   59,  264,
-  264,   59,  284,  285,  269,  270,  272,  272,  273,  260,
-  260,  276,  277,  278,  279,  280,  281,  256,  283,  282,
-   59,  130,   -1,   94,   -1,  264,  264,   -1,  266,  267,
+   40,   59,   59,   45,   59,   59,  100,  262,  263,   13,
+   40,   22,   41,   10,   41,   59,   41,   42,   43,   44,
+   45,    8,   47,   44,   41,    6,   13,   44,   63,   59,
+  274,   35,  274,   30,   59,   60,   42,   62,  282,   78,
+  282,   47,   41,  260,   43,   44,   45,   45,   20,   60,
+   37,   23,   24,   25,   26,   27,   28,   43,  264,   45,
+   59,   60,  275,   62,   68,  256,   70,  102,   41,  163,
+   43,   44,   45,  264,  113,  114,  262,  263,  269,  270,
+   97,  256,  273,   39,   71,   41,   59,   60,   44,   62,
+   59,   63,  283,  268,   41,   59,   43,   44,   45,   59,
+  258,  259,  106,  262,  121,  122,   43,  265,   45,  159,
+   40,  161,   59,   60,   40,   62,   45,  261,  262,  111,
+  112,  108,   78,   60,  105,   62,  272,  264,  258,  259,
+  102,   60,   59,   62,  264,  265,   41,  148,   43,   59,
+   45,   97,   45,  160,  271,   44,  258,  259,  260,  153,
+   40,   40,  264,  265,   41,  111,  112,  113,  114,   41,
+   59,   41,   41,  256,  262,  121,  122,  282,   59,  262,
+  256,  264,  264,   41,  260,   59,  269,  270,  264,  260,
+  273,   59,   59,  269,  270,  261,   58,  273,  262,  262,
+  283,  262,   41,   59,   43,   59,   45,  283,   44,  256,
+   59,  256,   59,  264,  160,  272,  260,  264,  260,  264,
+  268,   59,  269,  270,  269,  270,  273,   41,  273,   43,
+  264,   45,  264,   59,  266,  267,  283,  260,  283,  258,
+  259,  256,  262,  263,   59,  275,  265,  264,  146,  264,
+   96,   59,  284,  285,  269,  270,  282,  272,  273,   -1,
+   -1,  276,  277,  278,  279,  280,  281,  256,  283,   41,
+   -1,   43,   -1,   45,   -1,  264,  264,   -1,  266,  267,
   269,  270,   -1,  272,  273,   -1,   -1,  276,  277,  278,
-  279,  280,  281,  256,  283,   -1,  284,  285,   -1,   -1,
-   -1,  264,   -1,   -1,   -1,   -1,  269,  270,   -1,  272,
+  279,  280,  281,  256,  283,   -1,  284,  285,  258,  259,
+  260,  264,   -1,   -1,  264,  265,  269,  270,   -1,  272,
   273,   -1,   -1,  276,  277,  278,  279,  280,  281,  256,
-  283,   -1,  258,  259,  260,   -1,   -1,  264,  264,  265,
+  283,  257,  258,  259,  260,   -1,   -1,  264,  264,  265,
    -1,   -1,  269,  270,   -1,  272,  273,  256,   -1,  276,
   277,  278,  279,  280,  281,  264,  283,  266,  267,  276,
   277,  278,  279,  280,  281,   -1,   -1,   -1,   -1,  278,
@@ -432,6 +437,7 @@ final static String yyrule[] = {
 "program : declaracion cuerpo_programa",
 "program : cuerpo_programa",
 "cuerpo_programa : BEGIN sentencia_ejec END ';'",
+"cuerpo_programa : BEGIN END ';'",
 "bloque_sentencias : BEGIN sentencia_ejec END ';'",
 "bloque_sentencias : miembro_sentencia_ejec",
 "tipo_id : UINT",
@@ -443,15 +449,17 @@ final static String yyrule[] = {
 "cuerpo_func : BEGIN sentencia_ejec RETURN post_condicion END",
 "cuerpo_func : BEGIN sentencia_ejec RETURN ';' END",
 "cuerpo_func : BEGIN sentencia_ejec RETURN ';' post_condicion END",
-"post_condicion : POST ':' condicion ',' CADENA ';'",
+"$$3 :",
+"$$4 :",
+"$$5 :",
+"post_condicion : POST ':' condicion ',' CADENA ';' $$3 $$4 $$5",
 "post_condicion : POST ':' condicion ',' ';'",
 "retorno : '(' expresion ')' ';'",
-"$$3 :",
-"declaracion : FUNC tipo_id nombre_func params_func definicion_func ';' $$3",
+"declaracion : FUNC tipo_id nombre_func params_func definicion_func ';'",
 "declaracion : tipo_id lista_variables ';'",
 "declaracion : tipo_id lista_variables ';' declaracion",
-"$$4 :",
-"declaracion : FUNC tipo_id nombre_func params_func definicion_func ';' $$4 declaracion",
+"$$6 :",
+"declaracion : FUNC tipo_id nombre_func params_func definicion_func ';' $$6 declaracion",
 "declaracion : lista_variables ';'",
 "declaracion : lista_variables ';' declaracion",
 "lista_variables : ID",
@@ -460,8 +468,10 @@ final static String yyrule[] = {
 "params_func : '(' param ')'",
 "params_func : '(' ')'",
 "param : tipo_id ID",
-"definicion_func : declaracion cuerpo_func",
-"definicion_func : cuerpo_func",
+"$$7 :",
+"definicion_func : declaracion $$7 cuerpo_func",
+"$$8 :",
+"definicion_func : $$8 cuerpo_func",
 "definicion_func :",
 "sentencia_ejec : miembro_sentencia_ejec sentencia_ejec",
 "sentencia_ejec : miembro_sentencia_ejec",
@@ -525,7 +535,7 @@ final static String yyrule[] = {
 "rama_else : ELSE",
 };
 
-//#line 192 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+//#line 183 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
 
 private int yylex() {
 
@@ -552,7 +562,7 @@ private int yylex() {
 private void yyerror(String mensajeError) {
 	AnalizadorLexico.errores.add(mensajeError + "\n");
 }
-//#line 484 "Parser.java"
+//#line 494 "Parser.java"
 //###############################################################
 // method: yylexdebug : check lexer state
 //###############################################################
@@ -730,10 +740,6 @@ case 8:
 //#line 22 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
 {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " PROGRAM expected but got cuerpo_programa instead");}
 break;
-case 17:
-//#line 39 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " return cannot be empty");}
-break;
 case 18:
 //#line 40 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
 {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " return cannot be empty");}
@@ -747,167 +753,191 @@ case 20:
 {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " return cannot be empty");}
 break;
 case 21:
-//#line 45 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{TablaSimbolos.punteroTS(val_peek(1).sval).setTipo("cadena_caracteres"); TablaSimbolos.punteroTS(val_peek(1).sval).setUso("msj_postcondicion");}
+//#line 43 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " return cannot be empty");}
 break;
 case 22:
 //#line 46 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " CADENA expected but got ; instead");}
+{Polaca.insert_sentencia_control_cond();}
 break;
 case 23:
-//#line 49 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{Polaca.insert("Retorno");}
+//#line 46 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{Polaca.insert("Return");}
 break;
 case 24:
-//#line 52 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{ Ambito.borrarAmbito();}
+//#line 46 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{Polaca.insert_sentencia_control_then();}
 break;
 case 25:
-//#line 52 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{Utils.setTipoIDFuncionCacheado(Integer.toString(val_peek(6).ival));}
+//#line 46 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{TablaSimbolos.punteroTS(val_peek(4).sval).setTipo("cadena_caracteres"); TablaSimbolos.punteroTS(val_peek(4).sval).setUso("msj_postcondicion"); Polaca.insert("PRINT"); Polaca.insert(TablaSimbolos.punteroTS(val_peek(4).sval)); Polaca.insert("Quit"); Polaca.insert_sentencia_control_else();}
 break;
 case 26:
-//#line 53 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{Utils.asignarTipoListaDeVariables(Integer.toString(val_peek(2).ival));}
+//#line 47 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " CADENA expected but got ; instead");}
 break;
 case 27:
-//#line 54 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{Utils.asignarTipoListaDeVariables(Integer.toString(val_peek(3).ival));}
+//#line 50 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{Polaca.insert("FillReturnReg");}
 break;
 case 28:
-//#line 55 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{ Ambito.borrarAmbito();}
+//#line 53 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{ Utils.setTipoIDFuncionCacheado(Integer.toString(val_peek(4).ival));}
 break;
 case 29:
-//#line 55 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{Utils.setTipoIDFuncionCacheado(Integer.toString(val_peek(7).ival));}
+//#line 54 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{Utils.asignarTipoListaDeVariables(Integer.toString(val_peek(2).ival));}
 break;
 case 30:
-//#line 56 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{yyerror("ERROR: LINE " + (AnalizadorLexico.nroLinea - 1) + " missing variable type");}
+//#line 55 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{Utils.asignarTipoListaDeVariables(Integer.toString(val_peek(3).ival));}
 break;
 case 31:
+//#line 56 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{ Utils.setTipoIDFuncionCacheado(Integer.toString(val_peek(4).ival));}
+break;
+case 33:
 //#line 57 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
 {yyerror("ERROR: LINE " + (AnalizadorLexico.nroLinea - 1) + " missing variable type");}
 break;
-case 32:
-//#line 60 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{System.out.println("ANDA LPM" + val_peek(0).sval); TablaSimbolos.cambiarNombre(val_peek(0).sval, val_peek(0).sval + Ambito.retornarNaming()); Utils.agregarAListaDeVariables(val_peek(0).sval + Ambito.retornarNaming()); TablaSimbolos.punteroTS(val_peek(0).sval + Ambito.retornarNaming()).setUso("variable"); }
-break;
-case 33:
-//#line 61 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{ System.out.println("ANDA LPM2" + val_peek(2).sval);  TablaSimbolos.cambiarNombre(val_peek(2).sval, val_peek(2).sval + Ambito.retornarNaming()); Utils.agregarAListaDeVariables(val_peek(2).sval + Ambito.retornarNaming()); TablaSimbolos.punteroTS(val_peek(2).sval + Ambito.retornarNaming()).setUso("variable"); }
-break;
 case 34:
-//#line 64 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{TablaSimbolos.cambiarNombre(val_peek(0).sval, val_peek(0).sval + Ambito.retornarNaming()); TablaSimbolos.punteroTS(val_peek(0).sval + Ambito.retornarNaming()).setUso("nombre_funcion"); Utils.cachearIDFuncion(val_peek(0).sval + Ambito.retornarNaming()); Ambito.agregarAmbito(val_peek(0).sval); }
+//#line 58 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{yyerror("ERROR: LINE " + (AnalizadorLexico.nroLinea - 1) + " missing variable type");}
+break;
+case 35:
+//#line 61 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{TablaSimbolos.cambiarNombre(val_peek(0).sval, val_peek(0).sval + Ambito.retornarNaming()); Utils.agregarAListaDeVariables(val_peek(0).sval + Ambito.retornarNaming()); TablaSimbolos.punteroTS(val_peek(0).sval + Ambito.retornarNaming()).setUso("variable"); }
+break;
+case 36:
+//#line 62 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{ TablaSimbolos.cambiarNombre(val_peek(2).sval, val_peek(2).sval + Ambito.retornarNaming()); Utils.agregarAListaDeVariables(val_peek(2).sval + Ambito.retornarNaming()); TablaSimbolos.punteroTS(val_peek(2).sval + Ambito.retornarNaming()).setUso("variable"); }
 break;
 case 37:
-//#line 71 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{TablaSimbolos.punteroTS(val_peek(0).sval).setTipo(Integer.toString(val_peek(1).ival)); TablaSimbolos.punteroTS(val_peek(0).sval).setUso("parametro"); TablaSimbolos.cambiarNombre(val_peek(0).sval, val_peek(0).sval + Ambito.retornarNaming()); }
+//#line 65 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{TablaSimbolos.cambiarNombre(val_peek(0).sval, val_peek(0).sval + Ambito.retornarNaming()); TablaSimbolos.punteroTS(val_peek(0).sval + Ambito.retornarNaming()).setUso("nombre_funcion"); Utils.cachearIDFuncion(val_peek(0).sval + Ambito.retornarNaming()); Ambito.agregarAmbito(val_peek(0).sval); }
 break;
 case 40:
-//#line 76 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Cuerpo del procedimiento vacio.");}
+//#line 72 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{TablaSimbolos.punteroTS(val_peek(0).sval).setTipo(Integer.toString(val_peek(1).ival)); TablaSimbolos.punteroTS(val_peek(0).sval).setUso("parametro"); TablaSimbolos.cambiarNombre(val_peek(0).sval, val_peek(0).sval + Ambito.retornarNaming()); TablaSimbolos.punteroTS(Utils.idFuncCacheada()).setParametro(TablaSimbolos.punteroTS(val_peek(0).sval + Ambito.retornarNaming()));}
+break;
+case 41:
+//#line 75 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{TablaSimbolos.punteroTS(Utils.idFuncCacheada()).setComienzoCodigoEjecutable(Polaca.posicionActual() + 1); }
+break;
+case 42:
+//#line 75 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{Ambito.borrarAmbito();}
 break;
 case 43:
-//#line 83 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{AnalizadorLexico.estructurasReconocidas.add("Invocacion en la linea " + AnalizadorLexico.nroLinea);}
+//#line 76 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{TablaSimbolos.punteroTS(Utils.idFuncCacheada()).setComienzoCodigoEjecutable(Polaca.posicionActual()+1); }
 break;
 case 44:
-//#line 84 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{AnalizadorLexico.estructurasReconocidas.add("Asignacion en la linea " + AnalizadorLexico.nroLinea);}
+//#line 76 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{Ambito.borrarAmbito();}
 break;
 case 45:
-//#line 85 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{AnalizadorLexico.estructurasReconocidas.add("Iteracion en la linea " + AnalizadorLexico.nroLinea);}
+//#line 77 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Cuerpo del procedimiento vacio.");}
 break;
-case 46:
-//#line 86 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{AnalizadorLexico.estructurasReconocidas.add("Seleccion (IF) en la linea " + AnalizadorLexico.nroLinea);}
-break;
-case 47:
-//#line 87 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{AnalizadorLexico.estructurasReconocidas.add("Impresion en la linea " + AnalizadorLexico.nroLinea);}
+case 48:
+//#line 84 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{AnalizadorLexico.estructurasReconocidas.add("Invocacion en la linea " + AnalizadorLexico.nroLinea);}
 break;
 case 49:
-//#line 89 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " ; expected but got: miembro_sentencia_ejec instead");}
+//#line 85 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{AnalizadorLexico.estructurasReconocidas.add("Asignacion en la linea " + AnalizadorLexico.nroLinea);}
 break;
 case 50:
+//#line 86 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{AnalizadorLexico.estructurasReconocidas.add("Iteracion en la linea " + AnalizadorLexico.nroLinea);}
+break;
+case 51:
+//#line 87 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{AnalizadorLexico.estructurasReconocidas.add("Seleccion (IF) en la linea " + AnalizadorLexico.nroLinea);}
+break;
+case 52:
+//#line 88 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{AnalizadorLexico.estructurasReconocidas.add("Impresion en la linea " + AnalizadorLexico.nroLinea);}
+break;
+case 54:
 //#line 90 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
 {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " ; expected but got: miembro_sentencia_ejec instead");}
 break;
-case 51:
+case 55:
 //#line 91 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
 {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " ; expected but got: miembro_sentencia_ejec instead");}
 break;
-case 52:
+case 56:
 //#line 92 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
 {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " ; expected but got: miembro_sentencia_ejec instead");}
 break;
-case 53:
+case 57:
 //#line 93 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
 {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " ; expected but got: miembro_sentencia_ejec instead");}
 break;
-case 54:
+case 58:
 //#line 94 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
 {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " ; expected but got: miembro_sentencia_ejec instead");}
 break;
-case 55:
-//#line 97 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{if (Ambito.bindAmbito(val_peek(2).sval) != null) Polaca.insert(TablaSimbolos.punteroTS(Ambito.bindAmbito(val_peek(2).sval)));}
-break;
-case 56:
-//#line 98 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{if (Ambito.bindAmbito(val_peek(3).sval) != null) Polaca.insert(TablaSimbolos.punteroTS(Ambito.bindAmbito(val_peek(3).sval))); if (Ambito.bindAmbito(val_peek(3).sval) != null) Polaca.insert(TablaSimbolos.punteroTS(Ambito.bindAmbito(val_peek(2).sval)));}
-break;
-case 57:
-//#line 101 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{if (Ambito.bindAmbito(val_peek(2).sval) != null) {Polaca.insert(TablaSimbolos.punteroTS(Ambito.bindAmbito(val_peek(2).sval)));} Polaca.insert(new Integer(ASIG));}
-break;
-case 58:
-//#line 102 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " El lado derecho de la asignacio no es valido.");}
-break;
 case 59:
-//#line 103 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Un identificador en solitario no es una sentencia valida.");}
+//#line 95 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " ; expected but got: miembro_sentencia_ejec instead");}
 break;
 case 60:
-//#line 104 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " El lado izquierdo de la asignacion no es valido");}
+//#line 98 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{if ((Ambito.bindAmbito(val_peek(2).sval) != null) && (TablaSimbolos.punteroTS(Ambito.bindAmbito(val_peek(2).sval)).getParametro()) == null) {Polaca.insert("JumpTo: "); Polaca.insert(TablaSimbolos.punteroTS(Ambito.bindAmbito(val_peek(2).sval)).getComienzoCodigoEjecutable());} else yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + ": No se encontro una funcion con esa signatura en el ambito actual");}
 break;
 case 61:
-//#line 107 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{Polaca.insert(new Integer('+'));}
+//#line 99 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{if ((Ambito.bindAmbito(val_peek(3).sval) != null) && (TablaSimbolos.punteroTS(Ambito.bindAmbito(val_peek(3).sval)).getParametro() != null) &&  Ambito.bindAmbito(val_peek(1).sval) != null) {Polaca.insert(TablaSimbolos.punteroTS(Ambito.bindAmbito(val_peek(1).sval))); Polaca.insert(TablaSimbolos.punteroTS(Ambito.bindAmbito(val_peek(3).sval)).getParametro()); Polaca.insert(Parser.ASIG); Polaca.insert("JumpTo: "); Polaca.insert(TablaSimbolos.punteroTS(Ambito.bindAmbito(val_peek(3).sval)).getComienzoCodigoEjecutable());} else yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + ": No se encontro una funcion con esa signatura en el ambito actual");}
 break;
 case 62:
-//#line 108 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{Polaca.insert(new Integer('-'));}
+//#line 102 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{if (Ambito.bindAmbito(val_peek(2).sval) != null) {Polaca.insert(TablaSimbolos.punteroTS(Ambito.bindAmbito(val_peek(2).sval)));} else yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + ": No se encontro una variable con ese nombre en el ambito actual"); Polaca.insert(new Integer(ASIG));}
+break;
+case 63:
+//#line 103 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " El lado derecho de la asignacio no es valido.");}
 break;
 case 64:
-//#line 112 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{Polaca.insert(new Integer('*'));}
+//#line 104 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Un identificador en solitario no es una sentencia valida.");}
 break;
 case 65:
-//#line 113 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{Polaca.insert(new Integer('/'));}
+//#line 105 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " El lado izquierdo de la asignacion no es valido");}
+break;
+case 66:
+//#line 108 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{Polaca.insert(new Integer('+'));}
 break;
 case 67:
-//#line 117 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{if (Ambito.bindAmbito(val_peek(0).sval) != null) Polaca.insert(TablaSimbolos.punteroTS(Ambito.bindAmbito(val_peek(0).sval)));}
-break;
-case 68:
-//#line 118 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{Polaca.insert(TablaSimbolos.punteroTS(val_peek(0).sval)); TablaSimbolos.punteroTS(val_peek(0).sval).setTipo(Integer.toString(Parser.CTE_UINT)); TablaSimbolos.punteroTS(val_peek(0).sval).setUso("cte");}
+//#line 109 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{Polaca.insert(new Integer('-'));}
 break;
 case 69:
-//#line 119 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{Polaca.insert(TablaSimbolos.punteroTS(val_peek(0).sval)); TablaSimbolos.punteroTS(val_peek(0).sval).setTipo(Integer.toString(Parser.CTE_DOUBLE)); TablaSimbolos.punteroTS(val_peek(0).sval).setUso("cte");}
+//#line 113 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{Polaca.insert(new Integer('*'));}
 break;
 case 70:
+//#line 114 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{Polaca.insert(new Integer('/'));}
+break;
+case 72:
+//#line 118 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{if (Ambito.bindAmbito(val_peek(0).sval) != null) Polaca.insert(TablaSimbolos.punteroTS(Ambito.bindAmbito(val_peek(0).sval))); else yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + ": No se encontro una variable con ese nombre en el ambito actual");}
+break;
+case 73:
+//#line 119 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{Polaca.insert(TablaSimbolos.punteroTS(val_peek(0).sval)); TablaSimbolos.punteroTS(val_peek(0).sval).setTipo(Integer.toString(Parser.CTE_UINT)); TablaSimbolos.punteroTS(val_peek(0).sval).setUso("cte");}
+break;
+case 74:
 //#line 120 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{Polaca.insert(TablaSimbolos.punteroTS(val_peek(0).sval)); TablaSimbolos.punteroTS(val_peek(0).sval).setTipo(Integer.toString(Parser.CTE_DOUBLE)); TablaSimbolos.punteroTS(val_peek(0).sval).setUso("cte");}
+break;
+case 75:
+//#line 121 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
 {  /*Sacamos lo ultimo que agregamos a la polaca, porque ya no es valido.
 								                Determinamos que signo va a tener la cte.
 								                Si es negativa, agregamos "-sval" a la TS.
@@ -915,87 +945,87 @@ case 70:
                                                 Polaca.insert(TablaSimbolos.punteroTS(Utils.signoNegativo(val_peek(0).sval)));
                                                 }
 break;
-case 72:
-//#line 127 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+case 77:
+//#line 128 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
 {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Constante fuera de rango en la linea " + AnalizadorLexico.nroLinea);}
 break;
-case 73:
-//#line 128 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+case 78:
+//#line 129 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
 {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Error de formato en constante en la linea " + AnalizadorLexico.nroLinea);}
 break;
-case 74:
-//#line 131 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+case 79:
+//#line 132 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
 {Polaca.insert(TablaSimbolos.punteroTS(val_peek(1).sval)); Polaca.insert(new Integer(PRINT));}
 break;
-case 75:
-//#line 132 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+case 80:
+//#line 133 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
 {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " invalid argument for PRINT");}
 break;
-case 76:
-//#line 135 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+case 81:
+//#line 136 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
 {Polaca.insert_iteracion_end();}
 break;
-case 77:
-//#line 136 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+case 82:
+//#line 137 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
 {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " UNTIL expected");}
 break;
-case 78:
-//#line 142 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+case 83:
+//#line 143 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
 {Polaca.insert_iteracion_start();}
 break;
-case 79:
-//#line 145 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+case 84:
+//#line 146 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
 {Polaca.insert(new Integer(val_peek(2).ival));}
 break;
-case 80:
-//#line 146 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+case 85:
+//#line 147 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
 {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Falta parentesis de cierre de la condicion.");}
 break;
-case 81:
-//#line 147 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+case 86:
+//#line 148 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
 {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Falta expresion en el lado izquierdo de la condicion.");}
 break;
-case 82:
-//#line 148 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+case 87:
+//#line 149 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
 {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Falta expresion en el lado derecho de la condicion.");}
 break;
-case 83:
-//#line 149 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+case 88:
+//#line 150 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
 {Polaca.insert(new Integer(val_peek(2).sval));}
 break;
-case 84:
-//#line 150 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+case 89:
+//#line 151 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
 {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Error en la condicion.");}
 break;
-case 93:
-//#line 176 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{Polaca.insert_sentencia_control_else();}
-break;
-case 95:
-//#line 180 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{Polaca.insert_sentencia_control_cond();}
-break;
-case 96:
-//#line 181 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Error en el encabezado de la condicion, falta la condicion del IF");}
-break;
-case 97:
-//#line 184 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{Polaca.insert_sentencia_control_then();}
-break;
 case 98:
-//#line 185 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Error en cuerpo de sentencia THEN, falta el bloque de sentencias");}
-break;
-case 99:
-//#line 188 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+//#line 167 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
 {Polaca.insert_sentencia_control_else();}
 break;
 case 100:
-//#line 189 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+//#line 171 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{Polaca.insert_sentencia_control_cond();}
+break;
+case 101:
+//#line 172 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Error en el encabezado de la condicion, falta la condicion del IF");}
+break;
+case 102:
+//#line 175 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{Polaca.insert_sentencia_control_then();}
+break;
+case 103:
+//#line 176 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Error en cuerpo de sentencia THEN, falta el bloque de sentencias");}
+break;
+case 104:
+//#line 179 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
+{Polaca.insert_sentencia_control_else();}
+break;
+case 105:
+//#line 180 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
 {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Error en cuerpo de sentencia ELSE, falta el bloque de sentencias");}
 break;
-//#line 922 "Parser.java"
+//#line 952 "Parser.java"
 //########## END OF USER-SUPPLIED ACTIONS ##########
     }//switch
     //#### Now let's reduce... ####
