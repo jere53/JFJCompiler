@@ -29,20 +29,20 @@ public class Polaca {
         representacionIntermedia.add(new String("BF"));
     }
 
-    public static void insert_sentencia_control_then(){
+    public static void insert_sentencia_control_then() {
         int index = (int) pila_seleccion.pop();
-
         //add hace un corrimiento, hay que cambiar el valor del objeto que se dejo vacio, por eso se usa set.
         //representacionIntermedia.add(index,  representacionIntermedia.size() + 1);
         //+2, 1 para el objeto vacio y otro para el BI. en size() va el objeto vacio, y en size()+1 el BI, si la condicion es
         //falsa se empieza a leer desde size()+2
-        representacionIntermedia.set(index,  representacionIntermedia.size() + 2);
-
+        representacionIntermedia.add(new Object());
         pila_seleccion.add(representacionIntermedia.size()); // Agrego el index
 
+        representacionIntermedia.add("BI");
+        representacionIntermedia.add("L" + representacionIntermedia.size() + 1);
 
-        representacionIntermedia.add(new Object());
-        representacionIntermedia.add(new String("BI"));
+        representacionIntermedia.set(index, representacionIntermedia.size());
+
     }
 
     public static void insert_sentencia_control_else(){
@@ -56,26 +56,16 @@ public class Polaca {
         //Si no hay rama ELSE, el codigo es el mismo, porque si la condicion se cumple se empieza a leer desde el final del then.
         //no se necesita una regla para la rama sin else.
 
-        /*
-        pila.add(representacionIntermedia.size());
-        representacionIntermedia.add(new Object());
-        representacionIntermedia.add(new String("BF"));
-        */
-
     }
 
     public static void insert_iteracion_start(){
+        //representacionIntermedia.add("L" + representacionIntermedia.size());
         pila_iteracion.push(representacionIntermedia.size()); //va a tener la primer sentencia del REPEAT
     }
 
     public static void insert_iteracion_end(){
         Polaca.insert(pila_iteracion.pop()); //a donde tenemos que saltar si se cumple la cond
         Polaca.insert(new String("BI"));
-    }
-
-    public static void insert_sentencia_control_then_sin_else(){
-        int index = (int) pila_seleccion.pop();
-        representacionIntermedia.add(index,  representacionIntermedia.size() + 1);
     }
 
     public static void removerUltimo(){

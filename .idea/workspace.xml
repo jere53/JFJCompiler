@@ -5,29 +5,19 @@
       <artifact name="JFJCompiler:jar" />
     </artifacts-to-build>
   </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="3a08d5a9-0de6-450d-a23c-2cfd8001a572" name="Default Changelist" comment="POR LAS DUDAS">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/TablaSimbolos.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/TablaSimbolos.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/Parser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/y.output" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/y.output" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/y.tab.c" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/y.tab.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/gramatica.y" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/gramatica.y" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/input.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/salida.txt" beforeDir="false" afterPath="$PROJECT_DIR$/salida.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TP2/BYACC/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/BYACC/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TP2/BYACC/y.output" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/BYACC/y.output" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TP2/BYACC/y.tab.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/BYACC/y.tab.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TP2/gramatica.y" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/gramatica.y" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TP3/Ambito.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP3/Ambito.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/input.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TP3/Polaca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP3/Polaca.java" afterDir="false" />
     </list>
     <list id="697f8440-4d12-4320-82f3-d38f4ec120a5" name="Changes by felix" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Dev/Lexico/TablaSimbolos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dev/Lexico/TablaSimbolos.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TP4/RepresentacionIntermedia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TP3/Polaca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP3/Polaca.java" afterDir="false" />
     </list>
-    <list id="f396b4cf-5785-48b4-af3a-f48f932aac4c" name="Changes by juand" comment="">
-      <change beforePath="$PROJECT_DIR$/src/TP2/gramatica.y" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/gramatica.y" afterDir="false" />
-    </list>
+    <list id="f396b4cf-5785-48b4-af3a-f48f932aac4c" name="Changes by juand" comment="" />
     <list id="361afa70-437c-4a2b-93bd-0b3bf65b1206" name="Changes by juandurefaccini" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,13 +48,20 @@
     </file-type-list>
   </component>
   <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/TP2/gramatica.y">
+    <file path="$PROJECT_DIR$/src/TP3/Polaca.java">
       <ranges>
-        <range start1="51" end1="52" start2="51" end2="52" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="53" end1="55" start2="53" end2="55" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="59" end1="61" start2="59" end2="61" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="63" end1="65" start2="63" end2="64" changelist="f396b4cf-5785-48b4-af3a-f48f932aac4c" />
-        <range start1="101" end1="102" start2="100" end2="101" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="28" end1="29" start2="28" end2="29" changelist="697f8440-4d12-4320-82f3-d38f4ec120a5" />
+        <range start1="31" end1="32" start2="31" end2="32" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="33" end1="34" start2="33" end2="33" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="38" end1="43" start2="37" end2="37" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="44" end1="45" start2="38" end2="45" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="53" end1="54" start2="53" end2="57" changelist="697f8440-4d12-4320-82f3-d38f4ec120a5" />
+        <range start1="58" end1="64" start2="61" end2="61" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="65" end1="65" start2="62" end2="67" changelist="697f8440-4d12-4320-82f3-d38f4ec120a5" />
+        <range start1="66" end1="66" start2="68" end2="74" changelist="697f8440-4d12-4320-82f3-d38f4ec120a5" />
+        <range start1="67" end1="67" start2="75" end2="76" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="73" end1="73" start2="82" end2="83" changelist="697f8440-4d12-4320-82f3-d38f4ec120a5" />
+        <range start1="75" end1="80" start2="85" end2="85" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
       </ranges>
     </file>
   </component>
@@ -100,17 +97,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -402,5 +388,10 @@
         <watch expression="yylval" language="JAVA" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/JFJCompiler$Main.ic" NAME="Main Coverage Results" MODIFIED="1636236533273" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>TP2.*</FILTER>
+    </SUITE>
   </component>
 </project>
