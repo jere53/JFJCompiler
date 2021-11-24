@@ -64,19 +64,6 @@ public class Polaca {
 
     }
 
-    // Agregados para manejo de ambito
-    public static void agregar_ambito(String ambito){
-        Ambito.agregar_ambito(ambito);
-    }
-
-    public static void borrar_ambito(){
-        Ambito.borrar_ambito();
-    }
-
-    public static String retornar_naming(){
-        return Ambito.retornar_naming();
-    }
-
     public static void insert_iteracion_start(){
         pila_iteracion.push(representacionIntermedia.size()); //va a tener la primer sentencia del REPEAT
     }

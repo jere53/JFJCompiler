@@ -7,25 +7,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a08d5a9-0de6-450d-a23c-2cfd8001a572" name="Default Changelist" comment="Arregla un par de errores de la seleccion, estan comentados en el codigo.&#10;Implementa el control para la iteracion.">
-      <change afterPath="$PROJECT_DIR$/src/TP2/BYACC/yacc.oa06584" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TP2/BYACC/yacc.oa16196" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/TablaSimbolos.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/TablaSimbolos.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/RegistroTS.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/RegistroTS.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/Parser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/y.output" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/y.output" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/y.tab.c" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/y.tab.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/gramatica.y" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/gramatica.y" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP3/Utils.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP3/Utils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP3/Polaca.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP3/Polaca.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/input.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/salida.txt" beforeDir="false" afterPath="$PROJECT_DIR$/salida.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dev/RegistroTS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dev/RegistroTS.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TP2/BYACC/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/BYACC/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TP2/BYACC/y.output" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/BYACC/y.output" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TP2/BYACC/y.tab.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/BYACC/y.tab.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TP2/gramatica.y" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/gramatica.y" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TP3/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP3/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TP3/Ambito.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP3/Ambito.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TP3/Polaca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP3/Polaca.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/input.txt" afterDir="false" />
     </list>
-    <list id="697f8440-4d12-4320-82f3-d38f4ec120a5" name="Changes by felix" comment="" />
+    <list id="697f8440-4d12-4320-82f3-d38f4ec120a5" name="Changes by felix" comment="">
+      <change beforePath="$PROJECT_DIR$/src/Dev/Lexico/TablaSimbolos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dev/Lexico/TablaSimbolos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TP2/gramatica.y" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/gramatica.y" afterDir="false" />
+    </list>
     <list id="f396b4cf-5785-48b4-af3a-f48f932aac4c" name="Changes by juand" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Dev/RegistroTS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dev/RegistroTS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TP2/gramatica.y" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/gramatica.y" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TP3/Ambito.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP3/Ambito.java" afterDir="false" />
     </list>
     <list id="361afa70-437c-4a2b-93bd-0b3bf65b1206" name="Changes by juandurefaccini" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -57,11 +65,31 @@
     </file-type-list>
   </component>
   <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/Dev/RegistroTS.java">
+    <file path="$PROJECT_DIR$/src/TP2/gramatica.y">
       <ranges>
-        <range start1="4" end1="4" start2="4" end2="31" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="16" end1="16" start2="43" end2="44" changelist="f396b4cf-5785-48b4-af3a-f48f932aac4c" />
-        <range start1="21" end1="21" start2="49" end2="52" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="8" end1="8" start2="8" end2="9" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="15" end1="17" start2="16" end2="18" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="50" end1="51" start2="51" end2="52" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="52" end1="54" start2="53" end2="55" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="58" end1="60" start2="59" end2="61" changelist="697f8440-4d12-4320-82f3-d38f4ec120a5" />
+        <range start1="62" end1="63" start2="63" end2="64" changelist="f396b4cf-5785-48b4-af3a-f48f932aac4c" />
+        <range start1="70" end1="71" start2="71" end2="72" changelist="697f8440-4d12-4320-82f3-d38f4ec120a5" />
+        <range start1="96" end1="98" start2="97" end2="99" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="100" end1="101" start2="101" end2="102" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="116" end1="117" start2="117" end2="118" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="125" end1="126" start2="126" end2="127" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="166" end1="173" start2="167" end2="174" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/TP3/Ambito.java">
+      <ranges>
+        <range start1="2" end1="2" start2="2" end2="4" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="9" end1="10" start2="11" end2="12" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="12" end1="16" start2="14" end2="14" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="26" end1="26" start2="24" end2="25" changelist="f396b4cf-5785-48b4-af3a-f48f932aac4c" />
+        <range start1="36" end1="37" start2="35" end2="37" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="38" end1="42" start2="38" end2="45" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="43" end1="45" start2="46" end2="49" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
       </ranges>
     </file>
   </component>
@@ -140,7 +168,10 @@
       <workItem from="1635971085172" duration="5948000" />
       <workItem from="1636333772998" duration="3762000" />
       <workItem from="1636337750990" duration="13000" />
-      <workItem from="1636681946422" duration="7796000" />
+      <workItem from="1636681946422" duration="7876000" />
+      <workItem from="1637492442499" duration="723000" />
+      <workItem from="1637550453431" duration="418000" />
+      <workItem from="1637721274523" duration="8657000" />
     </task>
     <task id="LOCAL-00001" summary="Completa integracion del lexico y el sintactico, anota algunas correcciones que se deben realizar a la gramatica">
       <created>1632974085994</created>
@@ -303,7 +334,21 @@
       <option name="project" value="LOCAL" />
       <updated>1636681959459</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Arregla un par de errores de la seleccion, estan comentados en el codigo.&#10;Implementa el control para la iteracion.">
+      <created>1636690140772</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1636690140772</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Arregla un par de errores de la seleccion, estan comentados en el codigo.&#10;Implementa el control para la iteracion.">
+      <created>1636690156280</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1636690156280</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -348,11 +393,6 @@
           <properties class="java.lang.ArrayIndexOutOfBoundsException" package="java.lang" />
           <option name="timeStamp" value="13" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/TP2/BYACC/Parser.java</url>
-          <line>736</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>

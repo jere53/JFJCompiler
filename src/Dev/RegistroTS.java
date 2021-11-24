@@ -1,17 +1,14 @@
 package Dev;
 
+import Dev.Lexico.TablaSimbolos;
+
 public class RegistroTS {
     private String lexema;
     private String tipo;
-    private String ambito;
     private String uso;
 
     public String getTipo() {
         return tipo;
-    }
-
-    public String getAmbito() {
-        return ambito;
     }
 
     public String getUso() {
@@ -20,10 +17,6 @@ public class RegistroTS {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
-    }
-
-    public void setAmbito(String ambito) {
-        this.ambito = ambito;
     }
 
     public void setUso(String uso) {
@@ -48,7 +41,6 @@ public class RegistroTS {
         return "RegistroTS{" +
                 "lexema='" + lexema + '\'' +
                 "tipo='" + tipo + '\'' +
-                "ambito='" + ambito + '\'' +
                 "uso='" + uso + '\'' +
                 '}';
     }

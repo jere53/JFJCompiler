@@ -6,6 +6,7 @@
 	import Dev.RegistroTS;
 	import TP3.Polaca;
 	import TP3.Utils;
+	import TP3.Ambito;
 %}
 
 %token PROGRAM, UINT, DOUBLE, BEGIN, RETURN, END, POST, ID, FUNC, CTE_UINT, CTE_DOUBLE, CADENA, PRINT, REPEAT , UNTIL, THEN, IF , ELSE, ASIG, AND, OR, COMP_MAYOR_IGUAL, COMP_MENOR_IGUAL, COMP_IGUAL, COMP_DISTINTO, ENDIF, BREAK, ERR_CTE_FUERA_RANGO, ERR_FORMATO_CTE
@@ -13,8 +14,8 @@
 %start program
 
 %%
-program 						: PROGRAM ID ';' declaracion cuerpo_programa
-								| PROGRAM ID ';' cuerpo_programa
+program 						: PROGRAM ID ';' {Ambito.agregarAmbito("main");} declaracion cuerpo_programa
+								| PROGRAM ID ';' {Ambito.agregarAmbito("main");} cuerpo_programa
 								| PROGRAM ';' declaracion cuerpo_programa {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " program has no name");}
 								| PROGRAM ';' cuerpo_programa {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " program has no name");}
 								| declaracion cuerpo_programa {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " PROGRAM expected but got declaracion instead");}
@@ -48,10 +49,10 @@ post_condicion          		: POST ':' condicion ',' CADENA ';' {TablaSimbolos.pun
 retorno             			: '(' expresion ')' ';' {Polaca.insert("Retorno");} //PLACEHOLDER
 								;
 
-declaracion 					: tipo_id nombre_func params_func definicion_func ';' {Utils.setTipoIDFuncionCacheado(Integer.toString($1.ival)); Ambito.setAmbito($2)}
+declaracion 					: tipo_id nombre_func params_func definicion_func ';' {Utils.setTipoIDFuncionCacheado(Integer.toString($1.ival));}
 								| tipo_id lista_variables ';' {Utils.asignarTipoListaDeVariables(Integer.toString($1.ival));} // Asigna el tipo a cada variable de la lista
-								| tipo_id lista_variables ';' declaracion {Utils.asignarTipoListaDeVariables(Integer.toString($1.ival));}
-								| tipo_id nombre_func params_func definicion_func ';' declaracion {Utils.setTipoIDFuncionCacheado(Integer.toString($1.ival));}
+								| tipo_id lista_variables ';' { Ambito.borrarAmbito();} declaracion {Utils.asignarTipoListaDeVariables(Integer.toString($1.ival));}
+								| tipo_id nombre_func params_func definicion_func ';' { Ambito.borrarAmbito();} declaracion {Utils.setTipoIDFuncionCacheado(Integer.toString($1.ival));}
 								| lista_variables ';' {yyerror("ERROR: LINE " + (AnalizadorLexico.nroLinea - 1) + " missing variable type");} //la linea es la primer sentencia ejecutable del programa principal, restamos 1 para que devuelva la linea donde empieza el programa
 								| lista_variables ';' declaracion {yyerror("ERROR: LINE " + (AnalizadorLexico.nroLinea - 1) + " missing variable type");}
 								;
@@ -94,11 +95,11 @@ miembro_sentencia_ejec 			: invocacion ';' {AnalizadorLexico.estructurasReconoci
                        			| BREAK miembro_sentencia_ejec {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " ; expected but got: miembro_sentencia_ejec instead");}
                        			;
 
-invocacion						: ID '(' ')' {}
-								| ID '(' ID ')' {}
+invocacion						: ID '(' ')' {if (Ambito.bindAmbito($1.sval) != null) Polaca.insert(TablaSimbolos.punteroTS(Ambito.bindAmbito($1.sval)));}
+								| ID '(' ID ')' {if (Ambito.bindAmbito($1.sval) != null) Polaca.insert(TablaSimbolos.punteroTS(Ambito.bindAmbito($1.sval))); if (Ambito.bindAmbito($1.sval) != null) Polaca.insert(TablaSimbolos.punteroTS(Ambito.bindAmbito($2.sval)));}
 								;
 
-asignacion						: ID ASIG expresion {Polaca.insert(TablaSimbolos.punteroTS($1.sval)); Polaca.insert(new Integer(ASIG));} //Usamos Integer para que se pueda meter en la lista.
+asignacion						: ID ASIG expresion {if (Ambito.bindAmbito($1.sval) != null) Polaca.insert(TablaSimbolos.punteroTS(Ambito.bindAmbito($1.sval))); Polaca.insert(new Integer(ASIG));} //Usamos Integer para que se pueda meter en la lista.
             					| ID ASIG error {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " El lado derecho de la asignacio no es valido.");}
             					| ID {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Un identificador en solitario no es una sentencia valida.");}
             					| error ASIG expresion {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " El lado izquierdo de la asignacion no es valido");}
@@ -114,7 +115,7 @@ termino							: termino '*' factor {Polaca.insert(new Integer('*'));}
 								| factor
      							;
 
-factor 							: ID {Polaca.insert(TablaSimbolos.punteroTS($1.sval));}
+factor 							: ID {if (Ambito.bindAmbito($1.sval) != null) Polaca.insert(TablaSimbolos.punteroTS(Ambito.bindAmbito($1.sval)));}
 								| CTE_UINT {Polaca.insert(TablaSimbolos.punteroTS($1.sval)); TablaSimbolos.punteroTS($1.sval).setTipo(Integer.toString(Parser.CTE_UINT)); TablaSimbolos.punteroTS($1.sval).setUso("cte");}
 								| CTE_DOUBLE {Polaca.insert(TablaSimbolos.punteroTS($1.sval)); TablaSimbolos.punteroTS($1.sval).setTipo(Integer.toString(Parser.CTE_DOUBLE)); TablaSimbolos.punteroTS($1.sval).setUso("cte");}
 								| '-' factor {  /*Sacamos lo ultimo que agregamos a la polaca, porque ya no es valido.
@@ -123,7 +124,7 @@ factor 							: ID {Polaca.insert(TablaSimbolos.punteroTS($1.sval));}
 								                Agregamos el string correcto (devuelto por utils.sig....) a la polaca.*/
                                                 Polaca.insert(TablaSimbolos.punteroTS(Utils.signoNegativo($2.sval)));
                                                 }
-								| invocacion {Polaca.insert(TablaSimbolos.punteroTS($1.sval));} //REVISAR. QUE SE INVOQUE LA FUNCION.
+								| invocacion
 								| ERR_CTE_FUERA_RANGO {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Constante fuera de rango en la linea " + AnalizadorLexico.nroLinea);}
 								| ERR_FORMATO_CTE {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Error de formato en constante en la linea " + AnalizadorLexico.nroLinea);}
 								;
@@ -164,13 +165,13 @@ operador_logico 				: AND
 
 /*
 seleccion						: IF condicion THEN bloque_sentencias ENDIF
-				| IF condicion THEN bloque_sentencias ELSE bloque_sentencias ENDIF
-				| IF condicion THEN ELSE bloque_sentencias ENDIF {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Falta el bloque de sentencias ejecutables de la rama THEN.");}
-				| IF condicion THEN ELSE bloque_sentencias {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " ENDIF expected");}
-				| IF condicion THEN ENDIF {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Falta el bloque de sentencias ejecutables de la rama THEN.");}
-				| IF condicion THEN bloque_sentencias ELSE bloque_sentencias {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " ENDIF expected");}
-				| IF condicion THEN bloque_sentencias {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " ENDIF expected");}
-				;
+                                | IF condicion THEN bloque_sentencias ELSE bloque_sentencias ENDIF
+                                | IF condicion THEN ELSE bloque_sentencias ENDIF {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Falta el bloque de sentencias ejecutables de la rama THEN.");}
+                                | IF condicion THEN ELSE bloque_sentencias {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " ENDIF expected");}
+                                | IF condicion THEN ENDIF {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Falta el bloque de sentencias ejecutables de la rama THEN.");}
+                                | IF condicion THEN bloque_sentencias ELSE bloque_sentencias {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " ENDIF expected");}
+                                | IF condicion THEN bloque_sentencias {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " ENDIF expected");}
+                                ;
 */
 
 seleccion                       : encabezado_if rama_then ENDIF {Polaca.insert_sentencia_control_else();} //si no hay else, se mete el final del THEN.
