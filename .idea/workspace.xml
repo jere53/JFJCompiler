@@ -10,14 +10,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a08d5a9-0de6-450d-a23c-2cfd8001a572" name="Default Changelist" comment="POR LAS DUDAS">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TP4/InstruccionASM.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TP4/RepresentacionIntermedia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP4/GeneradorASM.java" afterDir="false" />
-    </list>
-    <list id="697f8440-4d12-4320-82f3-d38f4ec120a5" name="Changes by felix" comment="">
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP3/Polaca.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP3/Polaca.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TP3/Demo.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TP3/Polaca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP3/Polaca.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TP4/RepresentacionIntermedia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP4/GeneradorASM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TP4/GeneradorASM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP4/GeneradorASM.java" afterDir="false" />
+    </list>
+    <list id="999bc3b7-5bb9-4288-8099-7ca27070dcb9" name="Changes by felix" comment="">
+      <change beforePath="$PROJECT_DIR$/src/TP2/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TP4/GeneradorASM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP4/GeneradorASM.java" afterDir="false" />
     </list>
     <list id="f396b4cf-5785-48b4-af3a-f48f932aac4c" name="Changes by juand" comment="" />
     <list id="361afa70-437c-4a2b-93bd-0b3bf65b1206" name="Changes by juandurefaccini" comment="" />
@@ -52,11 +53,32 @@
   <component name="LineStatusTrackerManager">
     <file path="$PROJECT_DIR$/src/TP4/GeneradorASM.java">
       <ranges>
-        <range start1="2" end1="3" start2="2" end2="24" changelist="697f8440-4d12-4320-82f3-d38f4ec120a5" />
-        <range start1="5" end1="5" start2="26" end2="171" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="6" end1="6" start2="172" end2="187" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="7" end1="7" start2="188" end2="189" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="8" end1="8" start2="190" end2="252" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="3" end1="3" start2="3" end2="4" changelist="999bc3b7-5bb9-4288-8099-7ca27070dcb9" />
+        <range start1="5" end1="5" start2="6" end2="9" changelist="999bc3b7-5bb9-4288-8099-7ca27070dcb9" />
+        <range start1="22" end1="22" start2="26" end2="30" changelist="999bc3b7-5bb9-4288-8099-7ca27070dcb9" />
+        <range start1="32" end1="33" start2="40" end2="43" changelist="999bc3b7-5bb9-4288-8099-7ca27070dcb9" />
+        <range start1="39" end1="44" start2="49" end2="54" changelist="999bc3b7-5bb9-4288-8099-7ca27070dcb9" />
+        <range start1="52" end1="53" start2="62" end2="63" changelist="999bc3b7-5bb9-4288-8099-7ca27070dcb9" />
+        <range start1="55" end1="55" start2="65" end2="81" changelist="999bc3b7-5bb9-4288-8099-7ca27070dcb9" />
+        <range start1="72" end1="73" start2="98" end2="98" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="78" end1="79" start2="103" end2="109" changelist="999bc3b7-5bb9-4288-8099-7ca27070dcb9" />
+        <range start1="82" end1="83" start2="112" end2="113" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="90" end1="92" start2="120" end2="120" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="110" end1="112" start2="138" end2="139" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="129" end1="130" start2="156" end2="157" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="135" end1="136" start2="162" end2="163" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="148" end1="148" start2="175" end2="183" changelist="999bc3b7-5bb9-4288-8099-7ca27070dcb9" />
+        <range start1="149" end1="150" start2="184" end2="185" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="152" end1="152" start2="187" end2="188" changelist="999bc3b7-5bb9-4288-8099-7ca27070dcb9" />
+        <range start1="153" end1="155" start2="189" end2="189" changelist="999bc3b7-5bb9-4288-8099-7ca27070dcb9" />
+        <range start1="157" end1="159" start2="191" end2="192" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="162" end1="163" start2="195" end2="195" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="167" end1="169" start2="199" end2="200" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="174" end1="176" start2="205" end2="207" changelist="999bc3b7-5bb9-4288-8099-7ca27070dcb9" />
+        <range start1="178" end1="179" start2="209" end2="210" changelist="999bc3b7-5bb9-4288-8099-7ca27070dcb9" />
+        <range start1="180" end1="181" start2="211" end2="212" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="183" end1="183" start2="214" end2="220" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
+        <range start1="188" end1="252" start2="225" end2="225" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
       </ranges>
     </file>
   </component>
@@ -339,7 +361,21 @@
       <option name="project" value="LOCAL" />
       <updated>1637730794735</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="POR LAS DUDAS">
+      <created>1637795206961</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1637795206961</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Changes by felix">
+      <created>1637795211761</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1637795211761</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -376,7 +412,8 @@
     <MESSAGE value="con polaca" />
     <MESSAGE value="Arregla un par de errores de la seleccion, estan comentados en el codigo.&#10;Implementa el control para la iteracion." />
     <MESSAGE value="POR LAS DUDAS" />
-    <option name="LAST_COMMIT_MESSAGE" value="POR LAS DUDAS" />
+    <MESSAGE value="Changes by felix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes by felix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -385,11 +422,6 @@
           <properties class="java.lang.ArrayIndexOutOfBoundsException" package="java.lang" />
           <option name="timeStamp" value="13" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/TP4/GeneradorASM.java</url>
-          <line>244</line>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>

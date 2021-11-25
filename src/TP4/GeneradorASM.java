@@ -70,7 +70,6 @@ public class GeneradorASM {
     }
 
     public static String getRegistroLibre(){
-        // todo controlar el nulo
         for(Map.Entry<String, Boolean> entry : registros.entrySet()) {
             String key = entry.getKey();
             Boolean value = entry.getValue();
@@ -80,7 +79,7 @@ public class GeneradorASM {
     }
 
     public static boolean es_conmutativo(Object operador){
-        return !operador.equals("/") && !operador.equals("-"); // todo es conmuitativo?
+        return !operador.equals("/") && !operador.equals("-");
     }
 
     public static boolean es_variable(String nombre){
@@ -88,8 +87,6 @@ public class GeneradorASM {
     }
 
     public static String getTipoInstruccion(Object operador){
-        //  todo agregar tipos de operandos a los parametros
-
         return instrucciones.get((String) operador);
     }
 
@@ -108,8 +105,7 @@ public class GeneradorASM {
             InstruccionASM instruccionASM_2 = new InstruccionASM(getTipoInstruccion(operador), nombreRegistro, "@" + segundoOperando);
             asm.add(instruccionASM);    // Agrego las instrucciones asm a la lista
             asm.add(instruccionASM_2); // Agrego las instrucciones asm a la lista
-            // apilar la nueva instruccion
-            pila_variables.add(nombreRegistro); // Agrego el registro para seguir operando
+            pila_variables.add(nombreRegistro); // Agrego el registro para seguir operando con el
         } else {
             if (!es_variable(primerOperando.toString()) && es_variable(segundoOperando.toString())) {
                 // Situacion 2
@@ -127,13 +123,13 @@ public class GeneradorASM {
                     // Situacion 4
                     if (es_conmutativo(operador)) {
                         // Se invierten los operandos
-                        InstruccionASM instruccionASM = new InstruccionASM(getTipoInstruccion(operador), (String) segundoOperando, (String) primerOperando);
+                        InstruccionASM instruccionASM = new InstruccionASM(getTipoInstruccion(operador), (String) segundoOperando,"@" + (String) primerOperando);
 
                         asm.add(instruccionASM);
                         pila_variables.push(segundoOperando);
 
                     } else {
-                        // Ocupo nuevo registro
+                        // Ocupo nuevo registro con el resultado de la operacion
                         String nombreRegistro = getRegistroLibre();
                         InstruccionASM instruccionASM = new InstruccionASM("MOV", nombreRegistro, "@" + primerOperando);
                         InstruccionASM instruccionASM_2 = new InstruccionASM(getTipoInstruccion(operador), (String) nombreRegistro, (String) segundoOperando);
@@ -147,7 +143,7 @@ public class GeneradorASM {
         }
     }
 
-    public static void generarASM(List<String> polaca) {
+    public static void generarASM() {
 
         // se recorre la polaca en una pasada y se genera el ASM
 
@@ -155,18 +151,15 @@ public class GeneradorASM {
         //for (Object valor : Polaca.getRepresentacionIntermedia()) {
             // Si no es un operador
 
-
-            if (!operadoresBinarios.contains(valor)){
+            if (!operadoresBinarios.contains(valor) && !es_sentenciaControl((String) valor) && !es_etiqueta((String) valor)){
                 pila_variables.push(valor);
             } else {
                 if (operadoresBinarios.contains(valor)) {
-                    System.out.println("op binario: " + valor);
                     // Si es un operador binario
                     // desapilo dos elementos y genero el asm correspondiente
                     Object segundoOperando = pila_variables.pop();
                     Object primerOperando = pila_variables.pop();
-                    System.out.println("primerOperando: " + primerOperando);
-                    System.out.println("segundoOperando: " + segundoOperando);
+
                     generarCodigoOperadorBinario(valor, primerOperando, segundoOperando); // Actualizando la lista de instrucciones
                 } else {
 
@@ -178,76 +171,18 @@ public class GeneradorASM {
                     }else
                         // Reconozco un salto incondicional, agrego al ASM salto + POS
                         if (valor.equals("BI")){
-                            InstruccionASM instruccionASM = new InstruccionASM("JMP" ,"L" + (String)pila_variables.pop(), "");
+                            InstruccionASM instruccionASM = new InstruccionASM("JMP" ,"L" + (String) pila_variables.pop(), "");
                             asm.add(instruccionASM);
+                        }
+                        else{
+                            if(es_etiqueta((String) valor)){
+                                InstruccionASM instruccionASM = new InstruccionASM((String) valor, "", "");
+                                asm.add(instruccionASM);
+                            }
                         }
                 }
             }
         }
     }
 
-    public static void main(String[] args) {
-
-        //a b - c 1 + > 17 BF a b c + := 23 BI L17 a b c - := L23
-        List<String> polaca1 = new ArrayList<String>(){
-            {
-                add("a");
-                add("b");
-                add("-");
-                add("c");
-                add("1");
-                add("+");
-                add(">");
-                add("17");
-                add("BF");
-                add("a");
-                add("b");
-                add("c");
-                add("+");
-                add(":=");
-                add("23");
-                add("BI");
-                add("L17");
-                add("a");
-                add("b");
-                add("c");
-                add("-");
-                add(":=");
-                add("L23");
-            }
-        };
-
-
-
-
-        List<String> polaca = new ArrayList<String>(){
-            {
-                add("z");
-                add("a");
-                add("b");
-                add("c");
-                add("*");
-                add("+");
-                add("d");
-                add("e");
-                add("f");
-                add("+");
-                add("/");
-                add("-");
-                add("20");
-                add("+");
-                add(":=");
-            }
-        };
-
-        GeneradorASM.cargarInstrucciones();
-        GeneradorASM.cargarMapa();
-        GeneradorASM.generarASM(polaca1);
-
-
-
-        for(InstruccionASM inst : GeneradorASM.asm){
-            System.out.println(inst);
-        }
-    }
 }

@@ -11,8 +11,8 @@ public class Polaca {
      * La lista contiene los punteros a TS y el indice esta dado por la propia ArrayList
      */
     private static final List<Object> representacionIntermedia = new ArrayList<>();
-    private static final Stack<Integer> pila_seleccion = new Stack<>(); //TODO , cambiar nombre a criterio de jere
-    private static final Stack<Integer> pila_iteracion = new Stack<>(); //TODO , cambiar nombre a criterio de juan y felix
+    private static final Stack<Integer> pila_seleccion = new Stack<>();
+    private static final Stack<Integer> pila_iteracion = new Stack<>();
 
     public Polaca(){
 
@@ -20,7 +20,7 @@ public class Polaca {
 
     public static void insert(Object o){
         representacionIntermedia.add(o);
-    } // TODO, por que object y no Integer
+    }
 
     public static void insert_sentencia_control_cond(){
         pila_seleccion.add(representacionIntermedia.size()); // Agrego el index
