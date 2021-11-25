@@ -20,6 +20,7 @@ program 						: PROGRAM ID ';' {Ambito.agregarAmbito("main");} declaracion {Pola
 								| PROGRAM ';' cuerpo_programa {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " program has no name");}
 								| declaracion cuerpo_programa {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " PROGRAM expected but got declaracion instead");}
 								| cuerpo_programa {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " PROGRAM expected but got cuerpo_programa instead");}
+								| PROGRAM ID ';' error {}
 								;
 
 cuerpo_programa                 : BEGIN sentencia_ejec END ';'
@@ -41,6 +42,10 @@ cuerpo_func  					: BEGIN sentencia_ejec RETURN retorno END
                         		| BEGIN sentencia_ejec RETURN post_condicion END {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " return cannot be empty");}
 								| BEGIN sentencia_ejec RETURN ';' END {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " return cannot be empty");}
 								| BEGIN sentencia_ejec RETURN ';' post_condicion END {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " return cannot be empty");}
+								| BEGIN sentencia_ejec RETURN retorno END declaracion {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " ; expected");}
+								| BEGIN sentencia_ejec RETURN retorno post_condicion END declaracion {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " ; expected");}
+								| BEGIN sentencia_ejec RETURN retorno END BEGIN {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " ; expected");}
+								| BEGIN sentencia_ejec RETURN retorno post_condicion END BEGIN {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " ; expected");}
 								;
 
 post_condicion          		: POST ':' condicion ',' CADENA ';' {Polaca.insert_sentencia_control_cond();} {Polaca.insert("Return");} {Polaca.insert_sentencia_control_then();} {TablaSimbolos.punteroTS($5.sval).setTipo("cadena_caracteres"); TablaSimbolos.punteroTS($5.sval).setUso("msj_postcondicion"); Polaca.insert("PRINT"); Polaca.insert(TablaSimbolos.punteroTS($5.sval)); Polaca.insert("Quit"); Polaca.insert_sentencia_control_else();}
@@ -49,6 +54,7 @@ post_condicion          		: POST ':' condicion ',' CADENA ';' {Polaca.insert_sen
 
 retorno             			: '(' expresion ')' ';' {Polaca.insert("FillReturnReg");} //PLACEHOLDER
 								;
+
 
 declaracion 					: FUNC tipo_id nombre_func params_func definicion_func  ';' { Utils.setTipoIDFuncionCacheado(Integer.toString($2.ival));}
 								| tipo_id lista_variables ';' {Utils.asignarTipoListaDeVariables(Integer.toString($1.ival));} // Asigna el tipo a cada variable de la lista
@@ -60,6 +66,7 @@ declaracion 					: FUNC tipo_id nombre_func params_func definicion_func  ';' { U
 
 lista_variables					: ID {TablaSimbolos.cambiarNombre($1.sval, $1.sval + Ambito.retornarNaming()); Utils.agregarAListaDeVariables($1.sval + Ambito.retornarNaming()); TablaSimbolos.punteroTS($1.sval + Ambito.retornarNaming()).setUso("variable"); }
 								| ID ',' lista_variables { TablaSimbolos.cambiarNombre($1.sval, $1.sval + Ambito.retornarNaming()); Utils.agregarAListaDeVariables($1.sval + Ambito.retornarNaming()); TablaSimbolos.punteroTS($1.sval + Ambito.retornarNaming()).setUso("variable"); }
+								| ID BEGIN {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " ; expected");}
 								;
 
 nombre_func						: ID {TablaSimbolos.cambiarNombre($1.sval, $1.sval + Ambito.retornarNaming()); TablaSimbolos.punteroTS($1.sval + Ambito.retornarNaming()).setUso("nombre_funcion"); Utils.cachearIDFuncion($1.sval + Ambito.retornarNaming()); Ambito.agregarAmbito($1.sval); }

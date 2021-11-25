@@ -63,12 +63,15 @@ public class RegistroTS {
 
     @Override
     public String toString() {
-
-        return "RegistroTS{" +
+        String res = "RegistroTS{" +
                 "lexema='" + lexema + '\'' +
                 "tipo='" + tipo + '\'' +
-                "uso='" + uso + '\'' +
-                "comienzoCodigoEjecutable " + comienzoCodigoEjecutable + '\'' +
-                '}';
+                "uso='" + uso + '\'';
+        if (uso == "nombre_funcion"){
+            res += "comienzoCodigoEjecutable='" + comienzoCodigoEjecutable + '\'' +
+                    "paramtero='" + parametro.toString() + '\'';
+        }
+        res += '}';
+        return res;
     }
 }

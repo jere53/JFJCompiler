@@ -25,7 +25,7 @@ public class Main {
             AnalizadorLexico.outputWriter.append("-----Tabla Simbolos-----" + '\n');
             AnalizadorLexico.outputWriter.append(TablaSimbolos.mostrarTS() + '\n');
             AnalizadorLexico.outputWriter.append("-------Errores-------" + '\n');
-            AnalizadorLexico.outputWriter.append(AnalizadorLexico.errores.toString() +  '\n');
+            AnalizadorLexico.outputWriter.append(AnalizadorLexico.mostrarErrores() +  '\n');
             AnalizadorLexico.outputWriter.append("--------CodigoIntermedio--------" + '\n');
             AnalizadorLexico.outputWriter.append(Polaca.imprimirPolaca());
             AnalizadorLexico.outputWriter.close();
