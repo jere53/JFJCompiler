@@ -7,6 +7,8 @@ import Dev.RegistroTS;
 import TP2.BYACC.Parser;
 import TP2.BYACC.ParserVal;
 import TP3.Polaca;
+import TP4.GeneradorASM;
+import sun.security.jgss.wrapper.GSSNameElement;
 
 import java.io.IOException;
 
@@ -32,6 +34,20 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        // Generamos ASM
+        GeneradorASM.inic();
+        GeneradorASM.cargarMapa();
+        GeneradorASM.cargarInstrucciones();
+        GeneradorASM.generarASM();
+
+        try{
+            GeneradorASM.outputWriter.append(GeneradorASM.get_asm().toString());
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
     }
 }
 
