@@ -14,16 +14,12 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
-        AnalizadorLexico.FILE_PATH = "C:\\Users\\jerem\\IdeaProjects\\JFJCompiler\\src\\input.txt"; //args[0];
+        AnalizadorLexico.FILE_PATH = args[0];
         AnalizadorLexico.inic(); //carga el archivo con el codigo fuente e inicializa el archivo con la salida
         TablaSimbolos.CargarTablaPalabrasReservadas();
         new Parser().run();
         //Pasamos la TS al archivo de salida y lo cerramos.
         try {
-            //AnalizadorLexico.outputWriter.append("-----Tokens Reconocidos-----" + '\n');
-            //AnalizadorLexico.outputWriter.append(AnalizadorLexico.tokensReconocidos.toString() + '\n');
-            //AnalizadorLexico.outputWriter.append("-----Estructuras Sintacticas-----" + '\n');
-            //AnalizadorLexico.outputWriter.append(AnalizadorLexico.estructurasReconocidas.toString() + '\n');
             AnalizadorLexico.outputWriter.append("-----Tabla Simbolos-----" + '\n');
             AnalizadorLexico.outputWriter.append(TablaSimbolos.mostrarTS() + '\n');
             AnalizadorLexico.outputWriter.append("-------Errores-------" + '\n');
@@ -35,17 +31,23 @@ public class Main {
             e.printStackTrace();
         }
 
-        // Generamos ASM
-        GeneradorASM.inic();
-        GeneradorASM.cargarMapa();
-        GeneradorASM.cargarInstrucciones();
-        GeneradorASM.generarASM();
+        if(AnalizadorLexico.errores.size() == 0) {
 
-        try{
-            GeneradorASM.outputWriter.append(GeneradorASM.get_asm().toString());
+            // Generamos ASM
+            GeneradorASM.inic();
+            GeneradorASM.cargarMapa();
+            GeneradorASM.cargarInstrucciones();
+            GeneradorASM.generarASM();
+            System.out.println(GeneradorASM.get_asm().toString());
 
-        }catch (IOException e){
-            e.printStackTrace();
+            try {
+                GeneradorASM.outputWriter.append(GeneradorASM.get_asm().toString());
+                GeneradorASM.outputWriter.close();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
         }
 
     }

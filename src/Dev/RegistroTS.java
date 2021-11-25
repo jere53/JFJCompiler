@@ -68,8 +68,10 @@ public class RegistroTS {
                 "tipo='" + tipo + '\'' +
                 "uso='" + uso + '\'';
         if (uso == "nombre_funcion"){
-            res += "comienzoCodigoEjecutable='" + comienzoCodigoEjecutable + '\'' +
-                    "paramtero='" + parametro.toString() + '\'';
+            res += "comienzoCodigoEjecutable='" + comienzoCodigoEjecutable + '\'';
+        }
+        if (parametro != null){
+            res += "paramtero='" + parametro.toString() + '\'';
         }
         res += '}';
         return res;

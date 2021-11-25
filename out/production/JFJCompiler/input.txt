@@ -1,27 +1,99 @@
 PROGRAM programa_prueba;
 
-FUNC UINT f(DOUBLE parametro)
+//
+    Funciones Anidadas
+//
+
+FUNC UINT f(UINT a)
+    FUNC DOUBLE j()
+    UINT K;
+    BEGIN
+        K := 1;
+        RETURN (K);
+    END;
 UINT y,x;
 BEGIN
-    y := -3 * x;
+    y := 3 * x;
     RETURN (y);
     POST: (y < 3), %Error en la postcondicion%;
 END;
 
+UINT a;
+BEGIN
+    f(a);
+END;
+
+
+//
+
+    Uso de variable fuera de ambito
+
+
+    FUNC UINT f(DOUBLE parametro)
+        FUNC DOUBLE j()
+        UINT K;
+        BEGIN
+            K :=1;
+            RETURN (K);
+        END;
+    UINT y,x;
+    BEGIN
+
+        K esta fuera de ambito
+
+        y := K * x;
+        RETURN (y);
+        POST: (y < 3), %Error en la postcondicion%;
+    END;
+
 UINT B, A;
 BEGIN
-    f(B);
-    IF (A > B) THEN
-    BEGIN
-        B := A;
-        A := B;
-    END;
-    ELSE
-    BEGIN
-        A := 10;
-        B := 20;
-    END;
-    ENDIF;
-
-    B := 1;
+    B := 10;
+    A := 1;
+    REPEAT
+        BEGIN
+            A := A * 2;
+            A := A - 1.3E-24;
+        END;
+    UNTIL (A > B);
 END;
+
+//
+
+
+//
+
+
+
+    Redeclaracion de ID en el mismo ambito
+
+
+    FUNC DOUBLE f(UINT a)
+    BEGIN
+        a := 20;
+        RETURN (2 * a);
+    END;
+
+    FUNC DOUBLE f(UINT b)
+    BEGIN
+        b := 40;
+        RETURN (b / 2);
+    END;
+
+
+BEGIN
+
+END;
+//
+
+
+//
+UINT B, A;
+BEGIN
+    IF (B < A) THEN
+        A := B;
+    ELSE
+        B := A;
+    ENDIF;
+END;
+//

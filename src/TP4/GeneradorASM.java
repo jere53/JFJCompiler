@@ -2,6 +2,8 @@ package TP4;
 
 import Dev.Lexico.Dupla;
 import Dev.Lexico.TablaSimbolos;
+import Dev.RegistroTS;
+import TP2.BYACC.Parser;
 import TP3.Polaca;
 
 import java.io.File;
@@ -14,20 +16,21 @@ import java.util.HashMap; // import the HashMap class
 
 public class GeneradorASM {
 
-    static List<String> operadoresBinarios = new ArrayList<String>(){
+    // Guardamos el codigo ASCII de los operadores binarios
+    static List<Integer> operadoresBinarios = new ArrayList<Integer>(){
         {
-            add("/");
-            add("-");
-            add("*");
-            add("+");
-            add("AND");
-            add("OR");
-            add(":=");
-            add(">");
+            add((int) '/');
+            add((int) '-');
+            add((int) '*');
+            add((int) '+');
+            add((int) Parser.AND);
+            add((int) Parser.OR);
+            add((int) Parser.ASIG);
+            add((int) '>');
 
-            add("<");
-            add(">=");
-            add("<=");
+            add((int) '<');
+            add((int) Parser.COMP_MAYOR_IGUAL);
+            add((int) Parser.COMP_MENOR_IGUAL);
         }
     };
 
@@ -36,7 +39,7 @@ public class GeneradorASM {
 
     static List<InstruccionASM> asm = new ArrayList<>();
 
-    static HashMap<String, String> instrucciones = new HashMap<>();
+    static HashMap<Integer, String> instrucciones = new HashMap<>();
 
     static int numeroVar = 0;
 
@@ -63,7 +66,8 @@ public class GeneradorASM {
 
     public static Map<String, Boolean> registros = new HashMap<String, Boolean>();
 
-    private static final String outputFilePath = "salidaASM.asm";
+    // Determinamos el nombre del archivo de salida de ASM
+    private static final String outputFilePath = "salidaASM.txt";
 
     public static FileWriter outputWriter;
 
@@ -174,12 +178,17 @@ public class GeneradorASM {
         }
     }
 
-    public static boolean es_sentenciaControl(String nombre){
+    // Una sentencia de control son los valores de la lista de la polaca que denotan saltos tanto condicionales como incondicionales
+    public static boolean es_sentenciaControl(Object nombre){
         return nombre.equals("BF") || nombre.equals("BI");
     }
 
-    public static boolean es_etiqueta(String nombre){
-        return nombre.startsWith("L");
+    // Por convencion, un valor es etiqueta si comienza con L. Por ejemplo L17 , L25
+    public static boolean es_etiqueta(Object nombre){
+        if(nombre instanceof java.lang.String){
+            return nombre.toString().startsWith("L");
+        }
+        return false;
     }
 
     public static void generarASM() {
@@ -189,31 +198,40 @@ public class GeneradorASM {
 
             // Si no es un operador
 
-            if (!operadoresBinarios.contains(valor) && !es_sentenciaControl((String) valor) && !es_etiqueta((String) valor)){
+            if (!operadoresBinarios.contains(valor) && !es_sentenciaControl(valor) && !es_etiqueta(valor)){
                 pila_variables.push(valor);
             } else {
                 if (operadoresBinarios.contains(valor)) {
                     // Si es un operador binario
                     // desapilo dos elementos y genero el asm correspondiente
+                    //Aca siempre van a ser Registros!
                     Object segundoOperando = pila_variables.pop();
                     Object primerOperando = pila_variables.pop();
+                    //Si llegamos aca y son string, significa que son placeholders, como "Retorno" y "Print"
+                    if(segundoOperando instanceof java.lang.String){
+                       continue;
+                    }
+                    if(primerOperando instanceof java.lang.String){
+                        continue;
+                    }
 
-                    generarCodigoOperadorBinario(valor, primerOperando, segundoOperando); // Actualizando la lista de instrucciones
+                    generarCodigoOperadorBinario(valor, ((RegistroTS)primerOperando).getLexema(), ((RegistroTS)segundoOperando).getLexema()); // Actualizando la lista de instrucciones
                 } else {
 
                     // Valores de la polaca utilizados para control
                     if(valor.equals("BF")){
                         // Reconozco un salto por falso, agrego al ASM el chequeo de condicion
-                        InstruccionASM instruccionASM = new InstruccionASM("JLE" ,"L" + (String) pila_variables.pop(), "");
+                        //Pila_Variables.pop() siempre va a ser un entero porque antes de un BF o BI siempre hay un entero.
+                        InstruccionASM instruccionASM = new InstruccionASM("JLE" ,"L" + pila_variables.pop().toString(), "");
                         asm.add(instruccionASM);
                     }else
                         // Reconozco un salto incondicional, agrego al ASM salto
                         if (valor.equals("BI")){
-                            InstruccionASM instruccionASM = new InstruccionASM("JMP" ,"L" + (String) pila_variables.pop(), "");
+                            InstruccionASM instruccionASM = new InstruccionASM("JMP" ,"L" + pila_variables.pop().toString(), "");
                             asm.add(instruccionASM);
                         }
                         else{
-                            if(es_etiqueta((String) valor)){
+                            if(es_etiqueta(valor)){
                                 InstruccionASM instruccionASM = new InstruccionASM((String) valor, "", "");
                                 asm.add(instruccionASM);
                             }

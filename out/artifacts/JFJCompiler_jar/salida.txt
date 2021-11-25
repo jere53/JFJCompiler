@@ -1,19 +1,47 @@
------Tokens Reconocidos-----
-[PRINT, REPEAT, POST, BEGIN, ASIG, RETURN, ELSE, CADENA, ID, DOUBLE, IF, CTE_UINT, CTE_DOUBLE, FUNC, (, ENDIF, ), *, +, ,, UNTIL, -, COMP_MAYOR_IGUAL, :, END, THEN, ;, <, UINT, PROGRAM, >]
------Estructuras Sintacticas-----
-[Asignacion en la linea 11, Asignacion en la linea 20, Impresion en la linea 31, Seleccion (IF) en la linea 32, Asignacion en la linea 35, Asignacion en la linea 42, Asignacion en la linea 53, Asignacion en la linea 65, Asignacion en la linea 72, Asignacion en la linea 86, Iteracion en la linea 88, Impresion en la linea 93]
 -----Tabla Simbolos-----
-TablaSimbolos{ ts: {A=RegistroTS{lexema='A'}, a=RegistroTS{lexema='a'}, b=RegistroTS{lexema='b'}, hola mundo=RegistroTS{lexema='hola mundo'}, este_identificador_tie=RegistroTS{lexema='este_identificador_tie'}, C=RegistroTS{lexema='C'}, f=RegistroTS{lexema='f'}, 3.5E-20=RegistroTS{lexema='3.5E-20'}, Error en la postcondicion=RegistroTS{lexema='Error en la postcondicion'}, j=RegistroTS{lexema='j'}, programa_prueba=RegistroTS{lexema='programa_prueba'}, 0=RegistroTS{lexema='0'}, 1=RegistroTS{lexema='1'}, 3=RegistroTS{lexema='3'}, .24E+203=RegistroTS{lexema='.24E+203'}, _mi_variable=RegistroTS{lexema='_mi_variable'}, x=RegistroTS{lexema='x'}, y=RegistroTS{lexema='y'}, z=RegistroTS{lexema='z'}, Esto es una prueba=RegistroTS{lexema='Esto es una prueba'}, 1.=RegistroTS{lexema='1.'}, 21=RegistroTS{lexema='21'}} }
+RegistroTS{lexema='y:main:f'tipo='258'uso='variable'}
+RegistroTS{lexema='Error en la postcondicion'tipo='cadena_caracteres'uso='msj_postcondicion'}
+RegistroTS{lexema='programa_prueba'tipo='null'uso='null'}
+RegistroTS{lexema='1'tipo='266'uso='cte'}
+RegistroTS{lexema='3'tipo='266'uso='cte'}
+RegistroTS{lexema='a:main'tipo='258'uso='variable'}
+RegistroTS{lexema='x:main:f'tipo='258'uso='variable'}
+RegistroTS{lexema='j:main:f'tipo='259'uso='nombre_funcion'comienzoCodigoEjecutable='0'}
+RegistroTS{lexema='K:main:f:j'tipo='258'uso='variable'}
+RegistroTS{lexema='a:main:f'tipo='258'uso='parametro'}
+RegistroTS{lexema='f:main'tipo='258'uso='nombre_funcion'comienzoCodigoEjecutable='5'paramtero='RegistroTS{lexema='a:main:f'tipo='258'uso='parametro'}'}
+
 -------Errores-------
-[Line 3: WARNING: max identifier length is 22 characters; identifier will be truncated
-, Line 25: WARNING: max identifier length is 22 characters; identifier will be truncated
-, ERROR: LINE 42 ENDIF expected
-, ERROR: LINE 42 ; expected but got: miembro_sentencia_ejec instead
-, ERROR: LINE 48 return cannot be empty
-, ERROR: LINE 55 CADENA expected but got ; instead
-, ERROR: LINE 80 missing variable type
-, caracter invalido en la linea 84
-, caracter invalido en la linea 84
-, caracter invalido en la linea 84
-, ERROR: LINE 93 ; expected but got: miembro_sentencia_ejec instead
-]
+
+--------CodigoIntermedio--------
+0  RegistroTS{lexema='1'tipo='266'uso='cte'}
+1  RegistroTS{lexema='K:main:f:j'tipo='258'uso='variable'}
+2  275
+3  RegistroTS{lexema='K:main:f:j'tipo='258'uso='variable'}
+4  FillReturnReg
+5  RegistroTS{lexema='3'tipo='266'uso='cte'}
+6  RegistroTS{lexema='x:main:f'tipo='258'uso='variable'}
+7  42
+8  RegistroTS{lexema='y:main:f'tipo='258'uso='variable'}
+9  275
+10  RegistroTS{lexema='y:main:f'tipo='258'uso='variable'}
+11  FillReturnReg
+12  RegistroTS{lexema='y:main:f'tipo='258'uso='variable'}
+13  RegistroTS{lexema='3'tipo='266'uso='cte'}
+14  60
+15  20
+16  BF
+17  Return
+18  25
+19  BI
+20  L21
+21  PRINT
+22  RegistroTS{lexema='Error en la postcondicion'tipo='cadena_caracteres'uso='msj_postcondicion'}
+23  Quit
+24  L24
+25  -----------FinDeclaraciones-----------
+26  RegistroTS{lexema='a:main'tipo='258'uso='variable'}
+27  RegistroTS{lexema='a:main:f'tipo='258'uso='parametro'}
+28  275
+29  JumpTo: 
+30  5
