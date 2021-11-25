@@ -1,11 +1,36 @@
 package Dev;
 
-import Dev.Lexico.TablaSimbolos;
-
 public class RegistroTS {
     private String lexema;
     private String tipo;
     private String uso;
+    private int comienzoCodigoEjecutable;
+    private int finCodigoEjecutable;
+    private RegistroTS parametro;
+
+    public int getFinCodigoEjecutable() {
+        return finCodigoEjecutable;
+    }
+
+    public void setFinCodigoEjecutable(int finCodigoEjecutable) {
+        this.finCodigoEjecutable = finCodigoEjecutable;
+    }
+
+    public RegistroTS getParametro() {
+        return parametro;
+    }
+
+    public void setParametro(RegistroTS parametro) {
+        this.parametro = parametro;
+    }
+
+    public int getComienzoCodigoEjecutable() {
+        return comienzoCodigoEjecutable;
+    }
+
+    public void setComienzoCodigoEjecutable(int comienzoCodigoEjecutable) {
+        this.comienzoCodigoEjecutable = comienzoCodigoEjecutable;
+    }
 
     public String getTipo() {
         return tipo;
@@ -38,10 +63,15 @@ public class RegistroTS {
 
     @Override
     public String toString() {
-        return "RegistroTS{" +
+        String res = "RegistroTS{" +
                 "lexema='" + lexema + '\'' +
                 "tipo='" + tipo + '\'' +
-                "uso='" + uso + '\'' +
-                '}';
+                "uso='" + uso + '\'';
+        if (uso == "nombre_funcion"){
+            res += "comienzoCodigoEjecutable='" + comienzoCodigoEjecutable + '\'' +
+                    "paramtero='" + parametro.toString() + '\'';
+        }
+        res += '}';
+        return res;
     }
 }

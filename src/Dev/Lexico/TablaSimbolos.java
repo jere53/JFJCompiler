@@ -54,7 +54,11 @@ public class TablaSimbolos {
     }
 
     public static String mostrarTS() {
-        return "TablaSimbolos{ " + "ts: " + ts.toString() + " }";
+        String res = "";
+        for(RegistroTS r : ts.values()){
+            res += r.toString() + '\n';
+        }
+        return res;
     }
 
     // Cambiar nombre se utiliza para actualizar el ambito de la variable. El ambito esta representado

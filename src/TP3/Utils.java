@@ -6,11 +6,12 @@ import TP2.BYACC.Parser;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class Utils {
 
     private static List<String> listaVariablesTemp = new ArrayList<>();
-    private static String idFuncCacheado;
+    private static Stack<String> idFuncCacheado = new Stack<>();
 
     public static void agregarAListaDeVariables(String variable){
         listaVariablesTemp.add(variable);
@@ -23,12 +24,16 @@ public class Utils {
         listaVariablesTemp = new ArrayList<>();
     }
 
+    public static String idFuncCacheada(){
+        return idFuncCacheado.peek();
+    }
+
     public static void setTipoIDFuncionCacheado(String t){
-        TablaSimbolos.punteroTS(idFuncCacheado).setTipo(t);
+        TablaSimbolos.punteroTS(idFuncCacheado.pop()).setTipo(t);
     }
 
     public static void cachearIDFuncion(String s){
-        idFuncCacheado = s;
+        idFuncCacheado.push(s);
     }
 
     public static String signoNegativo(String s){

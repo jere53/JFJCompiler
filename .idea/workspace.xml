@@ -5,21 +5,26 @@
       <artifact name="JFJCompiler:jar" />
     </artifacts-to-build>
   </component>
-  <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="3a08d5a9-0de6-450d-a23c-2cfd8001a572" name="Default Changelist" comment="POR LAS DUDAS">
+    <list default="true" id="3a08d5a9-0de6-450d-a23c-2cfd8001a572" name="Default Changelist" comment="TP3 Completado">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP3/Polaca.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP3/Polaca.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TP3/Demo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TP3/Polaca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP3/Polaca.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TP4/GeneradorASM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP4/GeneradorASM.java" afterDir="false" />
-    </list>
-    <list id="999bc3b7-5bb9-4288-8099-7ca27070dcb9" name="Changes by felix" comment="">
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/RegistroTS.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/RegistroTS.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/Parser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/y.output" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/y.output" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/y.tab.c" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/y.tab.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/gramatica.y" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/gramatica.y" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/salida.txt" beforeDir="false" afterPath="$PROJECT_DIR$/salida.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dev/Lexico/AnalizadorLexico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dev/Lexico/AnalizadorLexico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dev/Lexico/TablaSimbolos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dev/Lexico/TablaSimbolos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dev/RegistroTS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dev/RegistroTS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TP2/BYACC/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/BYACC/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TP2/BYACC/y.output" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/BYACC/y.output" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TP2/BYACC/y.tab.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/BYACC/y.tab.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TP2/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TP4/GeneradorASM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP4/GeneradorASM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TP2/gramatica.y" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/gramatica.y" afterDir="false" />
     </list>
+    <list id="697f8440-4d12-4320-82f3-d38f4ec120a5" name="Changes by felix" comment="" />
     <list id="f396b4cf-5785-48b4-af3a-f48f932aac4c" name="Changes by juand" comment="" />
     <list id="361afa70-437c-4a2b-93bd-0b3bf65b1206" name="Changes by juandurefaccini" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,38 +55,6 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/TP4/GeneradorASM.java">
-      <ranges>
-        <range start1="3" end1="3" start2="3" end2="4" changelist="999bc3b7-5bb9-4288-8099-7ca27070dcb9" />
-        <range start1="5" end1="5" start2="6" end2="9" changelist="999bc3b7-5bb9-4288-8099-7ca27070dcb9" />
-        <range start1="22" end1="22" start2="26" end2="30" changelist="999bc3b7-5bb9-4288-8099-7ca27070dcb9" />
-        <range start1="32" end1="33" start2="40" end2="43" changelist="999bc3b7-5bb9-4288-8099-7ca27070dcb9" />
-        <range start1="39" end1="44" start2="49" end2="54" changelist="999bc3b7-5bb9-4288-8099-7ca27070dcb9" />
-        <range start1="52" end1="53" start2="62" end2="63" changelist="999bc3b7-5bb9-4288-8099-7ca27070dcb9" />
-        <range start1="55" end1="55" start2="65" end2="81" changelist="999bc3b7-5bb9-4288-8099-7ca27070dcb9" />
-        <range start1="72" end1="73" start2="98" end2="98" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="78" end1="79" start2="103" end2="109" changelist="999bc3b7-5bb9-4288-8099-7ca27070dcb9" />
-        <range start1="82" end1="83" start2="112" end2="113" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="90" end1="92" start2="120" end2="120" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="110" end1="112" start2="138" end2="139" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="129" end1="130" start2="156" end2="157" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="135" end1="136" start2="162" end2="163" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="148" end1="148" start2="175" end2="183" changelist="999bc3b7-5bb9-4288-8099-7ca27070dcb9" />
-        <range start1="149" end1="150" start2="184" end2="185" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="152" end1="152" start2="187" end2="188" changelist="999bc3b7-5bb9-4288-8099-7ca27070dcb9" />
-        <range start1="153" end1="155" start2="189" end2="189" changelist="999bc3b7-5bb9-4288-8099-7ca27070dcb9" />
-        <range start1="157" end1="159" start2="191" end2="192" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="162" end1="163" start2="195" end2="195" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="167" end1="169" start2="199" end2="200" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="174" end1="176" start2="205" end2="207" changelist="999bc3b7-5bb9-4288-8099-7ca27070dcb9" />
-        <range start1="178" end1="179" start2="209" end2="210" changelist="999bc3b7-5bb9-4288-8099-7ca27070dcb9" />
-        <range start1="180" end1="181" start2="211" end2="212" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="183" end1="183" start2="214" end2="220" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="188" end1="252" start2="225" end2="225" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-      </ranges>
-    </file>
-  </component>
   <component name="ProjectId" id="1yqCkmdNRxSxYh8grmSVmdacFrz" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -98,26 +71,14 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../JFJIntegration" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
-  <component name="RunManager" selected="Application.GeneradorASM">
-    <configuration name="GeneradorASM" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="TP4.GeneradorASM" />
-      <module name="JFJCompiler" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="TP4.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="TP2.Main" />
       <module name="JFJCompiler" />
@@ -131,9 +92,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.GeneradorASM" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -163,7 +136,8 @@
       <workItem from="1636681946422" duration="7876000" />
       <workItem from="1637492442499" duration="723000" />
       <workItem from="1637550453431" duration="418000" />
-      <workItem from="1637721274523" duration="11563000" />
+      <workItem from="1637721274523" duration="11620000" />
+      <workItem from="1637771841934" duration="25502000" />
     </task>
     <task id="LOCAL-00001" summary="Completa integracion del lexico y el sintactico, anota algunas correcciones que se deben realizar a la gramatica">
       <created>1632974085994</created>
@@ -362,20 +336,41 @@
       <updated>1637730794735</updated>
     </task>
     <task id="LOCAL-00029" summary="POR LAS DUDAS">
-      <created>1637795206961</created>
+      <created>1637733905657</created>
       <option name="number" value="00029" />
       <option name="presentableId" value="LOCAL-00029" />
       <option name="project" value="LOCAL" />
-      <updated>1637795206961</updated>
+      <updated>1637733905657</updated>
     </task>
-    <task id="LOCAL-00030" summary="Changes by felix">
-      <created>1637795211761</created>
+    <task id="LOCAL-00030" summary="POR LAS DUDAS">
+      <created>1637733913191</created>
       <option name="number" value="00030" />
       <option name="presentableId" value="LOCAL-00030" />
       <option name="project" value="LOCAL" />
-      <updated>1637795211761</updated>
+      <updated>1637733913191</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="TP3 69% COMPLETADO">
+      <created>1637733942266</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1637733942266</updated>
+    </task>
+    <task id="LOCAL-00032" summary="TP3 Completado">
+      <created>1637794534254</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1637794534254</updated>
+    </task>
+    <task id="LOCAL-00033" summary="TP3 Completado">
+      <created>1637796178658</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1637796178658</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -412,8 +407,9 @@
     <MESSAGE value="con polaca" />
     <MESSAGE value="Arregla un par de errores de la seleccion, estan comentados en el codigo.&#10;Implementa el control para la iteracion." />
     <MESSAGE value="POR LAS DUDAS" />
-    <MESSAGE value="Changes by felix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes by felix" />
+    <MESSAGE value="TP3 69% COMPLETADO" />
+    <MESSAGE value="TP3 Completado" />
+    <option name="LAST_COMMIT_MESSAGE" value="TP3 Completado" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -421,6 +417,10 @@
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.ArrayIndexOutOfBoundsException" package="java.lang" />
           <option name="timeStamp" value="13" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="14" />
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -434,10 +434,5 @@
         <watch expression="yylval" language="JAVA" />
       </configuration>
     </watches-manager>
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/JFJCompiler$Main.ic" NAME="Main Coverage Results" MODIFIED="1636236533273" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>TP2.*</FILTER>
-    </SUITE>
   </component>
 </project>

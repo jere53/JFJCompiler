@@ -194,6 +194,14 @@ public class AnalizadorLexico {
 
     public static int nroLinea = 1;
 
+    public static String mostrarErrores(){
+        String res = "";
+        for(String s : errores){
+            res += s + '\n';
+        }
+        return res;
+    }
+
     /**
      * Encontrar en la sublist y encontrar el respectivo subindice.
      */

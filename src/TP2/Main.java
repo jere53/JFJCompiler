@@ -20,14 +20,14 @@ public class Main {
         new Parser().run();
         //Pasamos la TS al archivo de salida y lo cerramos.
         try {
-            AnalizadorLexico.outputWriter.append("-----Tokens Reconocidos-----" + '\n');
-            AnalizadorLexico.outputWriter.append(AnalizadorLexico.tokensReconocidos.toString() + '\n');
-            AnalizadorLexico.outputWriter.append("-----Estructuras Sintacticas-----" + '\n');
-            AnalizadorLexico.outputWriter.append(AnalizadorLexico.estructurasReconocidas.toString() + '\n');
+            //AnalizadorLexico.outputWriter.append("-----Tokens Reconocidos-----" + '\n');
+            //AnalizadorLexico.outputWriter.append(AnalizadorLexico.tokensReconocidos.toString() + '\n');
+            //AnalizadorLexico.outputWriter.append("-----Estructuras Sintacticas-----" + '\n');
+            //AnalizadorLexico.outputWriter.append(AnalizadorLexico.estructurasReconocidas.toString() + '\n');
             AnalizadorLexico.outputWriter.append("-----Tabla Simbolos-----" + '\n');
             AnalizadorLexico.outputWriter.append(TablaSimbolos.mostrarTS() + '\n');
             AnalizadorLexico.outputWriter.append("-------Errores-------" + '\n');
-            AnalizadorLexico.outputWriter.append(AnalizadorLexico.errores.toString() +  '\n');
+            AnalizadorLexico.outputWriter.append(AnalizadorLexico.mostrarErrores() +  '\n');
             AnalizadorLexico.outputWriter.append("--------CodigoIntermedio--------" + '\n');
             AnalizadorLexico.outputWriter.append(Polaca.imprimirPolaca());
             AnalizadorLexico.outputWriter.close();
