@@ -11,7 +11,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.security.KeyPair;
 import java.util.*;
-import java.util.HashMap; // import the HashMap class
+import java.util.HashMap;
 
 
 public class GeneradorASM {
@@ -43,17 +43,19 @@ public class GeneradorASM {
 
     static int numeroVar = 0;
 
+    // Generamos un metodo para cargar los valores iniciales del hashmap de instrucciones
+    // Este metodo se encarga de buscar la equivalentecias entre operadores e instrucciones
     public static void cargarInstrucciones(){
-        instrucciones.put("+" ,"ADD");
-        instrucciones.put("-" ,"SUB");
-        instrucciones.put("*" ,"MUL");
-        instrucciones.put("/" ,"DIV");
-        instrucciones.put(":=" ,"MOV");
-        instrucciones.put(">" ,"CMP");
+        instrucciones.put((int) '+' ,"ADD");
+        instrucciones.put((int) '-' ,"SUB");
+        instrucciones.put((int) '*' ,"MUL");
+        instrucciones.put((int) '/' ,"DIV");
+        instrucciones.put((int) Parser.ASIG ,"MOV");
+        instrucciones.put((int) '>' ,"CMP");
 
-        instrucciones.put("<" ,"CMP");
-        instrucciones.put("<=" ,"CMP");
-        instrucciones.put(">=" ,"CMP");
+        instrucciones.put((int) '<' ,"CMP");
+        instrucciones.put((int) Parser.COMP_MENOR_IGUAL ,"CMP");
+        instrucciones.put((int) Parser.COMP_MAYOR_IGUAL ,"CMP");
 
     }
 
@@ -63,7 +65,7 @@ public class GeneradorASM {
     public static String ECX = "ECX";
     public static String EDX = "EDX";
 
-
+    // Mapa con los registros disponibles, almacenamos un booleano en el value para conocer el estado actual del registro
     public static Map<String, Boolean> registros = new HashMap<String, Boolean>();
 
     // Determinamos el nombre del archivo de salida de ASM
@@ -84,6 +86,7 @@ public class GeneradorASM {
         }
     }
 
+    // Cargamos los registros por defecto del mapa de registros
     public static void cargarMapa(){
         registros.put(EAX ,false);
         registros.put(EBX ,false);
@@ -91,14 +94,17 @@ public class GeneradorASM {
         registros.put(EDX ,false);
     }
 
+    // Este metodo se encarga de liberar uno de los cuatro registros reservador
     public static void liberarRegristro(String nombreRegistro){
         registros.put(nombreRegistro, false);
     }
 
+    // Este metodo se encarga de ocupar determinado registro
     public static void ocuparRegistro(String nombreRegistro){
         registros.put(nombreRegistro, true);
     }
 
+    // Este metodo se encarga de obtener el primer registro libre de los cuatro utilizabales
     public static String getRegistroLibre(){
         for(Map.Entry<String, Boolean> entry : registros.entrySet()) {
             String key = entry.getKey();
@@ -113,19 +119,28 @@ public class GeneradorASM {
         return nombre;
     }
 
+    // Este metodo se encarga de retornar si un operador es conmutativo o no
     public static boolean es_conmutativo(Object operador){
         return !operador.equals("/") && !operador.equals("-");
     }
 
+    // Este metodo se encarga de reportar si un nombre corresponde a una variable o no
+    // Un nombre podria corresponder a una variable si no tiene nombre de registro
     public static boolean es_variable(String nombre){
         return !registros.containsKey(nombre);
     }
 
+    // Este metodo se encarga de obtener el tipo de instruccion segun el operador. Exploara el mapa de <Operador,Instruccion>
     public static String getTipoInstruccion(Object operador){
-        return instrucciones.get((String) operador);
+        return instrucciones.get(operador);
     }
 
+    // Este metodo se encarga de generar el codigo de operador binario. Evalua los distintos tipos de operaciones que se pueden realizar
+    // En funcion de los operadores que se usan ya sean registros o variables.
     public static void generarCodigoOperadorBinario(Object operador, Object primerOperando, Object segundoOperando) {
+
+        // Planteo de casos posibles
+
         // sit 1 : var, var --> 1 reg
         // sit 2 :reg, var --> OP R1, var
         // sit 3 : reg1, reg2 --> OP reg1, reg2
@@ -191,6 +206,8 @@ public class GeneradorASM {
         return false;
     }
 
+    // El metoddo generar asm se encarga de evaluar y trabajar sobre cada elemento de la lista de la polaca
+    // En La forma de reconocer que tipo de elemento se esta hablando es seguin el naming del mismo
     public static void generarASM() {
 
         // se recorre la polaca en una pasada y se genera el ASM
@@ -241,8 +258,16 @@ public class GeneradorASM {
         }
     }
 
-    public static List<InstruccionASM> get_asm(){
-        return asm;
+    // Este metodo nos permite mostrar de manera legible el codigo ASM generado
+    public static String get_asm(){
+
+        StringBuilder res = new StringBuilder();
+        int i = 0;
+        for(InstruccionASM instruccionASM : asm){
+            res.append(i).append("  ").append(instruccionASM.toString()).append("\n");
+            i++;
+        }
+        return res.toString();
     }
 
 }
