@@ -48,7 +48,7 @@ public class Polaca {
         representacionIntermedia.add(new Object());
 
         representacionIntermedia.add("BI");
-        representacionIntermedia.add("L" + (representacionIntermedia.size() + 1));
+        representacionIntermedia.add("L" + (representacionIntermedia.size()));
 
     }
 
@@ -59,13 +59,14 @@ public class Polaca {
         // hasta aca (desde donde Then dijo que salte)"
         int index = (int) pila_seleccion.pop();
 
-        representacionIntermedia.add("L" + representacionIntermedia.size());
 
-        representacionIntermedia.set(index,  representacionIntermedia.size()); //ya se leyo el codigo del ELSE, aca si es +1
+
+        representacionIntermedia.set(index, representacionIntermedia.size()); //ya se leyo el codigo del ELSE, aca si es +1
         //este valor hasta donde llega el else. Si se cumple la cond, lo que este entre el final del THEN y este valor se ignora.
         //Si no hay rama ELSE, el codigo es el mismo, porque si la condicion se cumple se empieza a leer desde el final del then.
         //no se necesita una regla para la rama sin else.
 
+        representacionIntermedia.add("L" + representacionIntermedia.size());
     }
     /*
 
@@ -83,8 +84,9 @@ public class Polaca {
      */
     public static void insert_iteracion_start(){
         //representacionIntermedia.add("L" + representacionIntermedia.size());
-        representacionIntermedia.add("L" + representacionIntermedia.size());
+
         pila_iteracion.push(representacionIntermedia.size()); //va a tener la primer sentencia del REPEAT
+        representacionIntermedia.add("L" + (representacionIntermedia.size()));
     }
 
     public static void insert_iteracion_end(){

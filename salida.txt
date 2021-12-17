@@ -9,39 +9,52 @@ RegistroTS{lexema='x:main:f'tipo='258'uso='variable'}
 RegistroTS{lexema='j:main:f'tipo='259'uso='nombre_funcion'comienzoCodigoEjecutable='0'}
 RegistroTS{lexema='K:main:f:j'tipo='258'uso='variable'}
 RegistroTS{lexema='a:main:f'tipo='258'uso='parametro'}
-RegistroTS{lexema='f:main'tipo='258'uso='nombre_funcion'comienzoCodigoEjecutable='5'paramtero='RegistroTS{lexema='a:main:f'tipo='258'uso='parametro'}'}
+RegistroTS{lexema='f:main'tipo='258'uso='nombre_funcion'comienzoCodigoEjecutable='7'paramtero='RegistroTS{lexema='a:main:f'tipo='258'uso='parametro'}'}
 
 -------Errores-------
 
 --------CodigoIntermedio--------
-0  RegistroTS{lexema='1'tipo='266'uso='cte'}
-1  RegistroTS{lexema='K:main:f:j'tipo='258'uso='variable'}
-2  275
-3  RegistroTS{lexema='K:main:f:j'tipo='258'uso='variable'}
-4  FillReturnReg
-5  RegistroTS{lexema='3'tipo='266'uso='cte'}
-6  RegistroTS{lexema='x:main:f'tipo='258'uso='variable'}
-7  42
-8  RegistroTS{lexema='y:main:f'tipo='258'uso='variable'}
-9  275
-10  RegistroTS{lexema='y:main:f'tipo='258'uso='variable'}
-11  FillReturnReg
-12  RegistroTS{lexema='y:main:f'tipo='258'uso='variable'}
-13  RegistroTS{lexema='3'tipo='266'uso='cte'}
-14  60
-15  20
-16  BF
-17  Return
-18  25
-19  BI
-20  L21
-21  PRINT
-22  RegistroTS{lexema='Error en la postcondicion'tipo='cadena_caracteres'uso='msj_postcondicion'}
-23  Quit
-24  L24
-25  -----------FinDeclaraciones-----------
-26  RegistroTS{lexema='a:main'tipo='258'uso='variable'}
-27  RegistroTS{lexema='a:main:f'tipo='258'uso='parametro'}
-28  275
-29  JumpTo: 
-30  5
+0  L0
+1  RegistroTS{lexema='1'tipo='266'uso='cte'}
+2  RegistroTS{lexema='K:main:f:j'tipo='258'uso='variable'}
+3  275
+4  RegistroTS{lexema='K:main:f:j'tipo='258'uso='variable'}
+5  FillReturnReg
+6  RETURN
+7  L7
+8  RegistroTS{lexema='3'tipo='266'uso='cte'}
+9  RegistroTS{lexema='x:main:f'tipo='258'uso='variable'}
+10  42
+11  RegistroTS{lexema='y:main:f'tipo='258'uso='variable'}
+12  275
+13  RegistroTS{lexema='y:main:f'tipo='258'uso='variable'}
+14  FillReturnReg
+15  RegistroTS{lexema='y:main:f'tipo='258'uso='variable'}
+16  RegistroTS{lexema='3'tipo='266'uso='cte'}
+17  60
+18  22
+19  BF
+20  26
+21  BI
+22  L22
+23  PRINT
+24  RegistroTS{lexema='Error en la postcondicion'tipo='cadena_caracteres'uso='msj_postcondicion'}
+25  Quit
+26  L26
+27  RETURN
+28  -----------FinDeclaraciones-----------
+29  RegistroTS{lexema='a:main'tipo='258'uso='variable'}
+30  RegistroTS{lexema='a:main:f'tipo='258'uso='parametro'}
+31  275
+32  7
+33  CALL
+34  L34
+35  RegistroTS{lexema='1'tipo='266'uso='cte'}
+36  RegistroTS{lexema='a:main'tipo='258'uso='variable'}
+37  275
+38  RegistroTS{lexema='a:main'tipo='258'uso='variable'}
+39  RegistroTS{lexema='1'tipo='266'uso='cte'}
+40  280
+41  34
+42  BF
+43  END_PROGRAM

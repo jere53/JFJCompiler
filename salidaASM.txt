@@ -1,10 +1,16 @@
-0  MOV, EDX @1
-1  MOV, EDX @K:main:f:j
-2  MOV, EBX @3
-3  MUL, EBX @x:main:f
-4  MOV, ECX @y:main:f
-5  CMP, ECX @3
-6  JLE, L20 
-7  JMP, L25 
-8  L21,  
-9  L24,  
+0  L0,  
+1  MOV, EDX @1
+2  MOV, EDX @K:main:f:j
+3  L7,  
+4  MOV, EBX @3
+5  MUL, EBX @x:main:f
+6  MOV, ECX @y:main:f
+7  CMP, ECX @3
+8  JLE, L22 
+9  JMP, L26 
+10  L22,  
+11  L26,  
+12  L34,  
+13  MOV, EAX @1
+14  MOV, EAX @a:main
+15  JLE, L34 
