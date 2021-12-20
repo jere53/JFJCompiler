@@ -23,8 +23,8 @@ program 						: PROGRAM ID ';' {Ambito.agregarAmbito("main");} declaracion {Pola
 								| PROGRAM ID ';' error {}
 								;
 
-cuerpo_programa                 : BEGIN sentencia_ejec END ';'
-                                | BEGIN END ';'
+cuerpo_programa                 : BEGIN sentencia_ejec END ';' {Polaca.insert("END_PROGRAM");}
+                                | BEGIN END ';' {Polaca.insert("END_PROGRAM");}
                                 ;
 
 bloque_sentencias 				: BEGIN sentencia_ejec END ';'
@@ -36,8 +36,8 @@ tipo_id							: UINT
 								| FUNC
 								;
 
-cuerpo_func  					: BEGIN sentencia_ejec RETURN retorno END
-                        		| BEGIN sentencia_ejec RETURN retorno post_condicion END
+cuerpo_func  					: BEGIN sentencia_ejec RETURN retorno END {Polaca.insert("RETURN");}
+                        		| BEGIN sentencia_ejec RETURN retorno post_condicion END {Polaca.insert("RETURN");}
                         		| BEGIN sentencia_ejec RETURN END {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " return cannot be empty");}
                         		| BEGIN sentencia_ejec RETURN post_condicion END {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " return cannot be empty");}
 								| BEGIN sentencia_ejec RETURN ';' END {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " return cannot be empty");}
@@ -48,11 +48,11 @@ cuerpo_func  					: BEGIN sentencia_ejec RETURN retorno END
 								| BEGIN sentencia_ejec RETURN retorno post_condicion END BEGIN {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " ; expected");}
 								;
 
-post_condicion          		: POST ':' condicion ',' CADENA ';' {Polaca.insert_sentencia_control_cond();} {Polaca.insert("Return");} {Polaca.insert_sentencia_control_then();} {TablaSimbolos.punteroTS($5.sval).setTipo("cadena_caracteres"); TablaSimbolos.punteroTS($5.sval).setUso("msj_postcondicion"); Polaca.insert("PRINT"); Polaca.insert(TablaSimbolos.punteroTS($5.sval)); Polaca.insert("Quit"); Polaca.insert_sentencia_control_else();}
+post_condicion          		: POST ':' condicion ',' CADENA ';' {Polaca.insert_sentencia_control_cond();} {} {Polaca.insert_sentencia_control_then();} {TablaSimbolos.punteroTS($5.sval).setTipo("cadena_caracteres"); TablaSimbolos.punteroTS($5.sval).setUso("msj_postcondicion"); Polaca.insert("PRINT"); Polaca.insert(TablaSimbolos.punteroTS($5.sval)); Polaca.insert("Quit"); Polaca.insert_sentencia_control_else();}
                                 | POST ':' condicion ',' ';' {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " CADENA expected but got ; instead");}
 								;
 
-retorno             			: '(' expresion ')' ';' {Polaca.insert("FillReturnReg");} //PLACEHOLDER
+retorno             			: '(' expresion ')' ';' {Polaca.insert("FillReturnReg");}
 								;
 
 
@@ -79,8 +79,8 @@ params_func						: '(' param ')'
 param 							: tipo_id ID {TablaSimbolos.punteroTS($2.sval).setTipo(Integer.toString($1.ival)); TablaSimbolos.punteroTS($2.sval).setUso("parametro"); TablaSimbolos.cambiarNombre($2.sval, $2.sval + Ambito.retornarNaming()); TablaSimbolos.punteroTS(Utils.idFuncCacheada()).setParametro(TablaSimbolos.punteroTS($2.sval + Ambito.retornarNaming()));} //le damos a la entrada en la TS de la funcion un puntero al parametro
 		    					;
 
-definicion_func					: declaracion {TablaSimbolos.punteroTS(Utils.idFuncCacheada()).setComienzoCodigoEjecutable(Polaca.posicionActual() + 1); } cuerpo_func {Ambito.borrarAmbito();} //seteamos la direccion en la que comienza el codigo ejecutable. Ademas, si tiene parametro, lo asignamos a lo que se pase (dejando un lugar)
-								| {TablaSimbolos.punteroTS(Utils.idFuncCacheada()).setComienzoCodigoEjecutable(Polaca.posicionActual()+1); } cuerpo_func {Ambito.borrarAmbito();}
+definicion_func					: declaracion {TablaSimbolos.punteroTS(Utils.idFuncCacheada()).setComienzoCodigoEjecutable(Polaca.posicionActual() + 1); Polaca.insert("L"+ (Polaca.posicionActual() + 1));} cuerpo_func {Ambito.borrarAmbito();} //seteamos la direccion en la que comienza el codigo ejecutable. Ademas, si tiene parametro, lo asignamos a lo que se pase (dejando un lugar)
+								| {TablaSimbolos.punteroTS(Utils.idFuncCacheada()).setComienzoCodigoEjecutable(Polaca.posicionActual()+1); Polaca.insert("L"+ (Polaca.posicionActual() + 1));} cuerpo_func {Ambito.borrarAmbito();}
 								| {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Cuerpo del procedimiento vacio.");}
 								;
 
@@ -102,8 +102,8 @@ miembro_sentencia_ejec 			: invocacion ';' {AnalizadorLexico.estructurasReconoci
                        			| BREAK miembro_sentencia_ejec {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " ; expected but got: miembro_sentencia_ejec instead");}
                        			;
 
-invocacion						: ID '(' ')' {if ((Ambito.bindAmbito($1.sval) != null) && (TablaSimbolos.punteroTS(Ambito.bindAmbito($1.sval)).getParametro()) == null) {Polaca.insert("JumpTo: "); Polaca.insert(TablaSimbolos.punteroTS(Ambito.bindAmbito($1.sval)).getComienzoCodigoEjecutable());} else yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + ": No se encontro una funcion con esa signatura en el ambito actual");}
-								| ID '(' ID ')' {if ((Ambito.bindAmbito($1.sval) != null) && (TablaSimbolos.punteroTS(Ambito.bindAmbito($1.sval)).getParametro() != null) && (Ambito.bindAmbito($3.sval) != null && TablaSimbolos.punteroTS($3.sval).getUso != "cte")) {Polaca.insert(TablaSimbolos.punteroTS(Ambito.bindAmbito($3.sval))); Polaca.insert(TablaSimbolos.punteroTS(Ambito.bindAmbito($1.sval)).getParametro()); Polaca.insert(Parser.ASIG); Polaca.insert("JumpTo: "); Polaca.insert(TablaSimbolos.punteroTS(Ambito.bindAmbito($1.sval)).getComienzoCodigoEjecutable());} else yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + ": No se encontro una funcion con esa signatura en el ambito actual");} //si tiene parametro, asignamos la variable del parametro real a la del formal antes de ejecutar.
+invocacion						: ID '(' ')' {if ((Ambito.bindAmbito($1.sval) != null) && (TablaSimbolos.punteroTS(Ambito.bindAmbito($1.sval)).getParametro()) == null) {Polaca.insert(TablaSimbolos.punteroTS(Ambito.bindAmbito($1.sval)).getComienzoCodigoEjecutable()); Polaca.insert("CALL"); } else yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + ": No se encontro una funcion con esa signatura en el ambito actual");}
+								| ID '(' ID ')' {if ((Ambito.bindAmbito($1.sval) != null) && (TablaSimbolos.punteroTS(Ambito.bindAmbito($1.sval)).getParametro() != null) && (Ambito.bindAmbito($3.sval) != null)) {Polaca.insert(TablaSimbolos.punteroTS(Ambito.bindAmbito($3.sval))); Polaca.insert(TablaSimbolos.punteroTS(Ambito.bindAmbito($1.sval)).getParametro()); Polaca.insert(Parser.ASIG); Polaca.insert(TablaSimbolos.punteroTS(Ambito.bindAmbito($1.sval)).getComienzoCodigoEjecutable()); Polaca.insert("CALL");} else yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + ": No se encontro una funcion con esa signatura en el ambito actual");} //si tiene parametro, asignamos la variable del parametro real a la del formal antes de ejecutar.
 								;
 
 asignacion						: ID ASIG expresion {if (Ambito.bindAmbito($1.sval) != null) {Polaca.insert(TablaSimbolos.punteroTS(Ambito.bindAmbito($1.sval)));} else yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + ": No se encontro una variable con ese nombre en el ambito actual"); Polaca.insert(new Integer(ASIG));} //Usamos Integer para que se pueda meter en la lista.

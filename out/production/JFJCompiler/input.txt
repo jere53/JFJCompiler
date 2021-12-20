@@ -21,6 +21,10 @@ END;
 UINT a;
 BEGIN
     f(a);
+
+    REPEAT
+        a := 1;
+    UNTIL (a == 1);
 END;
 
 

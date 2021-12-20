@@ -6,17 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3a08d5a9-0de6-450d-a23c-2cfd8001a572" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/salida.txt" beforeDir="false" afterPath="$PROJECT_DIR$/salida.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/salidaASM.txt" beforeDir="false" afterPath="$PROJECT_DIR$/salidaASM.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TP2/BYACC/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/BYACC/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TP2/BYACC/y.tab.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/BYACC/y.tab.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TP2/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TP2/gramatica.y" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/gramatica.y" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TP3/Polaca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP3/Polaca.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/input.txt" afterDir="false" />
-    </list>
+    <list default="true" id="3a08d5a9-0de6-450d-a23c-2cfd8001a572" name="Default Changelist" comment="" />
     <list id="697f8440-4d12-4320-82f3-d38f4ec120a5" name="Changes by felix" comment="" />
     <list id="f396b4cf-5785-48b4-af3a-f48f932aac4c" name="Changes by juand" comment="" />
     <list id="361afa70-437c-4a2b-93bd-0b3bf65b1206" name="Changes by juandurefaccini" comment="" />
@@ -85,19 +75,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
@@ -133,7 +110,7 @@
       <workItem from="1637771841934" duration="32660000" />
       <workItem from="1638295272414" duration="19000" />
       <workItem from="1639074036935" duration="825000" />
-      <workItem from="1639771629007" duration="7829000" />
+      <workItem from="1639771629007" duration="7887000" />
     </task>
     <task id="LOCAL-00001" summary="Completa integracion del lexico y el sintactico, anota algunas correcciones que se deben realizar a la gramatica">
       <created>1632974085994</created>
@@ -387,7 +364,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639074122882</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="TP3 Terminado">
+      <created>1639780355939</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1639780355939</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -427,7 +411,8 @@
     <MESSAGE value="TP3 69% COMPLETADO" />
     <MESSAGE value="TP3 Completado" />
     <MESSAGE value="piugp" />
-    <option name="LAST_COMMIT_MESSAGE" value="piugp" />
+    <MESSAGE value="TP3 Terminado" />
+    <option name="LAST_COMMIT_MESSAGE" value="TP3 Terminado" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
