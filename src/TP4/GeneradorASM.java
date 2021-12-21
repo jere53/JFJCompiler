@@ -9,7 +9,6 @@ import TP3.Polaca;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.security.KeyPair;
 import java.util.*;
 import java.util.HashMap;
 
@@ -37,27 +36,11 @@ public class GeneradorASM {
     // recorrer la polaca en una pasada y generar instrucciones para luego traducirlo a ASM
     static Stack<Object> pila_variables = new Stack<>();
 
-    static List<InstruccionASM> asm = new ArrayList<>();
+    static String asm = "";
 
     static HashMap<Integer, String> instrucciones = new HashMap<>();
 
     static int numeroVar = 0;
-
-    // Generamos un metodo para cargar los valores iniciales del hashmap de instrucciones
-    // Este metodo se encarga de buscar la equivalentecias entre operadores e instrucciones
-    public static void cargarInstrucciones(){
-        instrucciones.put((int) '+' ,"ADD");
-        instrucciones.put((int) '-' ,"SUB");
-        instrucciones.put((int) '*' ,"MUL");
-        instrucciones.put((int) '/' ,"DIV");
-        instrucciones.put((int) Parser.ASIG ,"MOV");
-        instrucciones.put((int) '>' ,"CMP");
-
-        instrucciones.put((int) '<' ,"CMP");
-        instrucciones.put((int) Parser.COMP_MENOR_IGUAL ,"CMP");
-        instrucciones.put((int) Parser.COMP_MAYOR_IGUAL ,"CMP");
-
-    }
 
     // Constantes que nos permiten guardar los nombres de los tipos de instrucciones
     public static String EAX = "EAX";
@@ -193,11 +176,6 @@ public class GeneradorASM {
         }
     }
 
-    // Una sentencia de control son los valores de la lista de la polaca que denotan saltos tanto condicionales como incondicionales
-    public static boolean es_sentenciaControl(Object nombre){
-        return nombre.equals("BF") || nombre.equals("BI");
-    }
-
     // Por convencion, un valor es etiqueta si comienza con L. Por ejemplo L17 , L25
     public static boolean es_etiqueta(Object nombre){
         if(nombre instanceof java.lang.String){
@@ -205,6 +183,23 @@ public class GeneradorASM {
         }
         return false;
     }
+
+    public static boolean es_control(Object e){
+        return e.equals("BI") || e.equals("BF");
+    }
+
+    // Sabemos que es un operando porque pertenece a la tabla de simbolos
+    public static boolean es_operando(Object e){
+        return e instanceof RegistroTS;
+    }
+
+    public static boolean es_marca(Object e){
+        return e.equals("-----------FinDeclaraciones-----------")
+                || e.equals("FuncStartLabel") || e.equals("FillReturnReg") || e.equals("Quit")
+                || e.equals("END_PROGRAM") || e.equals("CALL") || e.equals("RETURN");
+    }
+
+    static String  ultimoComp="";
 
     // El metoddo generar asm se encarga de evaluar y trabajar sobre cada elemento de la lista de la polaca
     // En La forma de reconocer que tipo de elemento se esta hablando es seguin el naming del mismo
@@ -260,14 +255,7 @@ public class GeneradorASM {
 
     // Este metodo nos permite mostrar de manera legible el codigo ASM generado
     public static String get_asm(){
-
-        StringBuilder res = new StringBuilder();
-        int i = 0;
-        for(InstruccionASM instruccionASM : asm){
-            res.append(i).append("  ").append(instruccionASM.toString()).append("\n");
-            i++;
-        }
-        return res.toString();
+        return asm;
     }
 
 }
