@@ -1,16 +1,75 @@
-0  L0,  
-1  MOV, EDX @1
-2  MOV, EDX @K:main:f:j
-3  L7,  
-4  MOV, EBX @3
-5  MUL, EBX @x:main:f
-6  MOV, ECX @y:main:f
-7  CMP, ECX @3
-8  JLE, L22 
-9  JMP, L26 
-10  L22,  
-11  L26,  
-12  L34,  
-13  MOV, EAX @1
-14  MOV, EAX @a:main
-15  JLE, L34 
+.MODEL SMALL
+.STACK 200h
+.DATA
+DW _@aux7
+DW _@aux6
+DW _@aux4
+DW _y:main:f
+DW _@aux9
+DW _a:main
+DW _x:main:f
+DW _K:main:f:j
+DW _@aux3
+DW _a:main:f
+DW _@aux1
+
+.CODE
+START: 
+L1:
+
+MOV BX, 1
+MOV _K:main:f:j, BX
+MOV @auxL1, _K:main:f:j
+RET
+L9:
+
+MOV AX, _x:main:f
+IMUL AX, 3
+MOV @aux1 AX
+
+MOV BX, _@aux1
+MOV _y:main:f, BX
+
+MOV AX, _x:main:f
+IMUL AX, 3
+MOV @aux3 AX
+
+MOV BX, _@aux3
+ADD BX, _y:main:f
+MOV @aux4 BX
+MOV @auxL9, _@aux4
+MOV BX, 3
+MOV AX, _y:main:f
+CMP AX,  BX
+JNS L28
+JMP L32
+L28:
+Print 
+Error en la postcondicion
+END
+L32:
+RET
+
+MOV BX, 2
+ADDI BX, 1
+MOV @aux6 BX
+
+MOV BX, 3
+ADD BX, _@aux6
+MOV @aux7 BX
+
+MOV BX, _a:main
+MOV _a:main:f, BX
+CALL L9
+
+MOV BX, _@auxL9
+ADD BX, _@aux7
+MOV @aux9 BX
+
+MOV BX, _@aux9
+MOV _a:main, BX
+END START
+
+TratarDivisionPorZero: 
+Print Error
+END

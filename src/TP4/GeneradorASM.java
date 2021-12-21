@@ -5,6 +5,7 @@ import Dev.Lexico.TablaSimbolos;
 import Dev.RegistroTS;
 import TP2.BYACC.Parser;
 import TP3.Polaca;
+import TP4.Generadores.*;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -26,30 +27,27 @@ public class GeneradorASM {
             add((int) Parser.OR);
             add((int) Parser.ASIG);
             add((int) '>');
-
+            add((int) Parser.COMP_DISTINTO);
             add((int) '<');
             add((int) Parser.COMP_MAYOR_IGUAL);
             add((int) Parser.COMP_MENOR_IGUAL);
+            add((int) Parser.COMP_IGUAL);
         }
     };
 
     // recorrer la polaca en una pasada y generar instrucciones para luego traducirlo a ASM
-    static Stack<Object> pila_variables = new Stack<>();
+    public static Stack<Object> pila_variables = new Stack<>();
 
     static String asm = "";
 
-    static HashMap<Integer, String> instrucciones = new HashMap<>();
-
-    static int numeroVar = 0;
+    // Contador de referencia para variables auxiliares
+    public static int numeroVar = 0;
 
     // Constantes que nos permiten guardar los nombres de los tipos de instrucciones
     public static String EAX = "EAX";
     public static String EBX = "EBX";
     public static String ECX = "ECX";
     public static String EDX = "EDX";
-
-    // Mapa con los registros disponibles, almacenamos un booleano en el value para conocer el estado actual del registro
-    public static Map<String, Boolean> registros = new HashMap<String, Boolean>();
 
     // Determinamos el nombre del archivo de salida de ASM
     private static final String outputFilePath = "salidaASM.txt";
@@ -66,113 +64,6 @@ public class GeneradorASM {
             outputWriter = new FileWriter(file);
         } catch (IOException e){
             e.printStackTrace();
-        }
-    }
-
-    // Cargamos los registros por defecto del mapa de registros
-    public static void cargarMapa(){
-        registros.put(EAX ,false);
-        registros.put(EBX ,false);
-        registros.put(ECX ,false);
-        registros.put(EDX ,false);
-    }
-
-    // Este metodo se encarga de liberar uno de los cuatro registros reservador
-    public static void liberarRegristro(String nombreRegistro){
-        registros.put(nombreRegistro, false);
-    }
-
-    // Este metodo se encarga de ocupar determinado registro
-    public static void ocuparRegistro(String nombreRegistro){
-        registros.put(nombreRegistro, true);
-    }
-
-    // Este metodo se encarga de obtener el primer registro libre de los cuatro utilizabales
-    public static String getRegistroLibre(){
-        for(Map.Entry<String, Boolean> entry : registros.entrySet()) {
-            String key = entry.getKey();
-            Boolean value = entry.getValue();
-            if(value.equals(false)) return key;
-        }
-
-        // En caso que no se encuentre un registro libre debemos generar una variable auxiliar
-        String nombre = "@aux" + Integer.toString(numeroVar);
-        numeroVar++; // Actualizamos la variable numeroVar para ir generando un identificador incremental de la variable auxiliar
-        TablaSimbolos.altaTS(nombre);
-        return nombre;
-    }
-
-    // Este metodo se encarga de retornar si un operador es conmutativo o no
-    public static boolean es_conmutativo(Object operador){
-        return !operador.equals("/") && !operador.equals("-");
-    }
-
-    // Este metodo se encarga de reportar si un nombre corresponde a una variable o no
-    // Un nombre podria corresponder a una variable si no tiene nombre de registro
-    public static boolean es_variable(String nombre){
-        return !registros.containsKey(nombre);
-    }
-
-    // Este metodo se encarga de obtener el tipo de instruccion segun el operador. Exploara el mapa de <Operador,Instruccion>
-    public static String getTipoInstruccion(Object operador){
-        return instrucciones.get(operador);
-    }
-
-    // Este metodo se encarga de generar el codigo de operador binario. Evalua los distintos tipos de operaciones que se pueden realizar
-    // En funcion de los operadores que se usan ya sean registros o variables.
-    public static void generarCodigoOperadorBinario(Object operador, Object primerOperando, Object segundoOperando) {
-
-        // Planteo de casos posibles
-
-        // sit 1 : var, var --> 1 reg
-        // sit 2 :reg, var --> OP R1, var
-        // sit 3 : reg1, reg2 --> OP reg1, reg2
-        // sit 4:
-        // si es conmutativo --> var, reg1 --> reg1, var
-        // si no es conm.    --> ocupo nuevo reg
-        if (es_variable(primerOperando.toString()) && es_variable(segundoOperando.toString())) {
-            // Situacion 1
-            String nombreRegistro = getRegistroLibre();
-            ocuparRegistro(nombreRegistro);
-            InstruccionASM instruccionASM = new InstruccionASM("MOV", nombreRegistro, "@" + primerOperando);
-            InstruccionASM instruccionASM_2 = new InstruccionASM(getTipoInstruccion(operador), nombreRegistro, "@" + segundoOperando);
-            asm.add(instruccionASM);    // Agrego las instrucciones asm a la lista
-            asm.add(instruccionASM_2); // Agrego las instrucciones asm a la lista
-            pila_variables.add(nombreRegistro); // Agrego el registro para seguir operando con el
-        } else {
-            if (!es_variable(primerOperando.toString()) && es_variable(segundoOperando.toString())) {
-                // Situacion 2
-                InstruccionASM instruccionASM = new InstruccionASM(getTipoInstruccion(operador), (String) primerOperando, "@" + segundoOperando);
-                asm.add(instruccionASM);
-                pila_variables.push(primerOperando);
-            } else {
-                if (!es_variable(primerOperando.toString()) && !es_variable(segundoOperando.toString())) {
-                    // Situacion 3
-                    InstruccionASM instruccionASM = new InstruccionASM(getTipoInstruccion(operador), (String) primerOperando, (String) segundoOperando);
-                    liberarRegristro((String) segundoOperando);
-                    asm.add(instruccionASM);
-                    pila_variables.push(primerOperando);
-                } else {
-                    // Situacion 4
-                    if (es_conmutativo(operador)) {
-                        // Se invierten los operandos
-                        InstruccionASM instruccionASM = new InstruccionASM(getTipoInstruccion(operador), (String) segundoOperando,"@" + (String) primerOperando);
-
-                        asm.add(instruccionASM);
-                        pila_variables.push(segundoOperando);
-
-                    } else {
-                        // Ocupo nuevo registro con el resultado de la operacion
-                        String nombreRegistro = getRegistroLibre();
-                        InstruccionASM instruccionASM = new InstruccionASM("MOV", nombreRegistro, "@" + primerOperando);
-                        InstruccionASM instruccionASM_2 = new InstruccionASM(getTipoInstruccion(operador), (String) nombreRegistro, (String) segundoOperando);
-                        asm.add(instruccionASM);
-                        asm.add(instruccionASM_2);
-                        liberarRegristro((String) segundoOperando);
-                        pila_variables.push(nombreRegistro);
-                    }
-                }
-            }
         }
     }
 
@@ -205,52 +96,169 @@ public class GeneradorASM {
     // En La forma de reconocer que tipo de elemento se esta hablando es seguin el naming del mismo
     public static void generarASM() {
 
-        // se recorre la polaca en una pasada y se genera el ASM
-        for (Object valor : Polaca.getRepresentacionIntermedia()) {
+        List<Object> repIntermedia = Polaca.getRepresentacionIntermedia();
+        asm = "START: " + '\n';
+        String currentFuncLabel = "";
+        for (int i = 0; i < repIntermedia.size(); i++) {
 
-            // Si no es un operador
+            //System.out.println("Indice : " + i + " ---- " + "cant: " + pila_variables.size());
+            // Capturo el elemento actual
+            Object elem = repIntermedia.get(i);
 
-            if (!operadoresBinarios.contains(valor) && !es_sentenciaControl(valor) && !es_etiqueta(valor)){
-                pila_variables.push(valor);
-            } else {
-                if (operadoresBinarios.contains(valor)) {
-                    // Si es un operador binario
-                    // desapilo dos elementos y genero el asm correspondiente
-                    //Aca siempre van a ser Registros!
-                    Object segundoOperando = pila_variables.pop();
-                    Object primerOperando = pila_variables.pop();
-                    //Si llegamos aca y son string, significa que son placeholders, como "Retorno" y "Print"
-                    if(segundoOperando instanceof java.lang.String){
-                       continue;
-                    }
-                    if(primerOperando instanceof java.lang.String){
+            // En caso de que sea un operando, apilamos y avanzamos al siguiente elemento
+            if (es_operando(elem)){
+                //si es una cadena de caracteres, no se mete en la pila
+                if (((RegistroTS) elem).getTipo().equals("cadena_caracteres")) continue;
+                pila_variables.push(elem);
+                continue;
+            }
+
+            // En caso de ser una etiqueta, generamos directamente el asm corrspondiente y avanzamos al siguiente elemento
+            if (es_etiqueta(elem)){
+                asm += elem.toString() + ":"+ '\n';
+                continue;
+            }
+
+
+            // En caso de ser una sentencia de control y avanzamos al siguiente elemento
+            if (es_marca(elem)){
+                switch (elem.toString()){
+                    case "FuncStartLabel":
+                        currentFuncLabel = repIntermedia.get(i+1).toString();
                         continue;
-                    }
 
-                    generarCodigoOperadorBinario(valor, ((RegistroTS)primerOperando).getLexema(), ((RegistroTS)segundoOperando).getLexema()); // Actualizando la lista de instrucciones
-                } else {
+                    case "FillReturnReg" :
+                        //en el tope de la pila esta la variable auxiliar que contiene el resultado de la expresion del
+                        //retorno
+                        // Generamos variable auxiliar usada para retorno de funcion, se debe apilar en la pila de variable
+                        asm += "MOV " + "@aux" + currentFuncLabel + ", _" + ((RegistroTS)pila_variables.pop()).getLexema() + '\n';
+                        TablaSimbolos.altaTS("@aux" + currentFuncLabel);
+                        TablaSimbolos.punteroTS("@aux" + currentFuncLabel).setUso("variable");
+                        TablaSimbolos.punteroTS("@aux" + currentFuncLabel).setTipo("UINT"); //TODO Cambiar
+                        continue;
 
-                    // Valores de la polaca utilizados para control
-                    if(valor.equals("BF")){
-                        // Reconozco un salto por falso, agrego al ASM el chequeo de condicion
-                        //Pila_Variables.pop() siempre va a ser un entero porque antes de un BF o BI siempre hay un entero.
-                        InstruccionASM instruccionASM = new InstruccionASM("JLE" ,"L" + pila_variables.pop().toString(), "");
-                        asm.add(instruccionASM);
-                    }else
-                        // Reconozco un salto incondicional, agrego al ASM salto
-                        if (valor.equals("BI")){
-                            InstruccionASM instruccionASM = new InstruccionASM("JMP" ,"L" + pila_variables.pop().toString(), "");
-                            asm.add(instruccionASM);
+                    case "Quit" :
+                        // Generamos instruccion que mate el programa
+                        asm += "END" + '\n'; // todo : generar la instruccion ASM para cerrar el programa
+                        continue;
+
+                    case "END_PROGRAM" :
+                        // Agregamos tag de END
+                        asm += "END" + " START" + '\n';
+                        continue;
+
+                    case "CALL":
+                        // Saltamos a la direccion de la etiqueta siquiente
+                        asm += "CALL" + " L" + repIntermedia.get(i-1) + '\n';
+                        pila_variables.push(TablaSimbolos.punteroTS("@auxL" + repIntermedia.get(i-1)));
+                        if (TablaSimbolos.punteroTS("@auxL" + repIntermedia.get(i-1)) == null){
+                            //System.out.println("Se agrego null en CALL" );
                         }
-                        else{
-                            if(es_etiqueta(valor)){
-                                InstruccionASM instruccionASM = new InstruccionASM((String) valor, "", "");
-                                asm.add(instruccionASM);
-                            }
-                        }
+                        continue;
+
+                    case "RETURN":
+                        asm += "RET" + '\n';
+                        continue;
                 }
+                continue;
+            }
+
+            if (es_control(elem)){
+                if (elem.equals("BI")){
+                    asm += "JMP " + "L" + repIntermedia.get(i-1) + '\n';
+                }
+
+                if (elem.equals("BF")){
+
+                    asm += GeneradorComparacion.getASM(ultimoComp, i) + '\n';
+                }
+
+                continue;
+            }
+
+            //si el siguiente elemento es un BI o un BF, es un indice y debe ser ignorado. Se utilizara este indice en la siguiente iteracion
+            if (i < repIntermedia.size() - 1 && (es_control(repIntermedia.get(i+1)) || repIntermedia.get(i+1).equals("CALL"))){
+                continue;
+            }
+
+            // Si llegamos aca, es un operador (que siempre es un int). En funcion el tipo de operador el comporamiento es distinto
+            String asm_generado = "";
+
+            // En caso que se invoque al operador unario PRINT
+            if(elem.equals("PRINT")){
+                //print el proximo registro TS
+                asm += "Print " + '\n' + ((RegistroTS)repIntermedia.get(i+1)).getLexema() + '\n';
+                continue;
+            }
+
+            switch((int) elem){
+                case ((int) '/') :
+                    asm = asm + '\n' + GeneradorDivision.getASM();
+                    continue;
+                case ((int) '-') :
+                    asm = asm + '\n' + GeneradorResta.getASM();
+                    continue;
+                case ((int) '*') :
+                    asm = asm + '\n' + GeneradorMultiplicacion.getASM();
+                    continue;
+                case ((int) '+') :
+                    asm = asm + '\n' + GeneradorSuma.getASM();
+                    continue;
+                    /*
+                case ((int) Parser.AND) :
+                    asm = asm + '\n' + GeneradorComparacion.getASM();
+                    continue;
+                case ((int) Parser.OR) :
+                    asm = asm + '\n' + GeneradorComparacion.getASM();
+                    continue;
+                    */
+                case ((int) Parser.ASIG) :
+                    asm = asm + '\n' + GeneradorAsignacion.getASM();
+                    continue;
+                case ((int) '>') :
+                    ultimoComp = "May";
+                    continue;
+                case ((int) Parser.COMP_DISTINTO) :
+                    ultimoComp = "Dist";
+                    continue;
+                case ((int) '<') :
+                    ultimoComp = "Men";
+                    continue;
+                case ((int) Parser.COMP_MAYOR_IGUAL) :
+                    ultimoComp = "MayI";
+                    continue;
+                case ((int) Parser.COMP_MENOR_IGUAL) :
+                    ultimoComp = "MenI";
+                    continue;
+                case ((int) Parser.COMP_IGUAL) :
+                    ultimoComp = "Ig";
+                    continue;
+            }
+
+        }
+
+        asm += '\n' + "TratarDivisionPorZero: " + '\n' + "Print Error" + '\n' + "END";
+
+        String asm_copy = asm;
+        asm = ".MODEL SMALL" + '\n' + ".STACK 200h" + '\n' + ".DATA" + '\n';
+        for (RegistroTS r: TablaSimbolos.getTabla().values()) {
+            if (r.getTipo() == null) continue;
+            if(!(r.getUso().equals("variable") || r.getUso().equals("cte") || r.getUso().equals("parametro"))) continue;
+            try{
+                int tipo = Integer.parseInt(r.getTipo());
+                switch (tipo){
+                    case Parser.UINT :
+                        asm += "DW " + "_" + r.getLexema() + '\n';
+                        continue;
+                    case Parser.DOUBLE:
+                        asm += "DD " + "_" + r.getLexema() + '\n';
+                        continue;
+                }
+            } catch (NumberFormatException e){
+                continue;
             }
         }
+        asm = asm + '\n' + ".CODE" + '\n' +  asm_copy;
     }
 
     // Este metodo nos permite mostrar de manera legible el codigo ASM generado

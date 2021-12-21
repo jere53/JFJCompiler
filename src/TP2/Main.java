@@ -14,7 +14,7 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
-        AnalizadorLexico.FILE_PATH = "C:\\Users\\jerem\\IdeaProjects\\JFJCompiler\\src\\input.txt";//args[0];
+        AnalizadorLexico.FILE_PATH = args[0];
         AnalizadorLexico.inic(); //carga el archivo con el codigo fuente e inicializa el archivo con la salida
         TablaSimbolos.CargarTablaPalabrasReservadas();
         new Parser().run();
@@ -35,13 +35,10 @@ public class Main {
 
             // Generamos ASM
             GeneradorASM.inic();
-            GeneradorASM.cargarMapa();
-            GeneradorASM.cargarInstrucciones();
             GeneradorASM.generarASM();
-            System.out.println(GeneradorASM.get_asm().toString());
 
             try {
-                GeneradorASM.outputWriter.append(GeneradorASM.get_asm().toString());
+                GeneradorASM.outputWriter.append(GeneradorASM.get_asm());
                 GeneradorASM.outputWriter.close();
 
             } catch (IOException e) {

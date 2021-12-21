@@ -44,8 +44,13 @@ public class TablaSimbolos {
         return tpr.get(lexema);
     }
 
+    public static Map<String, RegistroTS> getTabla(){
+        return ts;
+    }
+
     public static void altaTS(String lexema) {
         RegistroTS atributos = new RegistroTS(lexema);
+        if (perteneceTPR(lexema)) System.out.println("se agrego un lexema que ya estaba");
         ts.put(lexema, atributos);
     }
 

@@ -14,17 +14,18 @@ FUNC UINT f(UINT a)
 UINT y,x;
 BEGIN
     y := 3 * x;
-    RETURN (y);
+    RETURN (y + 3 * x);
     POST: (y < 3), %Error en la postcondicion%;
 END;
 
 UINT a;
 BEGIN
-    f(a);
-
+    a := 1 + 2 + 3 + f(a);
+    //
     REPEAT
         a := 1;
-    UNTIL (a == 1);
+    UNTIL (a < 20);
+    //
 END;
 
 
@@ -59,16 +60,13 @@ BEGIN
             A := A * 2;
             A := A - 1.3E-24;
         END;
-    UNTIL (A > B);
+    UNTIL (A > B + 23);
 END;
 
 //
 
 
 //
-
-
-
     Redeclaracion de ID en el mismo ambito
 
 
