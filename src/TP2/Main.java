@@ -14,7 +14,7 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
-        AnalizadorLexico.FILE_PATH = args[0];
+        AnalizadorLexico.FILE_PATH = "C:\\Users\\jerem\\IdeaProjects\\JFJCompiler\\src\\input.txt";//args[0];
         AnalizadorLexico.inic(); //carga el archivo con el codigo fuente e inicializa el archivo con la salida
         TablaSimbolos.CargarTablaPalabrasReservadas();
         new Parser().run();
@@ -26,7 +26,7 @@ public class Main {
             AnalizadorLexico.outputWriter.append(AnalizadorLexico.mostrarErrores() +  '\n');
             AnalizadorLexico.outputWriter.append("--------CodigoIntermedio--------" + '\n');
             AnalizadorLexico.outputWriter.append(Polaca.imprimirPolaca());
-            AnalizadorLexico.outputWriter.close();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -35,17 +35,34 @@ public class Main {
 
             // Generamos ASM
             GeneradorASM.inic();
+            //Los nombres del NameMangling rompen el ASM porque tienene el caracter ":", entonces modificamos los nombres de la TS primero.
+            Object[] lexemas = TablaSimbolos.getTabla().keySet().toArray();
+            for(Object o : lexemas){
+                TablaSimbolos.cambiarNombre(o.toString(),o.toString().replaceAll(":", ""));
+            }
+
+
             GeneradorASM.generarASM();
 
             try {
                 GeneradorASM.outputWriter.append(GeneradorASM.get_asm());
                 GeneradorASM.outputWriter.close();
 
+                AnalizadorLexico.outputWriter.append("\n-----Tabla Simbolos ASM-----" + '\n');
+                AnalizadorLexico.outputWriter.append(TablaSimbolos.mostrarTS() + '\n');
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
         }
+
+        try{
+            AnalizadorLexico.outputWriter.close();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+
+
 
     }
 }

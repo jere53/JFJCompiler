@@ -6,37 +6,31 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3a08d5a9-0de6-450d-a23c-2cfd8001a572" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/TP4/Generadores/GeneradorAsignacion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TP4/Generadores/GeneradorComparacion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TP4/Generadores/GeneradorDivision.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TP4/Generadores/GeneradorMultiplicacion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TP4/Generadores/GeneradorResta.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TP4/Generadores/GeneradorSuma.java" afterDir="false" />
+    <list default="true" id="3a08d5a9-0de6-450d-a23c-2cfd8001a572" name="Default Changelist" comment="done">
+      <change afterPath="$PROJECT_DIR$/salidaASM.asm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TP4/Generadores/GeneradorAnd.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TP4/Generadores/GeneradorOr.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/JFJCompiler_jar/JFJCompiler.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/JFJCompiler_jar/JFJCompiler.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/JFJCompiler_jar/salida.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/JFJCompiler_jar/salida.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/Parser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/y.output" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/y.output" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/y.tab.c" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/BYACC/y.tab.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/TablaSimbolos.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/Dev/Lexico/TablaSimbolos.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/gramatica.y" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/TP2/gramatica.y" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JFJCompiler/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFJCompiler/input.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/salida.txt" beforeDir="false" afterPath="$PROJECT_DIR$/salida.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/salidaASM.txt" beforeDir="false" afterPath="$PROJECT_DIR$/salidaASM.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dev/Lexico/TablaSimbolos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dev/Lexico/TablaSimbolos.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TP2/BYACC/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/BYACC/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TP2/BYACC/y.output" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/BYACC/y.output" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TP2/BYACC/y.tab.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/BYACC/y.tab.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TP2/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TP2/gramatica.y" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP2/gramatica.y" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TP4/GeneradorASM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP4/GeneradorASM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TP4/Generadores/GeneradorAsignacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP4/Generadores/GeneradorAsignacion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TP4/Generadores/GeneradorComparacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP4/Generadores/GeneradorComparacion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TP4/Generadores/GeneradorDivision.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP4/Generadores/GeneradorDivision.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TP4/Generadores/GeneradorMultiplicacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP4/Generadores/GeneradorMultiplicacion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TP4/Generadores/GeneradorResta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP4/Generadores/GeneradorResta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TP4/Generadores/GeneradorSuma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP4/Generadores/GeneradorSuma.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/input.txt" afterDir="false" />
     </list>
     <list id="697f8440-4d12-4320-82f3-d38f4ec120a5" name="Changes by felix" comment="" />
-    <list id="e5701cc7-9486-4e8a-a3f8-d6c7ef39c12a" name="Changes by Juan" comment="">
-      <change beforePath="$PROJECT_DIR$/src/TP4/GeneradorASM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TP4/GeneradorASM.java" afterDir="false" />
-    </list>
+    <list id="e5701cc7-9486-4e8a-a3f8-d6c7ef39c12a" name="Changes by Juan" comment="" />
     <list id="f396b4cf-5785-48b4-af3a-f48f932aac4c" name="Changes by juand" comment="" />
     <list id="361afa70-437c-4a2b-93bd-0b3bf65b1206" name="Changes by juandurefaccini" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -66,34 +60,6 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/TP4/GeneradorASM.java">
-      <ranges>
-        <range start1="7" end1="7" start2="7" end2="8" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="11" end1="12" start2="12" end2="12" changelist="e5701cc7-9486-4e8a-a3f8-d6c7ef39c12a" />
-        <range start1="29" end1="30" start2="29" end2="30" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="33" end1="33" start2="33" end2="34" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="37" end1="38" start2="38" end2="39" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="39" end1="40" start2="40" end2="41" changelist="e5701cc7-9486-4e8a-a3f8-d6c7ef39c12a" />
-        <range start1="41" end1="44" start2="42" end2="44" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="45" end1="61" start2="45" end2="45" changelist="e5701cc7-9486-4e8a-a3f8-d6c7ef39c12a" />
-        <range start1="67" end1="70" start2="51" end2="51" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="87" end1="194" start2="68" end2="68" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="195" end1="200" start2="69" end2="69" changelist="e5701cc7-9486-4e8a-a3f8-d6c7ef39c12a" />
-        <range start1="208" end1="208" start2="77" end2="94" changelist="e5701cc7-9486-4e8a-a3f8-d6c7ef39c12a" />
-        <range start1="212" end1="214" start2="98" end2="102" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="215" end1="216" start2="103" end2="106" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="217" end1="231" start2="107" end2="127" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="232" end1="233" start2="128" end2="148" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="234" end1="236" start2="149" end2="157" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="237" end1="255" start2="158" end2="173" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="256" end1="256" start2="174" end2="191" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="257" end1="257" start2="192" end2="237" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="258" end1="258" start2="238" end2="261" changelist="3a08d5a9-0de6-450d-a23c-2cfd8001a572" />
-        <range start1="262" end1="270" start2="265" end2="266" changelist="e5701cc7-9486-4e8a-a3f8-d6c7ef39c12a" />
-      </ranges>
-    </file>
   </component>
   <component name="ProjectId" id="1yqCkmdNRxSxYh8grmSVmdacFrz" />
   <component name="ProjectLevelVcsManager">
@@ -137,13 +103,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -184,7 +152,8 @@
       <workItem from="1638295272414" duration="19000" />
       <workItem from="1639074036935" duration="825000" />
       <workItem from="1639771629007" duration="7887000" />
-      <workItem from="1640030145334" duration="25678000" />
+      <workItem from="1640030145334" duration="25717000" />
+      <workItem from="1640553244997" duration="26580000" />
     </task>
     <task id="LOCAL-00001" summary="Completa integracion del lexico y el sintactico, anota algunas correcciones que se deben realizar a la gramatica">
       <created>1632974085994</created>
@@ -452,7 +421,21 @@
       <option name="project" value="LOCAL" />
       <updated>1640030182183</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="done">
+      <created>1640057633448</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1640057633448</updated>
+    </task>
+    <task id="LOCAL-00040" summary="done">
+      <created>1640057651420</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1640057651420</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

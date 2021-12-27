@@ -4,28 +4,32 @@ PROGRAM programa_prueba;
     Funciones Anidadas
 //
 
-FUNC UINT f(UINT a)
-    FUNC DOUBLE j()
+FUNC DOUBLE f(DOUBLE a)
+    FUNC UINT j()
     UINT K;
     BEGIN
         K := 1;
         RETURN (K);
     END;
-UINT y,x;
+DOUBLE y;
+DOUBLE x;
 BEGIN
-    y := 3 * x;
+    x := 25.182E+200;
+    y := 0 * x;
     RETURN (y + 3 * x);
     POST: (y < 3), %Error en la postcondicion%;
 END;
 
-UINT a;
+DOUBLE a;
 BEGIN
     a := 1 + 2 + 3 + f(a);
-    //
+
+    PRINT (%HolaMundo%);
+
     REPEAT
         a := 1;
     UNTIL (a < 20);
-    //
+
 END;
 
 

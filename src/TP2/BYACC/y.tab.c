@@ -848,7 +848,7 @@ case 85:
 break;
 case 86:
 #line 139 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"
-{Polaca.insert(TablaSimbolos.punteroTS(yyvsp[-1].sval)); Polaca.insert(new Integer(PRINT));}
+{TablaSimbolos.punteroTS(yyvsp[-1].sval).setTipo("cadena_caracteres"); Polaca.insert("PRINT"); Polaca.insert(TablaSimbolos.punteroTS(yyvsp[-1].sval)); }
 break;
 case 87:
 #line 140 "C:\Users\jerem\IdeaProjects\JFJCompiler\src\TP2\gramatica.y"

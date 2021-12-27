@@ -3,14 +3,14 @@
 
 .stack 200h
 option casemap :none 
-include \masm32\include\windows.inc
-include \masm32\include\kernel32.inc
-include \masm32\include\user32.inc
-includelib \masm32\lib\kernel32.lib
-includelib \masm32\lib\user32.lib
-.DATA
+include \masm32\include\windows.inc 
+include \masm32\include\kernel32.inc 
+include \masm32\include\masm32.inc 
+includelib \masm32\lib\kernel32.lib 
+includelib \masm32\lib\masm32.lib 
+.data
 @aux7 DW ?
-@aux6 DQ ?
+@aux6 DW ?
 @aux5 DW ?
 @aux4 DW ?
 _Errorenlapostcondicion DB "Error en la postcondicion", 0
@@ -23,43 +23,29 @@ _ymainf DQ ?
 _xmainf DQ ?
 _HolaMundo DB "HolaMundo", 0
 @auxL1 DW ?
-var0 DW 0
 var1 DW 1
 var2 DW 2
 var3 DW 3
 _Kmainfj DW ?
-@auxL9 DQ ?
+@auxL9 DW ?
 var25182E200 DQ 25.182E+200
 var20 DW 20
 _amainf DQ ?
-_ErrDivZero DB  "Division por 0", 0
-_ErrOFSuma DB "Overflow en suma de enteros", 0 
-_ErrIncompTipos DB "No se puede realizar la conversion de tipos", 0 
 
 .CODE
-
-DivZero: 
-invoke MessageBox, NULL, addr _ErrDivZero, addr _ErrDivZero, MB_OK 
-invoke ExitProcess, 0 
-OFSuma: 
-invoke MessageBox, NULL, addr _ErrOFSuma, addr _ErrOFSuma, MB_OK 
-invoke ExitProcess, 0 
-IncompTipos: 
-invoke MessageBox, NULL, addr _ErrIncompTipos, addr _ErrIncompTipos, MB_OK 
-invoke ExitProcess, 0 
+START: 
 L1:
 
 MOV AX, var1
 MOV _Kmainfj, AX
-MOV AX, _Kmainfj
-MOV @auxL1, AX
+MOV @auxL1, Kmainfj
 RET
 L9:
 
 FLD var25182E200
 FSTP _xmainf
 
-FILD var0
+FILD var3
 FLD _xmainf
 FMUL
 FSTP @aux0
@@ -76,8 +62,7 @@ FLD @aux1
 FLD _ymainf
 FADD
 FSTP @aux2
-FLD @aux2
-FSTP @auxL9
+MOV @auxL9, @aux2
 
 FILD var3
 FLD _ymainf
@@ -91,11 +76,10 @@ CMP @aux3, 0
 JZ L31
 JMP L35
 L31:
-invoke MessageBox, NULL, addr _Errorenlapostcondicion,addr _Errorenlapostcondicion, MB_OK
+invoke StdOut, addr _Errorenlapostcondicion
 invoke ExitProcess, 0
 L35:
 RET
-START: 
 
 MOV AX, var2
 ADD AX, var1
@@ -111,14 +95,13 @@ FLD _amain
 FSTP _amainf
 CALL L9
 
-FILD @aux5
-FLD @auxL9
-FADD
-FSTP @aux6
+MOV AX, @auxL9
+ADD AX, @aux5
+JC OFSuma
+MOV @aux6, AX
 
-FLD @aux6
+FILD @aux6
 FSTP _amain
-invoke MessageBox, NULL, addr _HolaMundo,addr _HolaMundo, MB_OK
 L53:
 
 FILD var1
@@ -135,3 +118,13 @@ L@aux7:
 CMP @aux7, 0
 JZ L53
 END START
+
+DivZero: 
+invoke StdOut, "Error: division por 0"
+invoke ExitProcess, 0 
+OFSuma: 
+invoke StdOut, "Error: Overflow en suma de enteros"
+invoke ExitProcess, 0 
+IncompTipos: 
+invoke StdOut, "Error: Overflow en suma de enteros"
+invoke ExitProcess, 0 

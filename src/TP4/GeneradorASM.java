@@ -1,5 +1,6 @@
 package TP4;
 
+import Dev.Lexico.AnalizadorLexico;
 import Dev.Lexico.Dupla;
 import Dev.Lexico.TablaSimbolos;
 import Dev.RegistroTS;
@@ -90,14 +91,12 @@ public class GeneradorASM {
                 || e.equals("END_PROGRAM") || e.equals("CALL") || e.equals("RETURN");
     }
 
-    static String  ultimoComp="";
-
     // El metoddo generar asm se encarga de evaluar y trabajar sobre cada elemento de la lista de la polaca
     // En La forma de reconocer que tipo de elemento se esta hablando es seguin el naming del mismo
     public static void generarASM() {
 
         List<Object> repIntermedia = Polaca.getRepresentacionIntermedia();
-        asm = "START: " + '\n';
+        asm = "";
         String currentFuncLabel = "";
         for (int i = 0; i < repIntermedia.size(); i++) {
 
@@ -123,6 +122,10 @@ public class GeneradorASM {
             // En caso de ser una sentencia de control y avanzamos al siguiente elemento
             if (es_marca(elem)){
                 switch (elem.toString()){
+                    case "-----------FinDeclaraciones-----------":
+                       asm += "START: " + '\n';
+                       continue;
+
                     case "FuncStartLabel":
                         currentFuncLabel = repIntermedia.get(i+1).toString();
                         continue;
@@ -130,16 +133,32 @@ public class GeneradorASM {
                     case "FillReturnReg" :
                         //en el tope de la pila esta la variable auxiliar que contiene el resultado de la expresion del
                         //retorno
-                        // Generamos variable auxiliar usada para retorno de funcion, se debe apilar en la pila de variable
-                        asm += "MOV " + "@aux" + currentFuncLabel + ", _" + ((RegistroTS)pila_variables.pop()).getLexema() + '\n';
+
+                        //creamos la variable que tendra el retorno de la funcion
                         TablaSimbolos.altaTS("@aux" + currentFuncLabel);
                         TablaSimbolos.punteroTS("@aux" + currentFuncLabel).setUso("variable");
-                        TablaSimbolos.punteroTS("@aux" + currentFuncLabel).setTipo("UINT"); //TODO Cambiar
+                        //Sabemos que el tipo de retorno de la funcion sera el tipo de la expresion de retorno.
+                        TablaSimbolos.punteroTS("@aux" + currentFuncLabel).setTipo(((RegistroTS)pila_variables.peek()).getTipo());
+
+                        //En la pila de variables tenemos el resultado de la ultima expresion de la funcion (el retorno)
+                        //entonces hay que generar una asignacion a nuestra variable de retorno. Para eso metemos la variable
+                        //de retorno en la pila y generamos la asig.
+
+
+                        pila_variables.push(TablaSimbolos.punteroTS("@aux" + currentFuncLabel));
+                        asm += GeneradorAsignacion.getASM();
+                        /*
+                        asm += "MOV " + "@aux" + currentFuncLabel + ", " + prefijo + ((RegistroTS)pila_variables.pop()).getLexema() + '\n';
+                        TablaSimbolos.altaTS("@aux" + currentFuncLabel);
+                        TablaSimbolos.punteroTS("@aux" + currentFuncLabel).setUso("variable");
+                        TablaSimbolos.punteroTS("@aux" + currentFuncLabel).setTipo(String.valueOf(Parser.UINT));
+
+                         */
                         continue;
 
                     case "Quit" :
                         // Generamos instruccion que mate el programa
-                        asm += "END" + '\n'; // todo : generar la instruccion ASM para cerrar el programa
+                        asm += "invoke ExitProcess, 0" + '\n';
                         continue;
 
                     case "END_PROGRAM" :
@@ -152,7 +171,7 @@ public class GeneradorASM {
                         asm += "CALL" + " L" + repIntermedia.get(i-1) + '\n';
                         pila_variables.push(TablaSimbolos.punteroTS("@auxL" + repIntermedia.get(i-1)));
                         if (TablaSimbolos.punteroTS("@auxL" + repIntermedia.get(i-1)) == null){
-                            //System.out.println("Se agrego null en CALL" );
+                            System.out.println("Se agrego null en CALL" );
                         }
                         continue;
 
@@ -169,8 +188,10 @@ public class GeneradorASM {
                 }
 
                 if (elem.equals("BF")){
-
-                    asm += GeneradorComparacion.getASM(ultimoComp, i) + '\n';
+                    //Si leemos un BF, significa que la ultima variable en la pila debe contener el resultado de una expresion booleana.
+                    //Por como esta armado el compilador, ese resultado es 1 si la condicion es verdadera, y 0 si no lo es.
+                    asm += "CMP " + ((RegistroTS) pila_variables.pop()).getLexema() + ", 0" + '\n'+
+                        "JZ " + "L"+ repIntermedia.get(i-1) + '\n'; //Si el resultado es falso (ZeroFlag = 1) entonces saltamos a la etiqueta de la rama por falso.
                 }
 
                 continue;
@@ -187,7 +208,8 @@ public class GeneradorASM {
             // En caso que se invoque al operador unario PRINT
             if(elem.equals("PRINT")){
                 //print el proximo registro TS
-                asm += "Print " + '\n' + ((RegistroTS)repIntermedia.get(i+1)).getLexema() + '\n';
+                asm += "invoke MessageBox, NULL, addr _" + ((RegistroTS)repIntermedia.get(i+1)).getLexema().replaceAll("\\s+","")
+                        + ",addr _" + ((RegistroTS)repIntermedia.get(i+1)).getLexema().replaceAll("\\s+","") + ", MB_OK" + '\n';
                 continue;
             }
 
@@ -204,61 +226,93 @@ public class GeneradorASM {
                 case ((int) '+') :
                     asm = asm + '\n' + GeneradorSuma.getASM();
                     continue;
-                    /*
                 case ((int) Parser.AND) :
-                    asm = asm + '\n' + GeneradorComparacion.getASM();
+                    asm = asm + '\n' + GeneradorAnd.getASM();
                     continue;
                 case ((int) Parser.OR) :
-                    asm = asm + '\n' + GeneradorComparacion.getASM();
+                    asm = asm + '\n' + GeneradorOr.getASM();
                     continue;
-                    */
                 case ((int) Parser.ASIG) :
                     asm = asm + '\n' + GeneradorAsignacion.getASM();
                     continue;
                 case ((int) '>') :
-                    ultimoComp = "May";
+                    asm += '\n' + GeneradorComparacion.getASM("May");
                     continue;
                 case ((int) Parser.COMP_DISTINTO) :
-                    ultimoComp = "Dist";
+                    asm += '\n' + GeneradorComparacion.getASM("Dist");
                     continue;
                 case ((int) '<') :
-                    ultimoComp = "Men";
+                    asm += '\n' + GeneradorComparacion.getASM("Men");
                     continue;
                 case ((int) Parser.COMP_MAYOR_IGUAL) :
-                    ultimoComp = "MayI";
+                    asm += '\n' + GeneradorComparacion.getASM("MayI");
                     continue;
                 case ((int) Parser.COMP_MENOR_IGUAL) :
-                    ultimoComp = "MenI";
+                    asm += '\n' + GeneradorComparacion.getASM("MenI");
                     continue;
                 case ((int) Parser.COMP_IGUAL) :
-                    ultimoComp = "Ig";
+                    asm += '\n' + GeneradorComparacion.getASM("Ig");
                     continue;
             }
 
         }
 
-        asm += '\n' + "TratarDivisionPorZero: " + '\n' + "Print Error" + '\n' + "END";
-
         String asm_copy = asm;
-        asm = ".MODEL SMALL" + '\n' + ".STACK 200h" + '\n' + ".DATA" + '\n';
+        asm = ".386 \n" + ".model flat, stdcall \n" + '\n' + ".stack 200h" + '\n' +
+                "option casemap :none \n" +
+                "include \\masm32\\include\\windows.inc\n" +
+                "include \\masm32\\include\\kernel32.inc\n" +
+                "include \\masm32\\include\\user32.inc\n" +
+                "includelib \\masm32\\lib\\kernel32.lib\n" +
+                "includelib \\masm32\\lib\\user32.lib\n"+
+                ".DATA" + '\n';
+
         for (RegistroTS r: TablaSimbolos.getTabla().values()) {
             if (r.getTipo() == null) continue;
-            if(!(r.getUso().equals("variable") || r.getUso().equals("cte") || r.getUso().equals("parametro"))) continue;
+            if(r.getTipo().equals("cadena_caracteres")){
+                //quitamos los espacios en el nombre de la variable.
+                asm += "_" +r.getLexema().replaceAll("\\s+", "") +" DB " + "\""+r.getLexema()+"\"" +", 0" + '\n';
+                continue;
+            }
+            if(!(r.getUso().equals("variable") || r.getUso().equals("cte") || r.getUso().equals("parametro") || r.getUso().equals("asm_control"))) continue;
             try{
+                String prefijo = "";
+                if (!r.getLexema().startsWith("@")){
+                    prefijo = "_";
+                }
+                if (r.getTipo().equals("asm_bool")){ //siempre es unav variable auxiliar, empieza con @
+                    asm += r.getLexema() + " DW " + "?" + '\n';
+                    continue;
+                }
                 int tipo = Integer.parseInt(r.getTipo());
                 switch (tipo){
                     case Parser.UINT :
-                        asm += "DW " + "_" + r.getLexema() + '\n';
+                        asm += prefijo + r.getLexema()  + " DW " + "?" + '\n';
                         continue;
                     case Parser.DOUBLE:
-                        asm += "DD " + "_" + r.getLexema() + '\n';
+                        asm += prefijo + r.getLexema() + " DQ " + "?" + '\n';
                         continue;
+                    case Parser.CTE_UINT:
+                        asm += "var" + r.getLexema()+ " DW " + r.getLexema() + '\n';
+                        continue;
+                    case Parser.CTE_DOUBLE:
+                        asm += "var" + r.getLexema().replaceAll("[-+\\.]", "")+ " DQ " + r.getLexema() + '\n';
                 }
             } catch (NumberFormatException e){
                 continue;
             }
         }
-        asm = asm + '\n' + ".CODE" + '\n' +  asm_copy;
+        asm += "_ErrDivZero DB " + " \"Division por 0\", 0" + '\n' +
+            "_ErrOFSuma DB " + "\"Overflow en suma de enteros\", 0 \n"+
+            "_ErrIncompTipos DB " + "\"No se puede realizar la conversion de tipos\", 0 \n";
+
+        asm = asm + '\n' + ".CODE" + '\n';
+
+        asm += '\n' + "DivZero: " + '\n' + "invoke MessageBox, NULL, addr _ErrDivZero, addr _ErrDivZero, MB_OK \n" + "invoke ExitProcess, 0 \n"
+                + "OFSuma: \n" + "invoke MessageBox, NULL, addr _ErrOFSuma, addr _ErrOFSuma, MB_OK \n" + "invoke ExitProcess, 0 \n"
+                + "IncompTipos: \n" + "invoke MessageBox, NULL, addr _ErrIncompTipos, addr _ErrIncompTipos, MB_OK \n" + "invoke ExitProcess, 0 \n";
+
+        asm += asm_copy;
     }
 
     // Este metodo nos permite mostrar de manera legible el codigo ASM generado
