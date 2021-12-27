@@ -136,7 +136,7 @@ factor 							: ID {if (Ambito.bindAmbito($1.sval) != null) Polaca.insert(TablaS
 								| ERR_FORMATO_CTE {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " Error de formato en constante en la linea " + AnalizadorLexico.nroLinea);}
 								;
 
-impresion						: PRINT '(' CADENA ')' {Polaca.insert(TablaSimbolos.punteroTS($3.sval)); Polaca.insert(new Integer(PRINT));}
+impresion						: PRINT '(' CADENA ')' {TablaSimbolos.punteroTS($3.sval).setTipo("cadena_caracteres"); Polaca.insert("PRINT"); Polaca.insert(TablaSimbolos.punteroTS($3.sval)); }
         						| PRINT '(' error ')' {yyerror("ERROR: LINE " + AnalizadorLexico.nroLinea + " invalid argument for PRINT");}
 								;
 
