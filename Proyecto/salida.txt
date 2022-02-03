@@ -1,0 +1,113 @@
+-----Tabla Simbolos-----
+RegistroTS{lexema='y:main:f'tipo='259'uso='variable'}
+RegistroTS{lexema='Error en la postcondicion'tipo='cadena_caracteres'uso='msj_postcondicion'}
+RegistroTS{lexema='HolaMundo'tipo='cadena_caracteres'uso='null'}
+RegistroTS{lexema='programa_prueba'tipo='null'uso='null'}
+RegistroTS{lexema='0'tipo='266'uso='cte'}
+RegistroTS{lexema='1'tipo='266'uso='cte'}
+RegistroTS{lexema='2'tipo='266'uso='cte'}
+RegistroTS{lexema='3'tipo='266'uso='cte'}
+RegistroTS{lexema='25.182E+200'tipo='267'uso='cte'}
+RegistroTS{lexema='a:main'tipo='259'uso='variable'}
+RegistroTS{lexema='x:main:f'tipo='259'uso='variable'}
+RegistroTS{lexema='j:main:f'tipo='258'uso='nombre_funcion'comienzoCodigoEjecutable='0'}
+RegistroTS{lexema='K:main:f:j'tipo='258'uso='variable'}
+RegistroTS{lexema='a:main:f'tipo='259'uso='parametro'}
+RegistroTS{lexema='20'tipo='266'uso='cte'}
+RegistroTS{lexema='f:main'tipo='259'uso='nombre_funcion'comienzoCodigoEjecutable='8'paramtero='RegistroTS{lexema='a:main:f'tipo='259'uso='parametro'}'}
+
+-------Errores-------
+
+--------CodigoIntermedio--------
+0  FuncStartLabel
+1  L1
+2  RegistroTS{lexema='1'tipo='266'uso='cte'}
+3  RegistroTS{lexema='K:main:f:j'tipo='258'uso='variable'}
+4  275
+5  RegistroTS{lexema='K:main:f:j'tipo='258'uso='variable'}
+6  FillReturnReg
+7  RETURN
+8  FuncStartLabel
+9  L9
+10  RegistroTS{lexema='25.182E+200'tipo='267'uso='cte'}
+11  RegistroTS{lexema='x:main:f'tipo='259'uso='variable'}
+12  275
+13  RegistroTS{lexema='0'tipo='266'uso='cte'}
+14  RegistroTS{lexema='x:main:f'tipo='259'uso='variable'}
+15  42
+16  RegistroTS{lexema='y:main:f'tipo='259'uso='variable'}
+17  275
+18  RegistroTS{lexema='y:main:f'tipo='259'uso='variable'}
+19  RegistroTS{lexema='3'tipo='266'uso='cte'}
+20  RegistroTS{lexema='x:main:f'tipo='259'uso='variable'}
+21  42
+22  43
+23  FillReturnReg
+24  RegistroTS{lexema='y:main:f'tipo='259'uso='variable'}
+25  RegistroTS{lexema='3'tipo='266'uso='cte'}
+26  60
+27  31
+28  BF
+29  35
+30  BI
+31  L31
+32  PRINT
+33  RegistroTS{lexema='Error en la postcondicion'tipo='cadena_caracteres'uso='msj_postcondicion'}
+34  Quit
+35  L35
+36  RETURN
+37  -----------FinDeclaraciones-----------
+38  RegistroTS{lexema='1'tipo='266'uso='cte'}
+39  RegistroTS{lexema='2'tipo='266'uso='cte'}
+40  43
+41  RegistroTS{lexema='3'tipo='266'uso='cte'}
+42  43
+43  RegistroTS{lexema='a:main'tipo='259'uso='variable'}
+44  RegistroTS{lexema='a:main:f'tipo='259'uso='parametro'}
+45  275
+46  9
+47  CALL
+48  43
+49  RegistroTS{lexema='a:main'tipo='259'uso='variable'}
+50  275
+51  PRINT
+52  RegistroTS{lexema='HolaMundo'tipo='cadena_caracteres'uso='null'}
+53  L53
+54  RegistroTS{lexema='1'tipo='266'uso='cte'}
+55  RegistroTS{lexema='a:main'tipo='259'uso='variable'}
+56  275
+57  RegistroTS{lexema='a:main'tipo='259'uso='variable'}
+58  RegistroTS{lexema='20'tipo='266'uso='cte'}
+59  60
+60  53
+61  BF
+62  END_PROGRAM
+
+-----Tabla Simbolos ASM-----
+RegistroTS{lexema='@aux7'tipo='asm_bool'uso='asm_control'}
+RegistroTS{lexema='@aux6'tipo='259'uso='variable'}
+RegistroTS{lexema='@aux5'tipo='258'uso='variable'}
+RegistroTS{lexema='@aux4'tipo='258'uso='variable'}
+RegistroTS{lexema='Error en la postcondicion'tipo='cadena_caracteres'uso='msj_postcondicion'}
+RegistroTS{lexema='programa_prueba'tipo='null'uso='null'}
+RegistroTS{lexema='fmain'tipo='259'uso='nombre_funcion'comienzoCodigoEjecutable='8'paramtero='RegistroTS{lexema='amainf'tipo='259'uso='parametro'}'}
+RegistroTS{lexema='amain'tipo='259'uso='variable'}
+RegistroTS{lexema='ymainf'tipo='259'uso='variable'}
+RegistroTS{lexema='@aux3'tipo='asm_bool'uso='asm_control'}
+RegistroTS{lexema='@aux2'tipo='259'uso='variable'}
+RegistroTS{lexema='@aux1'tipo='259'uso='variable'}
+RegistroTS{lexema='@aux0'tipo='259'uso='variable'}
+RegistroTS{lexema='xmainf'tipo='259'uso='variable'}
+RegistroTS{lexema='HolaMundo'tipo='cadena_caracteres'uso='null'}
+RegistroTS{lexema='jmainf'tipo='258'uso='nombre_funcion'comienzoCodigoEjecutable='0'}
+RegistroTS{lexema='@auxL1'tipo='258'uso='variable'}
+RegistroTS{lexema='0'tipo='266'uso='cte'}
+RegistroTS{lexema='1'tipo='266'uso='cte'}
+RegistroTS{lexema='2'tipo='266'uso='cte'}
+RegistroTS{lexema='3'tipo='266'uso='cte'}
+RegistroTS{lexema='Kmainfj'tipo='258'uso='variable'}
+RegistroTS{lexema='@auxL9'tipo='259'uso='variable'}
+RegistroTS{lexema='25.182E+200'tipo='267'uso='cte'}
+RegistroTS{lexema='20'tipo='266'uso='cte'}
+RegistroTS{lexema='amainf'tipo='259'uso='parametro'}
+

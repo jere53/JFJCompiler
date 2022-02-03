@@ -1,0 +1,37 @@
+PROGRAM programa_prueba;
+
+//
+    Funciones Anidadas
+//
+
+FUNC DOUBLE f(DOUBLE a)
+    FUNC UINT j()
+    UINT K;
+    BEGIN
+        K := 1;
+        RETURN (K);
+    END;
+DOUBLE y;
+DOUBLE x;
+BEGIN
+    x := 25.182E+200;
+    y := 0 * x;
+    RETURN (y + 3 * x);
+    POST: (y < 3), %Error en la postcondicion%;
+END;
+
+DOUBLE a;
+BEGIN
+//
+j no esta declarada en este ambito
+//
+
+    a := 1 + 2 + 3 + j();
+
+    PRINT (%HolaMundo%);
+
+    REPEAT
+        a := 1;
+    UNTIL (a < 20);
+
+END;

@@ -1,6 +1,0 @@
-UINT a := 6;
-IF (a == 6) THEN
-    RETURN true;
-ELSE
-    RETURN tuvieja;
-ENDIF
