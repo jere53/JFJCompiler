@@ -1,0 +1,24 @@
+PROGRAM programa_prueba;
+
+FUNC DOUBLE f(DOUBLE a)
+    FUNC UINT j()
+    UINT K;
+    BEGIN
+        K := 1;
+        RETURN (K);
+    END;
+DOUBLE y;
+DOUBLE x;
+BEGIN
+    x := 25.182E+200;
+    PRINT(%Funcion f invocada%);
+    y := 0 * x;
+    RETURN (y + x);
+    POST: (y < 3), %Error en la postcondicion%;
+END;
+
+FUNC a;
+BEGIN
+    a := f;
+    a(20);
+END;

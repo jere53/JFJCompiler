@@ -1,0 +1,50 @@
+PROGRAM programa_prueba;
+
+//
+    Funciones Anidadas
+//
+
+FUNC DOUBLE f(DOUBLE a)
+    FUNC UINT j()
+    UINT K;
+    BEGIN
+        K := 1;
+        RETURN (K);
+    END;
+DOUBLE y;
+DOUBLE x;
+BEGIN
+    x := 25.182E+200;
+//
+La postcondicion no se cumple
+//
+    y := 2 * x;
+    RETURN (y + 3 * x);
+    POST: (y < 3), %Error en la postcondicion%;
+END;
+
+DOUBLE a, b;
+BEGIN
+    a := 1 + 2 + 3 + f(a);
+
+    PRINT (%HolaMundo%);
+
+//
+Conversion implicita 1 se convierte a double
+//
+
+    b := 1;
+    REPEAT
+    BEGIN
+        b := b + 1;
+	PRINT (%Se incremento la variable b%);
+    END;
+    UNTIL (b > 3);
+
+    IF (a > 3) THEN
+	PRINT(%a es mayor a 3%);
+    ELSE
+        PRINT(%a no es mayor a 3%);
+    ENDIF;
+
+END;
